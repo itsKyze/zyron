@@ -39,9 +39,9 @@ type Params = { params: Promise<{ handle: string }> };
 function ZyronMark({ edge }: { edge: number }) {
   return (
     <svg
-      viewBox="0 0 470 504"
+      viewBox="0 0 1024 1024"
       width={edge}
-      height={Math.round(edge * (504 / 470))}
+      height={edge}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
