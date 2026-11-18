@@ -6021,7 +6021,7 @@ function getWindowMaterialOptions(): BrowserWindowConstructorOptions {
     return { transparent: true, backgroundColor: "#00000000" };
   }
   if (process.platform !== "darwin") {
-    return { backgroundColor: nativeTheme.shouldUseDarkColors ? "#181818" : "#ffffff" };
+    return { backgroundColor: "#0d0f12" };
   }
   return {
     vibrancy: MAC_WINDOW_VIBRANCY,
