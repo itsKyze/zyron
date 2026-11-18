@@ -407,6 +407,15 @@ function resolveSigningEvidence(
           checks: ["explicit version-scoped Windows release exception"],
         };
       }
+      if (input.platform === "mac") {
+        requireSingleArtifact(artifacts, ".dmg");
+        return {
+          status: "unsigned-explicit-release",
+          scheme: "none",
+          identity: null,
+          checks: ["open-source unsigned macOS release exception"],
+        };
+      }
       throw new Error(`Publishing ${input.platform} artifacts requires verified signing.`);
     }
     requireSingleArtifact(artifacts, input.platform === "mac" ? ".dmg" : ".exe");

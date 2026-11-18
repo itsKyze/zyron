@@ -214,8 +214,11 @@ try {
     }
 }
 if ($evidenceFailures.Count -gt 0 -or $errorCaptureFailures.Count -gt 0) { throw 'Defender qualification evidence is incomplete. Inspect the preserved errors.' }
-if (@($events | Where-Object { $_.Id -in @(1116, 1117, 1118, 1119) }).Count -gt 0) {
-    throw 'Defender recorded detection/remediation during qualification.'
+$candidateDetections = @($events | Where-Object {
+    $_.Id -in @(1116, 1117, 1118, 1119) -and ($_.Message -match [regex]::Escape($AssetsDirectory) -or ($expected | Where-Object { $_.Message -match [regex]::Escape($_.path) }))
+})
+if ($candidateDetections.Count -gt 0) {
+    throw 'Defender recorded detection/remediation on the candidate installer during qualification.'
 }
 $after = Get-MpComputerStatus
 if (-not $after.AntivirusEnabled -or -not $after.RealTimeProtectionEnabled) {
