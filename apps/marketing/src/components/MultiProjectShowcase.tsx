@@ -27,7 +27,7 @@ export function MultiProjectShowcase() {
               <div aria-hidden className="shot-card-bg absolute inset-0 -z-10" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/projects-syn.png"
+                src="/projects-zyron.png"
                 alt="Zyron project sidebar with separate repositories, tasks, and activity state"
                 className="mx-auto block h-auto w-3/5 rounded-lg sm:rounded-xl"
               />

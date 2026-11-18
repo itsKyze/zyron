@@ -9,7 +9,7 @@ export function TerminalTabsMock() {
     <div className="overflow-hidden rounded-lg ring-1 ring-black/5 sm:rounded-xl dark:ring-white/10">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/terminals-syn.png"
+        src="/terminals-zyron.png"
         alt="Zyron terminals — Terminal 1, 2, and 3 tabs with Claude Code running in the project directory"
         className="block h-auto w-full"
       />
