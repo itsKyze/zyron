@@ -4644,6 +4644,7 @@ describe("ChatView transcript geometry (full app)", () => {
       });
       const remove = page.getByRole("menuitem", { name: "Remove project", exact: true });
       await actions.click();
+      await expect.element(remove).toBeVisible({ timeout: 5_000 });
       await remove.click();
       await expect.poll(() => confirm.mock.calls.length).toBe(1);
       expect(confirm).toHaveBeenCalledWith(
@@ -4670,6 +4671,7 @@ describe("ChatView transcript geometry (full app)", () => {
       });
       confirm.mockResolvedValue(true);
       await actions.click();
+      await expect.element(remove).toBeVisible({ timeout: 5_000 });
       await remove.click();
       await expect.poll(() => removeEmptyProject.mock.calls.length).toBe(1);
       expect(removeEmptyProject).toHaveBeenCalledWith(projectId);
