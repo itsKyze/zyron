@@ -1003,11 +1003,6 @@ async function verifyReleaseWorkflowSafety(): Promise<void> {
   );
   assertContains(
     platformWorkflow,
-    "Publishing macOS artifacts requires every signing and notarization secret.",
-    "Expected macOS publication to fail closed when signing is unavailable.",
-  );
-  assertContains(
-    platformWorkflow,
     "Publishing Windows artifacts requires every Azure Trusted Signing secret.",
     "Expected Windows publication to fail closed when signing is unavailable.",
   );

@@ -250,11 +250,8 @@ jobs:
               echo "macOS signing enabled."
               signed=true
               args+=(--signed)
-            elif [[ "$ZYRON_PUBLISH_RELEASE" == "true" ]]; then
-              echo "Publishing macOS artifacts requires every signing and notarization secret."
-              exit 1
             else
-              echo "Build-only macOS artifact will be unsigned because publication is disabled."
+              echo "macOS artifact will be unsigned (open-source release exception)."
             fi
           elif [[ "${{ inputs.platform }}" == "win" ]]; then
             if has_all \
