@@ -115,7 +115,7 @@ try {
   );
   assert.match(
     homepage,
-    /<link rel="canonical" href="https:\/\/ai\.zyron\.site\/"\/>/,
+    /<link rel="canonical" href="https:\/\/ai\.zyron\.site"\/>/,
     "homepage must emit the exact canonical production origin",
   );
   assert.ok(homepage.includes('"@type":"SoftwareApplication"'));
