@@ -722,7 +722,7 @@ function resolveGitHubPublishConfig():
   const rawRepo =
     process.env.ZYRON_DESKTOP_UPDATE_REPOSITORY?.trim() ||
     process.env.GITHUB_REPOSITORY?.trim() ||
-    "";
+    "itsKyze/zyron";
   if (!rawRepo) return undefined;
 
   const [owner, repo, ...rest] = rawRepo.split("/");

@@ -62,6 +62,7 @@ import {
   PencilIcon,
   PinIcon,
   PlayIcon,
+  RefreshCwIcon,
   SearchIcon,
   StopFilledIcon,
   TemporaryThreadIcon,
@@ -1099,6 +1100,49 @@ function SidebarHelpMenu({
               <SidebarContextMenuIcon icon={BookIcon} />
               <span>{t("workspace:docs")}</span>
             </MenuItem>
+            {typeof window !== "undefined" && Boolean(window.desktopBridge) ? (
+              <MenuItem
+                className={SIDEBAR_CONTEXT_MENU_ITEM_CLASS_NAME}
+                onClick={() => {
+                  void window.desktopBridge
+                    ?.checkForUpdates()
+                    .then((nextState) => {
+                      if (nextState.status === "available" || nextState.status === "downloading") {
+                        toastManager.add({
+                          type: "info",
+                          title: t("workspace:desktopUpdate_preparingUpdate"),
+                          description: t("workspace:zyronIsPreparingVersionInTheBackground", {
+                            value0: nextState.availableVersion ?? t("chat:available2"),
+                          }),
+                        });
+                      } else if (nextState.status === "downloaded") {
+                        toastManager.add({
+                          type: "success",
+                          title: t("workspace:desktopUpdate_updateReady"),
+                          description: t("workspace:clickUpdateWhenYouReReadyToRestartAnd"),
+                        });
+                      } else if (nextState.status === "up-to-date") {
+                        toastManager.add({
+                          type: "info",
+                          title: t("workspace:youReUpToDate"),
+                          description: t("workspace:zyronIsAlreadyTheNewestVersion", {
+                            value0: nextState.currentVersion,
+                          }),
+                        });
+                      }
+                    })
+                    .catch(() => {
+                      toastManager.add({
+                        type: "error",
+                        title: t("workspace:desktopUpdate_couldNotCheckForUpdates"),
+                      });
+                    });
+                }}
+              >
+                <SidebarContextMenuIcon icon={RefreshCwIcon} />
+                <span>{t("desktop:checkForUpdates")}</span>
+              </MenuItem>
+            ) : null}
           </MenuGroup>
         </ComposerPickerMenuPopup>
       </Menu>

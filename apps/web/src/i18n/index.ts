@@ -10,7 +10,7 @@ export const i18n: I18n = createInstance();
 void i18n.use(initReactI18next).init({
   lng: "en",
   fallbackLng: "en",
-  supportedLngs: [...UI_LOCALES],
+  supportedLngs: Object.keys(uiLocalizationResources),
   resources: uiLocalizationResources,
   ns: Object.keys(uiLocalizationResources.en),
   defaultNS: "common",
