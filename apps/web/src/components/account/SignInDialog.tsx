@@ -613,31 +613,61 @@ type CodeEntry = ReturnType<typeof useCodeEntry>;
 /**
  * One visually hidden input holds the whole code — the six cells only render
  * its value — so focus, caret, paste, and `autocomplete="one-time-code"` all
- * behave like the single text field they really are. `boxes` draws six
- * separate boxes; `bar` draws one field split into six cells, three and three.
+ * behave like the single text field they really are.
+ * Rendered as six tactile, beautifully spaced individual slots grouped 3-and-3.
  */
 function CodeInput(props: {
   readonly entry: CodeEntry;
   readonly submitting: boolean;
-  readonly appearance: "boxes" | "bar";
+  readonly appearance?: "boxes" | "bar";
 }) {
   const { entry, submitting } = props;
-  const bar = props.appearance === "bar";
+
+  const renderSlot = (index: number) => {
+    const active = index === entry.activeIndex && !entry.complete && !submitting;
+    const digit = entry.code[index];
+    const hasError = entry.error !== null;
+
+    return (
+      <span
+        key={index}
+        aria-hidden
+        className={cn(
+          "relative flex h-13 w-10.5 sm:h-14 sm:w-11.5 items-center justify-center rounded-xl font-mono text-xl sm:text-2xl font-semibold transition-all duration-150 select-none",
+          // Base slot background & border
+          "border bg-foreground/[0.03] backdrop-blur-xs",
+          // Empty slot
+          !digit && !active && !hasError && "border-foreground/10 text-muted-foreground/30",
+          // Filled slot
+          digit &&
+            !active &&
+            !hasError &&
+            "border-foreground/20 bg-foreground/[0.06] text-foreground shadow-xs",
+          // Active slot (focused with glowing accent ring)
+          active &&
+            !hasError &&
+            "border-[var(--sign-in-accent)] bg-[var(--sign-in-accent)]/10 text-foreground ring-2 ring-[var(--sign-in-accent)]/25 shadow-[0_0_14px_rgba(255,178,127,0.18)] scale-[1.02]",
+          // Error slot
+          hasError &&
+            "border-destructive/60 bg-destructive/5 text-destructive ring-1 ring-destructive/20",
+          // Submitting state
+          submitting && "opacity-60",
+        )}
+      >
+        {digit ??
+          (active ? (
+            <span className="h-5 w-0.5 rounded-full bg-[var(--sign-in-accent)] motion-safe:animate-pulse" />
+          ) : null)}
+      </span>
+    );
+  };
+
   return (
     // Clicking anywhere on the row focuses the input; the cells are presentation only.
-    <label
-      className={cn(
-        "relative flex cursor-text",
-        bar
-          ? "h-14 overflow-hidden rounded-[14px] border border-foreground/12 bg-background"
-          : "justify-center gap-2",
-        bar && entry.error !== null && "border-destructive/60",
-        bar && submitting && "opacity-64",
-      )}
-    >
+    <label className="relative flex cursor-text items-center justify-center gap-2 sm:gap-3 py-1">
       <input
         ref={entry.inputRef}
-        className="absolute inset-0 h-full w-full cursor-text opacity-0"
+        className="absolute inset-0 h-full w-full cursor-text opacity-0 z-10"
         inputMode="numeric"
         autoComplete="one-time-code"
         maxLength={VERIFICATION_CODE_LENGTH}
@@ -653,42 +683,24 @@ function CodeInput(props: {
         autoFocus
         onChange={(event) => entry.handleCodeChange(event.target.value)}
       />
-      {Array.from({ length: VERIFICATION_CODE_LENGTH }, (_, index) => {
-        const active = index === entry.activeIndex && !submitting;
-        const digit = entry.code[index];
-        return bar ? (
-          <span
-            // Fixed slots; the position is the identity of a cell.
-            key={index}
-            aria-hidden
-            className={cn(
-              "flex flex-1 items-center justify-center border-e font-mono text-ui-xl font-medium last:border-e-0",
-              // The wider rule after the third digit splits the code as it is read.
-              index === 2 ? "border-foreground/20" : "border-foreground/8",
-              active &&
-                "bg-[var(--sign-in-accent)]/8 shadow-[inset_0_0_0_1.5px_var(--sign-in-accent)]",
-            )}
-          >
-            {digit ??
-              (active ? (
-                <span className="h-6 w-px bg-[var(--sign-in-accent)] motion-safe:animate-pulse" />
-              ) : null)}
-          </span>
-        ) : (
-          <span
-            // Fixed slots; the position is the identity of a box.
-            key={index}
-            aria-hidden
-            className={cn(
-              "flex h-[46px] w-10 items-center justify-center rounded-[10px] border bg-background font-mono text-lg font-medium",
-              active ? "border-foreground/30" : "border-foreground/12",
-              submitting && "opacity-64",
-            )}
-          >
-            {digit ?? ""}
-          </span>
-        );
-      })}
+
+      {/* First 3-digit group */}
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        {Array.from({ length: 3 }, (_, i) => renderSlot(i))}
+      </div>
+
+      {/* Optical divider between the two 3-digit groups */}
+      <div
+        aria-hidden
+        className="flex items-center justify-center px-0.5 text-foreground/25 select-none"
+      >
+        <span className="h-0.5 w-2 sm:w-2.5 rounded-full bg-foreground/20" />
+      </div>
+
+      {/* Second 3-digit group */}
+      <div className="flex items-center gap-1.5 sm:gap-2">
+        {Array.from({ length: 3 }, (_, i) => renderSlot(i + 3))}
+      </div>
     </label>
   );
 }
@@ -738,17 +750,17 @@ function DialogCodeEntryStep({
         </div>
 
         <form
-          className="flex flex-col gap-2"
+          className="flex flex-col gap-2.5"
           onSubmit={(event) => {
             event.preventDefault();
             void entry.submit(entry.code);
           }}
         >
-          <CodeInput entry={entry} submitting={submitting} appearance="bar" />
-          <CodeEntryError entry={entry} />
+          <CodeInput entry={entry} submitting={submitting} appearance="boxes" />
+          <CodeEntryError entry={entry} className="text-center" />
         </form>
 
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex items-center justify-between gap-3 pt-1">
           <p className="flex items-center gap-2 text-ui-sm text-muted-foreground">
             {submitting ? (
               <>
