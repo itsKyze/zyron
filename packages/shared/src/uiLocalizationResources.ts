@@ -6,6 +6,16 @@ import common0 from "./locales/en/common.json";
 import computer0 from "./locales/en/computer.json";
 import automation0 from "./locales/en/automation.json";
 import git0 from "./locales/en/git.json";
+
+import chatAr from "./locales/ar/chat.json";
+import onboardingAr from "./locales/ar/onboarding.json";
+import workspaceAr from "./locales/ar/workspace.json";
+import settingsAr from "./locales/ar/settings.json";
+import commonAr from "./locales/ar/common.json";
+import computerAr from "./locales/ar/computer.json";
+import automationAr from "./locales/ar/automation.json";
+import gitAr from "./locales/ar/git.json";
+
 export const uiLocalizationResources = {
   en: {
     chat: chat0,
@@ -16,5 +26,15 @@ export const uiLocalizationResources = {
     computer: computer0,
     automation: automation0,
     git: git0,
+  },
+  ar: {
+    chat: chatAr,
+    onboarding: onboardingAr,
+    workspace: workspaceAr,
+    settings: settingsAr,
+    common: commonAr,
+    computer: computerAr,
+    automation: automationAr,
+    git: gitAr,
   },
 } as const;

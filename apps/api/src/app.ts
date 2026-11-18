@@ -18,6 +18,7 @@ import { createDb } from "./db";
 import { createIdentityAdapters } from "./identity";
 import type { PerfRecorder } from "./perf";
 import type { IdentityAdapters } from "./identity/interfaces";
+import { renderDeveloperDocsHtml } from "./developerDocs";
 import { AVATAR_MAX_BYTES, createV1Routes } from "./routes/v1";
 
 /**
@@ -183,6 +184,9 @@ export async function createApp(
     };
     return c.json(body, 500);
   });
+
+  app.get("/docs", (c) => c.html(renderDeveloperDocsHtml(config.apiPublicUrl)));
+  app.get("/developers", (c) => c.html(renderDeveloperDocsHtml(config.apiPublicUrl)));
 
   /**
    * This service is an API and nothing else — there is no auth ceremony UI to

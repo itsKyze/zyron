@@ -44,6 +44,18 @@ export function useTranslation(): { t: typeof t; locale: string; formatLocale: s
   return { ...snapshot, locale: instance.language };
 }
 
+export function isRtl(locale: string): boolean {
+  return locale.startsWith("ar");
+}
+
+export function setUiLanguage(lang: (typeof UI_LOCALES)[number]): void {
+  void i18n.changeLanguage(lang);
+  if (typeof document !== "undefined") {
+    document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+  }
+}
+
 // Resolved once, like the formatters that used an unspecified `Intl` locale before.
 const SYSTEM_FORMAT_LOCALE = new Intl.DateTimeFormat().resolvedOptions().locale;
 
