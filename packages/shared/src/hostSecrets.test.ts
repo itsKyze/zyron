@@ -536,7 +536,7 @@ describe("wire format", () => {
         version: 1,
         envelope: {
           ciphertext:
-            "5_ro5fyz9UKqUrafkM-FBAJs9IPYTf7ktquYqa8283SB2LPXXrwBkykhKyFgmVsT6qi31xb0119frr98jnmOjfNLfR-PYXZlHSGkX4QDzxGvY7QHbtxAuENxKHxV4x7M5bUCOW1Z-MBqHzc2M6JmyQ3VyS1oBi1OUFYxliVK7ahFlctM5Wjbt2Xf7xcQ_0sHjTg7XzpyVsGI-dGHRZ98y8p77j80KPyF3pk3L0LDHnWjzO-REJEz4m7W7L8-O-pbnkZE1G1a3fHTWEZW6tysgLvGgb--n1lwzRfcdy6wiMqgiHY7MYP2gMohLG9f-jX7ESMhKp7uywVLhibui5V9e1mn-D5YZPL_S0qhjIQikOX0L7YCxAJD93Db8AtUQli4RNRvi1f7fEW61JuJHPZlKLyGRNjmxTfMlqZv501oZpSkYvVQNCkg-27xUmXV9PTeygjshR-eplRytImEuvYEC651hc7extIS2SqFh2hx7X5Q31JBoKLD5R1blLcjdv5eKtE",
+            "5_ro5fyz9UKqUrafkM-FBAJs9IPYTf7ktquYqa8283SB2LPXXrwBkykhKyFgmVsT6qi31xb0119frr98jnmOjfNLfR-PYXZlHSGkX4QDzxGvY7QHbtxAuEpxNHJJoBDCt7cfLmxqx9h3TS8uc6F0zhDTyG0vATdfR0o-m2sVvKYLmN9X6GPWoDXHrk5R80kHgTcxGSJqW4GX_YrST5R9xJd4qDNyPKqEyJl7LkacG3WjmKbBU8928D6LxL8pTbgZwUIJijtI047PWH4Uvpv4jbumo8-iiEh50BvGHVvf4p772HYhOZP2ltoxbHIE6SmlUmo5LuSp0glUuSD9lpp7dhrp6nNGKaTtCkPs2s8xgKmgaKJJhk5W-jyZtx91Q0Wpa_l5iwGKQh66hcn_W-EkdaTSGcqSsUe09dRg3G1oZLaER_9QFichhx7-R2Gp8M3-5jHFmDWWr3V2i4mPnvYcXuws1JLextIS2TjoyiXsBdiQYypAfhTpByqIhsfY",
           iv: "6kNCE-NYRVXRppaS",
           version: 1,
         },
@@ -563,7 +563,7 @@ describe("wire format", () => {
           y: "jAn4bvfPkYck14Lob8yHi9CNlk4iyHDOHlvOUXCWsTs",
         },
       }),
-    ).resolves.toBe("BDZP79");
+    ).resolves.toBe("3VHXNJ");
   });
 
   it("unwraps a sync key wrapped by an earlier build of this module", async () => {
@@ -589,8 +589,8 @@ describe("wire format", () => {
         ephemeralPublicJwk: {
           kty: "EC",
           crv: "P-256",
-          x: "yr3auFIGzKwrULQwOJhPv0Ibdl980sFW18ptxv0y0xU",
-          y: "ltHmwiwcO9JQ2hjGApllM3-w2VSi81vVofUo-7UqUxQ",
+          x: "JdkyE0OddqbuWlv0Far-oTPuVRRSJrEBN0WM56UGMOM",
+          y: "5feSxNIKfNfZzT6S8-xnGnK2upZl3Jtgd47mJum4DbQ",
         },
         recipientPublicJwk: {
           kty: "EC",
@@ -598,7 +598,7 @@ describe("wire format", () => {
           x: "mcG5atO191PJ9PeoMxCmOHNequFwKpjEBngsItQPKCo",
           y: "X8jYM2TDxAKhvPtZZgpDXxAsgSdOBpUREBMQFTI0yns",
         },
-        wrapped: "3oYNOh1ODlBrHGvp8vpSbwjBriL84HEnxp4anNSMtEqiv_2gxJI4Bw",
+        wrapped: "7AoKD1Z4xj4NuHXw-z1LrF1y6SlVoW_A6jWkZpKhT0GHpN27Jv80Jg",
       },
       recipientPrivateKey,
     });

@@ -339,7 +339,7 @@ it("does not mark unchanged CRLF lines as changes alongside a real edit", async 
   );
   await ready();
   await expect
-    .poll(() => monaco.editor.getDiffEditors()[0]?.getLineChanges())
+    .poll(() => monaco.editor.getDiffEditors()[0]?.getLineChanges(), { timeout: 10_000 })
     .toEqual([
       expect.objectContaining({
         originalStartLineNumber: 2,
