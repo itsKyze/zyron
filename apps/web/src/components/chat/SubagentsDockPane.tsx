@@ -43,6 +43,9 @@ import { useSubagentRunControls } from "./useSubagentRunControls";
 import { type SubagentParentRow, useThreadSubagentRoster } from "./useSubagentStripSource";
 import { useTranslation, t } from "~/i18n";
 import { useLocalStorage } from "~/hooks/useLocalStorage";
+import { Schema } from "effect";
+
+const SubagentsViewModeSchema = Schema.Union([Schema.Literal("list"), Schema.Literal("tree")]);
 
 // Done rows shown before "Show more"; active rows always render.
 const DONE_VISIBLE_LIMIT = 10;
@@ -357,9 +360,10 @@ export function SubagentsDockPane({
 }) {
   const { roster, source } = useThreadSubagentRoster(hostThreadId);
   const { backgroundSubagent, stopSubagent } = useSubagentRunControls(source.stripSourceThreadId);
-  const [viewMode, setViewMode] = useLocalStorage<"list" | "tree">(
+  const [viewMode, setViewMode] = useLocalStorage<"list" | "tree", "list" | "tree">(
     "zyron:subagents-view-mode",
     "list",
+    SubagentsViewModeSchema,
   );
   const navigate = useNavigate();
   const openRightDockPane = useRightDockStore((store) => store.openPane);

@@ -379,6 +379,18 @@ export const GENERATED_SETTINGS_SEARCH_ROWS: readonly GeneratedSettingsSearchRow
     description: "settings:alertOnceTheAgentAndAllOfItsBackground",
   },
   {
+    target: "setting-enable-agent-sounds",
+    section: "notifications",
+    title: "settings:enableSoundsForAgent",
+    description: "settings:playASoundWhenYourActionIsNeeded",
+  },
+  {
+    target: "setting-agent-sound-volume",
+    section: "notifications",
+    title: "settings:agentSoundVolume",
+    description: "settings:setTheVolumeOfAgentSounds",
+  },
+  {
     target: "setting-enable-appsnap",
     section: "appsnap",
     title: "settings:enableAppSnap",

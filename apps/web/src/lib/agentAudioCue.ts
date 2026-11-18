@@ -71,7 +71,7 @@ export function playAgentAttentionChime(volumePercent: number = 100): void {
     // Note: A5
     const osc = ctx.createOscillator();
     osc.type = "sine";
-    osc.frequency.setValueAtTime(880.0, now);
+    osc.frequency.setValueAtTime(880, now);
     osc.connect(gain);
     osc.start(now);
     osc.stop(now + 0.45);

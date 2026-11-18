@@ -48,7 +48,7 @@ export function isRtl(locale: string): boolean {
   return locale.startsWith("ar");
 }
 
-export function setUiLanguage(lang: (typeof UI_LOCALES)[number]): void {
+export function setUiLanguage(lang: string): void {
   void i18n.changeLanguage(lang);
   if (typeof document !== "undefined") {
     document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";

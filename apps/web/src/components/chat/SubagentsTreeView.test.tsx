@@ -24,7 +24,7 @@ describe("SubagentsTreeView", () => {
           previous: [
             subagentRosterItem("VerifierWorker", {
               statusLabel: "Done",
-              statusKind: "done",
+              statusKind: "completed",
             }),
           ],
         }}

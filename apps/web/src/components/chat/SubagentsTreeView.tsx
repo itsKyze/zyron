@@ -168,7 +168,8 @@ export function SubagentsTreeView({
                             subagentStatusTextToneClassName(item.statusKind),
                           )}
                         >
-                          {item.statusLabel ?? (item.statusKind === "done" ? "Done" : "Finished")}
+                          {item.statusLabel ??
+                            (item.statusKind === "completed" ? "Done" : "Finished")}
                         </span>
                       )}
                     </div>
