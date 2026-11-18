@@ -37,10 +37,12 @@ import {
 } from "./environment/EnvironmentSubagentsSection.logic";
 import { PanelStateMessage } from "./PanelStateMessage";
 import { SubagentAvatar } from "./SubagentAvatar";
+import { SubagentsTreeView } from "./SubagentsTreeView";
 import { useOpenSubagentThread } from "./useOpenSubagentThread";
 import { useSubagentRunControls } from "./useSubagentRunControls";
 import { type SubagentParentRow, useThreadSubagentRoster } from "./useSubagentStripSource";
 import { useTranslation, t } from "~/i18n";
+import { useLocalStorage } from "~/hooks/useLocalStorage";
 
 // Done rows shown before "Show more"; active rows always render.
 const DONE_VISIBLE_LIMIT = 10;
@@ -236,6 +238,8 @@ export function SubagentsList({
   onOpen,
   onBackground,
   onStop,
+  viewMode = "list",
+  onViewModeChange,
 }: {
   roster: EnvironmentSubagentRoster;
   parent: SubagentParentRow | null;
@@ -243,48 +247,100 @@ export function SubagentsList({
   onOpen: (threadId: ThreadId) => void;
   onBackground: (item: EnvironmentSubagentRosterItem) => void;
   onStop: (item: EnvironmentSubagentRosterItem) => void;
+  viewMode?: "list" | "tree";
+  onViewModeChange?: (mode: "list" | "tree") => void;
 }) {
   const { t } = useTranslation();
 
   const { active, previous } = roster;
+  const hasItems = active.length > 0 || previous.length > 0;
 
   return (
     <div className={DOCK_LIST_CLASS_NAME} data-testid="subagents-dock-pane">
-      {parent ? (
-        <EnvironmentRow
-          icon={<BackToParentIcon className={ENVIRONMENT_ROW_ICON_CLASS_NAME} aria-hidden />}
-          label={<span className="truncate">{parent.label ?? t("chat:mainThread")}</span>}
-          aria-label={t("chat:backTo", { value0: parent.label ?? t("chat:mainThread2") })}
-          className="mb-2"
-          onClick={() => onOpen(parent.threadId)}
+      {hasItems && onViewModeChange ? (
+        <div className="mb-2 flex items-center justify-between px-1">
+          <span className="text-ui-xs font-medium text-[var(--color-text-muted)]">
+            {active.length > 0 ? `${active.length} active` : `${previous.length} subagents`}
+          </span>
+          <div className="inline-flex items-center rounded-md border border-[var(--color-border)] bg-[var(--color-background-button-secondary)] p-0.5">
+            <button
+              type="button"
+              onClick={() => onViewModeChange("list")}
+              className={cn(
+                "rounded px-2 py-0.5 text-ui-xs font-medium transition-colors",
+                viewMode === "list"
+                  ? "bg-[var(--color-background-elevated-primary)] text-[var(--color-text-primary)] shadow-xs"
+                  : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]",
+              )}
+              title="List view"
+            >
+              List
+            </button>
+            <button
+              type="button"
+              onClick={() => onViewModeChange("tree")}
+              className={cn(
+                "rounded px-2 py-0.5 text-ui-xs font-medium transition-colors",
+                viewMode === "tree"
+                  ? "bg-[var(--color-background-elevated-primary)] text-[var(--color-text-primary)] shadow-xs"
+                  : "text-[var(--color-text-muted)] hover:text-[var(--color-text-primary)]",
+              )}
+              title="Visual DAG tree view"
+            >
+              Tree
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {viewMode === "tree" ? (
+        <SubagentsTreeView
+          roster={roster}
+          parent={parent}
+          nowMs={nowMs}
+          onOpen={onOpen}
+          onBackground={onBackground}
+          onStop={onStop}
         />
-      ) : null}
-      {active.length === 0 && previous.length === 0 ? (
-        <PanelStateMessage>{t("chat:noSubagentsInThisChatYet")}</PanelStateMessage>
-      ) : null}
-      {active.length > 0 ? (
+      ) : (
         <>
-          <DockListHeading label={t("automation:detail_active")} count={active.length} />
-          {active.map((item) => (
-            <ActiveSubagentRow
-              key={item.key}
-              item={item}
-              nowMs={nowMs}
-              onOpen={onOpen}
-              onBackground={onBackground}
-              onStop={onStop}
+          {parent ? (
+            <EnvironmentRow
+              icon={<BackToParentIcon className={ENVIRONMENT_ROW_ICON_CLASS_NAME} aria-hidden />}
+              label={<span className="truncate">{parent.label ?? t("chat:mainThread")}</span>}
+              aria-label={t("chat:backTo", { value0: parent.label ?? t("chat:mainThread2") })}
+              className="mb-2"
+              onClick={() => onOpen(parent.threadId)}
             />
-          ))}
+          ) : null}
+          {active.length === 0 && previous.length === 0 ? (
+            <PanelStateMessage>{t("chat:noSubagentsInThisChatYet")}</PanelStateMessage>
+          ) : null}
+          {active.length > 0 ? (
+            <>
+              <DockListHeading label={t("automation:detail_active")} count={active.length} />
+              {active.map((item) => (
+                <ActiveSubagentRow
+                  key={item.key}
+                  item={item}
+                  nowMs={nowMs}
+                  onOpen={onOpen}
+                  onBackground={onBackground}
+                  onStop={onStop}
+                />
+              ))}
+            </>
+          ) : null}
+          <DockListCappedSection
+            label={t("git:detail_done")}
+            items={previous}
+            limit={DONE_VISIBLE_LIMIT}
+            renderItem={(item) => (
+              <DoneSubagentRow key={item.key} item={item} nowMs={nowMs} onOpen={onOpen} />
+            )}
+          />
         </>
-      ) : null}
-      <DockListCappedSection
-        label={t("git:detail_done")}
-        items={previous}
-        limit={DONE_VISIBLE_LIMIT}
-        renderItem={(item) => (
-          <DoneSubagentRow key={item.key} item={item} nowMs={nowMs} onOpen={onOpen} />
-        )}
-      />
+      )}
     </div>
   );
 }
@@ -301,6 +357,10 @@ export function SubagentsDockPane({
 }) {
   const { roster, source } = useThreadSubagentRoster(hostThreadId);
   const { backgroundSubagent, stopSubagent } = useSubagentRunControls(source.stripSourceThreadId);
+  const [viewMode, setViewMode] = useLocalStorage<"list" | "tree">(
+    "zyron:subagents-view-mode",
+    "list",
+  );
   const navigate = useNavigate();
   const openRightDockPane = useRightDockStore((store) => store.openPane);
   const setDockOpen = useRightDockStore((store) => store.setDockOpen);
@@ -341,6 +401,8 @@ export function SubagentsDockPane({
       onOpen={openThread}
       onBackground={(item) => void backgroundSubagent(item)}
       onStop={(item) => void stopSubagent(item)}
+      viewMode={viewMode}
+      onViewModeChange={setViewMode}
     />
   );
 }
