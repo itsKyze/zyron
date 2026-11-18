@@ -178,9 +178,7 @@ describe("verifyBetaAppBundle", () => {
 
   it("rejects a non-beta bundle id", () => {
     const root = makeRoot();
-    expect(() => verifyBetaAppBundle(fakeApp(root, "com.itskyze.zyron"))).toThrow(
-      /not Zyron Beta/,
-    );
+    expect(() => verifyBetaAppBundle(fakeApp(root, "com.itskyze.zyron"))).toThrow(/not Zyron Beta/);
   });
 
   it("rejects a missing app", () => {

@@ -320,9 +320,7 @@ const packCmd = Command.make(
 
       yield* Effect.log(`[cli] Wrote server tarball: ${tarballPath}`);
     }),
-).pipe(
-  Command.withDescription("Produce a zyron-server-<version>.tar.gz from the staged package."),
-);
+).pipe(Command.withDescription("Produce a zyron-server-<version>.tar.gz from the staged package."));
 
 // ---------------------------------------------------------------------------
 // root command

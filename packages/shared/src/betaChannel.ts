@@ -20,8 +20,7 @@ export const ZYRON_BETA_RELEASES_URL =
   "https://github.com/itsKyze/zyron/releases?q=prerelease%3Atrue";
 
 /** Latest stable release, offered from beta when stable Zyron is not installed. */
-export const ZYRON_STABLE_RELEASES_URL =
-  "https://github.com/itsKyze/zyron/releases/latest";
+export const ZYRON_STABLE_RELEASES_URL = "https://github.com/itsKyze/zyron/releases/latest";
 
 /** electron-builder NSIS `guid` for stable (production) builds. */
 export const ZYRON_STABLE_WINDOWS_INSTALLER_GUID = "368107a8-afe6-5db5-ab3b-d4f331684868";

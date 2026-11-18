@@ -36,8 +36,7 @@ function createAppHistory(): RouterHistory {
   if (!scope) return history;
   const push = history.push.bind(history);
   const replace = history.replace.bind(history);
-  history.push = (href, state, options) =>
-    push(href, { ...state, zyronExecution: scope }, options);
+  history.push = (href, state, options) => push(href, { ...state, zyronExecution: scope }, options);
   history.replace = (href, state, options) =>
     replace(href, { ...state, zyronExecution: scope }, options);
   const previousScope = history.location.state.zyronExecution;

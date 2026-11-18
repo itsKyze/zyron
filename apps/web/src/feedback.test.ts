@@ -49,9 +49,7 @@ describe("formatFeedbackSummary", () => {
       },
     });
 
-    expect(summary).toContain(
-      "I have some feedback in Zyron 0.5.1, using codex with gpt-5.6-sol.",
-    );
+    expect(summary).toContain("I have some feedback in Zyron 0.5.1, using codex with gpt-5.6-sol.");
     expect(summary).toContain("Report type: Unspecified");
     expect(summary).toContain("At submission: nothing pending.");
     expect(summary).not.toContain("Screenshot:");

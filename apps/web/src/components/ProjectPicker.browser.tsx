@@ -199,9 +199,7 @@ describe("ProjectPicker workspace choices", () => {
     });
 
     try {
-      await expect
-        .element(page.getByTestId("workspace-picker-trigger"))
-        .toHaveTextContent("zyron");
+      await expect.element(page.getByTestId("workspace-picker-trigger")).toHaveTextContent("zyron");
       await expect
         .element(page.getByTestId("workspace-picker-trigger"))
         .toHaveTextContent(SELECTED_WORKTREE);

@@ -11,8 +11,8 @@ This file is the flag reference. The rationale and budget targets live in
 
 ## Flag table
 
-| Flag                             | Default | Effect when set                                                                                                                                                                  | Lives in                                          |
-| -------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Flag                            | Default | Effect when set                                                                                                                                                                  | Lives in                                          |
+| ------------------------------- | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------- |
 | `ZYRON_CUA_TIMING_LOG`          | off     | Emits one `[computer-timing]` line per computer call: per-leg ms, counters, total.                                                                                               | `apps/server/src/computer/computerCallContext.ts` |
 | `ZYRON_CUA_ACTION_SETTLE_MS`    | `300`   | Overrides the fixed post-action settle sleep; `0` removes it. Invalid values fall back to `300`.                                                                                 | `apps/server/src/computer/ComputerManager.ts`     |
 | `ZYRON_CUA_CONDITIONAL_SETTLE`  | on      | Skips the settle sleep only when the action's delivery verdict already proves its effect — or a scroll leg's measured travel proves arrival. `0`/`off` restores the always-wait. | `apps/server/src/computer/ComputerManager.ts`     |

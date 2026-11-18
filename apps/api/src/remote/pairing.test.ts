@@ -1,9 +1,5 @@
 import { randomUUID } from "node:crypto";
-import {
-  EnvironmentId,
-  type RemotePairingBundle,
-  type DevicePublicKeyJwk,
-} from "@zyron/contracts";
+import { EnvironmentId, type RemotePairingBundle, type DevicePublicKeyJwk } from "@zyron/contracts";
 import { eq } from "drizzle-orm";
 import { calculateJwkThumbprint, exportJWK, generateKeyPair, SignJWT } from "jose";
 import { afterAll, beforeAll, describe, expect, it, vi } from "vitest";

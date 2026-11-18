@@ -121,9 +121,9 @@ export default function AskAISection() {
           <h2 className={`${heading} mt-3`}>Let the models verify the fit.</h2>
           <p className={body}>
             Ask ChatGPT, Claude, or Gemini to evaluate Zyron from the source of truth—this site and
-            the GitHub repo. The prompt is specific so the answer reflects what Zyron actually
-            does, not a generic AI-app summary. Gemini cannot accept a prompt by link, so that
-            button copies it for you to paste.
+            the GitHub repo. The prompt is specific so the answer reflects what Zyron actually does,
+            not a generic AI-app summary. Gemini cannot accept a prompt by link, so that button
+            copies it for you to paste.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">

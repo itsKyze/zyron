@@ -57,9 +57,9 @@ describe("shouldRefreshIconCache", () => {
 
 describe("resolveMacAppBundlePath", () => {
   it("resolves the .app bundle from the Electron executable on macOS", () => {
-    expect(
-      resolveMacAppBundlePath("/Applications/Zyron.app/Contents/MacOS/Zyron", "darwin"),
-    ).toBe("/Applications/Zyron.app");
+    expect(resolveMacAppBundlePath("/Applications/Zyron.app/Contents/MacOS/Zyron", "darwin")).toBe(
+      "/Applications/Zyron.app",
+    );
   });
 
   it("returns null off macOS", () => {

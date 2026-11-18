@@ -4754,8 +4754,7 @@ export class CodexAppServerManager extends EventEmitter<CodexAppServerManagerEve
       !context.stopping &&
       context.activeInteractionMode === "default" &&
       ((activeZyronToolTurn &&
-        (context.autoApproveZyronTools === true ||
-          context.session.runtimeMode === "full-access") &&
+        (context.autoApproveZyronTools === true || context.session.runtimeMode === "full-access") &&
         isZyronGatewayToolName(zyronToolName)) ||
         shouldAllowZyronComputerProviderTool({
           computerControlEnabled: context.enableComputerControl === true,

@@ -14,16 +14,12 @@ describe("normalizeSocialUsername", () => {
   });
 
   it("extracts the username from that platform's profile URL", () => {
-    expect(normalizeSocialUsername("x", "https://twitter.com/itsKyze?s=21")).toBe(
-      "itsKyze",
-    );
+    expect(normalizeSocialUsername("x", "https://twitter.com/itsKyze?s=21")).toBe("itsKyze");
     expect(normalizeSocialUsername("x", "x.com/itsKyze/")).toBe("itsKyze");
     expect(normalizeSocialUsername("linkedin", "https://www.linkedin.com/in/ema-dpt/")).toBe(
       "ema-dpt",
     );
-    expect(normalizeSocialUsername("github", "https://github.com/itsKyze")).toBe(
-      "itsKyze",
-    );
+    expect(normalizeSocialUsername("github", "https://github.com/itsKyze")).toBe("itsKyze");
     expect(normalizeSocialUsername("threads", "https://www.threads.net/@ema.dpt")).toBe("ema.dpt");
     expect(normalizeSocialUsername("youtube", "m.youtube.com/@emadpt")).toBe("emadpt");
   });

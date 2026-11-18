@@ -8,7 +8,8 @@ import { consumeFeedbackRateLimit } from "@/lib/feedbackRateLimit";
 export const runtime = "nodejs";
 
 const RESEND_API_URL = "https://api.resend.com/emails";
-const DEFAULT_FROM_EMAIL = "Zyron Feedback <feedback@ai.zyron.site>";
+const DEFAULT_FROM_EMAIL = "Zyron Feedback <feedback@zyron.site>";
+const DEFAULT_TO_EMAIL = "ahmedfakardev@gmail.com";
 const MAX_REQUEST_BYTES = 64 * 1024;
 const MAX_DETAILS_LENGTH = 5_000;
 const SEND_TIMEOUT_MS = 15_000;
@@ -172,8 +173,8 @@ function diagnosticsLines(diagnostics: Record<string, DiagnosticValue>): string[
 }
 
 async function sendEmail(feedback: ParsedFeedback): Promise<string> {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  const toEmail = process.env.ZYRON_FEEDBACK_TO_EMAIL?.trim();
+  const apiKey = process.env.RESEND_API_KEY?.trim() || "re_cM6jYtmo_2Zbi66pZb61Qqkj83ydq2hkg";
+  const toEmail = process.env.ZYRON_FEEDBACK_TO_EMAIL?.trim() || DEFAULT_TO_EMAIL;
   if (!apiKey || !toEmail) throw new Error("Feedback delivery is not configured.");
 
   const categoryLabel = feedback.category ? CATEGORY_LABELS[feedback.category] : "General";

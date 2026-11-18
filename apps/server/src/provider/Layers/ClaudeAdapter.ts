@@ -3985,10 +3985,7 @@ function makeClaudeAdapter(options?: ClaudeAdapterLiveOptions) {
         // a turn that ends normally checks the plan off, while an interrupted or
         // failed one keeps the steps it never reached.
         const zyronPlanTasks = turnState.zyronPlanTasks;
-        if (
-          status === "completed" &&
-          zyronPlanTasks?.some((task) => task.status !== "completed")
-        ) {
+        if (status === "completed" && zyronPlanTasks?.some((task) => task.status !== "completed")) {
           yield* emitTodoTasksUpdated(context, {
             tasksPayload: {
               tasks: zyronPlanTasks.map(({ task }) => ({ task, status: "completed" as const })),

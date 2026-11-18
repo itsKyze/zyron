@@ -118,7 +118,7 @@ Driver staged at rev 16, patch sha
 | Two-axis + modifier gesture           | **Dispatches as one event**                      | `delta_x`/`delta_y` signed ticks (±50 per axis) + `modifiers` → one PIXEL-unit `CGEvent` wheel stream with flags                                                                 |
 | Pid-only scroll                       | **Refused closed**                               | Delta mode requires an element or window-local target; admission requires exact pid + window_id                                                                                  |
 | Horizontal wheel delta (TextEdit)     | **Ignored by the app**                           | NSScrollView wants continuous trackpad deltas for horizontal travel; toolkit limitation, not a refusal                                                                           |
-| Keystroke scroll path                 | **Unreachable under Zyron admission**           | The driver's delta/modifier refusal on that path is defense-in-depth, not a live gate                                                                                            |
+| Keystroke scroll path                 | **Unreachable under Zyron admission**            | The driver's delta/modifier refusal on that path is defense-in-depth, not a live gate                                                                                            |
 | Electron background scroll/type       | **Dead**                                         | Upstream refuses background scroll for Electron; process-scoped CGEvent never reaches an inactive renderer. The fix path is the `browser_*` CDP surface (in progress separately) |
 
 macOS now joins the before/after measurement loop: a 48 px probe leg plus a

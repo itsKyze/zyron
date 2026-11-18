@@ -34,11 +34,7 @@ beforeEach(() => {
   account.profileSyncEnabled = true;
   vi.clearAllMocks();
   setLocalStorageItem("zyron:profile:name:v1", "Local Name", Schema.String);
-  setLocalStorageItem(
-    "zyron:profile:avatarImage:v1",
-    "data:image/png;base64,local",
-    Schema.String,
-  );
+  setLocalStorageItem("zyron:profile:avatarImage:v1", "data:image/png;base64,local", Schema.String);
 });
 
 describe("profile identity source", () => {

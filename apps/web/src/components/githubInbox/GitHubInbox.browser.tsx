@@ -544,9 +544,9 @@ describe("GitHubInbox list", () => {
     await second.unmount();
     await mount({ state: "closed" });
     await expectRows([44, 42, 41]);
-    expect(
-      JSON.parse(localStorage.getItem("zyron:app-settings:v1") ?? "{}").githubInboxState,
-    ).toBe("merged");
+    expect(JSON.parse(localStorage.getItem("zyron:app-settings:v1") ?? "{}").githubInboxState).toBe(
+      "merged",
+    );
   });
 
   it("moves the kind selection with the arrow keys", async () => {

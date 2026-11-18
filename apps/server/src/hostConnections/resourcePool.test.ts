@@ -64,9 +64,7 @@ it("streams encrypted resources with client authority, stable attachment ownersh
     ).pipe(
       Layer.provide(SqlitePersistenceMemory),
       Layer.provide(ServerSecretStoreLive),
-      Layer.provideMerge(
-        ServerConfig.layerTest(process.cwd(), { prefix: "zyron-resource-test-" }),
-      ),
+      Layer.provideMerge(ServerConfig.layerTest(process.cwd(), { prefix: "zyron-resource-test-" })),
       Layer.provide(NodeServices.layer),
     ),
   );

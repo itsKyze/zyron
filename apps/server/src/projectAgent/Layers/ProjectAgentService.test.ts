@@ -2580,10 +2580,7 @@ it.effect("listGroupThreads reports derived states to the coordinator", () => {
     assert.equal(byThread.get(runningThread)?.state, "working");
     assert.equal(byThread.get(approvalThread)?.state, "waiting");
     assert.equal(byThread.get(prThread)?.state, "review");
-    assert.equal(
-      byThread.get(prThread)?.pullRequestUrl,
-      "https://github.com/diliprt/zyron/pull/7",
-    );
+    assert.equal(byThread.get(prThread)?.pullRequestUrl, "https://github.com/diliprt/zyron/pull/7");
     assert.equal(byThread.get(prThread)?.projectTitle, "Alpha");
     // waiting sorts ahead of working ahead of review.
     const states = result.threads.map((row) => row.state);
@@ -4299,8 +4296,7 @@ const stuckRowSummaries = (harness: ReturnType<typeof makeTestLayer>) =>
   harness.dispatched
     .filter(
       (command) =>
-        command.type === "thread.activity.append" &&
-        command.activity.kind === "zyron.worker.stuck",
+        command.type === "thread.activity.append" && command.activity.kind === "zyron.worker.stuck",
     )
     .map((command) => (command.type === "thread.activity.append" ? command.activity.summary : ""));
 

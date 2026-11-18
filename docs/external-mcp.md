@@ -8,10 +8,10 @@ running inside Zyron.
 
 ## Internal gateway or external integration
 
-| Surface       | Caller                                  | Authority model                                                                            |
-| ------------- | --------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Surface       | Caller                                 | Authority model                                                                            |
+| ------------- | -------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Agent Gateway | A provider session inside a Zyron task | Thread-scoped capabilities and caller-turn authority                                       |
-| External MCP  | Another paired local application        | User-created integration with selected projects, scopes, limits, and revocable credentials |
+| External MCP  | Another paired local application       | User-created integration with selected projects, scopes, limits, and revocable credentials |
 
 Use External MCP when work begins outside Zyron but should execute through Zyron's durable task
 and worktree pipeline.

@@ -253,7 +253,7 @@ Landed in the clone as working-tree changes (not committed, not pushed):
 
 | File                                                         | Change                                                                                                                                             |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `apps/desktop/patches/cua-driver/0001-zyron-native.patch`   | regenerated against 0.28.2, 7,956 lines, sha256 `94261ed962199becebe450f226d5a80bbae88c8730cd39d1a002bde9353c749a`                                 |
+| `apps/desktop/patches/cua-driver/0001-zyron-native.patch`    | regenerated against 0.28.2, 7,956 lines, sha256 `94261ed962199becebe450f226d5a80bbae88c8730cd39d1a002bde9353c749a`                                 |
 | `packages/shared/src/cuaDriverRelease.json`                  | version `0.28.2`, source `fc188250b4ca8549b8e61f937fdb1fb560770e86`, upstream binary archive sha `386db225...`, nativeRevision `15`, new patch sha |
 | `apps/desktop/patches/cua-driver/README.md`                  | revision 15 note (inherited upstream fixes, judgment calls)                                                                                        |
 | `apps/server/src/computer/CuaComputerBackend.ts`             | 3 user-facing version strings 0.24.0 -> 0.28.2 (capability claims re-verified in the rebased driver)                                               |

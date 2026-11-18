@@ -23,8 +23,32 @@ import type { WhatsNewEntry } from "./logic";
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
     version: "1.6.2",
-    date: "Nov 17",
+    date: "Nov 18",
     features: [
+      {
+        id: "tactical-otp",
+        title: "Tactical OTP verification",
+        description:
+          "Redesigned 6-digit verification code input with 3×3 tactical grouping, subtle dark glass styling, glowing focus accents, and direct clipboard paste.",
+      },
+      {
+        id: "developer-profiles",
+        title: "Developer profiles at @handle",
+        description:
+          "Dedicated developer profile landing pages at zyron.site/@handle with instant handle resolution and social metadata.",
+      },
+      {
+        id: "device-pairing",
+        title: "Remote device connectivity",
+        description:
+          "Control workstations securely across devices under Settings ➡️ Devices with automated mTLS and Cloudflare Tunnel support.",
+      },
+      {
+        id: "feedback-pipeline",
+        title: "Direct feedback delivery",
+        description:
+          "Streamlined one-click feedback delivery directly to the maintainers through verified email dispatch.",
+      },
       {
         id: "local-video",
         title: "Play local videos",

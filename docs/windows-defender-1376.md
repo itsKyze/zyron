@@ -15,8 +15,8 @@ The official `Zyron-1.0.9-x64.exe` is **260335126 bytes**, SHA-256
 `d8a0d6bd3bbc6e9128cbf40d0b63262b3a516221c25e017452bc6b4c94ebabc5`, from tag commit
 `ebd0d22b39ce3a0f7c6051dddc6090e9b85dc7c3`.
 
-| Qualification                                                                                           | Engine / definitions          | Cloud settings (MAPS / samples / disable first sight) | Result                                 |
-| ------------------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
+| Qualification                                                                                   | Engine / definitions          | Cloud settings (MAPS / samples / disable first sight) | Result                                 |
+| ----------------------------------------------------------------------------------------------- | ----------------------------- | ----------------------------------------------------- | -------------------------------------- |
 | [1.0.9 release](https://github.com/itsKyze/zyron/actions/runs/40203308105)                      | `1.1.26090.9` / `1.461.199.0` | `0 / 2 / true`                                        | Scan passed                            |
 | [Fresh default-settings comparison](https://github.com/itsKyze/zyron/actions/runs/41331725970)  | `1.1.26100.4` / `1.463.73.0`  | `0 / 2 / true`                                        | Same official hash passed              |
 | [Fresh cloud-enabled comparison](https://github.com/itsKyze/zyron/actions/runs/41331725970)     | `1.1.26100.4` / `1.463.73.0`  | `2 / 1 / false`                                       | Same official hash passed              |
@@ -162,8 +162,8 @@ The reporter's screenshot shows `Trojan:Win32/Kepavl!rfn`, status **Removed**, o
 
 Both complete installers were downloaded from the official releases, hashed locally, and matched against GitHub's asset digest and the corresponding Windows provenance. The release source's `bun.lock` hashes also match provenance. This establishes which public artifacts were inspected; it does not prove the reporter received identical complete bytes or establish their safety.
 
-| Artifact                                                                                                       | Source commit                              | Bytes     | SHA-256                                                            |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------- | ------------------------------------------------------------------ |
+| Artifact                                                                                             | Source commit                              | Bytes     | SHA-256                                                            |
+| ---------------------------------------------------------------------------------------------------- | ------------------------------------------ | --------- | ------------------------------------------------------------------ |
 | [Zyron-0.9.2-x64.exe](https://github.com/itsKyze/zyron/releases/download/v0.9.2/Zyron-0.9.2-x64.exe) | `a33435c18474eb7816582004e45f87382965ac8d` | 225688617 | `fee21f614136df8ff0a1e97649886060625c843d34e724b62410164634928dcb` |
 | [Zyron-0.9.1-x64.exe](https://github.com/itsKyze/zyron/releases/download/v0.9.1/Zyron-0.9.1-x64.exe) | `eaa61eded31b6755d4f30ba8eabc5d905cf817cb` | 225595797 | `893438647667a4f6aeb2929897a0131dd95e5c0686ec2958e5968cdb75f3496b` |
 
@@ -213,7 +213,7 @@ There are 49 extracted PE files in v0.9.1 and 48 in v0.9.2: 37 identical hashes,
 | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | Electron 43.4.1, electron-builder 26.15.3, node-pty 1.1.0, Claude SDK 0.3.259                   | Versions unchanged in release lockfiles                                                             |
 | NSIS plugins, Electron DLLs, Claude executable, node-pty prebuilt helpers, rookie-cookies addon | Byte-identical at matching paths                                                                    |
-| `Zyron.exe`, uninstaller, six locally built native addon/helper files                          | Hashes changed; hash differences alone do not establish functional differences or a detection cause |
+| `Zyron.exe`, uninstaller, six locally built native addon/helper files                           | Hashes changed; hash differences alone do not establish functional differences or a detection cause |
 | Bundled `@esbuild/win32-x64/esbuild.exe`                                                        | Version changed from 0.28.1 to 0.28.2                                                               |
 | pi-tui Windows addons                                                                           | Two `win32-console-mode.node` paths replaced by two `win32-platform.node` paths, for x64 and arm64  |
 | Clipboard addon                                                                                 | `@mariozechner/clipboard-win32-x64-msvc/clipboard.win32-x64-msvc.node` removed                      |

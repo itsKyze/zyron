@@ -21,9 +21,7 @@ const testLayer = OrchestrationEngineLive.pipe(
   Layer.provide(OrchestrationEventStoreLive),
   Layer.provide(OrchestrationCommandReceiptRepositoryLive),
   Layer.provideMerge(SqlitePersistenceMemory),
-  Layer.provideMerge(
-    ServerConfig.layerTest(process.cwd(), { prefix: "zyron-snooze-projection-" }),
-  ),
+  Layer.provideMerge(ServerConfig.layerTest(process.cwd(), { prefix: "zyron-snooze-projection-" })),
   Layer.provideMerge(ServerSettingsService.layerTest()),
   Layer.provideMerge(NodeServices.layer),
 );

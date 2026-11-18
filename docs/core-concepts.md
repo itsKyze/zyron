@@ -7,7 +7,7 @@ work** — its conversation, provider session, working environment, tool activit
 
 | Concept          | Meaning                                                             |
 | ---------------- | ------------------------------------------------------------------- |
-| Workspace        | The complete Zyron application and the projects available in it    |
+| Workspace        | The complete Zyron application and the projects available in it     |
 | Project          | A folder on its execution computer, preferably a Git repository     |
 | Task             | One durable unit of work inside a project                           |
 | Goal             | An explicit persistent objective attached to one task               |

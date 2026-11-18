@@ -33,13 +33,13 @@ public. The app does not need persistent R2/DO caching for this read path.
 
 ## Configuration
 
-| Variable                 | Purpose                                                                                                                                                                                                         |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ACCOUNT_API_URL`        | Verified account API origin. The historical deployment defaults to `https://api.zyron.vrbty.dev`; the isolated trial deliberately uses a non-routable placeholder until configured.                            |
-| `PROFILES_PUBLIC_ORIGIN` | Public origin used for absolute social preview URLs. The trial uses `https://ai.zyron.site`, served through the marketing proxy.                                                                                |
-| `PROFILE_PROXY_SECRET`   | Optional shared secret matching the account API; allows per-visitor rate limiting. Set as a Worker secret, never in source.                                                                                     |
+| Variable                 | Purpose                                                                                                                                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ACCOUNT_API_URL`        | Verified account API origin. The historical deployment defaults to `https://api.zyron.vrbty.dev`; the isolated trial deliberately uses a non-routable placeholder until configured.                         |
+| `PROFILES_PUBLIC_ORIGIN` | Public origin used for absolute social preview URLs. The trial uses `https://ai.zyron.site`, served through the marketing proxy.                                                                            |
+| `PROFILE_PROXY_SECRET`   | Optional shared secret matching the account API; allows per-visitor rate limiting. Set as a Worker secret, never in source.                                                                                 |
 | `PROFILES_ASSET_PREFIX`  | Asset prefix for proxied deployments, set at build time for Next.js bundles and at runtime for the favicon. The trial uses `https://ai.zyron.site/profiles-assets`; leave unset for standalone deployments. |
-| `MARKETING_ORIGIN`       | Optional origin for non-profile routes in the historical single-domain deployment. Unset on the trial.                                                                                                          |
+| `MARKETING_ORIGIN`       | Optional origin for non-profile routes in the historical single-domain deployment. Unset on the trial.                                                                                                      |
 
 ## Local development and verification
 

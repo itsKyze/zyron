@@ -61,8 +61,8 @@ Step 8 is env tunable flags in ZYRON*CUA*\* style for A/B. Every cut ships behin
 
 New environment flags, all optional, all defaulting to current behavior:
 
-| Flag                           | Default | Effect when set                                                            |
-| ------------------------------ | ------- | -------------------------------------------------------------------------- |
+| Flag                          | Default | Effect when set                                                            |
+| ----------------------------- | ------- | -------------------------------------------------------------------------- |
 | ZYRON_CUA_WARM_ON_FIRST_TOUCH | 0       | Start the driver generation at first computer touch instead of first input |
 | ZYRON_CUA_ACTION_SETTLE_MS    | 300     | Override the fixed action settle sleep                                     |
 | ZYRON_CUA_CONDITIONAL_SETTLE  | 0       | Skip settle only when read back proves the effect                          |

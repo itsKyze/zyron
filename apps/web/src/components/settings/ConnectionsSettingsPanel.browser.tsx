@@ -430,9 +430,7 @@ describe("Connections settings", () => {
     await expect.element(page.getByText("iOS 27.0.1 iPhone")).toBeVisible();
     await expect.element(page.getByText("Last connected 19h ago")).toBeVisible();
     await expect.element(page.getByText("Never connected")).toBeVisible();
-    await expect
-      .element(page.getByText("Kyze’s MacBook is waiting for approval"))
-      .toBeVisible();
+    await expect.element(page.getByText("Kyze’s MacBook is waiting for approval")).toBeVisible();
 
     await page.getByRole("radio", { name: "Control other devices" }).click();
     await expect.element(page.getByText("Studio Mac mini", { exact: true })).toBeVisible();

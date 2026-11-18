@@ -26,9 +26,7 @@ async function acceptOwnerGrant(
   } catch (cause) {
     // The device falls back to owner approval; never reveal why to it or log grant details.
     const reason = cause instanceof HostMintError ? cause.code : "invalid_grant";
-    console.warn(
-      `[zyron] Remote pairing grant not accepted (${reason}); owner approval required.`,
-    );
+    console.warn(`[zyron] Remote pairing grant not accepted (${reason}); owner approval required.`);
     return false;
   }
 }

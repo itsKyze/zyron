@@ -43,7 +43,7 @@ The sandbox campaign configured for qualification is recorded below.
 | Product decision  | Configuration                                                                                                            |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------ |
 | Local use         | Free; local coding, local chats and local workspace access do not require Alto.                                          |
-| Zyron Alto       | All Remote functionality requires Alto. Local desktop use stays free. Remote still checks ownership and device approval. |
+| Zyron Alto        | All Remote functionality requires Alto. Local desktop use stays free. Remote still checks ownership and device approval. |
 | Monthly           | USD 9.99, recurring monthly (`999` minor units).                                                                         |
 | Annual            | USD 79.99, recurring annually (`7999` minor units).                                                                      |
 | Tax               | Exclusive: applicable tax is added at checkout.                                                                          |
@@ -112,13 +112,13 @@ last `200` the running API process returned, without a request to the container.
 It is kept per runtime-configuration fingerprint and dropped whenever the
 container starts, so it is exactly as fresh as the process it describes.
 
-| Setting                                 | Runs on               | Default and rollout use                                                                                                                                                                            |
-| --------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Setting                                | Runs on               | Default and rollout use                                                                                                                                                                            |
+| -------------------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ZYRON_ACCOUNT_URL`                    | Remote execution host | Set explicitly to the canonical account API origin for the actual Remote deployment. Match the intended account/host authority; do not copy a trial URL or infer it from a generic UI fallback.    |
 | `ZYRON_REMOTE_BILLING_POLICY_REQUIRED` | Remote execution host | `false` during current preparation. Set to `true` only as part of the approved manual paid rollout. It requires fresh policy proof before admitting unverified Remote sessions, even before login. |
-| `POLAR_REMOTE_ACCESS_ENFORCED`          | Account API           | `false` now. The future paid rollout sets it to `true` with configured billing; beta/test enrollment cannot override it.                                                                           |
-| `POLAR_PROFILE_ACCESS_ENFORCED`         | Account API           | `false` by default. `true` (with configured billing) makes public profiles an Alto feature: publishing needs a fresh check and pages of owners without stored access answer 404.                   |
-| `POLAR_PRODUCTION_PAYMENTS_ENABLED`     | Account API           | `false` now. Production billing separately requires explicit `true`, production credentials, expected catalog and approved return origins.                                                         |
+| `POLAR_REMOTE_ACCESS_ENFORCED`         | Account API           | `false` now. The future paid rollout sets it to `true` with configured billing; beta/test enrollment cannot override it.                                                                           |
+| `POLAR_PROFILE_ACCESS_ENFORCED`        | Account API           | `false` by default. `true` (with configured billing) makes public profiles an Alto feature: publishing needs a fresh check and pages of owners without stored access answer 404.                   |
+| `POLAR_PRODUCTION_PAYMENTS_ENABLED`    | Account API           | `false` now. Production billing separately requires explicit `true`, production credentials, expected catalog and approved return origins.                                                         |
 
 With strict host policy enabled, an unknown policy or first-read outage holds
 Remote closed while positive local desktop use remains available. A verified
@@ -218,7 +218,7 @@ separately. IDs and redemption history do not transfer between environments.
 | Percentage                       | 50% (`basis_points: 5000`).                                                                           |
 | Duration                         | Once (`once`), not repeating or forever.                                                              |
 | Products                         | Only that environment's monthly product ID; never the annual product or an unrestricted product list. |
-| Code                             | `ZYRONBETA50QA` in sandbox only; select a separate production campaign deliberately.                 |
+| Code                             | `ZYRONBETA50QA` in sandbox only; select a separate production campaign deliberately.                  |
 | Maximum redemptions per customer | `1`.                                                                                                  |
 
 Polar supports one-time recurring discounts and product restrictions; see

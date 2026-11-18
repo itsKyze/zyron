@@ -8,16 +8,16 @@ requests are forwarded there, and old profile links redirect to the new origin.
 
 ## Before and after
 
-| Area                 | Baseline                                                            | Current behavior                                                                                                      |
-| -------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| Account profile flow | Disabled in UI and server                                           | Dylan's existing flow enabled only on opted-in non-Stable servers; authoritative server capability gates mutations    |
+| Area                 | Baseline                                                            | Current behavior                                                                                                     |
+| -------------------- | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| Account profile flow | Disabled in UI and server                                           | Dylan's existing flow enabled only on opted-in non-Stable servers; authoritative server capability gates mutations   |
 | Usage reporting      | Inert                                                               | Existing reporter starts only with `ZYRON_ACCOUNT_PROFILE_SYNC=1`, including its existing aggregate-history backfill |
-| Publication          | API default private; onboarding claimed public                      | Private default retained and explained; owner explicitly publishes                                                    |
-| Public reads         | 15-second stale cache                                               | Fresh publication check for every request; no persistent profile cache                                                |
-| Social preview       | Shared image caching                                                | `private, no-store`, absolute trial origin, generic card after revocation                                             |
+| Publication          | API default private; onboarding claimed public                      | Private default retained and explained; owner explicitly publishes                                                   |
+| Public reads         | 15-second stale cache                                               | Fresh publication check for every request; no persistent profile cache                                               |
+| Social preview       | Shared image caching                                                | `private, no-store`, absolute trial origin, generic card after revocation                                            |
 | Hosting              | Historical Dylan configuration, no services in the selected account | Separate API Container and OpenNext profiles Worker deployed in Zyron Orgs                                           |
-| Database             | Existing sponsor project                                            | 15 RLS-enabled account tables and dedicated account role alongside unchanged sponsor tables                           |
-| Marketing routing    | Former Vercel destination                                           | Unchanged; live qualification uses workers.dev                                                                        |
+| Database             | Existing sponsor project                                            | 15 RLS-enabled account tables and dedicated account role alongside unchanged sponsor tables                          |
+| Marketing routing    | Former Vercel destination                                           | Unchanged; live qualification uses workers.dev                                                                       |
 
 The existing editor, onboarding, identity provider, reporter and API are reused.
 No new profile UI or parallel authentication system was introduced.
@@ -26,8 +26,8 @@ No new profile UI or parallel authentication system was introduced.
 
 Cloudflare account Zyron Orgs: `56e5b3e566be2fc8ade9b7d0eadf5e35`.
 
-| Service     | Origin                                                   | Deployed version                       |
-| ----------- | -------------------------------------------------------- | -------------------------------------- |
+| Service     | Origin                                                 | Deployed version                       |
+| ----------- | ------------------------------------------------------ | -------------------------------------- |
 | Account API | https://zyron-account-api-trial.zyron-orgs.workers.dev | `d6b248d5-b0aa-42da-9b3d-3d3ebd95f428` |
 | Profiles    | https://zyron-profiles-trial.zyron-orgs.workers.dev    | `dd981474-7d2c-4145-a71c-60923ad64fe4` |
 

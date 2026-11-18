@@ -499,9 +499,7 @@ it.layer(TestLayer)("hub library", (it) => {
       yield* Effect.promise(() =>
         fs
           .mkdir(path.join(seeded, ".git"), { recursive: true })
-          .then(() =>
-            fs.writeFile(path.join(seeded, ".zyron-library"), "zyron-library\n", "utf8"),
-          ),
+          .then(() => fs.writeFile(path.join(seeded, ".zyron-library"), "zyron-library\n", "utf8")),
       );
       yield* allowed(seeded);
     }),

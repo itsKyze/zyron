@@ -32,10 +32,7 @@ import {
   pendingRequestInstanceKey,
   type ApprovalRequestKind,
 } from "@zyron/shared/threadSummary";
-import {
-  stripTrailingToolExitCode,
-  summarizeToolRawOutput,
-} from "@zyron/shared/toolOutputSummary";
+import { stripTrailingToolExitCode, summarizeToolRawOutput } from "@zyron/shared/toolOutputSummary";
 import { pluralize, stripTerminalControlSequences } from "@zyron/shared/text";
 import { i18n, t } from "~/i18n";
 import { suppressCoordinatorCheckinMessages } from "@zyron/shared/coordinatorCheckin";

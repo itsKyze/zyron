@@ -87,9 +87,7 @@ test("history readers clone blobless; jobs that never read history stay shallow"
 });
 test("filtered scopes preserve lifecycle scripts and the scripts workspace links", () => {
   assert.ok(
-    setup.includes(
-      "static) bun install --frozen-lockfile --filter './' --filter '@zyron/scripts'",
-    ),
+    setup.includes("static) bun install --frozen-lockfile --filter './' --filter '@zyron/scripts'"),
   );
   assert.ok(setup.includes("runtime) bun install --frozen-lockfile --filter '!@zyron/marketing'"));
   assert.ok(!setup.includes("--ignore-scripts"));

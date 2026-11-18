@@ -389,11 +389,7 @@ export async function runLiveFixture(directory: string, binaryPath: string) {
     // login shell with a 5 s execFileSync timeout before the HTTP listener and
     // the readiness marker land. 120 s bounds that without hiding a wedged
     // server — the wait still exits as soon as the marker appears.
-    for (
-      let attempt = 0;
-      attempt < 1200 && !exited && !output.includes("Zyron running");
-      attempt++
-    )
+    for (let attempt = 0; attempt < 1200 && !exited && !output.includes("Zyron running"); attempt++)
       await pause(100);
     if (!output.includes("Zyron running"))
       throw new Error("Live fixture server failed to become ready.");

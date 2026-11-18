@@ -128,9 +128,7 @@ describe("resolveScratchPreviewFileOpenTarget", () => {
 
   it("returns null for relative paths", () => {
     expect(resolveScratchPreviewFileOpenTarget("docs/report.pdf")).toBeNull();
-    expect(
-      resolveScratchPreviewFileOpenTarget("zyron-codex-workspaces/thread-1/a.pdf"),
-    ).toBeNull();
+    expect(resolveScratchPreviewFileOpenTarget("zyron-codex-workspaces/thread-1/a.pdf")).toBeNull();
   });
 });
 

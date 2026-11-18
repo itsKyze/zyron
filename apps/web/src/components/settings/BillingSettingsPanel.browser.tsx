@@ -298,9 +298,7 @@ describe("UsageSettingsPanel", () => {
   });
 
   it("opens a plan deep link on Billing", async () => {
-    await render(
-      usage(new QueryClient(), { billingEnabled: true, target: "settings-zyron-plan" }),
-    );
+    await render(usage(new QueryClient(), { billingEnabled: true, target: "settings-zyron-plan" }));
     await expect.element(page.getByRole("radio", { name: "Billing" })).toBeChecked();
     await expect.element(page.getByText("Zyron Alto (Pro)", { exact: true })).toBeVisible();
   });

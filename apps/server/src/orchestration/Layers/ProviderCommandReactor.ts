@@ -2671,8 +2671,7 @@ const make = Effect.gen(function* () {
       );
     }
     const desiredRuntimeMode = options?.runtimeMode ?? thread.runtimeMode;
-    const previousAutoApproveZyronTools =
-      threadSessionAutoApproveZyronTools.get(threadId) ?? false;
+    const previousAutoApproveZyronTools = threadSessionAutoApproveZyronTools.get(threadId) ?? false;
     const currentProvider: ProviderKind | undefined = Schema.is(ProviderKind)(
       thread.session?.providerName,
     )

@@ -2408,9 +2408,7 @@ describe("browser surface", () => {
     ).toBe(false);
     expect(
       (await f.events()).some((row) =>
-        String(row.event).startsWith(
-          "browser:browser_click:zyron-browser-thread:zyron-transport-",
-        ),
+        String(row.event).startsWith("browser:browser_click:zyron-browser-thread:zyron-transport-"),
       ),
     ).toBe(true);
   });

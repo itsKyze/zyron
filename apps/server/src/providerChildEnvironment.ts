@@ -122,11 +122,7 @@ export function buildProviderChildEnvironment(input: {
   const childEnv: NodeJS.ProcessEnv = {};
 
   for (const [key, value] of Object.entries(baseEnv)) {
-    if (
-      key.startsWith("ZYRON_") &&
-      !allowedZyronKeys.has(key) &&
-      !isTestHarnessKey(key, baseEnv)
-    ) {
+    if (key.startsWith("ZYRON_") && !allowedZyronKeys.has(key) && !isTestHarnessKey(key, baseEnv)) {
       continue;
     }
     if (INHERITED_NATIVE_CAPABILITY_KEYS.has(key) && !allowedNativeCapabilities.has(key)) {

@@ -6,10 +6,7 @@
 import type { ExecFileException } from "node:child_process";
 import * as Path from "node:path";
 
-import {
-  matchesDistinguishedName,
-  parseDistinguishedName,
-} from "@zyron/shared/windowsCertificate";
+import { matchesDistinguishedName, parseDistinguishedName } from "@zyron/shared/windowsCertificate";
 import { execProcessFile, spawnProcessSync } from "@zyron/shared/processRuntime";
 import { resolveWindowsPowerShellExecutable } from "@zyron/shared/platformEnvironment";
 

@@ -584,11 +584,7 @@ function LeaveBetaDialog({
 
 function BetaChannelMark() {
   return (
-    <img
-      src="/app-icons/beta.png"
-      alt="Zyron Beta"
-      className="mt-0.5 size-9 shrink-0 rounded-xl"
-    />
+    <img src="/app-icons/beta.png" alt="Zyron Beta" className="mt-0.5 size-9 shrink-0 rounded-xl" />
   );
 }
 

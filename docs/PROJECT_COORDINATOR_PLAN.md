@@ -22,7 +22,7 @@ Your screenshots show the complementary interface: a Focus summary, linked work 
 
 Zyron already has much of the infrastructure:
 
-| Capability            | Current Zyron implementation                                             | Required addition                                      |
+| Capability            | Current Zyron implementation                                              | Required addition                                      |
 | --------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------ |
 | Projects and threads  | Persistent project IDs, workspace roots, thread relationships             | Coordinator identity and project configuration         |
 | Right-panel interface | Environment panel with docked and floating layouts                        | Shared panel host with a Project surface               |

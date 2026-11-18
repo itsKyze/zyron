@@ -10,17 +10,13 @@ const REMOTE_V2_QUALIFIED = true;
 
 export function remoteConnectionsUnavailableReason(stateDir?: string): string | undefined {
   const flavor = desktopFlavorFromBundleId(process.env.ZYRON_DESKTOP_BUNDLE_ID);
-  const disabled = process.env.ZYRON_REMOTE_CONNECTIONS === "0";
-  if (disabled) {
-    return "Remote connections are disabled by configuration.";
-  }
-  const remoteOptIn = process.env.ZYRON_REMOTE_CONNECTIONS === "1";
-  if (flavor === "production" && !remoteOptIn) {
-    // Stable needs either an explicit opt-in or a configured account origin.
+  if (flavor === "production") {
+    // Stable needs both an explicit opt-in and a configured HTTPS account origin.
     const configuredAccountUrl = resolveConfiguredAccountUrl({});
     const accountUrl = configuredAccountUrl ? URL.parse(configuredAccountUrl) : null;
     if (
-      !accountUrl ||
+      process.env.ZYRON_REMOTE_CONNECTIONS !== "1" ||
+      accountUrl?.protocol !== "https:" ||
       (configuredAccountUrl !== accountUrl.origin &&
         configuredAccountUrl !== `${accountUrl.origin}/`)
     )
@@ -28,7 +24,7 @@ export function remoteConnectionsUnavailableReason(stateDir?: string): string | 
   }
   if (process.versions.bun || Number(process.versions.node.split(".")[0]) !== 24)
     return "Remote connections require the Node 24 server runtime.";
-  if (flavor === "unknown" && !remoteOptIn)
+  if (flavor === "unknown" && process.env.ZYRON_REMOTE_CONNECTIONS !== "1")
     return "Set ZYRON_REMOTE_CONNECTIONS=1 to opt in to remote connections.";
   if (stateDir && existsSync(join(stateDir, REMOTE_IMPORT_SUSPENSION_FILE)))
     return "Reconnect this installation after the data import.";

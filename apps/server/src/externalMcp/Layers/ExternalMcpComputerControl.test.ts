@@ -295,19 +295,14 @@ describe("external MCP computer control scope", () => {
           expiresInDays: 30,
         });
         yield* service.pair(plain.pairingCode, "syn_mcp_v1_cc-plain-secret");
-        const denied = yield* callTool(
-          gateway,
-          "syn_mcp_v1_cc-plain-secret",
-          "zyron_create_task",
-          {
-            requestId: "cc-denied",
-            projectId: PROJECT_ID,
-            provider: "codex",
-            model: "gpt-5.5",
-            prompt: "denied task",
-            enableComputerControl: true,
-          },
-        );
+        const denied = yield* callTool(gateway, "syn_mcp_v1_cc-plain-secret", "zyron_create_task", {
+          requestId: "cc-denied",
+          projectId: PROJECT_ID,
+          provider: "codex",
+          model: "gpt-5.5",
+          prompt: "denied task",
+          enableComputerControl: true,
+        });
         expect(JSON.stringify(denied.body)).toContain("capability_denied");
         expect(JSON.stringify(denied.body)).toContain("computer:control");
         expect(dispatched.filter((c) => c.type === "thread.turn.start")).toHaveLength(0);

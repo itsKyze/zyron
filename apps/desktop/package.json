@@ -29,10 +29,10 @@
     "ws": "^8.21.0"
   },
   "devDependencies": {
-    "@zyron/contracts": "workspace:*",
-    "@zyron/shared": "workspace:*",
     "@types/node": "catalog:",
     "@types/ws": "^8.5.13",
+    "@zyron/contracts": "workspace:*",
+    "@zyron/shared": "workspace:*",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",

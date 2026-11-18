@@ -166,9 +166,9 @@ describe("deriveZyronMcpToolTitle", () => {
     expect(
       deriveZyronMcpToolTitle({ title: "Zyron: Zyron List Threads", status: "completed" }),
     ).toBe("Zyron listed threads");
-    expect(
-      deriveZyronMcpToolTitle({ toolName: "zyron_create_thread", status: "cancelled" }),
-    ).toBe("Zyron stopped creating a thread");
+    expect(deriveZyronMcpToolTitle({ toolName: "zyron_create_thread", status: "cancelled" })).toBe(
+      "Zyron stopped creating a thread",
+    );
   });
 
   it("ignores tools from other MCP servers", () => {

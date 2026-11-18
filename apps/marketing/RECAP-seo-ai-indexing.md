@@ -12,33 +12,33 @@ The goal was to strengthen Zyron's technical SEO, Search Console readiness, and 
 
 ## Files Affected
 
-| File                                   | Status   | Role                                                                               |
-| -------------------------------------- | -------- | ---------------------------------------------------------------------------------- |
-| `src/lib/seo.ts`                       | Modified | Central SEO constants, crawler list, JSON-LD builders, canonical URLs              |
-| `src/lib/siteRoutes.ts`                | Created  | Shared canonical route list for sitemap generation                                 |
-| `src/lib/releaseDates.ts`              | Created  | Stable release and privacy dates for sitemap `lastmod` and JSON-LD                 |
-| `src/lib/llmText.ts`                   | Created  | Builds `/llms.txt`, `/llms-full.txt`, and `/ai.txt` content                        |
-| `src/data/faqs.ts`                     | Created  | Shared FAQ data for visible UI and FAQPage JSON-LD                                 |
-| `src/app/sitemap.ts`                   | Modified | Main sitemap for static pages and AI text routes                                   |
-| `src/app/changelog/sitemap.ts`         | Created  | Changelog release sitemap                                                          |
-| `src/app/sitemap-index.xml/route.ts`   | Created  | Sitemap index for Search Console submission                                        |
-| `src/app/robots.ts`                    | Modified | Allows search and AI user agents, disallows `/api/`, lists all sitemap URLs        |
-| `src/app/llms.txt/route.ts`            | Created  | Dynamic concise LLM discovery document                                             |
-| `src/app/llms-full.txt/route.ts`       | Created  | Dynamic expanded LLM context document                                              |
-| `src/app/ai.txt/route.ts`              | Created  | AI crawler summary and product facts                                               |
-| `src/app/manifest.ts`                  | Created  | Web app manifest with icons, categories, screenshots                               |
-| `public/llms.txt`                      | Deleted  | Replaced by dynamic App Router route                                               |
-| `src/app/layout.tsx`                   | Modified | Root Metadata API fields and safe global JSON-LD serialization                     |
-| `src/app/page.tsx`                     | Modified | Homepage FAQ and breadcrumb JSON-LD, canonical GitHub URL                          |
-| `src/app/install/page.tsx`             | Modified | Download page JSON-LD and breadcrumb                                               |
-| `src/app/changelog/page.tsx`           | Modified | CollectionPage and breadcrumb JSON-LD                                              |
-| `src/app/changelog/[version]/page.tsx` | Modified | Per-release TechArticle and breadcrumb JSON-LD                                     |
-| `src/app/privacy/page.tsx`             | Modified | Privacy WebPage and breadcrumb JSON-LD                                             |
-| `src/components/FAQ.tsx`               | Modified | Uses shared FAQ data                                                               |
+| File                                   | Status   | Role                                                                              |
+| -------------------------------------- | -------- | --------------------------------------------------------------------------------- |
+| `src/lib/seo.ts`                       | Modified | Central SEO constants, crawler list, JSON-LD builders, canonical URLs             |
+| `src/lib/siteRoutes.ts`                | Created  | Shared canonical route list for sitemap generation                                |
+| `src/lib/releaseDates.ts`              | Created  | Stable release and privacy dates for sitemap `lastmod` and JSON-LD                |
+| `src/lib/llmText.ts`                   | Created  | Builds `/llms.txt`, `/llms-full.txt`, and `/ai.txt` content                       |
+| `src/data/faqs.ts`                     | Created  | Shared FAQ data for visible UI and FAQPage JSON-LD                                |
+| `src/app/sitemap.ts`                   | Modified | Main sitemap for static pages and AI text routes                                  |
+| `src/app/changelog/sitemap.ts`         | Created  | Changelog release sitemap                                                         |
+| `src/app/sitemap-index.xml/route.ts`   | Created  | Sitemap index for Search Console submission                                       |
+| `src/app/robots.ts`                    | Modified | Allows search and AI user agents, disallows `/api/`, lists all sitemap URLs       |
+| `src/app/llms.txt/route.ts`            | Created  | Dynamic concise LLM discovery document                                            |
+| `src/app/llms-full.txt/route.ts`       | Created  | Dynamic expanded LLM context document                                             |
+| `src/app/ai.txt/route.ts`              | Created  | AI crawler summary and product facts                                              |
+| `src/app/manifest.ts`                  | Created  | Web app manifest with icons, categories, screenshots                              |
+| `public/llms.txt`                      | Deleted  | Replaced by dynamic App Router route                                              |
+| `src/app/layout.tsx`                   | Modified | Root Metadata API fields and safe global JSON-LD serialization                    |
+| `src/app/page.tsx`                     | Modified | Homepage FAQ and breadcrumb JSON-LD, canonical GitHub URL                         |
+| `src/app/install/page.tsx`             | Modified | Download page JSON-LD and breadcrumb                                              |
+| `src/app/changelog/page.tsx`           | Modified | CollectionPage and breadcrumb JSON-LD                                             |
+| `src/app/changelog/[version]/page.tsx` | Modified | Per-release TechArticle and breadcrumb JSON-LD                                    |
+| `src/app/privacy/page.tsx`             | Modified | Privacy WebPage and breadcrumb JSON-LD                                            |
+| `src/components/FAQ.tsx`               | Modified | Uses shared FAQ data                                                              |
 | `src/components/Navbar.tsx`            | Modified | Uses canonical Zyron GitHub repository URL                                        |
 | `src/components/ChangelogContent.tsx`  | Modified | Renders either the full archive or one release; uses canonical Zyron releases URL |
-| `src/components/ScrollToRelease.tsx`   | Deleted  | Removed because per-release pages no longer render the full archive                |
-| `src/components/AskAISection.tsx`      | Modified | Uses canonical non-www domain in AI prompt                                         |
+| `src/components/ScrollToRelease.tsx`   | Deleted  | Removed because per-release pages no longer render the full archive               |
+| `src/components/AskAISection.tsx`      | Modified | Uses canonical non-www domain in AI prompt                                        |
 | `src/lib/githubStars.ts`               | Modified | Fetches stars from canonical Zyron repository                                     |
 | `src/lib/installerCount.ts`            | Modified | Fetches installer counts from canonical Zyron repository                          |
 

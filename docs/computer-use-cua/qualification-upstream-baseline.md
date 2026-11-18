@@ -11,7 +11,7 @@ The selection order is correctness and permission attribution, required applicat
 | Boundary                 | Evidence                                                                                                                       | Practical limit                                                                             |
 | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------- |
 | Driver provenance        | Release archive checksum, executable version, copied license/provenance; pinned source inspected                               | No independently reproduced Rust build                                                      |
-| GUI ownership            | Real Electron fixture launching embedded native child; native permission source identifies the host and responsible parent     | Ad-hoc fixture, not production Zyron signing/notarization                                  |
+| GUI ownership            | Real Electron fixture launching embedded native child; native permission source identifies the host and responsible parent     | Ad-hoc fixture, not production Zyron signing/notarization                                   |
 | Desktop startup          | Desktop bundle build; actual isolated server startup after fixing the desktop identity export                                  | Isolated web server cannot confer native GUI authority                                      |
 | Provider authority       | Focused gateway, registry, manager and provider approval tests; real gateway-handler-to-native fixture                         | Caller context is controlled; no paid provider end-to-end turn against the desktop was sent |
 | Off / queued input       | Revocation captured at submission; off/on and archive/restore regression cases                                                 | Native in-flight held-input cleanup is still unproven                                       |
@@ -164,8 +164,8 @@ The isolated development server was stopped after verification; ports 58317 and 
 
 | Concern                   | Current Cua integration                                     | Reviewed Swift proposal                                                                           |
 | ------------------------- | ----------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| Zyron policy/ownership   | Repaired shared stack remains responsible                   | Needs the same shared repairs; changing language does not solve authority                         |
-| Native maintenance        | Reuses pinned Cua app policies and native implementation    | Zyron would own more private input/observation behavior                                          |
+| Zyron policy/ownership    | Repaired shared stack remains responsible                   | Needs the same shared repairs; changing language does not solve authority                         |
+| Native maintenance        | Reuses pinned Cua app policies and native implementation    | Zyron would own more private input/observation behavior                                           |
 | Ambiguous effects         | Explicit effects; no automatic retry                        | The reviewed path had replay after uncertain native verification; it must be repaired if retained |
 | Retirement                | Await actual child exit before replacement                  | Reviewed early replacement admission was a demonstrated defect                                    |
 | Held-key cleanup          | Unqualified after forced termination                        | Must also be demonstrated; do not assume Swift fixes it                                           |

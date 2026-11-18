@@ -21,9 +21,9 @@ call into Zyron.
 | Step     | What happens                                                                                                                                                                                                                                                                                             |
 | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Connect  | The server sends an unauthenticated MCP `initialize` to the connector URL. A valid JSON-RPC initialize result means no sign-in is needed. Existing OAuth connections retain their credentials if initialization is public. A 401 starts OAuth.                                                           |
-| Sign-in  | The MCP SDK's OAuth client discovers the protected-resource and authorization-server metadata, registers Zyron with Dynamic Client Registration, and builds a PKCE (S256) authorization URL with a single-use `state` and the RFC 8707 `resource`. The web app opens it in the default browser.         |
-| Callback | The browser returns to `GET /oauth/mcp/callback` on Zyron's loopback port. The `state` is the only authority (the browser carries no Zyron session); it expires after ten minutes. The code is exchanged for tokens.                                                                                   |
-| Storage  | All connectors and their tokens are one entry (`mcp-connectors`) in the server secret store: a `0600` file under the Zyron home. Tokens never reach the web app or provider processes.                                                                                                                  |
+| Sign-in  | The MCP SDK's OAuth client discovers the protected-resource and authorization-server metadata, registers Zyron with Dynamic Client Registration, and builds a PKCE (S256) authorization URL with a single-use `state` and the RFC 8707 `resource`. The web app opens it in the default browser.          |
+| Callback | The browser returns to `GET /oauth/mcp/callback` on Zyron's loopback port. The `state` is the only authority (the browser carries no Zyron session); it expires after ten minutes. The code is exchanged for tokens.                                                                                     |
+| Storage  | All connectors and their tokens are one entry (`mcp-connectors`) in the server secret store: a `0600` file under the Zyron home. Tokens never reach the web app or provider processes.                                                                                                                   |
 | Sessions | Connected connectors are published to the agent gateway. Each new provider session gets one MCP server per connector, named `<slug>_connector`, pointing at `/mcp/connectors/<id>` on the gateway and authenticated with the session's gateway bearer.                                                   |
 | Calls    | The proxy checks the bearer, attaches the connector's access token, and forwards the exchange through the origin-pinned outbound client. SSE answers are collapsed to their JSON-RPC response. A 401 triggers one refresh and one retry; a rejected refresh grant marks the connector **needs sign-in**. |
 
@@ -40,7 +40,7 @@ which tool policy treats as trusted.
 | Claude                        | Yes, as SDK `mcpServers` HTTP entries                                                    |
 | Codex                         | Yes, in the per-thread config only (re-sent on every credential renewal)                 |
 | OpenCode                      | Yes, through `mcp.add` on the managed server; a connector that fails to start is skipped |
-| Cursor, Grok, Droid, Oh My Pi | HTTP when advertised by the agent, otherwise Zyron's session-aware stdio proxy          |
+| Cursor, Grok, Droid, Oh My Pi | HTTP when advertised by the agent, otherwise Zyron's session-aware stdio proxy           |
 | Pi, Devin, Antigravity        | No                                                                                       |
 
 Running sessions keep the connector set they started with. A disconnected connector answers its

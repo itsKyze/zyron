@@ -225,9 +225,7 @@ export function zyronDesktopIdentity(flavor: ZyronDesktopFlavor): ZyronDesktopId
  * the wrong signature, and the launcher's re-sign reset clears them, so source
  * copies of the separately installed Beta and Remote apps get their own.
  */
-export function zyronSourceDesktopIdentity(
-  identity: ZyronDesktopIdentity,
-): ZyronDesktopIdentity {
+export function zyronSourceDesktopIdentity(identity: ZyronDesktopIdentity): ZyronDesktopIdentity {
   if (identity.flavor !== "beta" && identity.flavor !== "remote") return identity;
   return {
     ...identity,

@@ -33,9 +33,9 @@ describe("desktopUserDataProfile", () => {
     expect(resolveDesktopUserDataPath({ appDataBase, userDataDirectoryName: "zyron" })).toBe(
       "/Users/tester/Library/Application Support/zyron",
     );
-    expect(
-      resolveDesktopUserDataPath({ appDataBase, userDataDirectoryName: "zyron-canary" }),
-    ).toBe("/Users/tester/Library/Application Support/zyron-canary");
+    expect(resolveDesktopUserDataPath({ appDataBase, userDataDirectoryName: "zyron-canary" })).toBe(
+      "/Users/tester/Library/Application Support/zyron-canary",
+    );
   });
 
   it("uses an explicit smoke profile instead of the development profile", () => {

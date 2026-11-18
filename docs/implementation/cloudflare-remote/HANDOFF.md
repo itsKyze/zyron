@@ -772,9 +772,9 @@ Verifica desktop: regressione riprodotta prima del fix, poi 26 test pertinenti p
 
 ## Dove si trova il lavoro e cosa è pubblicato
 
-| Superficie               | Repository / branch                                        | Stato verificato prima di questo recap                                                                                                                    |
-| ------------------------ | ---------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Desktop, API e trasporto | `itsKyze/zyron`, `codex/cloudflare-remote-mvp`     | HEAD locale e branch remota entrambi a `b5f8837adb3a8c938d3f16e2d4882aa1b8a1c7ce`; nessuna PR trovata per questa head                                     |
+| Superficie               | Repository / branch                                | Stato verificato prima di questo recap                                                                                                            |
+| ------------------------ | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Desktop, API e trasporto | `itsKyze/zyron`, `codex/cloudflare-remote-mvp`     | HEAD locale e branch remota entrambi a `b5f8837adb3a8c938d3f16e2d4882aa1b8a1c7ce`; nessuna PR trovata per questa head                             |
 | iPhone                   | `itsKyze/zyronIOS`, `codex/ios-remote-connections` | [PR #1](https://github.com/itsKyze/zyronIOS/pull/1), aperta, codice pubblicato fino a `4b855e68faadb99396452899d53af1f9d0ced3b3`; worktree pulita |
 
 Questo recap viene pubblicato con un commit di sola documentazione dopo quei checkpoint. La sua pubblicazione **non include né certifica** le modifiche desktop non committate descritte sotto. La branch desktop pubblicata è consultabile [qui](https://github.com/itsKyze/zyron/tree/codex/cloudflare-remote-mvp).

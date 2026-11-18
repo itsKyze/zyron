@@ -40,9 +40,7 @@ describe("localServerAddressLabel", () => {
 
 describe("localServerFolderLabel", () => {
   it("ignores a trailing separator", () => {
-    expect(localServerFolderLabel(makeServer({ cwd: "/Users/me/Developer/zyron/" }))).toBe(
-      "zyron",
-    );
+    expect(localServerFolderLabel(makeServer({ cwd: "/Users/me/Developer/zyron/" }))).toBe("zyron");
   });
 
   it("tolerates Windows separators", () => {

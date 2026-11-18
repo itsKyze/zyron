@@ -790,9 +790,7 @@ describe("OpenCode host policy delivery", () => {
     );
     expect(runtime.promptCalls.map(promptContainsHarnessPolicy)).toEqual([true, true, false, true]);
     expect(
-      runtime.promptCalls.map((prompt) =>
-        JSON.stringify(prompt).includes("## Zyron computer use"),
-      ),
+      runtime.promptCalls.map((prompt) => JSON.stringify(prompt).includes("## Zyron computer use")),
     ).toEqual([false, true, false, false]);
   });
 

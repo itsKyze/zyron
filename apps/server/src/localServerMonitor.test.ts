@@ -231,8 +231,7 @@ describe("localServerMonitor", () => {
         12094,
         {
           ppid: 12064,
-          commandLine:
-            "node /home/kyzedev/zyron-website/node_modules/.bin/next dev",
+          commandLine: "node /home/kyzedev/zyron-website/node_modules/.bin/next dev",
         },
       ],
       [

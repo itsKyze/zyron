@@ -34,12 +34,12 @@ and the dedicated Remote app own separate local data and device identities.
 
 ## What must run
 
-| Component                       | Where it runs                                     | What the operator supplies                                                |
-| ------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------- |
+| Component                      | Where it runs                                     | What the operator supplies                                                |
+| ------------------------------ | ------------------------------------------------- | ------------------------------------------------------------------------- |
 | Zyron account API (`apps/api`) | Bun in a Cloudflare Container behind public HTTPS | Public URL, environment variables and persistent signing key              |
-| WorkOS AuthKit                  | WorkOS                                            | Application/client ID, API key, authentication settings                   |
-| PostgreSQL                      | Supabase PostgreSQL, reachable by the account API | A persistent database and connection URL                                  |
-| Cloudflare Tunnel               | Cloudflare plus the bundled connector on the Mini | Active DNS zone and scoped API token, kept on the account API             |
+| WorkOS AuthKit                 | WorkOS                                            | Application/client ID, API key, authentication settings                   |
+| PostgreSQL                     | Supabase PostgreSQL, reachable by the account API | A persistent database and connection URL                                  |
+| Cloudflare Tunnel              | Cloudflare plus the bundled connector on the Mini | Active DNS zone and scoped API token, kept on the account API             |
 | Zyron                          | Both Macs, separate installation homes            | Same account/workspace and a Beta/Canary build with remote access enabled |
 
 There is no Zyron traffic-relay service to deploy. The shared account API is

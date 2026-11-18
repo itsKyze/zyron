@@ -153,9 +153,7 @@ describe("desktopIdentity", () => {
     expect(resolveZyronDesktopFlavor({ isDevelopment: true, requestedFlavor: "canary" })).toBe(
       "canary",
     );
-    expect(resolveZyronDesktopFlavor({ isDevelopment: false, requestedFlavor: "cua" })).toBe(
-      "cua",
-    );
+    expect(resolveZyronDesktopFlavor({ isDevelopment: false, requestedFlavor: "cua" })).toBe("cua");
     expect(resolveZyronDesktopFlavor({ isDevelopment: true, requestedFlavor: "CUA" })).toBe("cua");
     expect(resolveZyronDesktopFlavor({ isDevelopment: false, requestedFlavor: "beta" })).toBe(
       "beta",

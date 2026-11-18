@@ -169,9 +169,9 @@ The workflow leaves existing credentials in place by default. For initial
 provisioning or a planned update to the base credentials, also check
 `bootstrap_secrets` and supply the matching values in the GitHub environment.
 
-| GitHub secret                 | Destination                          |
-| ----------------------------- | ------------------------------------ |
-| `CLOUDFLARE_API_TOKEN`        | Cloudflare deployment authentication |
+| GitHub secret                | Destination                          |
+| ---------------------------- | ------------------------------------ |
+| `CLOUDFLARE_API_TOKEN`       | Cloudflare deployment authentication |
 | `ZYRON_API_DATABASE_URL`     | Worker `DATABASE_URL`                |
 | `ZYRON_API_WORKOS_API_KEY`   | Worker `WORKOS_API_KEY`              |
 | `ZYRON_API_WORKOS_CLIENT_ID` | Worker `WORKOS_CLIENT_ID`            |

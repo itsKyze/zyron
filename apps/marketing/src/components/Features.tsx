@@ -113,8 +113,8 @@ export default function Features() {
           </p>
           <h2 className={`${heading} mt-3`}>Keep the runtimes you already trust.</h2>
           <p className={body}>
-            Zyron sits around your coding agents rather than replacing them. Each provider keeps
-            its own authentication, models, tools, and permissions while Zyron gives the work a
+            Zyron sits around your coding agents rather than replacing them. Each provider keeps its
+            own authentication, models, tools, and permissions while Zyron gives the work a
             consistent task, environment, review, and delivery layer.
           </p>
 
@@ -155,9 +155,9 @@ export default function Features() {
             One workspace. Separate tasks. Shared control.
           </h2>
           <p className={body}>
-            A coding agent is only one part of the job. Zyron keeps the objective, environment,
-            live processes, verification evidence, and delivery state attached to the work from
-            first prompt to pull request.
+            A coding agent is only one part of the job. Zyron keeps the objective, environment, live
+            processes, verification evidence, and delivery state attached to the work from first
+            prompt to pull request.
           </p>
 
           <div className="mt-12 grid grid-cols-1 border-t border-[var(--divide)] sm:grid-cols-2">

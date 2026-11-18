@@ -54,8 +54,8 @@ export default function PrivacySection() {
         </p>
         <h2 className={`${heading} mt-3`}>Know where every part of the work goes.</h2>
         <p className={body}>
-          Zyron keeps its workspace layer local and connects to the provider runtime you select.
-          The boundary is explicit: local application state stays on your machine, while provider
+          Zyron keeps its workspace layer local and connects to the provider runtime you select. The
+          boundary is explicit: local application state stays on your machine, while provider
           sessions receive the context they need to perform the task.
         </p>
 

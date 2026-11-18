@@ -367,11 +367,7 @@ describe("DeviceManager boot ownership", () => {
     expect(result.kind).toBe("boot-limit-reached");
     if (result.kind !== "boot-limit-reached") throw new Error("expected boot-limit-reached");
     expect(result.limit).toBe(3);
-    expect(result.zyronBooted.map((device) => device.udid)).toEqual([
-      DEVICE_A,
-      DEVICE_B,
-      DEVICE_C,
-    ]);
+    expect(result.zyronBooted.map((device) => device.udid)).toEqual([DEVICE_A, DEVICE_B, DEVICE_C]);
   });
 
   it("stops counting devices that were shut down behind its back", async () => {

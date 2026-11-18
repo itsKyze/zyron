@@ -25,8 +25,7 @@ const emitDevinTaskReplay = process.env.ZYRON_ACP_DEVIN_TASK_REPLAY === "1";
 const failSessionNewOnce = process.env.ZYRON_ACP_FAIL_SESSION_NEW_ONCE === "1";
 const failSetConfigOption = process.env.ZYRON_ACP_FAIL_SET_CONFIG_OPTION === "1";
 const exitOnSetConfigOption = process.env.ZYRON_ACP_EXIT_ON_SET_CONFIG_OPTION === "1";
-const rejectConfigDuringLoadReplay =
-  process.env.ZYRON_ACP_REJECT_CONFIG_DURING_LOAD_REPLAY === "1";
+const rejectConfigDuringLoadReplay = process.env.ZYRON_ACP_REJECT_CONFIG_DURING_LOAD_REPLAY === "1";
 const promptResponseText =
   process.env.ZYRON_ACP_PROMPT_RESPONSE_TEXT ?? process.env.ACP_MOCK_PROMPT_RESPONSE_TEXT;
 const supportsSessionResume = process.env.ZYRON_ACP_SUPPORT_SESSION_RESUME === "1";
@@ -44,8 +43,7 @@ const loadReplayDelaysMs = (process.env.ZYRON_ACP_LOAD_REPLAY_DELAYS_MS ?? "")
   .filter((value) => value.length > 0)
   .map(Number)
   .filter((value) => Number.isFinite(value) && value >= 0);
-const rejectPromptDuringLoadReplay =
-  process.env.ZYRON_ACP_REJECT_PROMPT_DURING_LOAD_REPLAY === "1";
+const rejectPromptDuringLoadReplay = process.env.ZYRON_ACP_REJECT_PROMPT_DURING_LOAD_REPLAY === "1";
 const rejectForkDuringLoadReplay = process.env.ZYRON_ACP_REJECT_FORK_DURING_LOAD_REPLAY === "1";
 const loadReplayModeId = process.env.ZYRON_ACP_LOAD_REPLAY_MODE_ID?.trim();
 const loadReplayAvailableCommands = process.env.ZYRON_ACP_LOAD_REPLAY_AVAILABLE_COMMANDS === "1";

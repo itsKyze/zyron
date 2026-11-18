@@ -232,7 +232,7 @@ describe("brand identity guard", () => {
 
   it("requires user-facing raster assets to match a visually approved digest", () => {
     const approvedContents = new TextEncoder().encode("approved Zyron screenshot");
-    const approvedDigest = "a553296ca5a2d3ad7b64a6bc1b36c2834da750eae6611642177482b99ba85bd8";
+    const approvedDigest = "02b01a66afc8ed643c0675c368d4cd8e8f13fa7a1d07493dd6c329a1ce4c85a3";
     const approvedDigests = new Map([["screenshot.jpeg", approvedDigest]]);
 
     expect(

@@ -7,8 +7,8 @@ Cua driver now build on `macos-15` (arm64); a short `qualify_intel` job then run
 the packaged startup smoke on `macos-15-intel`. Durations run from job start to
 completion, excluding queue; each value is one observation.
 
-| macOS x64 path                                                                              | Packaging runner   | Package | Intel smoke job |     Total |
-| ------------------------------------------------------------------------------------------- | ------------------ | ------: | --------------: | --------: |
+| macOS x64 path                                                                      | Packaging runner   | Package | Intel smoke job |     Total |
+| ----------------------------------------------------------------------------------- | ------------------ | ------: | --------------: | --------: |
 | [v1.0.1 tag](https://github.com/itsKyze/zyron/actions/runs/37850836681)             | `macos-15-intel`   |   14.8m |               - |     14.8m |
 | [build-only 37865125366](https://github.com/itsKyze/zyron/actions/runs/37865125366) | `macos-15-intel`   |   15.7m |               - |     15.7m |
 | [v1.0.1-beta.1 tag](https://github.com/itsKyze/zyron/actions/runs/37339778939)      | `macos-15-intel`   |   17.4m |               - |     17.4m |

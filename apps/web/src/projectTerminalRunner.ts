@@ -4,10 +4,7 @@
 // Exports: runProjectCommandInTerminal and default dimensions for script terminals.
 
 import type { NativeApi, TerminalSessionSnapshot, ThreadId } from "@zyron/contracts";
-import {
-  deriveTerminalCommandIdentity,
-  type TerminalCliKind,
-} from "@zyron/shared/terminalThreads";
+import { deriveTerminalCommandIdentity, type TerminalCliKind } from "@zyron/shared/terminalThreads";
 
 import { projectScriptRuntimeEnv } from "./projectScripts";
 

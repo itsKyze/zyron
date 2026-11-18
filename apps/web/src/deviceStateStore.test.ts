@@ -1,8 +1,4 @@
-import type {
-  DeviceOpenPaneRequestedEvent,
-  DeviceUdid,
-  ThreadDeviceState,
-} from "@zyron/contracts";
+import type { DeviceOpenPaneRequestedEvent, DeviceUdid, ThreadDeviceState } from "@zyron/contracts";
 import { ThreadId } from "@zyron/contracts";
 import { beforeEach, describe, expect, it } from "vitest";
 

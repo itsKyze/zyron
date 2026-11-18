@@ -213,9 +213,7 @@ function makeFakeCodexBinary(dir: string, input: FakeCodexOptions) {
       ZYRON_FAKE_CODEX_REQUIRE_SKIP_GIT_REPO_CHECK: input.requireSkipGitRepoCheck ? "1" : "",
       ZYRON_FAKE_CODEX_REQUIRE_APPROVAL_NEVER: input.requireApprovalNever ? "1" : "",
       ZYRON_FAKE_CODEX_FORBID_IGNORE_USER_CONFIG: input.forbidIgnoreUserConfig ? "1" : "",
-      ZYRON_FAKE_CODEX_REQUIRE_AZURE_PROVIDER_ROUTING: input.requireAzureProviderRouting
-        ? "1"
-        : "",
+      ZYRON_FAKE_CODEX_REQUIRE_AZURE_PROVIDER_ROUTING: input.requireAzureProviderRouting ? "1" : "",
       ZYRON_FAKE_CODEX_REQUIRE_NO_USER_EXTENSIONS: input.requireNoUserExtensions ? "1" : "",
       ZYRON_FAKE_CODEX_REQUIRE_SECURE_ISOLATION: input.requireSecureIsolation ? "1" : "",
       ZYRON_FAKE_CODEX_FORBIDDEN_CWD: input.forbiddenCwd ?? "",
@@ -438,8 +436,7 @@ function withFakeCodexEnv<A, E, R>(input: FakeCodexOptions, effect: Effect.Effec
       const previousRequireSkipGitRepoCheck =
         process.env.ZYRON_FAKE_CODEX_REQUIRE_SKIP_GIT_REPO_CHECK;
       const previousRequireApprovalNever = process.env.ZYRON_FAKE_CODEX_REQUIRE_APPROVAL_NEVER;
-      const previousForbidIgnoreUserConfig =
-        process.env.ZYRON_FAKE_CODEX_FORBID_IGNORE_USER_CONFIG;
+      const previousForbidIgnoreUserConfig = process.env.ZYRON_FAKE_CODEX_FORBID_IGNORE_USER_CONFIG;
       const previousRequireAzureProviderRouting =
         process.env.ZYRON_FAKE_CODEX_REQUIRE_AZURE_PROVIDER_ROUTING;
       const previousRequireNoUserExtensions =

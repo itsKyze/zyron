@@ -723,8 +723,7 @@ export const TimelineWorkEntryRow = memo(function TimelineWorkEntryRow(props: {
   const isGitHubToolRow = isGitHubMcpToolCall(workEntry);
   const isComputerToolRow = isComputerWorkEntry(workEntry);
   const isZyronBrowserToolRow = !isGitHubToolRow && isZyronBrowserWorkEntry(workEntry);
-  const isZyronToolRow =
-    !isGitHubToolRow && !isZyronBrowserToolRow && isZyronToolCall(workEntry);
+  const isZyronToolRow = !isGitHubToolRow && !isZyronBrowserToolRow && isZyronToolCall(workEntry);
   const isMcpToolRow =
     workEntry.itemType === "mcp_tool_call" &&
     !isGitHubToolRow &&

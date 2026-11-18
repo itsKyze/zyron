@@ -6,13 +6,13 @@ consistent workspace.
 
 ## Supported providers
 
-| Provider                                                                | What Zyron connects to                                        |
-| ----------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Provider                                                            | What Zyron connects to                                         |
+| ------------------------------------------------------------------- | -------------------------------------------------------------- |
 | [Claude Code](https://ai.zyron.site/docs/providers/claude-code)     | Your installed Claude Code runtime and authenticated account   |
 | [Codex](https://ai.zyron.site/docs/providers/codex)                 | Your installed and authenticated Codex CLI                     |
 | [OpenCode](https://ai.zyron.site/docs/providers/opencode)           | Your local OpenCode runtime and configured model providers     |
 | [Cursor](https://ai.zyron.site/docs/providers/cursor)               | Your local Cursor agent runtime and account                    |
-| [Devin](https://docs.devin.ai)                                          | Your installed and authenticated Devin CLI                     |
+| [Devin](https://docs.devin.ai)                                      | Your installed and authenticated Devin CLI                     |
 | [Antigravity](https://ai.zyron.site/docs/providers/antigravity)     | Your installed and authenticated Antigravity CLI               |
 | [Grok Build](https://ai.zyron.site/docs/providers/grok)             | Your configured Grok Build runtime and access                  |
 | [Pi](https://ai.zyron.site/docs/providers/pi)                       | Pi and the model providers configured through it               |

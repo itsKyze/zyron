@@ -38,23 +38,23 @@ The malware risk conclusion is carried per handoff section 5.7 and is unverified
 
 The open package is defined by files, not by prose. An auditor checks each row.
 
-| Interface        | File                                                       | Role                                                   |
-| ---------------- | ---------------------------------------------------------- | ------------------------------------------------------ |
-| Native patch     | `apps/desktop/patches/cua-driver/0001-zyron-native.patch` | All Zyron native changes on the pinned driver         |
-| Pin manifest     | `packages/shared/src/cuaDriverRelease.json`                | Version, source, checksums, native revision, toolchain |
-| Host protocol    | `packages/shared/src/cuaDriverProtocol.ts`                 | Socket, handshake, methods, cancellation, cleanup ack  |
-| Desktop host     | `apps/desktop/src/cuaDriverHost.ts`                        | Child lifetime, generation retirement, allowlist       |
-| Lifecycle gates  | `apps/desktop/src/computerDesktopLifecycle.ts`             | Pause on lock, sleep, session resign                   |
-| Approval gate    | `apps/server/src/computer/ComputerApprovalGate.ts`         | Consent rendezvous, queue caps                         |
-| Tool surface     | `apps/server/src/agentGateway/computerTools.ts`            | Agent facing tools and approval routing                |
-| Backend          | `apps/server/src/computer/CuaComputerBackend.ts`           | Targeting, geometry, effect semantics                  |
-| Orchestration    | `apps/server/src/computer/ComputerManager.ts`              | Leases, scheduling, Space policy                       |
-| Upstream license | `docs/computer-use-cua/CUA-LICENSE.txt`                    | Cua attribution, MIT text                              |
-| Repo license     | `LICENSE`                                                  | Zyron MIT text and holders                            |
-| Capability audit | `docs/computer-use-cua/capability-audit-2026-09-16.md`     | What is exposed and what is deliberately withheld      |
-| Overview         | `docs/computer-use-cua/README.md`                          | Contracts, limits, setup, provenance                   |
-| Provenance       | `docs/computer-use-cua/import-provenance.json`             | Imported heads and paths                               |
-| Parity matrix    | `docs/computer-use-cua/v2-parity-matrix.md`                | Parity claims, gaps, targets, evidence                 |
+| Interface        | File                                                      | Role                                                   |
+| ---------------- | --------------------------------------------------------- | ------------------------------------------------------ |
+| Native patch     | `apps/desktop/patches/cua-driver/0001-zyron-native.patch` | All Zyron native changes on the pinned driver          |
+| Pin manifest     | `packages/shared/src/cuaDriverRelease.json`               | Version, source, checksums, native revision, toolchain |
+| Host protocol    | `packages/shared/src/cuaDriverProtocol.ts`                | Socket, handshake, methods, cancellation, cleanup ack  |
+| Desktop host     | `apps/desktop/src/cuaDriverHost.ts`                       | Child lifetime, generation retirement, allowlist       |
+| Lifecycle gates  | `apps/desktop/src/computerDesktopLifecycle.ts`            | Pause on lock, sleep, session resign                   |
+| Approval gate    | `apps/server/src/computer/ComputerApprovalGate.ts`        | Consent rendezvous, queue caps                         |
+| Tool surface     | `apps/server/src/agentGateway/computerTools.ts`           | Agent facing tools and approval routing                |
+| Backend          | `apps/server/src/computer/CuaComputerBackend.ts`          | Targeting, geometry, effect semantics                  |
+| Orchestration    | `apps/server/src/computer/ComputerManager.ts`             | Leases, scheduling, Space policy                       |
+| Upstream license | `docs/computer-use-cua/CUA-LICENSE.txt`                   | Cua attribution, MIT text                              |
+| Repo license     | `LICENSE`                                                 | Zyron MIT text and holders                             |
+| Capability audit | `docs/computer-use-cua/capability-audit-2026-09-16.md`    | What is exposed and what is deliberately withheld      |
+| Overview         | `docs/computer-use-cua/README.md`                         | Contracts, limits, setup, provenance                   |
+| Provenance       | `docs/computer-use-cua/import-provenance.json`            | Imported heads and paths                               |
+| Parity matrix    | `docs/computer-use-cua/v2-parity-matrix.md`               | Parity claims, gaps, targets, evidence                 |
 
 Anything not in this table and not listed in the Approach section stays product code. If a new file is needed for the open package, add it to this table first.
 

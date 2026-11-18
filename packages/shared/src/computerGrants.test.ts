@@ -67,11 +67,7 @@ describe("computer permission copy", () => {
   it("names the responsible app rather than assuming the released one", () => {
     // A `.dev` flavor resetting the production identifier would revoke a
     // separately installed Zyron's grants and fix nothing here.
-    const advice = computerStaleGrantAdvice(
-      ["accessibility"],
-      "adhoc",
-      "com.example.zyron.canary",
-    );
+    const advice = computerStaleGrantAdvice(["accessibility"], "adhoc", "com.example.zyron.canary");
     expect(advice).toContain("tccutil reset Accessibility com.example.zyron.canary");
     expect(advice).not.toContain("com.itskyze.zyron");
   });
@@ -97,11 +93,7 @@ describe("computer permission copy", () => {
   });
 
   it("puts the stale-grant explanation into the ad-hoc setup message", () => {
-    const message = computerPermissionSetupMessage(
-      ["accessibility"],
-      "adhoc",
-      "com.itskyze.zyron",
-    );
+    const message = computerPermissionSetupMessage(["accessibility"], "adhoc", "com.itskyze.zyron");
     expect(message).toContain("System Settings");
     expect(message).toContain("tccutil reset Accessibility com.itskyze.zyron");
   });

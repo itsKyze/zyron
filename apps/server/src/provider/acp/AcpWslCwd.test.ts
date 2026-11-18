@@ -8,9 +8,9 @@ import { resolveAcpSessionCwd } from "./AcpSessionRuntime.ts";
 
 describe("resolveAcpSessionCwd", () => {
   it("converts modern WSL UNC paths to Linux paths on Windows", () => {
-    expect(
-      resolveAcpSessionCwd("\\\\wsl.localhost\\Ubuntu-24.04\\home\\dev\\zyron", "win32"),
-    ).toBe("/home/dev/zyron");
+    expect(resolveAcpSessionCwd("\\\\wsl.localhost\\Ubuntu-24.04\\home\\dev\\zyron", "win32")).toBe(
+      "/home/dev/zyron",
+    );
   });
 
   it("converts legacy wsl$ UNC paths to Linux paths on Windows", () => {

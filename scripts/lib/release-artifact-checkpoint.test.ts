@@ -26,9 +26,7 @@ function checkpoint(
   // Electron Builder's AppImage target emits x86_64 for Intel while provenance
   // records the matrix spelling; other targets keep the matrix spelling.
   const nativeFileArch = platform === "linux" && arch === "x64" ? "x86_64" : arch;
-  const productName = { production: "Zyron", beta: "Zyron-Beta", remote: "Zyron-Remote" }[
-    flavor
-  ];
+  const productName = { production: "Zyron", beta: "Zyron-Beta", remote: "Zyron-Remote" }[flavor];
   const stem = `${productName}-${version}-${nativeFileArch}`;
   const payload = `${stem}.${platform === "mac" ? "dmg" : platform === "win" ? "exe" : "AppImage"}`;
   const updater =

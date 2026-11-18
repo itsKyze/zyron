@@ -203,7 +203,7 @@ remembering to check.
 - **Stuck threads.** The server reacts to events as they happen, and runs a health check every
   minute for the rest:
 
-  | Situation                                                    | What Zyron does                                                |
+  | Situation                                                    | What Zyron does                                                 |
   | ------------------------------------------------------------ | --------------------------------------------------------------- |
   | A turn fails, is interrupted, or the session errors or stops | Reports it and wakes the coordinator                            |
   | The session died but still looks "running" (after 90 s)      | Reports "lost its session" and wakes the coordinator            |
@@ -398,12 +398,12 @@ like the composer.
 
 ## Where data lives on disk
 
-| Data                            | Location                                                             |
-| ------------------------------- | -------------------------------------------------------------------- |
+| Data                            | Location                                                            |
+| ------------------------------- | ------------------------------------------------------------------- |
 | Hub folder                      | `~/Documents/Zyron/Groups/<group-name>/`                            |
 | Instructions, memory, decisions | `~/.zyron/userdata/project-context/<project-id>/` (Markdown mirror) |
 | Library (default)               | `~/.zyron/userdata/project-context/<project-id>/library/`           |
-| Library (custom)                | The folder you chose in **Library hosting** → **Location**           |
+| Library (custom)                | The folder you chose in **Library hosting** → **Location**          |
 
 Zyron's database is the source of truth; the Markdown files are a mirror. `~/.zyron` moves if you
 set `ZYRON_HOME`.

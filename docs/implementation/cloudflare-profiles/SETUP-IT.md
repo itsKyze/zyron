@@ -91,10 +91,10 @@ Limita i deploy a `main` e salva il token del Worker API tra i segreti di
 quell’ambiente. Il deploy ordinario usa solo `CLOUDFLARE_API_TOKEN`. Per il
 primo provisioning dell’API, configura anche i segreti di base elencati qui.
 
-| Nome                          | Valore                                                        |
-| ----------------------------- | ------------------------------------------------------------- |
-| `CLOUDFLARE_API_TOKEN`        | Token di deploy Cloudflare dell'account Zyron Orgs           |
-| `ZYRON_API_DATABASE_URL`     | Connessione del progetto Supabase Zyron esistente            |
+| Nome                         | Valore                                                        |
+| ---------------------------- | ------------------------------------------------------------- |
+| `CLOUDFLARE_API_TOKEN`       | Token di deploy Cloudflare dell'account Zyron Orgs            |
+| `ZYRON_API_DATABASE_URL`     | Connessione del progetto Supabase Zyron esistente             |
 | `ZYRON_API_WORKOS_API_KEY`   | API key WorkOS                                                |
 | `ZYRON_API_WORKOS_CLIENT_ID` | Client ID WorkOS                                              |
 | `ZYRON_API_SIGNING_KEY`      | Chiave casuale stabile, 32 byte in base64url                  |

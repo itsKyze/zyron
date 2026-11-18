@@ -1,8 +1,4 @@
-import type {
-  ClientOrchestrationCommand,
-  OrchestrationCommand,
-  ProjectId,
-} from "@zyron/contracts";
+import type { ClientOrchestrationCommand, OrchestrationCommand, ProjectId } from "@zyron/contracts";
 import { isWorkspaceRootWithin, workspaceRootsEqual } from "@zyron/shared/threadWorkspace";
 import type { FileSystem, Path } from "effect";
 import { Effect, Schedule } from "effect";

@@ -8,13 +8,13 @@ The Zyron CLI accepts the following configuration options, available either as C
 
 | CLI flag                | Env var               | Notes                              |
 | ----------------------- | --------------------- | ---------------------------------- |
-| `--mode <web\|desktop>` | `ZYRON_MODE`         | Runtime mode.                      |
-| `--port <number>`       | `ZYRON_PORT`         | HTTP/WebSocket port.               |
-| `--host <address>`      | `ZYRON_HOST`         | Bind interface/address.            |
-| `--home-dir <path>`     | `ZYRON_HOME`         | Base directory.                    |
+| `--mode <web\|desktop>` | `ZYRON_MODE`          | Runtime mode.                      |
+| `--port <number>`       | `ZYRON_PORT`          | HTTP/WebSocket port.               |
+| `--host <address>`      | `ZYRON_HOST`          | Bind interface/address.            |
+| `--home-dir <path>`     | `ZYRON_HOME`          | Base directory.                    |
 | `--dev-url <url>`       | `VITE_DEV_SERVER_URL` | Dev web URL redirect/proxy target. |
-| `--no-browser`          | `ZYRON_NO_BROWSER`   | Disable auto-open browser.         |
-| `--auth-token <token>`  | `ZYRON_AUTH_TOKEN`   | WebSocket auth token.              |
+| `--no-browser`          | `ZYRON_NO_BROWSER`    | Disable auto-open browser.         |
+| `--auth-token <token>`  | `ZYRON_AUTH_TOKEN`    | WebSocket auth token.              |
 
 > TIP: Use the `--help` flag to see all available options and their descriptions.
 

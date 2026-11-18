@@ -252,10 +252,7 @@ const CliEnvConfig = Config.all({
   autoBootstrapProjectFromCwd: optionalBooleanEnvironmentConfig(
     "ZYRON_AUTO_BOOTSTRAP_PROJECT_FROM_CWD",
   ),
-  trashDir: Config.string("ZYRON_TRASH_DIR").pipe(
-    Config.option,
-    Config.map(Option.getOrUndefined),
-  ),
+  trashDir: Config.string("ZYRON_TRASH_DIR").pipe(Config.option, Config.map(Option.getOrUndefined)),
   logProviderEvents: optionalBooleanEnvironmentConfig("ZYRON_LOG_PROVIDER_EVENTS"),
   logWebSocketEvents: optionalBooleanEnvironmentConfig("ZYRON_LOG_WS_EVENTS"),
 });

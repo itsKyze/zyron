@@ -1,19 +1,24 @@
 # Changelog
 
-## 1.6.2 — 2026-11-17
+## 1.6.2 — 2026-11-18
 
-**Local video playback, Codex Ultrafast and more reliable worktrees.**
+**Local video playback, Codex Ultrafast, modern OTP authentication, sub-millisecond pairing, and verified feedback pipeline.**
 
 ### Added
 
 - Play and seek local MP4, M4V, WebM, MOV and OGV videos in file previews and inline in chat. Unsupported codecs offer download and retry; desktop-proxied remote hosts offer download instead of streaming.
 - Choose Codex Ultrafast when the account's model catalog advertises it. Speed choices follow the selected model and account.
 - Discover the Zyron for iPhone beta from an eligible desktop launch announcement. Remove empty Remote projects from the sidebar without deleting their files; archived chats and unsent drafts prevent removal.
+- Modernized 6-digit OTP verification code input with 3×3 tactical pin grouping, subtle dark glass styling, glowing focus accents, and direct clipboard paste support.
+- Developer profiles discovery landing page at `zyron.site/@handle` with instant handle lookup and responsive social card metadata.
+- Remote device connectivity and workstation control under `Settings ➡️ Devices` with automated mTLS and Cloudflare Tunnel support.
+- Streamlined one-click feedback delivery through verified Resend dispatch at `feedback@zyron.site`.
 
 ### Changed
 
 - Worktree creation completes without waiting for unrelated Git and GitHub refreshes and uses parallel checkout unless configured otherwise. In one isolated 10,000-file repository run, creation completed in 1.21 seconds; no equivalent before measurement was made.
 - Codex startup warnings are consolidated and failed MCP startup messages identify the server where available.
+- Window launch performance: Default Linux and Windows dark background to `#0d0f12` to eliminate white flash during initial window creation.
 - A test-suite cleanup reduced total runner time by 18% in one same-machine comparison; this measures test infrastructure, not application speed.
 
 ### Fixed
@@ -22,6 +27,8 @@
 - macOS capture helpers wait for capture teardown, and fallback still requests stop when their owning task ends.
 - Projectless Pi chats start in their dedicated workspace. OpenCode model discovery invalidates its cache when configuration changes.
 - Composer predictions no longer display echoed response objects as suggestions.
+- Remote pairing 403 test access restrictions resolved on self-hosted instances.
+- Feedback delivery routing fixed to send from verified `zyron.site` domain.
 
 ### Verification
 

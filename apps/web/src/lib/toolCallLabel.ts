@@ -202,10 +202,7 @@ const ZYRON_COMPUTER_TOOL_PRESENTATIONS = {
   zyron_computer_press_key: presentComputerTool("pressing a key", "pressed a key"),
   zyron_computer_set_value: presentComputerTool("setting a field", "set a field"),
   zyron_computer_select_text: presentComputerTool("selecting text", "selected text"),
-  zyron_computer_perform_action: presentComputerTool(
-    "activating a control",
-    "activated a control",
-  ),
+  zyron_computer_perform_action: presentComputerTool("activating a control", "activated a control"),
   zyron_computer_launch_app: presentComputerTool("opening an app", "opened an app"),
   zyron_computer_activate_window: presentComputerTool("activating a window", "activated a window"),
   zyron_computer_set_window_frame: presentComputerTool(
@@ -223,10 +220,7 @@ const ZYRON_COMPUTER_TOOL_PRESENTATIONS = {
     "changed an app's visibility",
   ),
   zyron_computer_wait: presentComputerTool("waiting for the desktop", "waited for the desktop"),
-  zyron_computer_read_clipboard: presentComputerTool(
-    "reading the clipboard",
-    "read the clipboard",
-  ),
+  zyron_computer_read_clipboard: presentComputerTool("reading the clipboard", "read the clipboard"),
   zyron_computer_write_clipboard: presentComputerTool(
     "writing to the clipboard",
     "wrote to the clipboard",
@@ -1294,10 +1288,7 @@ export function sanitizeZyronMcpToolPreview(
 ): string | null {
   const preview = input.preview?.trim();
   if (!preview) return null;
-  const previewTitle = deriveZyronMcpToolTitle(
-    { title: preview, status: input.status },
-    translate,
-  );
+  const previewTitle = deriveZyronMcpToolTitle({ title: preview, status: input.status }, translate);
   if (
     previewTitle &&
     normalizeToolTextForComparison(previewTitle) === normalizeToolTextForComparison(input.heading)

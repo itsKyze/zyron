@@ -60,9 +60,8 @@ describe("release artifact provenance", () => {
       "Zyron-1.2.3-x64.AppImage",
     ]);
     expect(
-      result.manifest.artifacts.find(
-        (artifact) => artifact.fileName === "Zyron-1.2.3-x64.AppImage",
-      )?.sha256,
+      result.manifest.artifacts.find((artifact) => artifact.fileName === "Zyron-1.2.3-x64.AppImage")
+        ?.sha256,
     ).toBe(createHash("sha256").update("app-image-bytes").digest("hex"));
     expect(JSON.parse(readFileSync(result.path, "utf8"))).toEqual(result.manifest);
   });

@@ -3541,9 +3541,7 @@ const makeProviderService = (options?: ProviderServiceLiveOptions) =>
                             ? { providerOptions: previousProviderOptions }
                             : {}),
                           ...(restoredComputerControl ? { enableComputerControl: true } : {}),
-                          ...(restoredAutoApproveZyronTools
-                            ? { autoApproveZyronTools: true }
-                            : {}),
+                          ...(restoredAutoApproveZyronTools ? { autoApproveZyronTools: true } : {}),
                           ...(previousAdditionalDirectories.length > 0
                             ? { additionalDirectories: previousAdditionalDirectories }
                             : {}),

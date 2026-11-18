@@ -90,11 +90,11 @@ enabled the profiler, then requested `Profiler.start` 500 ms after readiness whi
 the main thread was blocked for 3 seconds. No inspector TCP listener or debugger
 pause was used. On 2026-10-06 (local date):
 
-| Runtime                                                  | Blocking work                                    | Delay before profiler start |
-| -------------------------------------------------------- | ------------------------------------------------ | --------------------------: |
-| Node 24.21.0                                             | synchronous native wait (`execFileSync` / sleep) |                     2581 ms |
+| Runtime                                                 | Blocking work                                    | Delay before profiler start |
+| ------------------------------------------------------- | ------------------------------------------------ | --------------------------: |
+| Node 24.21.0                                            | synchronous native wait (`execFileSync` / sleep) |                     2581 ms |
 | Installed packaged Zyron Electron 43.4.1 / Node 24.18.1 | same native wait                                 |                     2569 ms |
-| Node 24.21.0                                             | JavaScript tight loop                            |                       14 ms |
+| Node 24.21.0                                            | JavaScript tight loop                            |                       14 ms |
 
 In native waits, sampling started at recovery and retained an `execFileSync` frame,
 but did not capture the preceding blocked interval. This is insufficient evidence

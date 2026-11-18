@@ -4292,9 +4292,7 @@ describe("ChatView transcript geometry (full app)", () => {
         .click();
       await page.getByRole("menuitemcheckbox", { name: "Void", exact: true }).click();
       await expect
-        .poll(
-          () => JSON.parse(localStorage.getItem("zyron:app-settings:v1") ?? "{}").railShortcuts,
-        )
+        .poll(() => JSON.parse(localStorage.getItem("zyron:app-settings:v1") ?? "{}").railShortcuts)
         .toEqual(["project:temporarily-absent", "space:void"]);
     } finally {
       await mounted.cleanup();
@@ -9503,10 +9501,7 @@ describe("ChatView transcript geometry (full app)", () => {
     let mounted: MountedChatView | undefined;
     try {
       await expect.poll(() => document.hasFocus()).toBe(false);
-      localStorage.setItem(
-        "zyron:app-settings:v1",
-        JSON.stringify({ composerEffortSlider: true }),
-      );
+      localStorage.setItem("zyron:app-settings:v1", JSON.stringify({ composerEffortSlider: true }));
       mounted = await mountChatView({
         viewport: DEFAULT_VIEWPORT,
         snapshot: createSnapshotForTargetUser({

@@ -201,10 +201,7 @@ try {
     "/docs/workflows/agent-gateway",
     "/docs/troubleshooting/report-a-problem",
   ]) {
-    assert.ok(
-      sitemap.includes(`https://ai.zyron.site${route}`),
-      `sitemap.xml is missing ${route}`,
-    );
+    assert.ok(sitemap.includes(`https://ai.zyron.site${route}`), `sitemap.xml is missing ${route}`);
   }
   for (const utilityPath of ["/llms.txt", "/llms-full.txt", "/ai.txt"]) {
     assert.equal(
@@ -232,9 +229,7 @@ try {
   assert.ok(llmsFull.includes("## Full documentation"));
   assert.ok(llmsFull.includes("# Report a problem"));
   assert.ok(
-    llmsFull.includes(
-      "Canonical URL: https://ai.zyron.site/docs/troubleshooting/report-a-problem",
-    ),
+    llmsFull.includes("Canonical URL: https://ai.zyron.site/docs/troubleshooting/report-a-problem"),
   );
   assert.ok(llmsFull.includes("claude --version"));
 

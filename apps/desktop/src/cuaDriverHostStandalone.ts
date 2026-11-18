@@ -71,9 +71,7 @@ async function main(): Promise<void> {
     }
   }
   if (Buffer.byteLength(capability, "utf8") < 32)
-    usage(
-      "capability must be at least 32 bytes (ZYRON_CUA_HOST_CAPABILITY or --capability-file).",
-    );
+    usage("capability must be at least 32 bytes (ZYRON_CUA_HOST_CAPABILITY or --capability-file).");
 
   const endpoint = option("--socket");
   if (endpoint) await clearStaleCuaHostSocket(endpoint);

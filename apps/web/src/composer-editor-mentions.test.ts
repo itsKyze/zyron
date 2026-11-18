@@ -264,9 +264,9 @@ describe("splitPromptIntoDisplaySegments", () => {
   });
 
   it("converts a trailing URL into a link segment for read-only rendering", () => {
-    expect(
-      splitPromptIntoDisplaySegments("https://github.com/itsKyze/zyron/pull/155"),
-    ).toEqual([{ type: "link", url: "https://github.com/itsKyze/zyron/pull/155" }]);
+    expect(splitPromptIntoDisplaySegments("https://github.com/itsKyze/zyron/pull/155")).toEqual([
+      { type: "link", url: "https://github.com/itsKyze/zyron/pull/155" },
+    ]);
   });
 
   it("renders a URL on its own line followed by trailing prose", () => {

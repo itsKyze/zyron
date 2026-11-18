@@ -8,11 +8,7 @@
 //          describePullRequestState, stripHtmlComments, PullRequestTimelineEvent,
 //          buildPullRequestTimelineEvents
 
-import type {
-  PullRequestDetail,
-  PullRequestDetailInput,
-  PullRequestState,
-} from "@zyron/contracts";
+import type { PullRequestDetail, PullRequestDetailInput, PullRequestState } from "@zyron/contracts";
 
 import type { RightDockPane } from "~/rightDockStore.logic";
 

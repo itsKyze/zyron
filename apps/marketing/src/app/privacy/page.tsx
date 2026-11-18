@@ -175,14 +175,14 @@ export default function PrivacyPage() {
 
         <Section title="Separate Beta diagnostics">
           <p>
-            Zyron Beta sends crash, error, release-health and daily usage diagnostics
-            automatically, using fixed categories, numeric source positions and bounded counters.
-            They exclude prompts, replies, file contents, credentials, error prose, function/file
-            names, log excerpts and raw crash memory. Stable does not send Beta diagnostics. Product
-            analytics consent does not control this separate Beta path. Older installed clients used
-            broader diagnostics; legacy text is stripped at ingestion and raw dump routes are
-            retired. Historical storage cleanup requires a separate operator action; this policy
-            does not claim previously received data has already been deleted. See the{" "}
+            Zyron Beta sends crash, error, release-health and daily usage diagnostics automatically,
+            using fixed categories, numeric source positions and bounded counters. They exclude
+            prompts, replies, file contents, credentials, error prose, function/file names, log
+            excerpts and raw crash memory. Stable does not send Beta diagnostics. Product analytics
+            consent does not control this separate Beta path. Older installed clients used broader
+            diagnostics; legacy text is stripped at ingestion and raw dump routes are retired.
+            Historical storage cleanup requires a separate operator action; this policy does not
+            claim previously received data has already been deleted. See the{" "}
             <a
               href="https://github.com/itsKyze/zyron/blob/main/docs/diagnostics.md"
               className="text-[var(--accent-link)]"

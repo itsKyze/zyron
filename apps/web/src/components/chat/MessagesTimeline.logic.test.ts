@@ -2934,9 +2934,7 @@ describe("deriveMessagesTimelineRows", () => {
     expect(monitorRow?.id).toBe("entry-m1");
     const assistant = messageRow(rows, "a1")!;
     expect(
-      (assistant.leadingWorkEntries ?? []).some(
-        (entry) => entry.zyronWorkerNotice !== undefined,
-      ) ||
+      (assistant.leadingWorkEntries ?? []).some((entry) => entry.zyronWorkerNotice !== undefined) ||
         (assistant.inlineWorkEntries ?? []).some(
           (entry) => entry.zyronWorkerNotice !== undefined,
         ) ||

@@ -27,7 +27,8 @@ export default function ProfileLandingPage() {
           Zyron Developer Profiles
         </h1>
         <p className="mt-3 max-w-md text-sm text-muted-foreground sm:text-base">
-          Explore developer activity, coding agent sessions, and public stats across the Zyron ecosystem.
+          Explore developer activity, coding agent sessions, and public stats across the Zyron
+          ecosystem.
         </p>
 
         <form onSubmit={handleSubmit} className="mt-8 flex w-full max-w-sm items-center gap-2">

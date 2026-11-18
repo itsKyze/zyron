@@ -71,9 +71,7 @@ function recordString(value: unknown, key: string): string | undefined {
  * used for Zyron's reserved MCP server. A similarly named tool from another
  * MCP server must continue through the provider's ordinary permission policy.
  */
-export function canonicalZyronComputerToolName(
-  value: unknown,
-): ZyronComputerToolName | undefined {
+export function canonicalZyronComputerToolName(value: unknown): ZyronComputerToolName | undefined {
   if (typeof value !== "string") return undefined;
   const normalized = value.trim().toLowerCase();
   const canonical = normalized.startsWith("mcp__zyron__")
@@ -91,9 +89,7 @@ export function canonicalZyronComputerToolName(
  * names are safe only after a separate protocol field has proved the server
  * identity (for example Codex's `serverName`).
  */
-export function qualifiedZyronComputerToolName(
-  value: unknown,
-): ZyronComputerToolName | undefined {
+export function qualifiedZyronComputerToolName(value: unknown): ZyronComputerToolName | undefined {
   if (typeof value !== "string") return undefined;
   const normalized = value.trim().toLowerCase();
   if (!normalized.startsWith("mcp__zyron__") && !normalized.startsWith("zyron_")) {

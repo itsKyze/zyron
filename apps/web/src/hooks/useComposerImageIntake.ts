@@ -81,9 +81,7 @@ export class ComposerImageIntakeQueue {
       .catch((cause) => {
         if (this.#isStale(generation)) return;
         this.#failureCount += 1;
-        job.onError(
-          cause instanceof Error ? cause.message : t("common:zyronCouldNotPrepareImage"),
-        );
+        job.onError(cause instanceof Error ? cause.message : t("common:zyronCouldNotPrepareImage"));
       })
       .finally(() => {
         if (this.#isStale(generation)) return;

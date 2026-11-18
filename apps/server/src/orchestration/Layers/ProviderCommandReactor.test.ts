@@ -15046,11 +15046,7 @@ describe("ProviderCommandReactor", () => {
     let refsBeforeRollback = "";
     harness.rollbackConversation.mockImplementation(() =>
       Effect.sync(() => {
-        refsBeforeRollback = git([
-          "for-each-ref",
-          "--format=%(refname)",
-          "refs/zyron/checkpoints",
-        ]);
+        refsBeforeRollback = git(["for-each-ref", "--format=%(refname)", "refs/zyron/checkpoints"]);
       }),
     );
     await Effect.runPromise(

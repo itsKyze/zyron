@@ -6,7 +6,7 @@ Analysis of the two recorded `123 × 45` runs on 11 September 2026. This is an i
 
 Both recorded turns used `gpt-5.6-sol`, medium reasoning, priority service. Zyron used the patched Cua 0.24.0 native revision 3. Codex used its own Computer Use integration; these are different native implementations.
 
-| Metric                           |   Zyron |                         Codex Computer Use |
+| Metric                           |    Zyron |                         Codex Computer Use |
 | -------------------------------- | -------: | -----------------------------------------: |
 | Provider turn, start to complete | 50.402 s |                                   17.177 s |
 | Computer tool duration, summed   | 23.227 s |                                    5.797 s |

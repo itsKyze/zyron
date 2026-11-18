@@ -6,10 +6,7 @@ import { HttpRouter, HttpServerResponse } from "effect/unstable/http";
 import { describe, expect, it, vi } from "vitest";
 import WebSocket from "ws";
 
-import {
-  COMPUTER_FRAME_RESYNC_MESSAGE,
-  COMPUTER_FRAME_WS_PATH,
-} from "@zyron/shared/computerFrame";
+import { COMPUTER_FRAME_RESYNC_MESSAGE, COMPUTER_FRAME_WS_PATH } from "@zyron/shared/computerFrame";
 import type { FrameSink } from "@zyron/shared/frameTransport";
 
 import { makeBoundedNodeHttpServer } from "../nodeHttpServer";

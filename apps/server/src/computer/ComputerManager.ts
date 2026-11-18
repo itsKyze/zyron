@@ -44,11 +44,7 @@ import {
   type ThreadComputerState,
 } from "@zyron/contracts";
 import { encodeComputerFrame } from "@zyron/shared/computerFrame";
-import {
-  classifyByFrameFlags,
-  FrameTransport,
-  type FrameSink,
-} from "@zyron/shared/frameTransport";
+import { classifyByFrameFlags, FrameTransport, type FrameSink } from "@zyron/shared/frameTransport";
 
 import {
   DesktopOperationQueue,
