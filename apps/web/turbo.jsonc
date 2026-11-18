@@ -1,0 +1,17 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      // The web bundle compiles its workspace dependencies from source (their
+      // `import` exports), so it does not wait for their build output.
+      // `transit` has no script: it only carries their source hashes into this
+      // task's cache key.
+      "dependsOn": ["^transit"],
+      "env": ["VITE_ZYRON_BILLING_ENABLED", "VITE_ZYRON_BILLING_SANDBOX"],
+    },
+    "dev": {
+      "persistent": true,
+    },
+  },
+}

@@ -1,0 +1,10 @@
+{
+  "version": "0.28.2",
+  "source": "7fe7c33f741ee2dd5961ba80044d59f93b48ba47",
+  "sha256": "d0c276a933465e70765d60e1c244d803276b5b5805e6b9e4311841169620470e",
+  "nativeRevision": 40,
+  "patchSha256": "4a6bef8081c9eacf66ef79488be4437df0375027747ded45fd7e971ce64ffd78",
+  "linuxBrowserPatchSha256": "915aa1694c7631b7fdcf47e20ff25c9d1ff7da66c3116f2c7e2d55c156d42c1f",
+  "linuxBrowserInputControl": 1,
+  "rustVersion": "1.100.0"
+}
