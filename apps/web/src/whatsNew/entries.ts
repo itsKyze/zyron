@@ -22,6 +22,44 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.3",
+    date: "Nov 19",
+    features: [
+      {
+        id: "visual-subagents-tree",
+        title: "Visual Subagents Tree View",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Interactive DAG diagram displaying host orchestrator threads connected to child subagent workers with live pulse indicators, duration timers, and layout switching.",
+      },
+      {
+        id: "developer-slash-commands",
+        title: "Developer Slash Commands",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Instant prompt shortcuts for /test (automated test generation), /audit (security review), /refactor (code cleanup), and /docs (technical documentation).",
+      },
+      {
+        id: "agent-audio-alerts",
+        title: "Agent Audio Notifications and Volume",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Zero-asset synthesized audio chimes for agent task completion and attention requests with volume controls and test previews under Settings -> Notifications.",
+      },
+      {
+        id: "settings-search-indexing",
+        title: "Expanded Settings Search",
+        badge: "Improved",
+        badgeTone: "improved",
+        description:
+          "Comprehensive search indexing covering newly added audio controls, volume settings, and notifications preferences.",
+      },
+    ],
+  },
+  {
     version: "1.6.2",
     date: "Nov 18",
     features: [

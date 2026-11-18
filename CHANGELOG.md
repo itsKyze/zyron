@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.3 — 2026-11-19
+
+**Visual subagents DAG tree view, developer slash commands, agent audio alert cues, and settings search indexing.**
+
+### Added
+
+- Visual Subagents Tree View: Interactive DAG layout representing host orchestrator threads and child subagent workers with real-time status pulses, durations, and layout switching (List/Tree).
+- Developer Slash Commands: Instant prompt templates for `/test` (automated test generation), `/audit` (security review), `/refactor` (code restructuring), and `/docs` (technical documentation).
+- Agent Audio Notifications: Web Audio API synthesized completion chime and attention alerts with toggle, volume slider (0-100%), and instant preview button under Settings -> Notifications.
+- Arabic and RTL localization catalogs with comprehensive terminology coverage across chat, workspace, settings, and automation.
+- Feature Badges: Minimal tactical badges (New, Improved, Fix) in release history and What's New.
+
 ## 1.6.2 — 2026-11-18
 
 **Local video playback, Codex Ultrafast, modern OTP authentication, sub-millisecond pairing, and verified feedback pipeline.**
