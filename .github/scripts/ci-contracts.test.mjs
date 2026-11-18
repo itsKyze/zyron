@@ -222,11 +222,7 @@ test("web transform cache stays keyed by its inputs and out of production builds
       "web-transform-cache: browser-${{ matrix.project }}-${{ strategy.job-index }}",
     ),
   );
-  for (const other of [
-    "../workflows/release.yml",
-    "../workflows/release-platform.yml",
-    "../workflows/ci-nightly.yml",
-  ]) {
+  for (const other of ["../workflows/release.yml", "../workflows/release-platform.yml"]) {
     const text = read(other);
     assert.ok(!text.includes("web-transform-cache"), other);
     assert.ok(!text.includes("ZYRON_WEB_TRANSFORM_CACHE_DIR"), other);

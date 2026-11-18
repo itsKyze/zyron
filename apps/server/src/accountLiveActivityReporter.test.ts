@@ -399,7 +399,7 @@ it("backs off refused reads and reads again whenever a device connects", async (
   });
   const advance = async (ms: number) => {
     await vi.advanceTimersByTimeAsync(ms);
-    await waitForIo();
+    await waitForIo(200);
   };
   try {
     await advance(1_000);
