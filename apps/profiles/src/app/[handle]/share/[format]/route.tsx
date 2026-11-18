@@ -70,7 +70,7 @@ export async function GET(request: Request, { params }: Params) {
 
 function ZyronMark({ edge, color }: { edge: number; color: string }) {
   return (
-    <svg viewBox="0 0 1024 1024" width={edge} height={edge} fill="none">
+    <svg viewBox="246 240 531 531" width={edge} height={edge} fill="none">
       {ZYRON_LOGO_PATHS.map((path) => (
         <path key={path} d={path} fill={color} />
       ))}

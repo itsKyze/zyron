@@ -7134,7 +7134,7 @@ export default function ChatView({
                       CHAT_COLUMN_FRAME_CLASS_NAME,
                     )}
                   >
-                    <ZyronLogo aria-label={t("chat:chat_zyronLogo")} className="size-10" />
+                    <ZyronLogo aria-label={t("chat:chat_zyronLogo")} className="size-16 mb-1" />
                     <h2
                       data-testid="empty-landing-heading"
                       // A combobox contributes its (empty) value, not its text, to the

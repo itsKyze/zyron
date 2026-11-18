@@ -15,7 +15,7 @@ export const ChatEmptyStateHero = function ChatEmptyStateHero({
 
   return (
     <div className="flex flex-col items-center gap-5 select-none">
-      <ZyronLogo aria-label={t("chat:chat_zyronLogo")} className="size-10" />
+      <ZyronLogo aria-label={t("chat:chat_zyronLogo")} className="size-16 mb-1" />
 
       <div className="flex flex-col items-center gap-0.5">
         <h1 className="text-2xl font-semibold text-foreground/90">
