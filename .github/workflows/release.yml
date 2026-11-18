@@ -35,6 +35,7 @@ permissions: {}
 env:
   # The same build setting is fingerprinted on every portable-output consumer.
   AZURE_TRUSTED_SIGNING_SUBJECT_DN: ${{ secrets.AZURE_TRUSTED_SIGNING_SUBJECT_DN }}
+  NODE_OPTIONS: "--max-old-space-size=6144"
 
 concurrency:
   group: zyron-desktop-release
