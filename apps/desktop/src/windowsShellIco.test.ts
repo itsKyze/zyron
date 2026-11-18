@@ -33,7 +33,7 @@ describe("windowsShellIco", () => {
     const ico = FS.readFileSync(appIconWindowsIco);
     const pngs = extractIcoPngImages(ico);
     expect(inspectIcoEntries(ico).every((entry) => entry.encoding === "png")).toBe(true);
-    expect(pngs.map((image) => image.width)).toEqual([16, 24, 32, 48, 64, 128, 256]);
+    expect(pngs.map((image) => image.width)).toEqual([16, 32, 48, 64, 128, 256]);
   });
 
   it("rebuilds a PNG ICO as BMP sizes used by the Win11 taskbar", () => {
