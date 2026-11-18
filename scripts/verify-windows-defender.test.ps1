@@ -129,7 +129,8 @@ throw 'Unexpected scanner command.'
                 }
                 function Start-Sleep {}
                 function Get-WinEvent {
-                    [pscustomobject]@{ Id = $(if ($state.fault -eq 'detection') { 1116 } else { 5007 }); Message = 'fixture'; TimeCreated = Get-Date }
+                    $msg = if ($state.fault -eq 'detection') { "Threat detected in $assets/installer.exe" } else { 'fixture' }
+                    [pscustomobject]@{ Id = $(if ($state.fault -eq 'detection') { 1116 } else { 5007 }); Message = $msg; TimeCreated = Get-Date }
                 }
                 function Remove-MpPreference($ExclusionPath, $ExclusionExtension, $ExclusionProcess) {
                     foreach ($key in $PSBoundParameters.Keys) { $state.preferences.$key = @() }
