@@ -7,7 +7,7 @@ import { Resend } from "resend";
 
 export const runtime = "nodejs";
 
-const FEEDBACK_ADDRESS = "feedback@zyron.site";
+const FEEDBACK_ADDRESS = "feedback@ai.zyron.site";
 const FORWARD_FROM = `Zyron Feedback <${FEEDBACK_ADDRESS}>`;
 
 function jsonResponse(body: unknown, status: number): Response {

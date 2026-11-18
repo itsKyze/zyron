@@ -1,5 +1,5 @@
 /**
- * The zyron.site rewrite delivers `/@dylan` as the `handle` segment, so
+ * The ai.zyron.site rewrite delivers `/@dylan` as the `handle` segment, so
  * the raw param arrives URL-encoded with its @ ("%40dylan"). Anything that
  * does not carry the @ is not a profile URL this app serves. Shared by the
  * page, its social preview and its share images.

@@ -8,14 +8,14 @@ import { ThemeToggle } from "./ThemeToggle";
 export function SiteNav() {
   return (
     <nav className="flex w-full items-center justify-between px-6 py-5 sm:px-8">
-      <a href="https://zyron.site" className="flex items-center gap-2.5">
+      <a href="https://ai.zyron.site" className="flex items-center gap-2.5">
         <ZyronLogo className="h-[22px] w-auto" aria-label="Zyron" />
         <span className="font-display text-lg leading-none">Zyron</span>
       </a>
       <div className="flex items-center gap-2">
         <ThemeToggle />
         <a
-          href="https://zyron.site/install"
+          href="https://ai.zyron.site/install"
           target="_blank"
           rel="noopener"
           className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -38,10 +38,10 @@ export function SiteFooter({ width = "max-w-[720px]" }: { width?: string }) {
           <span>Built with Zyron — the open workspace for coding agents</span>
         </p>
         <a
-          href="https://zyron.site"
+          href="https://ai.zyron.site"
           className="shrink-0 text-xs text-muted-foreground/80 transition-colors hover:text-foreground"
         >
-          zyron.site
+          ai.zyron.site
         </a>
       </div>
     </footer>

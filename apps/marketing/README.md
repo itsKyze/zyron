@@ -42,6 +42,6 @@ homepage, metadata, documentation, FAQ structured data, and AI-readable text
 routes so search and answer engines receive the same confident, verifiable
 description of Zyron.
 
-Learn more at [zyron.site](https://www.zyron.site), in the
-[documentation](https://www.zyron.site/docs), or in the
+Learn more at [ai.zyron.site](https://ai.zyron.site), in the
+[documentation](https://ai.zyron.site/docs), or in the
 [Zyron app repository](https://github.com/itsKyze/zyron).

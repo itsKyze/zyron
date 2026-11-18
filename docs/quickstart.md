@@ -19,7 +19,7 @@ clean starting state makes the agent's work much easier to review.
 Press `mod+n` or use the new-task control.
 
 For this first task, use the local checkout and run only one agent against the repository. Use a
-[Git worktree](https://www.zyron.site/docs/workflows/worktrees) when you begin running multiple
+[Git worktree](https://ai.zyron.site/docs/workflows/worktrees) when you begin running multiple
 tasks or want stronger isolation.
 
 ## 3. Choose a provider and model
@@ -90,9 +90,9 @@ That is Zyron's core workflow:
 
 ## Continue learning
 
-- [Core concepts](https://www.zyron.site/docs/getting-started/core-concepts) — projects, tasks,
+- [Core concepts](https://ai.zyron.site/docs/getting-started/core-concepts) — projects, tasks,
   environments, provider sessions, and Git ownership.
-- [Your first task](https://www.zyron.site/docs/getting-started/first-task) — the same workflow
+- [Your first task](https://ai.zyron.site/docs/getting-started/first-task) — the same workflow
   in more detail, including recovery and review.
-- [Best practices](https://www.zyron.site/docs/workflows/best-practices) — patterns Zyron
+- [Best practices](https://ai.zyron.site/docs/workflows/best-practices) — patterns Zyron
   maintainers rely on for real development work.

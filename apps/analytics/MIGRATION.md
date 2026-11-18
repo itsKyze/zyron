@@ -57,13 +57,13 @@ dashboard.
   covers the whole Cloudflare API, so an agent can use it for the steps marked
   (human) in Part A: adding the zone and creating DNS records. Use
   `cf cli search "<what you want>"` to find a command. Not needed for Part B.
-- **Vercel CLI** (`vercel dns ls zyron.site`) lists the current DNS
+- **Vercel CLI** (`vercel dns ls ai.zyron.site`) lists the current DNS
   records, if the agent has a Vercel login for the team that owns the domain.
 
 ## Where it goes
 
 - A Cloudflare account owned by Kyze (called NEW below).
-- Permanent URL: `https://diagnostics.zyron.site`. After this the URL never
+- Permanent URL: `https://diagnostics.ai.zyron.site`. After this the URL never
   depends on which account hosts it.
 - The old URL stays alive on Kartik's account as a small forwarder
   (`forwarder/`) so older Betas keep reporting. Kartik keeps that account
@@ -78,9 +78,9 @@ dashboard.
 
 Do not skip ahead. Part B step 5 needs the domain live, and Part D needs Part C.
 
-## Part A: move zyron.site DNS to Cloudflare
+## Part A: move ai.zyron.site DNS to Cloudflare
 
-Today `zyron.site` is registered at **Namecheap** with DNS on **Vercel**
+Today `ai.zyron.site` is registered at **Namecheap** with DNS on **Vercel**
 (the website is hosted on Vercel). A Worker custom domain needs the zone on
 Cloudflare. The website and email must keep working through this.
 
@@ -88,17 +88,17 @@ Records visible from outside today:
 
 | Name            | Type    | Value                                        |
 | --------------- | ------- | -------------------------------------------- |
-| `zyron.site` | A       | `216.150.16.65`, `216.150.1.129` (Vercel)    |
+| `ai.zyron.site` | A       | `216.150.16.65`, `216.150.1.129` (Vercel)    |
 | `www`           | A/CNAME | Vercel (apex redirects to `www`)             |
-| `zyron.site` | MX      | `10 inbound-smtp.eu-west-1.amazonaws.com`    |
-| `zyron.site` | TXT     | `google-site-verification=...`               |
-| `zyron.site` | CAA     | `pki.goog`, `sectigo.com`, `letsencrypt.org` |
+| `ai.zyron.site` | MX      | `10 inbound-smtp.eu-west-1.amazonaws.com`    |
+| `ai.zyron.site` | TXT     | `google-site-verification=...`               |
+| `ai.zyron.site` | CAA     | `pki.goog`, `sectigo.com`, `letsencrypt.org` |
 
 Vercel answers for every name (wildcard), so this list and Cloudflare's
 auto-scan can both miss records. **The Vercel DNS dashboard is the source of
 truth.** Look for DKIM `_domainkey` CNAMEs, `_vercel` TXT, and anything else.
 
-1. **(human, or agent with `cf`)** In NEW, add site `zyron.site`, Free plan.
+1. **(human, or agent with `cf`)** In NEW, add site `ai.zyron.site`, Free plan.
 2. **(human, or agent with Vercel and `cf` access)** Export every record from Vercel
    DNS and recreate each one in Cloudflare. Set Vercel website records to
    **DNS only** (grey cloud); Vercel handles its own TLS. Keep the CAA
@@ -108,9 +108,9 @@ truth.** Look for DKIM `_domainkey` CNAMEs, `_vercel` TXT, and anything else.
 4. Verify before moving on:
 
    ```bash
-   dig +short NS zyron.site          # Cloudflare nameservers
-   curl -sI https://www.zyron.site   # website still 200
-   dig +short MX zyron.site          # still the Amazon MX
+   dig +short NS ai.zyron.site          # Cloudflare nameservers
+   curl -sI https://ai.zyron.site   # website still 200
+   dig +short MX ai.zyron.site          # still the Amazon MX
    ```
 
    Also send a test email to an address on the domain if one is in use.
@@ -182,7 +182,7 @@ past 1 MiB.
    `wrangler.toml`, above the first `[section]`:
 
    ```toml
-   routes = [{ pattern = "diagnostics.zyron.site", custom_domain = true }]
+   routes = [{ pattern = "diagnostics.ai.zyron.site", custom_domain = true }]
    ```
 
    ```bash
@@ -197,14 +197,14 @@ past 1 MiB.
    keep dashboard access, set `DASHBOARD_PASSWORD_2` for him and send it
    privately. Never commit or paste passwords.
 
-   Verify: log in at `https://diagnostics.zyron.site`, set the range to
+   Verify: log in at `https://diagnostics.ai.zyron.site`, set the range to
    "All", and check the overview and Issues show the old data.
 
 5. Unfreeze: point the old URL at the new worker.
 
    ```bash
    CLOUDFLARE_ACCOUNT_ID=$OLD npx wrangler deploy -c forwarder/wrangler.toml \
-     --var TARGET:https://diagnostics.zyron.site
+     --var TARGET:https://diagnostics.ai.zyron.site
    # must print {"accepted":0,"received":0}, not a Cloudflare 404 page
    curl -s -X POST --data '' https://zyron-beta-diagnostics.kartik-9f9.workers.dev/v1/events
    ```
@@ -237,7 +237,7 @@ freeze.
 In `itsKyze/zyron`:
 
 1. Change `BETA_DIAGNOSTICS_ENDPOINT` in `apps/desktop/src/betaDiagnostics.ts`
-   to `https://diagnostics.zyron.site`.
+   to `https://diagnostics.ai.zyron.site`.
 2. Change the URL in `docs/diagnostics.md`, and the "maintainers' Cloudflare
    account" wording if you want.
 3. Nothing else references the old host (checked with a code search).
@@ -282,8 +282,8 @@ verified: whether the rate-limit bindings (`[[ratelimits]]`) deploy on Free. If
 
 ## Done means
 
-- [ ] `dig NS zyron.site` shows Cloudflare; website and email still work
-- [ ] New dashboard at `diagnostics.zyron.site` shows all old data
+- [ ] `dig NS ai.zyron.site` shows Cloudflare; website and email still work
+- [ ] New dashboard at `diagnostics.ai.zyron.site` shows all old data
 - [ ] Old URL returns `{"accepted":0,"received":0}` for an empty POST
 - [ ] Fresh events arrive on the new dashboard
 - [ ] `wrangler.toml` and `README.md` committed; local `export/` deleted

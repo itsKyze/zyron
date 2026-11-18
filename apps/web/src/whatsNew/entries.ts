@@ -345,7 +345,7 @@ export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
         id: "public-profile",
         title: "Share your Zyron profile",
         description:
-          "Alto lets you publish a profile at zyron.site/@handle and choose what appears on it.",
+          "Alto lets you publish a profile at ai.zyron.site/@handle and choose what appears on it.",
       },
       {
         id: "daily-fixes",

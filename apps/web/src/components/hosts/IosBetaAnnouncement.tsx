@@ -28,7 +28,7 @@ import {
 } from "./RemoteConnectionsAnnouncementHero";
 
 export const IOS_BETA_ANNOUNCEMENT_STORAGE_KEY = "zyron:ios-beta-announcement:v1";
-const IOS_BETA_PAGE_URL = "https://zyron.site/ios";
+const IOS_BETA_PAGE_URL = "https://ai.zyron.site/ios";
 // The top of the iPhone Inbox; the band crops the rest of the phone.
 const IPHONE_SCREEN_SRC = "/announcements/ios-beta-iphone.png";
 

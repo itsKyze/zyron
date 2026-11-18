@@ -6,9 +6,9 @@
   <p>
     <a href="https://github.com/itsKyze/zyron/releases/latest">Download</a>
     &nbsp;·&nbsp;
-    <a href="https://www.zyron.site/">Website</a>
+    <a href="https://ai.zyron.site/">Website</a>
     &nbsp;·&nbsp;
-    <a href="https://www.zyron.site/docs">Documentation</a>
+    <a href="https://ai.zyron.site/docs">Documentation</a>
     &nbsp;·&nbsp;
     <a href="./docs/external-mcp.md">MCP integration</a>
     &nbsp;·&nbsp;
@@ -117,7 +117,7 @@ Configure the shell to match the way you work with light and dark themes, typogr
 
 ### Desktop application
 
-Download the latest build from [GitHub Releases](https://github.com/itsKyze/zyron/releases) or visit [zyron.site](https://www.zyron.site/).
+Download the latest build from [GitHub Releases](https://github.com/itsKyze/zyron/releases) or visit [ai.zyron.site](https://ai.zyron.site/).
 
 Current native release targets are Windows x64, macOS Intel, macOS Apple Silicon, and Linux x64.
 

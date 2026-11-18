@@ -203,8 +203,8 @@ describe("display derivations", () => {
   });
 
   it("builds the public profile URL from the handle", () => {
-    expect(publicProfileUrl("ada")).toBe("https://zyron.site/@ada");
-    expect(publicProfileDisplayUrl("ada")).toBe("zyron.site/@ada");
+    expect(publicProfileUrl("ada")).toBe("https://ai.zyron.site/@ada");
+    expect(publicProfileDisplayUrl("ada")).toBe("ai.zyron.site/@ada");
   });
 
   it("uses the trial origin for opening, copying and sharing a public profile", () => {
@@ -220,7 +220,7 @@ describe("display derivations", () => {
     {
       profile: { handle: "ada", public: true },
       available: true,
-      expected: "https://zyron.site/@ada",
+      expected: "https://ai.zyron.site/@ada",
     },
     { profile: { handle: "ada", public: true }, available: false, expected: null },
     { profile: { handle: "ada", public: true }, available: undefined, expected: null },

@@ -197,7 +197,7 @@ Focused migration, backup/replay, analytics privacy/delivery and Remote transpor
 ### Added
 
 - Pair computers running Zyron on macOS, Windows x64, or Linux x64. Open remote workspaces, steer chats, and handle approvals while the source is online. The managed connector on a Mac requires macOS 15 or newer. iPhone and iPad support is coming soon.
-- Alto subscribers can publish a profile at `zyron.site/@handle` and control its visibility. Private Inbox recaps are independent of the public profile.
+- Alto subscribers can publish a profile at `ai.zyron.site/@handle` and control its visibility. Private Inbox recaps are independent of the public profile.
 - Signed-in computers automatically save daily activity recaps, including project names and activity totals. Inbox → Saved recaps opens this history when the source is offline. Recaps exclude prompt and chat text. Deleted recaps are not automatically re-created.
 - A one-time Remote Connections announcement opens after other startup hints and points to the account button. Manage Alto in Settings → Usage & limits.
 

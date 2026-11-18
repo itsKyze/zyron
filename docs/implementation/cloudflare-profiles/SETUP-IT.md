@@ -142,7 +142,7 @@ Quando il workflow è disponibile in Actions:
 
 L'indirizzo delle pagine pubblicate è:
 `https://zyron-profiles-trial.zyron-orgs.workers.dev/@nome`.
-Per ora non modificare DNS o routing di `zyron.site`.
+Per ora non modificare DNS o routing di `ai.zyron.site`.
 
 ## 5. Avviare un'app di prova isolata
 

@@ -3044,7 +3044,7 @@ export function createV1Routes(deps: {
 
   /**
    * The public profile behind a handle. Unauthenticated by design — it is
-   * the page at zyron.site/@handle — and served ONLY when the owner made
+   * the page at ai.zyron.site/@handle — and served ONLY when the owner made
    * the profile public. An unknown handle and a private profile answer the
    * same 404, so the route reveals nothing the owner did not publish.
    *

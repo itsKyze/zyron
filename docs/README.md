@@ -1,6 +1,6 @@
 # Zyron documentation
 
-The full product documentation lives at [zyron.site/docs](https://www.zyron.site/docs). This
+The full product documentation lives at [ai.zyron.site/docs](https://ai.zyron.site/docs). This
 folder keeps a small set of focused guides that stay in sync with the repository:
 
 - [Quickstart](./quickstart.md) — from installation to your first reviewed change in about five minutes.

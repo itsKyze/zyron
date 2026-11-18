@@ -338,7 +338,7 @@ export const profiles = pgTable("profiles", {
   accentColor: text("accent_color"),
   // Validated usernames only; NULL means no published social accounts.
   socialLinks: jsonb("social_links").$type<SocialLinks>(),
-  // Opt-in, default private: a profile is served at zyron.site/@handle
+  // Opt-in, default private: a profile is served at ai.zyron.site/@handle
   // exactly when its owner flipped this on.
   public: boolean("public").notNull().default(false),
   // The owner's UTC offset at last profile save, so public day/hour

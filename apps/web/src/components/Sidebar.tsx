@@ -989,7 +989,7 @@ function ProjectSortMenu({
   );
 }
 
-const ZYRON_DOCS_URL = "https://zyron.site/docs";
+const ZYRON_DOCS_URL = "https://ai.zyron.site/docs";
 
 // Latest curated releases surfaced directly in the help menu. Static data, so
 // computed once at module scope rather than per render.

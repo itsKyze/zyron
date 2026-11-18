@@ -120,14 +120,14 @@ Live GitHub URLs `https://github.com/itsKyze/zyron*` verified HTTP 200 on 2026-0
 
 ## Site metadata (src/lib/seo.ts)
 
-**Claims:** `https://www.zyron.site` (canonical site URL), `https://zyron.site`
+**Claims:** `https://ai.zyron.site` (canonical site URL), `https://ai.zyron.site`
 (author site), `https://x.com/itsKyze` (X profile), `https://youtube.com/@itsKyze`
 (YouTube channel), `https://schema.org` (schema vocabulary), `https://opensource.org/licenses/MIT`
 (MIT license).
 
 **Primary sources:** All verified HTTP 200 on 2026-08-07. `opensource.org/licenses/MIT`
-redirects to the canonical `https://opensource.org/license/MIT`; `zyron.site`
-redirects to `https://www.zyron.site/`; `youtube.com/@itsKyze` redirects to
+redirects to the canonical `https://opensource.org/license/MIT`; `ai.zyron.site`
+redirects to `https://ai.zyron.site/`; `youtube.com/@itsKyze` redirects to
 `https://www.youtube.com/@itsKyze`. Note: `youtube.com/@itsKyze` is in the check
 script's ALLOWLIST because YouTube occasionally returns ETIMEDOUT to non-browser agents
 (observed once on 2026-08-07, passes on retry and in curl verification).

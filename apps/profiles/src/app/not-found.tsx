@@ -11,10 +11,10 @@ export default function NotFound() {
           This handle doesn&apos;t exist, or its owner keeps their profile private.
         </p>
         <a
-          href="https://zyron.site"
+          href="https://ai.zyron.site"
           className="mt-4 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
-          zyron.site
+          ai.zyron.site
         </a>
       </div>
     </PageShell>

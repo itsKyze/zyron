@@ -16,7 +16,7 @@ import type {
 import { outboundHttp } from "@zyron/shared/outboundHttp";
 
 export const ZYRON_OAUTH_CLIENT_NAME = "Zyron";
-export const ZYRON_OAUTH_CLIENT_URI = "https://www.zyron.site";
+export const ZYRON_OAUTH_CLIENT_URI = "https://ai.zyron.site";
 const OAUTH_TIMEOUT_MS = 20_000;
 const OAUTH_MAX_RESPONSE_BYTES = 1024 * 1024;
 

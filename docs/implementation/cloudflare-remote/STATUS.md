@@ -178,7 +178,7 @@ Stable/Beta product collection stays opt-in and Stable diagnostics stay disabled
   refreshing profiles; no API key or new certificate was required.
 - **Public policy:** website privacy PR #14,
   merge `5441ab0`, is deployed by Vercel and verified at
-  [zyron.site/privacy](https://www.zyron.site/privacy). The maintained mirror
+  [ai.zyron.site/privacy](https://ai.zyron.site/privacy). The maintained mirror
   agrees. Contract, sponsorship, lint, types, links and builds pass on the Mini;
   Linux browser functional, accessibility, performance and all 11 visual checks
   pass. Nine stale golden images were identical between unchanged main and the
@@ -774,7 +774,7 @@ the unconfigured case; unrelated Worker bindings remain excluded. The API's
 existing config tests cover rejection of incomplete tunnel settings.
 
 Live inspection found no zones or tunnels in Zyron Orgs and none of those five
-bindings on the API. The operator chose `zyron.site` and deferred its DNS
+bindings on the API. The operator chose `ai.zyron.site` and deferred its DNS
 move from Vercel. The website can remain hosted on Vercel. The
 [readiness checklist](READINESS.md) records the remaining DNS preparation,
 runtime token/enrollment, Container restart and two-Mac acceptance steps.
@@ -812,7 +812,7 @@ binding change.
 ## Managed DNS activation — 2026-09-29
 
 After the operator approved the exact nameserver change, Namecheap saved
-`cecelia.ns.cloudflare.com` and `eric.ns.cloudflare.com` for `zyron.site`.
+`cecelia.ns.cloudflare.com` and `eric.ns.cloudflare.com` for `ai.zyron.site`.
 The registry confirms the delegation and Cloudflare reports the zone active in
 Zyron Orgs. The full ten-record Vercel inventory was copied before switching;
 website records remain DNS-only and point to the original Vercel destinations.
@@ -834,7 +834,7 @@ remote bindings, Container restart and real two-Mac acceptance remain pending.
 
 The operator explicitly approved creating `zyron-remote-tunnels-trial` with
 no expiration, cloudflared connector write in Zyron Orgs and DNS write limited
-to `zyron.site`. The token was stored outside the repository with private
+to `ai.zyron.site`. The token was stored outside the repository with private
 filesystem permissions and in the account API's Worker secrets. A single bulk
 secret update installed all four Cloudflare settings plus the one-user trial
 allowlist, preserving unrelated secrets. Runtime-token verification, tunnel

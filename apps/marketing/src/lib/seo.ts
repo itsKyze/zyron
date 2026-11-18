@@ -17,12 +17,12 @@ import {
 import { releaseDateIso } from "@/lib/releaseDates";
 
 /** Canonical production origin; keep aligned with Vercel's primary domain. */
-export const SITE_URL = "https://www.zyron.site";
+export const SITE_URL = "https://ai.zyron.site";
 
 export const SITE_NAME = PRODUCT_NAME;
 
 export const CREATOR_NAME = "Kyze";
-export const CREATOR_URL = "https://zyron.site";
+export const CREATOR_URL = "https://ai.zyron.site";
 export const GITHUB_REPO_URL = "https://github.com/itsKyze/zyron";
 export const GITHUB_RELEASES_URL = `${GITHUB_REPO_URL}/releases`;
 export const GITHUB_SPONSORS_URL = "https://github.com/sponsors/itsKyze";

@@ -323,7 +323,7 @@ of the conversation and follow replies as they stream.
 The continuation checks the saved conversation and workspace before repeating operations. Already accepted user messages take priority. Manual sends, Stop, pause, archive/delete, goal changes, model/account/route changes, or disabling the setting cancel the pending recovery; re-enabling does not restore cancelled waits. Unknown resets, an uncertain delivery, and providers still performing their own retry remain under existing manual or native recovery controls. Unsent composer drafts stay on their client.
 
 For work that should continue across several turns, set a deliberate
-[thread goal](https://www.zyron.site/docs/features/thread-goals). A goal can continue after a
+[thread goal](https://ai.zyron.site/docs/features/thread-goals). A goal can continue after a
 clean turn, but queued user work, approvals, questions, interruptions, failures, and pause rules
 remain in control.
 
@@ -333,9 +333,9 @@ idle goal outside Plan mode, so the visible message and first turn request are
 committed together. Older hosts keep the existing goal path; this optional capability does
 not change the required protocol revision or require re-pairing.
 
-Use a [thread fork](https://www.zyron.site/docs/workflows/forks) when a new task should inherit
+Use a [thread fork](https://ai.zyron.site/docs/workflows/forks) when a new task should inherit
 the conversation or split from one exact turn. Use a
-[handoff](https://www.zyron.site/docs/workflows/handoffs) when another provider should continue
+[handoff](https://ai.zyron.site/docs/workflows/handoffs) when another provider should continue
 the same task and ownership boundary.
 
 Use **Snooze** in a thread's context menu to return to it in 30 minutes, 1 hour,
@@ -425,7 +425,7 @@ When a managed worktree copies changes from an existing checkout, untracked nest
 linked worktrees stay in the source checkout. Relative symbolic links remain relative in the new
 checkout.
 
-Read the [Git worktrees guide](https://www.zyron.site/docs/workflows/worktrees) before starting
+Read the [Git worktrees guide](https://ai.zyron.site/docs/workflows/worktrees) before starting
 several tasks in the same repository.
 
 ### Cleaning up worktrees
@@ -478,7 +478,7 @@ configuration errors remain visible.
 
 ## Handoffs
 
-A [provider handoff](https://www.zyron.site/docs/workflows/handoffs) lets another supported
+A [provider handoff](https://ai.zyron.site/docs/workflows/handoffs) lets another supported
 provider continue the same task and working environment using the context Zyron passes to it.
 
 Use a handoff when:
@@ -623,7 +623,7 @@ Risky parallel tasks:
 - Depend on unstated assumptions from another task
 - All attempt to "finish the feature" without distinct ownership
 
-Read the [parallel agents guide](https://www.zyron.site/docs/workflows/parallel-agents) before
+Read the [parallel agents guide](https://ai.zyron.site/docs/workflows/parallel-agents) before
 scaling beyond one task.
 
 ## Useful shortcuts
@@ -647,7 +647,7 @@ returns to its source; a standalone Side in a non-source pane returns to the spl
 source. Split headers keep the diff panel toggle without showing change totals,
 and omit expand and replace controls.
 
-Check the [keyboard reference](https://www.zyron.site/docs/reference/keyboard-shortcuts) for the
+Check the [keyboard reference](https://ai.zyron.site/docs/reference/keyboard-shortcuts) for the
 complete current list.
 
 > **The rule that matters most:** a task is complete only after you understand and verify its result

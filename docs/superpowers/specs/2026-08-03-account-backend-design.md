@@ -324,7 +324,7 @@ until webhook cleanup exists (future work).
   `lastUsedAt` · `revokedAt` nullable.
 - `profiles`: `userId` (provider user id, pk) · `handle` (unique, immutable
   in V1) · `displayName` · `avatarColor` · `public` (default false — the
-  profile is served at zyron.site/@handle exactly when this is on) ·
+  profile is served at ai.zyron.site/@handle exactly when this is on) ·
   timestamps. A row existing is what "onboarding completed" means; there is
   deliberately no separate flag.
 - `usage_model_stats`: per-minute model-attributed counters — key
@@ -414,7 +414,7 @@ answers the same 404 for an unknown handle and a private profile. Skill
 stats and environment ids never appear in a public payload.
 
 **The page.** `apps/profiles` is a deliberately tiny Next.js app (own
-Vercel project) server-rendering `zyron.site/@handle` from the public
+Vercel project) server-rendering `ai.zyron.site/@handle` from the public
 JSON. The domain stays on the marketing project, which carries two rewrites
 (`/@:handle` → the profiles deployment, and `/profiles-assets/:path*` → the
 same deployment for its static assets — only the document is proxied, so the

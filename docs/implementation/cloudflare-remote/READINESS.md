@@ -54,7 +54,7 @@ The shared API is `https://zyron-account-api-trial.zyron-orgs.workers.dev`.
 Supabase connectivity, a real WorkOS login and the migrated account session
 have been verified. The remote-binding forwarding fix and all five remote
 bindings are deployed. A dedicated account-owned token permits cloudflared
-tunnel management in Zyron Orgs and DNS edits only in `zyron.site`; it has
+tunnel management in Zyron Orgs and DNS edits only in `ai.zyron.site`; it has
 no expiration, as requested by the operator, and can be revoked manually.
 It is stored in Worker secrets and a protected operator file outside the repo.
 Only the operator's trial WorkOS user is enrolled. The API Container restart
@@ -78,7 +78,7 @@ fresh file reads succeeded. The strengthened built-workspace E2E passes.
 See [the execution record](STATUS.md) for measured timings, test-suite
 limitations and the remaining live checks.
 
-`zyron.site` is now active in Zyron Orgs on Cloudflare's Free website plan;
+`ai.zyron.site` is now active in Zyron Orgs on Cloudflare's Free website plan;
 the account separately has Workers Paid. After explicit operator confirmation,
 Namecheap nameservers changed to `cecelia.ns.cloudflare.com` and
 `eric.ns.cloudflare.com`. The registry and Cloudflare zone API confirm the change.
@@ -98,7 +98,7 @@ the public DNS result with normal TLS validation passed `/health` and confirmed
 404 for app/admin paths; it does not prove the normal resolver path. Mail
 delivery and resolution from the MacBook's network still need live checks.
 
-Use `CLOUDFLARE_TUNNEL_DOMAIN=zyron.site`: generated hostnames are one label
+Use `CLOUDFLARE_TUNNEL_DOMAIN=ai.zyron.site`: generated hostnames are one label
 below it, within ordinary wildcard certificate coverage. The API creates only
 the generated tunnel CNAMEs and refuses unrelated record collisions.
 The token's DNS permission applies to the whole selected zone; Cloudflare does

@@ -95,8 +95,8 @@ Remote tunnel implementation is a separate outstanding feature.
    upgrade. This satisfies the Container plan prerequisite. The displayed base
    is USD 5/month plus usage, not a total cost cap.
 3. Choose durable service origins before changing clients. For example,
-   `diagnostics.zyron.site`, `accounts.zyron.site` and
-   `profiles.zyron.site` are proposed names, not deployed routes. Worker
+   `diagnostics.ai.zyron.site`, `accounts.ai.zyron.site` and
+   `profiles.ai.zyron.site` are proposed names, not deployed routes. Worker
    custom domains require an active Cloudflare zone. The domain currently uses
    Vercel nameservers; any DNS move needs a complete record inventory, including
    email verification records, before changing delegation. Account-local

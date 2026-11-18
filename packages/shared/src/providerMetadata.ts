@@ -37,7 +37,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "codex",
     displayName: PROVIDER_DISPLAY_NAMES.codex,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/codex",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/codex",
     supportsNativeTurnSteering: true,
     usage: {
       signInCommand: "codex login",
@@ -48,7 +48,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "claudeAgent",
     displayName: PROVIDER_DISPLAY_NAMES.claudeAgent,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/claude-code",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/claude-code",
     supportsNativeTurnSteering: true,
     usage: {
       signInCommand: "claude",
@@ -59,7 +59,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "cursor",
     displayName: PROVIDER_DISPLAY_NAMES.cursor,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/cursor",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/cursor",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "cursor-agent login",
@@ -70,7 +70,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "antigravity",
     displayName: PROVIDER_DISPLAY_NAMES.antigravity,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/antigravity",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/antigravity",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "agy",
@@ -81,7 +81,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "grok",
     displayName: PROVIDER_DISPLAY_NAMES.grok,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/grok",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/grok",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "grok login",
@@ -92,7 +92,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "droid",
     displayName: PROVIDER_DISPLAY_NAMES.droid,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/factory-droid",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/factory-droid",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "droid",
@@ -103,7 +103,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "opencode",
     displayName: PROVIDER_DISPLAY_NAMES.opencode,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/opencode",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/opencode",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "opencode auth login",
@@ -114,7 +114,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "pi",
     displayName: PROVIDER_DISPLAY_NAMES.pi,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/pi",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/pi",
     supportsNativeTurnSteering: true,
     usage: {
       signInCommand: "pi",
@@ -125,7 +125,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "devin",
     displayName: PROVIDER_DISPLAY_NAMES.devin,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/devin",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/devin",
     supportsNativeTurnSteering: false,
     usage: {
       signInCommand: "devin auth login",
@@ -136,7 +136,7 @@ export const PROVIDER_DESCRIPTORS = defineProviderDescriptors([
     kind: "omp",
     displayName: PROVIDER_DISPLAY_NAMES.omp,
     available: true,
-    setupDocsHref: "https://zyron.site/docs/providers/omp",
+    setupDocsHref: "https://ai.zyron.site/docs/providers/omp",
     supportsNativeTurnSteering: false,
     usage: null,
   },

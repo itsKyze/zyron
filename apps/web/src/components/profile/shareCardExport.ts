@@ -12,7 +12,7 @@ export { downloadBlob } from "~/lib/browserDownload";
 
 const SHARE_BRAND_HANDLE = "@tryZyron";
 export const SHARE_TWEET_TEXT = `Just checking my ${SHARE_BRAND_HANDLE} dev stats. Absolute masterpiece of an IDE.`;
-const SHARE_URL = "https://zyron.site";
+const SHARE_URL = "https://ai.zyron.site";
 
 export type ShareTarget = "x" | "linkedin" | "reddit";
 

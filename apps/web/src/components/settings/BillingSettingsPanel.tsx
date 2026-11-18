@@ -41,7 +41,7 @@ import { SettingsCard, SettingsListRow, SettingsSectionShell } from "./SettingsP
 
 type BillingPlan = AccountBillingStatus["plans"][number];
 
-/** What Alto adds on top of Free; mirrors the plan list on zyron.site/pricing. */
+/** What Alto adds on top of Free; mirrors the plan list on ai.zyron.site/pricing. */
 const ALTO_FEATURES: ReadonlyArray<{
   icon: typeof BellIcon;
   title: string;
@@ -60,7 +60,7 @@ const ALTO_FEATURES: ReadonlyArray<{
   },
   {
     icon: UserIcon,
-    title: "Your page at zyron.site/@handle",
+    title: "Your page at ai.zyron.site/@handle",
     description: "Share the activity, models and streaks from your usage.",
   },
   { icon: DeviceMobileIcon, title: "Remote from iPhone and iPad", soon: true },
@@ -439,7 +439,7 @@ function ActiveAltoCard(props: {
       />
       <SettingsListRow
         title="Public page"
-        description="Share your usage at zyron.site/@handle."
+        description="Share your usage at ai.zyron.site/@handle."
         actions={
           <Button variant="ghost" size="sm" onClick={() => props.onOpenSection("profile")}>
             Profile

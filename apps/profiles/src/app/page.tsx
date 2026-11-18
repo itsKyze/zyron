@@ -4,5 +4,5 @@ import { redirect } from "next/navigation";
 // reached through the /@handle rewrite. A direct hit on its root (the bare
 // Vercel deployment URL) goes home.
 export default function Root() {
-  redirect("https://zyron.site");
+  redirect("https://ai.zyron.site");
 }

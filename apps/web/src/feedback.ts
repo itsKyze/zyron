@@ -55,7 +55,7 @@ export interface FeedbackSubmission {
   diagnostics: FeedbackDiagnostics;
 }
 
-const DEFAULT_FEEDBACK_ENDPOINT = "https://www.zyron.site/api/feedback";
+const DEFAULT_FEEDBACK_ENDPOINT = "https://ai.zyron.site/api/feedback";
 const FEEDBACK_REQUEST_TIMEOUT_MS = 20_000;
 
 function formatStateFlags(diagnostics: FeedbackThreadContext): string {

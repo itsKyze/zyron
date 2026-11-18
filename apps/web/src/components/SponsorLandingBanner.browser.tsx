@@ -24,7 +24,7 @@ afterEach(() => {
 it("opens the sponsor page externally without dismissing the banner", async () => {
   await render(<SponsorLandingBanner />);
   await page.getByRole("button", { name: /Support Zyron/ }).click();
-  expect(openExternal).toHaveBeenCalledExactlyOnceWith("https://www.zyron.site/sponsor");
+  expect(openExternal).toHaveBeenCalledExactlyOnceWith("https://ai.zyron.site/sponsor");
   await expect.element(page.getByTestId("sponsor-landing-banner")).toBeVisible();
 });
 

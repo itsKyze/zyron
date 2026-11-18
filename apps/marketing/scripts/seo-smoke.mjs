@@ -149,11 +149,11 @@ try {
   assert.equal(docsMarkdownResponse.headers.get("x-robots-tag"), "noindex, follow");
   assert.equal(
     docsMarkdownResponse.headers.get("link"),
-    '<https://www.zyron.site/docs/providers/claude-code>; rel="canonical"',
+    '<https://ai.zyron.site/docs/providers/claude-code>; rel="canonical"',
   );
   for (const marker of [
     "# Claude Code",
-    "Canonical URL: https://www.zyron.site/docs/providers/claude-code",
+    "Canonical URL: https://ai.zyron.site/docs/providers/claude-code",
     "## Install",
     "claude --version",
   ]) {
@@ -180,7 +180,7 @@ try {
     "User-Agent: PerplexityBot",
     "User-Agent: GPTBot",
     "Disallow: /api/",
-    "Sitemap: https://www.zyron.site/sitemap-index.xml",
+    "Sitemap: https://ai.zyron.site/sitemap-index.xml",
   ]) {
     assert.ok(robots.includes(marker), `robots.txt is missing ${marker}`);
   }
@@ -191,8 +191,8 @@ try {
     2,
     "sitemap index must contain the main and changelog sitemaps",
   );
-  assert.ok(sitemapIndex.includes("https://www.zyron.site/sitemap.xml"));
-  assert.ok(sitemapIndex.includes("https://www.zyron.site/changelog/sitemap.xml"));
+  assert.ok(sitemapIndex.includes("https://ai.zyron.site/sitemap.xml"));
+  assert.ok(sitemapIndex.includes("https://ai.zyron.site/changelog/sitemap.xml"));
 
   const sitemap = await readRoute("/sitemap.xml", /application\/xml/i);
   for (const route of [
@@ -202,13 +202,13 @@ try {
     "/docs/troubleshooting/report-a-problem",
   ]) {
     assert.ok(
-      sitemap.includes(`https://www.zyron.site${route}`),
+      sitemap.includes(`https://ai.zyron.site${route}`),
       `sitemap.xml is missing ${route}`,
     );
   }
   for (const utilityPath of ["/llms.txt", "/llms-full.txt", "/ai.txt"]) {
     assert.equal(
-      sitemap.includes(`https://www.zyron.site${utilityPath}`),
+      sitemap.includes(`https://ai.zyron.site${utilityPath}`),
       false,
       `sitemap.xml should not advertise ${utilityPath} as a search-result page`,
     );
@@ -220,9 +220,9 @@ try {
     "## Product model",
     "One task owns one line of work",
     "## Documentation index",
-    "https://www.zyron.site/docs/providers.md",
-    "https://www.zyron.site/docs/workflows.md",
-    "https://www.zyron.site/docs/troubleshooting.md",
+    "https://ai.zyron.site/docs/providers.md",
+    "https://ai.zyron.site/docs/workflows.md",
+    "https://ai.zyron.site/docs/troubleshooting.md",
     "robots.txt and page-level indexing directives remain authoritative",
   ]) {
     assert.ok(llms.includes(marker), `llms.txt is missing ${marker}`);
@@ -233,7 +233,7 @@ try {
   assert.ok(llmsFull.includes("# Report a problem"));
   assert.ok(
     llmsFull.includes(
-      "Canonical URL: https://www.zyron.site/docs/troubleshooting/report-a-problem",
+      "Canonical URL: https://ai.zyron.site/docs/troubleshooting/report-a-problem",
     ),
   );
   assert.ok(llmsFull.includes("claude --version"));
@@ -242,7 +242,7 @@ try {
   assert.ok(ai.includes("AI search and user-directed retrieval agents:"));
   assert.ok(ai.includes("Model-development controls, separate from search visibility:"));
   assert.ok(ai.includes("Supported runtimes: Claude Code, Codex, OpenCode"));
-  assert.ok(ai.includes("Markdown documentation: https://www.zyron.site/docs.md"));
+  assert.ok(ai.includes("Markdown documentation: https://ai.zyron.site/docs.md"));
   assert.ok(
     ai.includes("This file is informational and does not grant or revoke crawler permission."),
   );

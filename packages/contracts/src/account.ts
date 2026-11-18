@@ -188,7 +188,7 @@ export const AccountProfile = Schema.Struct({
   /** The owner's published social usernames; absent (older servers) means none. */
   socialLinks: Schema.optional(Schema.NullOr(AccountProfileSocialLinks)),
   /**
-   * Whether the profile is served publicly at zyron.site/@handle.
+   * Whether the profile is served publicly at ai.zyron.site/@handle.
    * Optional-with-default rather than required so a client built before
    * visibility existed still decodes a server's answer; absent means
    * private, which is also the default for every new profile.

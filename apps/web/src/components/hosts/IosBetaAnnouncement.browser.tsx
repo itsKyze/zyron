@@ -88,7 +88,7 @@ describe("IosBetaAnnouncement", () => {
     await renderAnnouncement();
     await page.getByRole("button", { name: "Join the beta" }).click();
 
-    expect(fixture.openExternal).toHaveBeenCalledExactlyOnceWith("https://zyron.site/ios");
+    expect(fixture.openExternal).toHaveBeenCalledExactlyOnceWith("https://ai.zyron.site/ios");
     expect(acknowledged()).toEqual({ acknowledged: true });
     await expect.element(page.getByRole("dialog", { name: TITLE })).not.toBeInTheDocument();
   });

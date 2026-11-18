@@ -15,7 +15,7 @@ import { BillingCatalogUnavailableError, type BillingProvider } from "../billing
 import { createBillingService } from "../billing/service";
 
 const url = process.env.TEST_DATABASE_URL;
-const webOrigin = "https://www.zyron.site";
+const webOrigin = "https://ai.zyron.site";
 describe.skipIf(!url)("authenticated sandbox billing API", () => {
   let isolated: Awaited<ReturnType<typeof createIsolatedTestDatabase>>;
   let database: ReturnType<typeof createDb>;

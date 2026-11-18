@@ -36,9 +36,9 @@ public. The app does not need persistent R2/DO caching for this read path.
 | Variable                 | Purpose                                                                                                                                                                                                         |
 | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ACCOUNT_API_URL`        | Verified account API origin. The historical deployment defaults to `https://api.zyron.vrbty.dev`; the isolated trial deliberately uses a non-routable placeholder until configured.                            |
-| `PROFILES_PUBLIC_ORIGIN` | Public origin used for absolute social preview URLs. The trial uses `https://zyron.site`, served through the marketing proxy.                                                                                |
+| `PROFILES_PUBLIC_ORIGIN` | Public origin used for absolute social preview URLs. The trial uses `https://ai.zyron.site`, served through the marketing proxy.                                                                                |
 | `PROFILE_PROXY_SECRET`   | Optional shared secret matching the account API; allows per-visitor rate limiting. Set as a Worker secret, never in source.                                                                                     |
-| `PROFILES_ASSET_PREFIX`  | Asset prefix for proxied deployments, set at build time for Next.js bundles and at runtime for the favicon. The trial uses `https://www.zyron.site/profiles-assets`; leave unset for standalone deployments. |
+| `PROFILES_ASSET_PREFIX`  | Asset prefix for proxied deployments, set at build time for Next.js bundles and at runtime for the favicon. The trial uses `https://ai.zyron.site/profiles-assets`; leave unset for standalone deployments. |
 | `MARKETING_ORIGIN`       | Optional origin for non-profile routes in the historical single-domain deployment. Unset on the trial.                                                                                                          |
 
 ## Local development and verification
@@ -53,7 +53,7 @@ Point `ACCOUNT_API_URL` at an isolated local API. From `apps/profiles`, build
 and dry-run the trial without publishing:
 
 ```sh
-PROFILES_ASSET_PREFIX=https://www.zyron.site/profiles-assets bunx opennextjs-cloudflare build --config wrangler.trial.jsonc
+PROFILES_ASSET_PREFIX=https://ai.zyron.site/profiles-assets bunx opennextjs-cloudflare build --config wrangler.trial.jsonc
 bunx wrangler deploy --config wrangler.trial.jsonc --dry-run
 ```
 
@@ -61,7 +61,7 @@ If this machine cannot run Turbopack's local build process, the supported
 Webpack build can be packaged separately:
 
 ```sh
-PROFILES_ASSET_PREFIX=https://www.zyron.site/profiles-assets NEXT_PRIVATE_STANDALONE=true bunx next build --webpack
+PROFILES_ASSET_PREFIX=https://ai.zyron.site/profiles-assets NEXT_PRIVATE_STANDALONE=true bunx next build --webpack
 bunx opennextjs-cloudflare build --skipNextBuild --config wrangler.trial.jsonc
 ```
 
@@ -76,7 +76,7 @@ matching account service. Then, from `apps/profiles`:
 ```sh
 bunx wrangler whoami
 bunx wrangler secret put PROFILE_PROXY_SECRET --config wrangler.trial.jsonc
-PROFILES_ASSET_PREFIX=https://www.zyron.site/profiles-assets bunx opennextjs-cloudflare build --config wrangler.trial.jsonc
+PROFILES_ASSET_PREFIX=https://ai.zyron.site/profiles-assets bunx opennextjs-cloudflare build --config wrangler.trial.jsonc
 bunx opennextjs-cloudflare deploy --config wrangler.trial.jsonc
 ```
 
@@ -98,7 +98,7 @@ Durable Object migrations or data as part of the trial.
 
 Desktop exposes **View public profile** in the account menu and **Open profile**
 in Settings → Profile. They share `publicProfileUrl`, also used by Copy/Share;
-`VITE_PROFILES_PUBLIC_ORIGIN` overrides the default `https://zyron.site`.
+`VITE_PROFILES_PUBLIC_ORIGIN` overrides the default `https://ai.zyron.site`.
 Only explicitly public account profiles expose an opening/sharing action.
 The account API reserves lowercase handles through its existing PostgreSQL
 unique constraint, including concurrent claims and private profiles. A
@@ -153,7 +153,7 @@ existing proxy secret and explicitly override the trial API placeholder.
 From `apps/profiles` after the API and schema are ready:
 
 ```sh
-PROFILES_ASSET_PREFIX=https://www.zyron.site/profiles-assets NEXT_PRIVATE_STANDALONE=true bunx next build --webpack
+PROFILES_ASSET_PREFIX=https://ai.zyron.site/profiles-assets NEXT_PRIVATE_STANDALONE=true bunx next build --webpack
 bunx opennextjs-cloudflare build --skipNextBuild --config wrangler.trial.jsonc
 bunx wrangler deploy --config wrangler.trial.jsonc --var ACCOUNT_API_URL:https://zyron-account-api-trial.zyron-orgs.workers.dev
 ```
@@ -187,9 +187,9 @@ from Cloudflare without sending the browser to workers.dev:
   `/profiles-assets/_next/static/*` and `/profiles-assets/favicon.ico` map to the
   corresponding paths at the Worker root.
 
-Both rules only match `zyron.site` and `www.zyron.site`. The website's
+Both rules only match `ai.zyron.site` and `ai.zyron.site`. The website's
 existing apex-to-www redirect remains, so the final URL is
-`https://www.zyron.site/@handle`. The root, install page, marketing assets and
+`https://ai.zyron.site/@handle`. The root, install page, marketing assets and
 other project domains are unaffected. No DNS or security-policy change is needed.
 
 The **Deploy Profiles** workflow sets `PROFILES_ASSET_PREFIX` during the build;

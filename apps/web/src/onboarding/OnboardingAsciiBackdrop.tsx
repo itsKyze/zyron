@@ -1,6 +1,6 @@
 // FILE: OnboardingAsciiBackdrop.tsx
 // Purpose: The character-built landscape behind the first-run onboarding, shared with the
-//          zyron.site hero. Four layered SVGs per theme are decoded off-thread and
+//          ai.zyron.site hero. Four layered SVGs per theme are decoded off-thread and
 //          revealed together, so the artwork never paints layer by layer.
 // Layer: Web UI decoration (aria-hidden, pointer-events none)
 

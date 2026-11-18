@@ -8,16 +8,16 @@ consistent workspace.
 
 | Provider                                                                | What Zyron connects to                                        |
 | ----------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Claude Code](https://www.zyron.site/docs/providers/claude-code)     | Your installed Claude Code runtime and authenticated account   |
-| [Codex](https://www.zyron.site/docs/providers/codex)                 | Your installed and authenticated Codex CLI                     |
-| [OpenCode](https://www.zyron.site/docs/providers/opencode)           | Your local OpenCode runtime and configured model providers     |
-| [Cursor](https://www.zyron.site/docs/providers/cursor)               | Your local Cursor agent runtime and account                    |
+| [Claude Code](https://ai.zyron.site/docs/providers/claude-code)     | Your installed Claude Code runtime and authenticated account   |
+| [Codex](https://ai.zyron.site/docs/providers/codex)                 | Your installed and authenticated Codex CLI                     |
+| [OpenCode](https://ai.zyron.site/docs/providers/opencode)           | Your local OpenCode runtime and configured model providers     |
+| [Cursor](https://ai.zyron.site/docs/providers/cursor)               | Your local Cursor agent runtime and account                    |
 | [Devin](https://docs.devin.ai)                                          | Your installed and authenticated Devin CLI                     |
-| [Antigravity](https://www.zyron.site/docs/providers/antigravity)     | Your installed and authenticated Antigravity CLI               |
-| [Grok Build](https://www.zyron.site/docs/providers/grok)             | Your configured Grok Build runtime and access                  |
-| [Pi](https://www.zyron.site/docs/providers/pi)                       | Pi and the model providers configured through it               |
-| [Oh My Pi](https://www.zyron.site/docs/providers/omp)                | Your installed Oh My Pi runtime and configured model providers |
-| [Factory Droid](https://www.zyron.site/docs/providers/factory-droid) | Your installed and authenticated Droid runtime                 |
+| [Antigravity](https://ai.zyron.site/docs/providers/antigravity)     | Your installed and authenticated Antigravity CLI               |
+| [Grok Build](https://ai.zyron.site/docs/providers/grok)             | Your configured Grok Build runtime and access                  |
+| [Pi](https://ai.zyron.site/docs/providers/pi)                       | Pi and the model providers configured through it               |
+| [Oh My Pi](https://ai.zyron.site/docs/providers/omp)                | Your installed Oh My Pi runtime and configured model providers |
+| [Factory Droid](https://ai.zyron.site/docs/providers/factory-droid) | Your installed and authenticated Droid runtime                 |
 
 Provider availability can differ between the current stable release and development builds. Use the
 provider settings in your installed Zyron version as the authoritative list for that build.
@@ -780,7 +780,7 @@ launch tests use disposable CLI fixtures and do not authenticate personal accoun
 
 ## Switching providers
 
-A [provider handoff](https://www.zyron.site/docs/workflows/handoffs) allows another provider to
+A [provider handoff](https://ai.zyron.site/docs/workflows/handoffs) allows another provider to
 continue the task and work in the same environment with the context Zyron passes to it.
 
 Continue task, Resume task, workflow resumes, and plan follow-ups use the same handoff eligibility checks
@@ -808,10 +808,10 @@ Check these in order:
 6. Does restarting Zyron refresh the provider status?
 7. Does the provider itself report a service or account error?
 
-Continue with the [troubleshooting hub](https://www.zyron.site/docs/troubleshooting) when the
+Continue with the [troubleshooting hub](https://ai.zyron.site/docs/troubleshooting) when the
 runtime works independently but remains unavailable in Zyron.
 
-Use the dedicated [provider guides](https://www.zyron.site/docs/providers) for exact
+Use the dedicated [provider guides](https://ai.zyron.site/docs/providers) for exact
 installation, authentication, verification, capabilities, update paths, and provider-specific
 failure checks.
 

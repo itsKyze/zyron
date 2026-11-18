@@ -142,11 +142,11 @@ export function accountFirstName(me: AccountMe): string {
 export function publicProfileUrl(handle: string): string {
   return new URL(
     `/@${encodeURIComponent(handle)}`,
-    import.meta.env.VITE_PROFILES_PUBLIC_ORIGIN || "https://zyron.site",
+    import.meta.env.VITE_PROFILES_PUBLIC_ORIGIN || "https://ai.zyron.site",
   ).href;
 }
 
-/** Schemeless form for inline copy ("zyron.site/@ada"). */
+/** Schemeless form for inline copy ("ai.zyron.site/@ada"). */
 export function publicProfileDisplayUrl(handle: string): string {
   return publicProfileUrl(handle).replace(/^https?:\/\//, "");
 }
