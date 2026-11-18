@@ -28,54 +28,72 @@ export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
       {
         id: "tactical-otp",
         title: "Tactical OTP verification",
+        badge: "New",
+        badgeTone: "new",
         description:
           "Redesigned 6-digit verification code input with 3×3 tactical grouping, subtle dark glass styling, glowing focus accents, and direct clipboard paste.",
       },
       {
         id: "developer-profiles",
         title: "Developer profiles at @handle",
+        badge: "New",
+        badgeTone: "new",
         description:
           "Dedicated developer profile landing pages at zyron.site/@handle with instant handle resolution and social metadata.",
       },
       {
         id: "device-pairing",
         title: "Remote device connectivity",
+        badge: "New",
+        badgeTone: "new",
         description:
-          "Control workstations securely across devices under Settings ➡️ Devices with automated mTLS and Cloudflare Tunnel support.",
+          "Control workstations securely across devices under Settings -> Devices with automated mTLS and Cloudflare Tunnel support.",
       },
       {
         id: "feedback-pipeline",
         title: "Direct feedback delivery",
+        badge: "New",
+        badgeTone: "new",
         description:
           "Streamlined one-click feedback delivery directly to the maintainers through verified email dispatch.",
       },
       {
         id: "local-video",
         title: "Play local videos",
+        badge: "New",
+        badgeTone: "new",
         description:
           "Play and seek local videos in file previews and inline in chat, with download and retry options when playback is unavailable.",
       },
       {
         id: "codex-ultrafast",
         title: "Choose Codex Ultrafast",
+        badge: "Improved",
+        badgeTone: "improved",
         description:
           "Choose Standard, Fast or Ultrafast for Codex models that offer those speeds on your account.",
       },
       {
         id: "worktrees",
         title: "Faster, more reliable worktrees",
+        badge: "Improved",
+        badgeTone: "improved",
         description:
           "Worktree creation no longer waits for unrelated Git and GitHub refreshes, and copying local changes preserves relative symlinks.",
       },
       {
         id: "remote-and-iphone",
         title: "Zyron for iPhone is in beta",
+        badge: "Beta",
+        badgeTone: "improved",
         description:
           "Discover the iPhone beta from Zyron and remove empty Remote projects without deleting their files.",
       },
       {
         id: "reliability",
         title: "More reliable agents and capture",
+        badge: "Fix",
+        badgeTone: "fix",
         description:
           "Pi chats use their dedicated workspace, OpenCode refreshes changed model configuration, and macOS capture stops more reliably after work ends.",
       },

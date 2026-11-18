@@ -11,7 +11,7 @@
 - Discover the Zyron for iPhone beta from an eligible desktop launch announcement. Remove empty Remote projects from the sidebar without deleting their files; archived chats and unsent drafts prevent removal.
 - Modernized 6-digit OTP verification code input with 3×3 tactical pin grouping, subtle dark glass styling, glowing focus accents, and direct clipboard paste support.
 - Developer profiles discovery landing page at `zyron.site/@handle` with instant handle lookup and responsive social card metadata.
-- Remote device connectivity and workstation control under `Settings ➡️ Devices` with automated mTLS and Cloudflare Tunnel support.
+- Remote device connectivity and workstation control under `Settings -> Devices` with automated mTLS and Cloudflare Tunnel support.
 - Streamlined one-click feedback delivery through verified Resend dispatch at `feedback@zyron.site`.
 
 ### Changed

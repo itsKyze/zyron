@@ -19,6 +19,8 @@ export interface WhatsNewFeature {
   readonly id: string;
   readonly title: string;
   readonly description: string;
+  readonly badge?: string;
+  readonly badgeTone?: "new" | "improved" | "fix" | "default";
   readonly image?: string;
   readonly imageAlt?: string;
   readonly details?: string;
