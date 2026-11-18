@@ -1,4 +1,9 @@
 {
+  "sound": "الصوت",
+  "enableSoundsForAgent": "تفعيل أصوات الوكيل",
+  "playASoundWhenYourActionIsNeeded": "تشغيل نغمة صوتية عند طلب إجراء منك أو عند انتهاء الوكيل من العمل.",
+  "agentSoundVolume": "مستوى الصوت",
+  "setTheVolumeOfAgentSounds": "تحديد مستوى صوت تنبيهات الوكيل.",
   "general": "عام",
   "appearance": "المظهر",
   "models": "النماذج",

@@ -270,6 +270,30 @@ const COMPOSER_SLASH_COMMAND_DEFINITIONS: Record<
     description: "Create a scheduled automation from this prompt",
     source: "app",
   },
+  test: {
+    command: "test",
+    label: "/test",
+    description: "Generate and execute tests for current changes or workspace code",
+    source: "app",
+  },
+  audit: {
+    command: "audit",
+    label: "/audit",
+    description: "Run security and vulnerability audit on specified code or dependencies",
+    source: "app",
+  },
+  refactor: {
+    command: "refactor",
+    label: "/refactor",
+    description: "Refactor code for cleanliness, maintainability, and architectural structure",
+    source: "app",
+  },
+  docs: {
+    command: "docs",
+    label: "/docs",
+    description: "Generate documentation, guides, or API specifications",
+    source: "app",
+  },
 };
 
 export function isBuiltInComposerSlashCommand(value: string): value is ComposerSlashCommand {

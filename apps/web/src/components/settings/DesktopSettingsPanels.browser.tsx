@@ -18,6 +18,8 @@ const harness = vi.hoisted(() => ({
     enableAppSnap: false,
     enableSystemTaskCompletionNotifications: false,
     enableTaskCompletionToasts: true,
+    enableAgentNotificationSounds: true,
+    agentSoundVolume: 100,
   },
   defaults: {
     appSnapPlaySound: true,
@@ -25,6 +27,8 @@ const harness = vi.hoisted(() => ({
     enableAppSnap: false,
     enableSystemTaskCompletionNotifications: false,
     enableTaskCompletionToasts: true,
+    enableAgentNotificationSounds: true,
+    agentSoundVolume: 100,
   },
   updateSettings: vi.fn(),
   readBrowserPermission: vi.fn(() => "default"),

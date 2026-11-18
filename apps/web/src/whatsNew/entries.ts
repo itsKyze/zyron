@@ -34,14 +34,6 @@ export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
           "Full Arabic translation catalogs and automatic right-to-left (RTL) layout support across chat, workspace, common actions, and settings.",
       },
       {
-        id: "developer-api-docs",
-        title: "Developer API portal and reference",
-        badge: "New",
-        badgeTone: "new",
-        description:
-          "Interactive developer documentation and protocol reference hosted at /docs with copyable curl examples and schema definitions.",
-      },
-      {
         id: "tactical-otp",
         title: "Tactical OTP verification",
         badge: "New",

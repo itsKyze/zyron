@@ -233,6 +233,7 @@ export const DEFAULT_RAIL_USAGE_WINDOW: RailUsageWindow = "both";
 export const VoiceEnterBehavior = Schema.Literals(["stop", "send"]);
 export type VoiceEnterBehavior = typeof VoiceEnterBehavior.Type;
 export const DEFAULT_VOICE_ENTER_BEHAVIOR: VoiceEnterBehavior = "stop";
+export const DEFAULT_AGENT_SOUND_VOLUME = 100;
 export const UiDensity = Schema.Literals(UI_DENSITY_MODES);
 export type UiDensity = typeof UiDensity.Type;
 export { DEFAULT_UI_DENSITY };
@@ -554,6 +555,8 @@ export const AppSettingsSchema = Schema.Struct({
   useCustomTitleBar: Schema.Boolean.pipe(withDefaults(() => true)),
   enableTaskCompletionToasts: Schema.Boolean.pipe(withDefaults(() => true)),
   enableSystemTaskCompletionNotifications: Schema.Boolean.pipe(withDefaults(() => true)),
+  enableAgentNotificationSounds: Schema.Boolean.pipe(withDefaults(() => true)),
+  agentSoundVolume: Schema.Number.pipe(withDefaults(() => DEFAULT_AGENT_SOUND_VOLUME)),
   // Finished-work alerts wait for the agent's background subagents too, and a
   // subagent's own thread never alerts. Off alerts every time any of them stops.
   notifyAfterSubagentsFinish: Schema.Boolean.pipe(withDefaults(() => true)),

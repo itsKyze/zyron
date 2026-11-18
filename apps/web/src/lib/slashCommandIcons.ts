@@ -9,10 +9,13 @@ import {
   BotIcon,
   BrainIcon,
   BugIcon,
+  ChangesIcon,
+  CircleCheckIcon,
   ClockIcon,
   ComputerUseIcon,
   EraserIcon,
   FastModeIcon,
+  FileIcon,
   GitForkIcon,
   GoalIcon,
   InfoIcon,
@@ -43,6 +46,10 @@ export const SLASH_COMMAND_ICONS: Record<string, LucideIcon> = {
   automation: ClockIcon,
   goal: GoalIcon,
   "computer-use": ComputerUseIcon,
+  test: CircleCheckIcon,
+  audit: BugIcon,
+  refactor: ChangesIcon,
+  docs: FileIcon,
 };
 
 /** Glyph for a slash command, falling back to `fallback` for unmapped commands. */

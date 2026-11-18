@@ -127,6 +127,12 @@ export function useSettingsRestoreDefaults({
     defaults.enableSystemTaskCompletionNotifications
       ? ["settings:changed_desktopNotifications"]
       : []),
+    ...(settings.enableAgentNotificationSounds !== defaults.enableAgentNotificationSounds
+      ? ["settings:enableSoundsForAgent"]
+      : []),
+    ...(settings.agentSoundVolume !== defaults.agentSoundVolume
+      ? ["settings:agentSoundVolume"]
+      : []),
     ...(settings.notifyAfterSubagentsFinish !== defaults.notifyAfterSubagentsFinish
       ? ["settings:waitForSubagents"]
       : []),

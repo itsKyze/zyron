@@ -1,4 +1,9 @@
 {
+  "sound": "Sound",
+  "enableSoundsForAgent": "Enable Sounds for Agent",
+  "playASoundWhenYourActionIsNeeded": "Play a sound when your action is needed or the agent finishes.",
+  "agentSoundVolume": "Volume",
+  "setTheVolumeOfAgentSounds": "Set the volume of agent sounds.",
   "appearance_px": "px",
   "rim": "Rim",
   "and": "and",

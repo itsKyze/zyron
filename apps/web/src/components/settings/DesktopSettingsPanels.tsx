@@ -19,6 +19,7 @@ import { useEffect, useId, useRef, useState } from "react";
 import type { AppSettingsBinding } from "~/appSettings";
 import { createLatestAppSnapRequestGuard } from "~/appSnap.logic";
 import { useRefreshOnWindowReturn } from "~/hooks/useRefreshOnWindowReturn";
+import { playAgentCompletionChime } from "~/lib/agentAudioCue";
 import { playAppSnapCaptureSound } from "~/lib/appSnapSound";
 import { CentralIcon } from "~/lib/central-icons";
 import { cn } from "~/lib/utils";
@@ -252,6 +253,79 @@ export function NotificationsSettingsPanel({
               }
               aria-label={t("settings:waitForSubagentsBeforeAlerting")}
             />
+          }
+        />
+      </SettingsSection>
+
+      <SettingsSection title="settings:sound">
+        <SettingsRow
+          id="setting-enable-agent-sounds"
+          title="settings:enableSoundsForAgent"
+          description="settings:playASoundWhenYourActionIsNeeded"
+          resetAction={
+            settings.enableAgentNotificationSounds !== defaults.enableAgentNotificationSounds ? (
+              <SettingResetButton
+                label={t("settings:enableSoundsForAgent")}
+                onClick={() =>
+                  updateSettings({
+                    enableAgentNotificationSounds: defaults.enableAgentNotificationSounds,
+                  })
+                }
+              />
+            ) : null
+          }
+          control={
+            <div className="flex w-full items-center gap-2 sm:w-auto sm:justify-end">
+              <Button
+                size="xs"
+                variant="outline"
+                onClick={() => playAgentCompletionChime(settings.agentSoundVolume)}
+              >
+                {t("workspace:test")}
+              </Button>
+              <Switch
+                checked={settings.enableAgentNotificationSounds}
+                onCheckedChange={(checked) =>
+                  updateSettings({ enableAgentNotificationSounds: Boolean(checked) })
+                }
+                aria-label={t("settings:enableSoundsForAgent")}
+              />
+            </div>
+          }
+        />
+
+        <SettingsRow
+          id="setting-agent-sound-volume"
+          title="settings:agentSoundVolume"
+          description="settings:setTheVolumeOfAgentSounds"
+          resetAction={
+            settings.agentSoundVolume !== defaults.agentSoundVolume ? (
+              <SettingResetButton
+                label={t("settings:agentSoundVolume")}
+                onClick={() =>
+                  updateSettings({
+                    agentSoundVolume: defaults.agentSoundVolume,
+                  })
+                }
+              />
+            ) : null
+          }
+          control={
+            <div className="flex items-center gap-3">
+              <span className="text-ui-xs font-mono text-muted-foreground w-12 text-right">
+                {settings.agentSoundVolume}%
+              </span>
+              <input
+                type="range"
+                min="0"
+                max="100"
+                step="5"
+                value={settings.agentSoundVolume}
+                onChange={(e) => updateSettings({ agentSoundVolume: Number(e.target.value) })}
+                className="w-32 accent-primary cursor-pointer"
+                aria-label={t("settings:agentSoundVolume")}
+              />
+            </div>
           }
         />
       </SettingsSection>

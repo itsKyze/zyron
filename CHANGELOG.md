@@ -7,7 +7,6 @@
 ### Added
 
 - Arabic language and RTL localization (`ar` locale support) with translation catalogs across common, chat, workspace, and settings.
-- Interactive developer API documentation portal at `/docs` with live cURL examples and schema details.
 - Visual badge indicators (New, Improved, Fix) in What's New dialog and release history.
 - Play and seek local MP4, M4V, WebM, MOV and OGV videos in file previews and inline in chat. Unsupported codecs offer download and retry; desktop-proxied remote hosts offer download instead of streaming.
 - Choose Codex Ultrafast when the account's model catalog advertises it. Speed choices follow the selected model and account.

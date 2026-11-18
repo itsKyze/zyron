@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "@tanstack/react-router";
 import { useMemo, useEffect, useRef, useState } from "react";
 import { toastManager } from "../components/ui/toast";
 import { resolveVisibleToastThreadIds } from "../components/ui/toastRouteVisibility";
+import { playAgentAttentionChime, playAgentCompletionChime } from "~/lib/agentAudioCue";
 import { useAppSettings } from "../appSettings";
 import { isElectron } from "../env";
 import { useDiffRouteSearch } from "../hooks/useDiffRouteSearch";
@@ -333,6 +334,10 @@ export function TaskCompletionNotifications() {
       if (shouldAttemptSystemNotification) {
         void showSystemThreadNotification(copy, completion.threadId, navigate);
       }
+
+      if (settings.enableAgentNotificationSounds) {
+        playAgentCompletionChime(settings.agentSoundVolume);
+      }
     }
 
     for (const candidate of inputNeededCandidates) {
@@ -350,6 +355,10 @@ export function TaskCompletionNotifications() {
       if (shouldAttemptSystemNotification) {
         void showSystemThreadNotification(copy, candidate.threadId, navigate);
       }
+
+      if (settings.enableAgentNotificationSounds) {
+        playAgentAttentionChime(settings.agentSoundVolume);
+      }
     }
 
     for (const completion of terminalCompletions) {
@@ -366,6 +375,10 @@ export function TaskCompletionNotifications() {
 
       if (shouldAttemptSystemNotification) {
         void showSystemThreadNotification(copy, completion.threadId, navigate);
+      }
+
+      if (settings.enableAgentNotificationSounds) {
+        playAgentCompletionChime(settings.agentSoundVolume);
       }
     }
 
