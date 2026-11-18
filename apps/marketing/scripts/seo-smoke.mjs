@@ -115,7 +115,7 @@ try {
   );
   assert.match(
     homepage,
-    /<link rel="canonical" href="https:\/\/www\.zyron\.com"\/>/,
+    /<link rel="canonical" href="https:\/\/ai\.zyron\.site\/"\/>/,
     "homepage must emit the exact canonical production origin",
   );
   assert.ok(homepage.includes('"@type":"SoftwareApplication"'));
@@ -129,7 +129,7 @@ try {
   const docs = await readRoute("/docs", /text\/html/i);
   assert.match(
     docs,
-    /<link rel="canonical" href="https:\/\/www\.zyron\.com\/docs"/,
+    /<link rel="canonical" href="https:\/\/ai\.zyron\.site\/docs"/,
     "docs page is missing its absolute self-canonical",
   );
   assert.match(docs, /property="og:type" content="website"/);
