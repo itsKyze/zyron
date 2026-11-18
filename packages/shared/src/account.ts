@@ -91,7 +91,7 @@ export const ACCOUNT_URL_ENV_NAME = "ZYRON_ACCOUNT_URL";
  * agree on which service the stored credentials belong to; a second copy would
  * eventually point one of them somewhere else.
  */
-export const DEFAULT_ACCOUNT_URL = "https://api.zyron.vrbty.dev";
+export const DEFAULT_ACCOUNT_URL = "https://api.zyron.site";
 
 export interface AccountUrlResolutionInput {
   readonly flag?: string | undefined;

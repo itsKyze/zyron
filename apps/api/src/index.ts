@@ -19,8 +19,8 @@ async function main(): Promise<void> {
     perf ? { perf } : {},
   );
 
-  const server = serve({ fetch: app.fetch, port: config.port }, (info) => {
-    console.log(`[api] listening on http://localhost:${info.port}`);
+  const server = serve({ fetch: app.fetch, port: config.port, hostname: "0.0.0.0" }, (info) => {
+    console.log(`[api] listening on http://0.0.0.0:${info.port}`);
   });
 
   let shuttingDown = false;

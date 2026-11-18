@@ -5,7 +5,7 @@
 
 import { headers } from "next/headers";
 
-export const ACCOUNT_API_URL = process.env.ACCOUNT_API_URL ?? "https://api.zyron.vrbty.dev";
+export const ACCOUNT_API_URL = process.env.ACCOUNT_API_URL ?? "https://api.zyron.site";
 
 /**
  * Shared secret proving to the account API that a request came from this SSR

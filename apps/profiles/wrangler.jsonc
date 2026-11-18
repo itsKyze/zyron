@@ -55,7 +55,7 @@
   "vars": {
     // Non-secret config. PROFILE_PROXY_SECRET is a secret:
     //   wrangler secret put PROFILE_PROXY_SECRET
-    "ACCOUNT_API_URL": "https://api.zyron.vrbty.dev",
+    "ACCOUNT_API_URL": "https://api.zyron.site",
     // zyron.vrbty.dev is the single-domain dev shape: non-profile paths
     // proxy to the marketing site (src/middleware.ts). Points at the
     // canonical domain, not a specific Vercel deployment URL. www because
