@@ -433,6 +433,12 @@ export const GENERATED_SETTINGS_SEARCH_ROWS: readonly GeneratedSettingsSearchRow
     description: "settings:advanced_versionDescription",
   },
   {
+    target: "setting-check-updates",
+    section: "about",
+    title: "desktop:checkForUpdates",
+    description: "",
+  },
+  {
     target: "setting-release-history",
     section: "about",
     title: "common:advanced_releaseHistory",

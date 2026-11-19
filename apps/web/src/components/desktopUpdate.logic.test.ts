@@ -8,6 +8,8 @@ import {
   getDesktopUpdateButtonTooltip,
   getDesktopUpdateDownloadPercent,
   getDesktopUpdateErrorSignature,
+  getDesktopUpdatePillLabel,
+  getDesktopUpdatePillTone,
   isDesktopUpdateButtonDisabled,
   isDesktopUpdateInstallInFlight,
   resolveDesktopUpdateButtonAction,
@@ -443,5 +445,43 @@ describe("desktop update UI helpers", () => {
     expect(shouldShowArm64IntelBuildWarning(state)).toBe(true);
     expect(getArm64IntelBuildWarningDescription(state)).toContain("Apple Silicon");
     expect(getArm64IntelBuildWarningDescription(state)).toContain("Intel build");
+  });
+
+  it("computes the correct label and tone for the desktop update pill", () => {
+    const availableState: DesktopUpdateState = {
+      ...baseState,
+      status: "available",
+      availableVersion: "1.6.3",
+    };
+    expect(getDesktopUpdatePillLabel(availableState)).toBe("Update v1.6.3");
+    expect(getDesktopUpdatePillTone(availableState)).toBe("sky");
+
+    const downloadingState: DesktopUpdateState = {
+      ...baseState,
+      status: "downloading",
+      availableVersion: "1.6.3",
+      downloadPercent: 45.8,
+    };
+    expect(getDesktopUpdatePillLabel(downloadingState)).toBe("Downloading 45%");
+    expect(getDesktopUpdatePillTone(downloadingState)).toBe("amber");
+
+    const downloadedState: DesktopUpdateState = {
+      ...baseState,
+      status: "downloaded",
+      downloadedVersion: "1.6.3",
+    };
+    expect(getDesktopUpdatePillLabel(downloadedState)).toBe("Restart to apply v1.6.3");
+    expect(getDesktopUpdatePillTone(downloadedState)).toBe("emerald");
+    expect(getDesktopUpdatePillLabel(downloadedState, { installing: true })).toBe("Restarting...");
+
+    const errorState: DesktopUpdateState = {
+      ...baseState,
+      status: "error",
+      availableVersion: "1.6.3",
+      errorContext: "download",
+      canRetry: true,
+    };
+    expect(getDesktopUpdatePillLabel(errorState)).toBe("Retry update");
+    expect(getDesktopUpdatePillTone(errorState)).toBe("rose");
   });
 });

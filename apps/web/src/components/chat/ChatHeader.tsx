@@ -73,6 +73,7 @@ import type { ThreadHandoffTarget } from "~/lib/threadHandoff";
 import type { ProjectAppearance } from "~/lib/projectAppearance";
 import { useTranslation } from "~/i18n";
 import { ProjectSidebarIcon } from "../ProjectSidebarIcon";
+import { DesktopUpdatePill } from "./DesktopUpdatePill";
 
 /**
  * Width (px) below which collapsible header controls drop their text labels and
@@ -847,6 +848,8 @@ export function ChatHeader({
             visibleWhen="pull-available"
           />
         ) : null}
+
+        <DesktopUpdatePill />
 
         {/* Environment: one button consolidating Open-in-editor and most git actions into
             the Environment panel. Pull still appears in this action cluster when the

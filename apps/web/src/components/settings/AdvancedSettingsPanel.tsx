@@ -27,6 +27,9 @@ import { createAllThreadsMessagelessSelector, createThreadShellsSelector } from 
 import { useSettingsRestoreSignal } from "./SettingControls";
 import { SettingsRow, SettingsSection } from "./SettingsPanelPrimitives";
 import { useTranslation } from "~/i18n";
+import { isElectron } from "~/env";
+import { executeDesktopUpdateAction, useDesktopUpdateStore } from "~/desktopUpdateStore";
+import { isDesktopUpdateButtonDisabled } from "../desktopUpdate.logic";
 
 /** The persisted `keybindings.json`, opened in the preferred editor. Shown on Keyboard shortcuts. */
 export function KeybindingsFileSettingsSection(props: { resetEpoch: number }) {
@@ -128,6 +131,33 @@ export function AppTourSettingsRow() {
 /** Version and release history. Shown on the About page. */
 export function AboutSettingsSection(props: { onOpenReleaseHistory: () => void }) {
   const { t } = useTranslation();
+  const updateState = useDesktopUpdateStore((s) => s.state);
+  const installing = useDesktopUpdateStore((s) => s.installing);
+
+  const updateDescription = installing
+    ? "Applying update and restarting Zyron..."
+    : updateState?.status === "downloaded"
+      ? `Update v${updateState.downloadedVersion ?? updateState.availableVersion ?? ""} is downloaded and ready to apply.`
+      : updateState?.status === "downloading"
+        ? `Downloading update${typeof updateState.downloadPercent === "number" ? ` (${Math.floor(updateState.downloadPercent)}%)` : ""}...`
+        : updateState?.status === "available"
+          ? `Update v${updateState.availableVersion ?? ""} is available.`
+          : updateState?.status === "checking"
+            ? "Checking for updates..."
+            : `You're currently on v${APP_VERSION}.`;
+
+  const updateButtonLabel = installing
+    ? "Restarting..."
+    : updateState?.status === "downloaded"
+      ? "Restart to apply"
+      : updateState?.status === "downloading"
+        ? "Downloading..."
+        : updateState?.status === "available"
+          ? "Download update"
+          : updateState?.status === "checking"
+            ? "Checking..."
+            : t("desktop:checkForUpdates");
+
   return (
     <SettingsSection title="settings:advanced_about">
       <SettingsRow
@@ -140,6 +170,23 @@ export function AboutSettingsSection(props: { onOpenReleaseHistory: () => void }
           </code>
         }
       />
+      {isElectron ? (
+        <SettingsRow
+          id="setting-check-updates"
+          title="desktop:checkForUpdates"
+          description={updateDescription}
+          control={
+            <Button
+              size="sm"
+              variant={updateState?.status === "downloaded" ? "default" : "outline"}
+              disabled={isDesktopUpdateButtonDisabled(updateState) || installing}
+              onClick={() => executeDesktopUpdateAction()}
+            >
+              {updateButtonLabel}
+            </Button>
+          }
+        />
+      ) : null}
       <SettingsRow
         id="setting-release-history"
         title="common:advanced_releaseHistory"

@@ -319,6 +319,7 @@ import {
   SidebarSnoozedThreadsSection,
 } from "./SidebarActivityView";
 import { DesktopUpdateRailButton } from "./DesktopUpdateRailButton";
+import { useDesktopUpdateStore, executeDesktopUpdateAction } from "~/desktopUpdateStore";
 import { SidebarIconButton, sidebarIconButtonSlotClass } from "./SidebarIconButton";
 import {
   ACTIVITY_COACHMARK_STORAGE_KEY,
@@ -1866,8 +1867,8 @@ export default function Sidebar() {
   const suppressProjectClickAfterDragRef = useRef(false);
   const optimisticPinnedStateByProjectIdRef = useRef(new Map<ProjectId, boolean>());
   const latestPinnedMutationVersionByProjectIdRef = useRef(new Map<ProjectId, number>());
-  const [desktopUpdateState, setDesktopUpdateState] = useState<DesktopUpdateState | null>(null);
-  const [installingDesktopUpdate, setInstallingDesktopUpdate] = useState(false);
+  const desktopUpdateState = useDesktopUpdateStore((s) => s.state);
+  const installingDesktopUpdate = useDesktopUpdateStore((s) => s.installing);
   const [optimisticPinnedStateByProjectId, setOptimisticPinnedStateByProjectId] = useState<
     ReadonlyMap<ProjectId, boolean>
   >(() => new Map());
@@ -7486,113 +7487,6 @@ export default function Sidebar() {
     activateWorkspaceThread,
   ]);
 
-  useEffect(() => {
-    if (!isElectron) return;
-    const bridge = window.desktopBridge;
-    if (
-      !bridge ||
-      typeof bridge.getUpdateState !== "function" ||
-      typeof bridge.onUpdateState !== "function"
-    ) {
-      return;
-    }
-
-    let disposed = false;
-    let receivedSubscriptionUpdate = false;
-    const unsubscribe = bridge.onUpdateState((nextState) => {
-      if (disposed) return;
-      receivedSubscriptionUpdate = true;
-      setDesktopUpdateState(nextState);
-    });
-
-    void bridge
-      .getUpdateState()
-      .then((nextState) => {
-        if (disposed || receivedSubscriptionUpdate) return;
-        setDesktopUpdateState(nextState);
-      })
-      .catch(() => undefined);
-
-    return () => {
-      disposed = true;
-      unsubscribe();
-    };
-  }, []);
-
-  // Single entry point for update error toasts. Attaches the manual-download
-  // fallback (copy link + "Download manually") whenever a release URL is known,
-  // and dedupes by error signature so the same failure is not toasted twice.
-  const surfaceDesktopUpdateError = useCallback(
-    (input: { title: string; description: string; state: DesktopUpdateState | null }) => {
-      const signature = getDesktopUpdateErrorSignature(input.state) ?? `adhoc:${input.description}`;
-      if (lastDesktopUpdateErrorToastSignatureRef.current === signature) {
-        return;
-      }
-      lastDesktopUpdateErrorToastSignatureRef.current = signature;
-      const releaseUrl = input.state?.releaseUrl ?? null;
-      const recommendManualDownload = shouldRecommendManualDesktopDownload(input.state);
-      const fallbackProps = releaseUrl
-        ? {
-            data: { copyText: releaseUrl },
-            actionProps: {
-              children: "Download manually",
-              onClick: () => {
-                void window.desktopBridge?.openExternal(releaseUrl);
-              },
-            },
-          }
-        : {};
-      toastManager.add({
-        type: "error",
-        title: recommendManualDownload ? t("workspace:downloadTheUpdateManually") : input.title,
-        description: recommendManualDownload
-          ? t("workspace:automaticInstallationHasFailedTimesDownloadManuallyToFinish", {
-              value0: input.state?.installFailureCount ?? 0,
-              value1: input.state?.availableVersion ?? t("workspace:theUpdate"),
-            })
-          : input.description,
-        ...fallbackProps,
-      });
-    },
-    [t],
-  );
-
-  // The install watchdog (and any background-pushed failure) flips the update
-  // state to a download/install error without going through a click handler, so
-  // the fallback must also be surfaced reactively here. Dedup keeps it from
-  // doubling up with the click-handler toast for user-initiated failures.
-  useEffect(() => {
-    if (!getDesktopUpdateErrorSignature(desktopUpdateState)) {
-      // Returning to any non-error state (new download, success, up-to-date)
-      // clears the dedup key so the next distinct failure notifies again.
-      lastDesktopUpdateErrorToastSignatureRef.current = null;
-      return;
-    }
-    if (!desktopUpdateState?.releaseUrl) {
-      return;
-    }
-    surfaceDesktopUpdateError({
-      title:
-        desktopUpdateState.errorContext === "install"
-          ? t("workspace:couldnTFinishUpdating")
-          : t("workspace:couldnTDownloadTheUpdate"),
-      description:
-        desktopUpdateState.message ?? t("workspace:theInAppUpdateCouldNotCompleteYouCan"),
-      state: desktopUpdateState,
-    });
-  }, [desktopUpdateState, surfaceDesktopUpdateError]);
-
-  // Install failures deliberately preserve "downloaded" so the same artifact
-  // can be retried. Watch the error as well as the status to release the latch.
-  useEffect(() => {
-    if (
-      desktopUpdateState?.status !== "downloaded" ||
-      desktopUpdateState.errorContext === "install"
-    ) {
-      setInstallingDesktopUpdate(false);
-    }
-  }, [desktopUpdateState?.status, desktopUpdateState?.errorContext]);
-
   const showDesktopUpdateButton = isElectron && shouldShowDesktopUpdateButton(desktopUpdateState);
   const isBetaDesktopFlavor = desktopUpdateState?.flavor === "beta";
 
@@ -7752,174 +7646,7 @@ export default function Sidebar() {
     ],
   );
 
-  const handleDesktopUpdateButtonClick = useCallback(() => {
-    const bridge = window.desktopBridge;
-    if (!bridge || !desktopUpdateState) return;
-    if (desktopUpdateButtonDisabled || desktopUpdateButtonAction === "none") return;
-
-    // Keep the sidebar action as the single visible entry point for manual checks.
-    if (desktopUpdateButtonAction === "check") {
-      void bridge
-        .checkForUpdates()
-        .then((nextState) => {
-          setInstallingDesktopUpdate(false);
-          setDesktopUpdateState(nextState);
-          if (nextState.status === "available") {
-            toastManager.add({
-              type: "info",
-              title: t("workspace:desktopUpdate_preparingUpdate"),
-              description: t("workspace:zyronIsPreparingVersionInTheBackground", {
-                value0: nextState.availableVersion ?? t("chat:available2"),
-              }),
-            });
-            return;
-          }
-
-          if (nextState.status === "downloading") {
-            toastManager.add({
-              type: "info",
-              title: t("workspace:desktopUpdate_preparingUpdate"),
-              description: t("workspace:desktopUpdate_downloadingUpdateDescription"),
-            });
-            return;
-          }
-
-          if (nextState.status === "downloaded") {
-            toastManager.add({
-              type: "success",
-              title: t("workspace:desktopUpdate_updateReady"),
-              description: t("workspace:clickUpdateWhenYouReReadyToRestartAnd"),
-            });
-            return;
-          }
-
-          if (nextState.status === "up-to-date") {
-            toastManager.add({
-              type: "info",
-              title: t("workspace:youReUpToDate"),
-              description: t("workspace:zyronIsAlreadyTheNewestVersion", {
-                value0: nextState.currentVersion,
-              }),
-            });
-            return;
-          }
-
-          if (nextState.status === "error") {
-            surfaceDesktopUpdateError({
-              title: t("workspace:desktopUpdate_couldNotCheckForUpdates"),
-              description: nextState.message ?? t("workspace:desktopUpdate_unexpectedError"),
-              state: nextState,
-            });
-          }
-        })
-        .catch((error) => {
-          surfaceDesktopUpdateError({
-            title: t("workspace:desktopUpdate_couldNotCheckForUpdates"),
-            description:
-              error instanceof Error ? error.message : t("workspace:desktopUpdate_unexpectedError"),
-            state: desktopUpdateState,
-          });
-        });
-      return;
-    }
-
-    if (desktopUpdateButtonAction === "download") {
-      void bridge
-        .downloadUpdate()
-        .then((result) => {
-          setInstallingDesktopUpdate(false);
-          setDesktopUpdateState(result.state);
-          if (result.completed) {
-            toastManager.add({
-              type: "success",
-              title: t("workspace:desktopUpdate_updateReady"),
-              description: t("workspace:clickUpdateWhenYouReReadyToRestartAnd"),
-            });
-          }
-          const alreadyCurrentNotice = getDesktopUpdateAlreadyCurrentNotice(result);
-          if (alreadyCurrentNotice) {
-            toastManager.add({
-              type: "info",
-              title: t("git:providerUpdates_unchanged"),
-              description: alreadyCurrentNotice,
-            });
-            return;
-          }
-          if (!shouldToastDesktopUpdateActionResult(result)) return;
-          const actionError = getDesktopUpdateActionError(result);
-          if (!actionError) return;
-          surfaceDesktopUpdateError({
-            title: t("workspace:desktopUpdate_couldNotDownloadUpdate"),
-            description: actionError,
-            state: result.state,
-          });
-        })
-        .catch((error) => {
-          surfaceDesktopUpdateError({
-            title: t("workspace:couldNotStartUpdateDownload"),
-            description:
-              error instanceof Error ? error.message : t("workspace:desktopUpdate_unexpectedError"),
-            state: desktopUpdateState,
-          });
-        });
-      return;
-    }
-
-    if (desktopUpdateButtonAction === "install") {
-      setInstallingDesktopUpdate(true);
-      persistAppStateNow();
-      const preparationToastId = isMacNavigatorPlatform()
-        ? toastManager.add({
-            type: "loading",
-            title: `${t("workspace:desktopUpdate_preparingUpdate")}…`,
-            timeout: 0,
-          })
-        : null;
-      void bridge
-        .installUpdate()
-        .then((result) => {
-          setDesktopUpdateState(result.state);
-          if (!isDesktopUpdateInstallInFlight(result)) {
-            setInstallingDesktopUpdate(false);
-          }
-          const alreadyCurrentNotice = getDesktopUpdateAlreadyCurrentNotice(result);
-          if (alreadyCurrentNotice) {
-            toastManager.add({
-              type: "info",
-              title: t("git:providerUpdates_unchanged"),
-              description: alreadyCurrentNotice,
-            });
-            return;
-          }
-          if (!shouldToastDesktopUpdateActionResult(result)) return;
-          const actionError = getDesktopUpdateActionError(result);
-          if (!actionError) return;
-          surfaceDesktopUpdateError({
-            title: t("workspace:desktopUpdate_couldNotInstallUpdate"),
-            description: actionError,
-            state: result.state,
-          });
-        })
-        .catch((error) => {
-          setInstallingDesktopUpdate(false);
-          surfaceDesktopUpdateError({
-            title: t("workspace:desktopUpdate_couldNotInstallUpdate"),
-            description:
-              error instanceof Error ? error.message : t("workspace:desktopUpdate_unexpectedError"),
-            state: desktopUpdateState,
-          });
-        })
-        .finally(() => {
-          if (preparationToastId !== null) toastManager.close(preparationToastId);
-        });
-    }
-  }, [
-    desktopUpdateButtonAction,
-    desktopUpdateButtonDisabled,
-    desktopUpdateState,
-    surfaceDesktopUpdateError,
-    t,
-  ]);
+  const handleDesktopUpdateButtonClick = executeDesktopUpdateAction;
 
   // Both handlers step from the *effective* (clamped) page count reported by the derived
   // project data, so stale/oversized stored paging self-heals on the very next click.

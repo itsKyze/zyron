@@ -88,6 +88,39 @@ export function getDesktopUpdateDownloadPercent(state: DesktopUpdateState | null
   return Math.max(0, Math.min(100, Math.floor(percent)));
 }
 
+export function getDesktopUpdatePillLabel(
+  state: DesktopUpdateState,
+  options?: { installing?: boolean },
+): string {
+  if (options?.installing) {
+    return "Restarting...";
+  }
+  if (state.status === "downloaded") {
+    const version = state.downloadedVersion ?? state.availableVersion;
+    return version ? `Restart to apply v${version}` : "Restart to apply update";
+  }
+  if (state.status === "downloading") {
+    const percent = getDesktopUpdateDownloadPercent(state);
+    return percent !== null ? `Downloading ${percent}%` : "Downloading update...";
+  }
+  if (state.status === "available") {
+    return state.availableVersion ? `Update v${state.availableVersion}` : "Update available";
+  }
+  if (state.status === "error") {
+    return "Retry update";
+  }
+  return "Update available";
+}
+
+export function getDesktopUpdatePillTone(
+  state: DesktopUpdateState,
+): "emerald" | "amber" | "sky" | "rose" {
+  if (state.status === "downloaded") return "emerald";
+  if (state.status === "downloading") return "amber";
+  if (state.status === "error") return "rose";
+  return "sky";
+}
+
 export function getArm64IntelBuildWarningDescription(state: DesktopUpdateState): string {
   if (!shouldShowArm64IntelBuildWarning(state)) {
     return "This install is using the correct architecture.";
