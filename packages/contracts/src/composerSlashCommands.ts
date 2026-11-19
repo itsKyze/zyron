@@ -24,4 +24,5 @@ export const BUILT_IN_COMPOSER_SLASH_COMMANDS = [
   "audit",
   "refactor",
   "docs",
+  "wallpaper",
 ] as const;

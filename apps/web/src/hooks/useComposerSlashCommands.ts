@@ -57,6 +57,8 @@ import { downloadUrlAsBlob } from "../lib/browserDownload";
 import { resolveExecutionResource } from "../lib/wsHttpUrl";
 import { useFeedbackDialogStore } from "../feedbackDialogStore";
 import { useComposerDraftStore } from "../composerDraftStore";
+import { useAsciiWallpaperStore } from "../wallpaper/asciiWallpaperStore";
+import { ASCII_WALLPAPERS, type AsciiWallpaperKey } from "../wallpaper/asciiScenes";
 import { useStore } from "../store";
 import { getThreadFromState } from "../threadDerivation";
 import { dispatchThreadGoal, dispatchThreadGoalPaused } from "../threadGoal";
@@ -1001,6 +1003,36 @@ export function useComposerSlashCommands(input: {
         openFeedbackDialog();
         return true;
       }
+      if (slashInvocation.command === "wallpaper") {
+        editorActions.clearComposerSlashDraft();
+        const arg = slashInvocation.args.trim().toLowerCase();
+        const validKeys: AsciiWallpaperKey[] = [
+          "off",
+          "koiPond",
+          "honu",
+          "clawd",
+          "jellyfish",
+          "paperBoats",
+          "fireflies",
+          "moonlit",
+          "clouds",
+        ];
+        const store = useAsciiWallpaperStore.getState();
+        const matched = validKeys.find((k) => k.toLowerCase() === arg);
+        const nextKey: AsciiWallpaperKey =
+          matched ??
+          validKeys[(validKeys.indexOf(store.wallpaper) + 1) % validKeys.length] ??
+          "off";
+        store.setWallpaper(nextKey);
+        const item = ASCII_WALLPAPERS.find((w) => w.key === nextKey);
+        toastManager.add({
+          type: "info",
+          title: "ASCII Wallpaper",
+          description:
+            nextKey === "off" ? "Wallpaper turned off." : `Active: ${item?.name ?? nextKey}`,
+        });
+        return true;
+      }
       if (slashInvocation.command === "review") {
         if (selectedProvider === "codex") {
           const normalizedArgs = slashInvocation.args.trim().toLowerCase();
@@ -1296,6 +1328,38 @@ export function useComposerSlashCommands(input: {
         }
         editorActions.setComposerHighlightedItemId(null);
         openFeedbackDialog();
+        return;
+      }
+
+      if (item.command === "wallpaper") {
+        const applied = clearSlashCommandFromComposer();
+        if (!wasPromptReplacementApplied(applied)) {
+          return;
+        }
+        editorActions.setComposerHighlightedItemId(null);
+        const validKeys: AsciiWallpaperKey[] = [
+          "off",
+          "koiPond",
+          "honu",
+          "clawd",
+          "jellyfish",
+          "paperBoats",
+          "fireflies",
+          "moonlit",
+          "clouds",
+        ];
+        const store = useAsciiWallpaperStore.getState();
+        const nextKey: AsciiWallpaperKey =
+          validKeys[(validKeys.indexOf(store.wallpaper) + 1) % validKeys.length] ?? "off";
+        store.setWallpaper(nextKey);
+        const nextItem = ASCII_WALLPAPERS.find((w) => w.key === nextKey);
+        toastManager.add({
+          type: "info",
+          title: "ASCII Wallpaper",
+          description:
+            nextKey === "off" ? "Wallpaper turned off." : `Active: ${nextItem?.name ?? nextKey}`,
+        });
+        editorActions.scheduleComposerFocus();
         return;
       }
 

@@ -128,6 +128,7 @@ import {
 } from "../composerDraftStore";
 import { composerDraftHasUnsentContent } from "../composerDraftDomain";
 import { useComposerFocusRequestStore } from "../composerFocusRequestStore";
+import { AsciiWallpaperBackdrop } from "~/wallpaper/AsciiWallpaperBackdrop";
 import {
   buildGoalSlashCommandPrompt,
   canExecuteSideSlashCommand,
@@ -6910,6 +6911,7 @@ export default function ChatView({
       onDragLeave={onComposerDragLeave}
       onDrop={onComposerDrop}
     >
+      <AsciiWallpaperBackdrop />
       {/* Subtle accent tint over the whole pane while a file is dragged anywhere over it,
           signalling that dropping it will attach the file to the composer. */}
       <div

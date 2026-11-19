@@ -294,6 +294,12 @@ const COMPOSER_SLASH_COMMAND_DEFINITIONS: Record<
     description: "Generate documentation, guides, or API specifications",
     source: "app",
   },
+  wallpaper: {
+    command: "wallpaper",
+    label: "/wallpaper",
+    description: "Switch animated ASCII wallpaper behind chat (koiPond, honu, clawd, off, etc.)",
+    source: "app",
+  },
 };
 
 export function isBuiltInComposerSlashCommand(value: string): value is ComposerSlashCommand {
@@ -548,6 +554,7 @@ export function getAvailableComposerSlashCommands(input: {
           "audit",
           "refactor",
           "docs",
+          "wallpaper",
         ]
       : [
           // Claude owns most slash-command UX natively; sidechat remains app-level because it
@@ -566,6 +573,7 @@ export function getAvailableComposerSlashCommands(input: {
           "default",
           "feedback",
           "automation",
+          "wallpaper",
         ];
   return availableCommands.filter((command) => !collidingNativeCommandNames.has(command));
 }

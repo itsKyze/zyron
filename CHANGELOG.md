@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.6 — 2026-11-19
+
+**Live animated ASCII wallpapers behind chat with frosted glass, appearance settings picker, and composer slash command.**
+
+### Added
+
+- Live ASCII Wallpapers: 8 animated SVG scenes (Koi Pond, Honu Lagoon, Claude Code, Jellyfish, Paper Boats, Fireflies, Moonlit, Cloud Drift) running smoothly behind the chat surface with zero GPU overhead.
+- Frosted Glass Backdrop: Authentic glass blur and tint controls with full legibility preservation for chat messages and code blocks.
+- Wallpaper Settings & Slash Command: Interactive visual picker in Settings › Appearance with card previews, and `/wallpaper` composer command to quickly switch scenes or turn off.
+
 ## 1.6.5 — 2026-11-19
 
 **Smart auto-download fallback with manual override grace period and reliable background packaging.**

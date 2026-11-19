@@ -422,6 +422,7 @@ describe("composerSlashCommands", () => {
       "default",
       "feedback",
       "automation",
+      "wallpaper",
     ]);
   });
 

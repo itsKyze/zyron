@@ -266,8 +266,11 @@ jobs:
               echo "Windows signing enabled (Azure Trusted Signing)."
               signed=true
               args+=(--signed)
+            elif [[ "$ZYRON_PUBLISH_RELEASE" == "true" && "$ALLOW_UNSIGNED_WINDOWS_PUBLICATION" != "true" ]]; then
+              echo "Publishing Windows artifacts requires every Azure Trusted Signing secret."
+              exit 1
             else
-              echo "Windows artifact will be unsigned (open-source release exception)."
+              echo "Windows artifact will be unsigned under the explicit version-scoped release exception."
             fi
           else
             echo "Signing disabled for ${{ inputs.platform }}."

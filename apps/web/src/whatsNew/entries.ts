@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.6",
+    date: "Nov 19",
+    features: [
+      {
+        id: "ascii-wallpapers",
+        title: "Live animated ASCII wallpapers",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Eight live animated SVG ASCII scenes with frosted glass backdrop behind chat, customizable in Settings › Appearance or via /wallpaper.",
+      },
+    ],
+  },
+  {
     version: "1.6.5",
     date: "Nov 19",
     features: [
