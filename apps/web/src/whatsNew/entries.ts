@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.7",
+    date: "Nov 19",
+    features: [
+      {
+        id: "full-window-wallpapers-and-theme-picker",
+        title: "Full-window wallpapers and floating /theme picker",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Wallpapers now span the entire application window with frosted glass. Switch themes instantly using the floating /theme picker.",
+      },
+    ],
+  },
+  {
     version: "1.6.6",
     date: "Nov 19",
     features: [

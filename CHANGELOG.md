@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.7 — 2026-11-19
+
+**Full-window animated ASCII wallpapers behind chat, floating /theme picker overlay, and complete release stabilization.**
+
+### Added
+
+- Full-window ASCII background: Wallpapers expand across the entire application window behind transparent panels with smooth backdrop blur.
+- Floating `/theme` Picker: In-chat quick wallpaper switcher overlay opened via `/theme` or `/wallpaper` with keyboard navigation and live previews.
+- Public Profile Domain Alignment: Public profiles resolve through `profile.zyron.site` with seamless SSL and proxy forwarding.
+- CI and Test Stabilization: Fixed remote project action race conditions, Windows PowerShell interop timeout hardening, and browser automation test isolation.
+
 ## 1.6.6 — 2026-11-19
 
 **Live animated ASCII wallpapers behind chat with frosted glass, appearance settings picker, and composer slash command.**
