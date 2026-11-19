@@ -3615,13 +3615,19 @@ html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-rail-panel {
 html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"])
   [data-sidebar-layout="rail"]
   .chat-content-card::before {
-  opacity: 0.15;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  opacity: 0.7;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-settings-surface {
+  background: color-mix(in srgb, var(--color-background-surface) 75%, transparent);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-content-surface {
-  background: transparent;
+  background: color-mix(in srgb, var(--color-background-surface) 65%, transparent);
 }
 .chat-markdown img[data-expandable-image] {
   cursor: zoom-in;
