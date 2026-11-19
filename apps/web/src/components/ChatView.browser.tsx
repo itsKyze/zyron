@@ -4651,6 +4651,7 @@ describe("ChatView transcript geometry (full app)", () => {
         expect.stringContaining("folder and files stay on disk"),
       );
       expect(removeEmptyProject).not.toHaveBeenCalled();
+      await expect.element(remove).not.toBeInTheDocument();
 
       // Archived chats are reported by the owning frame even though no rows are visible.
       updateWorkspaceSession(hostId, {
