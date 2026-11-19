@@ -24,7 +24,7 @@ void i18n.use(initReactI18next).init({
   react: { useSuspense: false, transSupportBasicHtmlNodes: false },
 });
 
-if (typeof document !== "undefined" && INITIAL_LANGUAGE) {
+if (typeof document !== "undefined" && document.documentElement && INITIAL_LANGUAGE) {
   document.documentElement.dir = isRtl(INITIAL_LANGUAGE) ? "rtl" : "ltr";
   document.documentElement.lang = INITIAL_LANGUAGE;
 }
@@ -65,7 +65,7 @@ export function setUiLanguage(lang: string): void {
       // ignore storage errors
     }
   }
-  if (typeof document !== "undefined") {
+  if (typeof document !== "undefined" && document.documentElement) {
     document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";
     document.documentElement.lang = lang;
   }
