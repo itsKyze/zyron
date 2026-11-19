@@ -13,7 +13,7 @@ import { Button } from "~/components/ui/button";
 import { SelectItem } from "~/components/ui/select";
 import { useDesktopKeepAwake } from "~/hooks/useDesktopKeepAwake";
 import { useKeepAwakeState } from "~/hooks/useKeepAwakeState";
-import { useTranslation } from "~/i18n";
+import { setUiLanguage, useTranslation } from "~/i18n";
 import { useOnboardingDialogStore } from "~/onboarding/onboardingDialogStore";
 
 const TIMESTAMP_FORMAT_LABELS = {
@@ -24,11 +24,39 @@ const TIMESTAMP_FORMAT_LABELS = {
 
 export function GeneralSettingsView(binding: AppSettingsBinding) {
   const { settings, defaults, updateSettings } = binding;
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
   const keepAwake = useKeepAwakeState();
   const desktopKeepAwake = useDesktopKeepAwake();
   return (
     <div className="space-y-6">
+      <SettingsSection title="settings:general_language">
+        <SettingsRow
+          id="setting-language"
+          title="settings:language"
+          description="settings:chooseYourInterfaceLanguage"
+          control={
+            <SettingsSelectControl
+              value={locale === "ar" ? "ar" : "en"}
+              onValueChange={(value) => {
+                if (value === "en" || value === "ar") {
+                  setUiLanguage(value);
+                }
+              }}
+              ariaLabel={t("settings:language")}
+              triggerClassName="w-full sm:w-40"
+              valueContent={locale === "ar" ? "العربية" : "English"}
+            >
+              <SelectItem hideIndicator value="en">
+                English
+              </SelectItem>
+              <SelectItem hideIndicator value="ar">
+                العربية
+              </SelectItem>
+            </SettingsSelectControl>
+          }
+        />
+      </SettingsSection>
+
       <SettingsSection title="settings:general_newChats">
         <DefaultNewChatAccountRow
           settings={settings}

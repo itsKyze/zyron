@@ -544,6 +544,10 @@ export function getAvailableComposerSlashCommands(input: {
           "rename",
           "feedback",
           "automation",
+          "test",
+          "audit",
+          "refactor",
+          "docs",
         ]
       : [
           // Claude owns most slash-command UX natively; sidechat remains app-level because it

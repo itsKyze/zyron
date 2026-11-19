@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.4 — 2026-11-19
+
+**UI language switcher with Arabic and RTL support, active developer slash commands in composer, and top-header desktop update pill.**
+
+### Added
+
+- Language Selector: Dedicated language switch dropdown under Settings -> General (English / العربية) with instant live layout transition and RTL direction persistence.
+- Interactive Composer Slash Commands: Full integration of `/test`, `/audit`, `/refactor`, and `/docs` in the composer autocomplete menu.
+- Desktop Update Pill: Persistent status indicator in chat header showing update download progress and restart action.
+
 ## 1.6.3 — 2026-11-19
 
 **Visual subagents DAG tree view, developer slash commands, agent audio alert cues, and settings search indexing.**

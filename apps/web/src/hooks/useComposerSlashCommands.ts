@@ -42,6 +42,10 @@ const SLASH_COMMANDS_COUNTED_ON_SEND = new Set<string>([
   "rename",
   "automation",
   "computer-use",
+  "test",
+  "audit",
+  "refactor",
+  "docs",
 ]);
 import type { ComposerCommandItem } from "../components/chat/ComposerCommandMenu";
 import { buildNextProviderOptions } from "../providerModelOptions";
@@ -1163,7 +1167,11 @@ export function useComposerSlashCommands(input: {
         item.command === "model" ||
         item.command === "goal" ||
         item.command === "rename" ||
-        item.command === "automation"
+        item.command === "automation" ||
+        item.command === "test" ||
+        item.command === "audit" ||
+        item.command === "refactor" ||
+        item.command === "docs"
       ) {
         const replacement = `/${item.command} `;
         const replacementRangeEnd = extendReplacementRangeForTrailingSpace(

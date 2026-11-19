@@ -11,6 +11,8 @@
   "devices": "الأجهزة",
   "keyboardShortcuts": "اختصارات لوحة المفاتيح",
   "language": "اللغة",
+  "general_language": "اللغة",
+  "chooseYourInterfaceLanguage": "اختر اللغة المستخدمة في واجهة التطبيق.",
   "theme": "السمة",
   "about": "حول Zyron"
 }

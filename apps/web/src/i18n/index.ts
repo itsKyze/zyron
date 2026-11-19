@@ -5,10 +5,13 @@ import { initReactI18next, useTranslation as useReactTranslation } from "react-i
 import { uiLocalizationResources } from "@zyron/shared/uiLocalizationResources";
 import { UI_LOCALES, isUiMessageKey } from "@zyron/shared/uiLocale";
 
-// The interface is English-only: every message reads the English catalogs.
+const INITIAL_LANGUAGE =
+  (typeof window !== "undefined" && window.localStorage?.getItem("zyron:ui-language")) || "en";
+
+// The interface supports English and Arabic localization catalogs.
 export const i18n: I18n = createInstance();
 void i18n.use(initReactI18next).init({
-  lng: "en",
+  lng: INITIAL_LANGUAGE,
   fallbackLng: "en",
   supportedLngs: Object.keys(uiLocalizationResources),
   resources: uiLocalizationResources,
@@ -20,6 +23,11 @@ void i18n.use(initReactI18next).init({
   interpolation: { escapeValue: false },
   react: { useSuspense: false, transSupportBasicHtmlNodes: false },
 });
+
+if (typeof document !== "undefined" && INITIAL_LANGUAGE) {
+  document.documentElement.dir = isRtl(INITIAL_LANGUAGE) ? "rtl" : "ltr";
+  document.documentElement.lang = INITIAL_LANGUAGE;
+}
 
 export function t(message: string, values?: Record<string, unknown>): string {
   if (!isUiMessageKey(message, uiLocalizationResources.en)) return message;
@@ -50,6 +58,13 @@ export function isRtl(locale: string): boolean {
 
 export function setUiLanguage(lang: string): void {
   void i18n.changeLanguage(lang);
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage?.setItem("zyron:ui-language", lang);
+    } catch {
+      // ignore storage errors
+    }
+  }
   if (typeof document !== "undefined") {
     document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";
     document.documentElement.lang = lang;

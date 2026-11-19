@@ -22,6 +22,36 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.4",
+    date: "Nov 19",
+    features: [
+      {
+        id: "ui-language-selector",
+        title: "Language switcher & Arabic support",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Easily switch between English and Arabic (العربية) with instant RTL direction support under Settings › General.",
+      },
+      {
+        id: "composer-dev-commands",
+        title: "Developer slash commands",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Type / in the composer to access /test, /audit, /refactor, and /docs for instant agent execution.",
+      },
+      {
+        id: "header-update-pill",
+        title: "Top-header update pill",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Track update downloads and restart to apply updates directly from the top header and Settings › About.",
+      },
+    ],
+  },
+  {
     version: "1.6.3",
     date: "Nov 19",
     features: [
