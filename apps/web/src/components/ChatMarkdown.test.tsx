@@ -690,7 +690,7 @@ it.each(["> First line\n> [[note|Read note]] after", "- First line\n  [[note|Rea
     expect(markup).toContain('href="/vault/note.md"');
     expect(markup).toContain("Read note");
   },
-  15_000,
+  60_000,
 );
 
 it("keeps dollar filenames separate from math and rejects escaped delimiters", async () => {

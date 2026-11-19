@@ -44,6 +44,7 @@ vi.mock("~/storeSelectors", () => ({
 }));
 
 vi.mock("~/store", () => ({
+  persistAppStateNow: vi.fn(),
   useStore: (selector: (store: Record<string, unknown>) => unknown) =>
     selector({
       projects: harness.projects,

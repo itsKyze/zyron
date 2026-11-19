@@ -19,6 +19,7 @@ vi.mock("~/lib/hosts/executionContext", async (original) => ({
   }),
 }));
 vi.mock("~/store", () => ({
+  persistAppStateNow: vi.fn(),
   useStore: (select: (value: unknown) => unknown) =>
     select({ projects: [], threadsHydrated: false }),
 }));

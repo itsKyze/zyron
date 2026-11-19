@@ -4665,6 +4665,9 @@ describe("ChatView transcript geometry (full app)", () => {
       await expect.element(page.getByRole("menuitem", { name: "Rename project" })).toBeVisible();
       await expect.element(remove).not.toBeInTheDocument();
       await userEvent.keyboard("{Escape}");
+      await expect
+        .element(page.getByRole("menuitem", { name: "Rename project" }))
+        .not.toBeInTheDocument();
 
       updateWorkspaceSession(hostId, {
         summary: { state: "open", path: "/", projects, threads: [] },
