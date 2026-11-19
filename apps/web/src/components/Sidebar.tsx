@@ -1509,6 +1509,7 @@ export default function Sidebar() {
   const isOnKanban = workspaceSurfacePath.startsWith("/kanban");
   const isOnTasks = workspaceSurfacePath.startsWith("/tasks");
   const isOnAutomations = workspaceSurfacePath.startsWith("/automations");
+  const isOnOpenBot = workspaceSurfacePath.startsWith("/openbot");
   const isOnPullRequests = workspaceSurfacePath.startsWith("/pull-requests");
   const isOnInbox = workspaceSurfacePath.startsWith("/inbox");
   // Lightweight read of automations to drive the sidebar count badge. Shares the
@@ -4804,12 +4805,22 @@ export default function Sidebar() {
           void navigate({ to: "/automations" });
         },
       },
+      openbot: {
+        icon: BotIcon,
+        label: t("workspace:openbot"),
+        active: isOnOpenBot,
+        badge: null,
+        onClick: () => {
+          void navigate({ to: "/openbot" });
+        },
+      },
     }),
     [
       automationCountBadge,
       handlePrimaryNewThread,
       inboxBadge,
       isOnAutomations,
+      isOnOpenBot,
       isOnInbox,
       isOnKanban,
       isOnPullRequests,

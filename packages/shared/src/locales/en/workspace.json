@@ -42,6 +42,7 @@
   "check": "check",
   "lines": "lines",
   "theme": "theme",
+  "openbot": "OpenBot",
   "ctrlI": "Ctrl+I",
   "ctrlK": "Ctrl+K",
   "drafts": "Drafts",
