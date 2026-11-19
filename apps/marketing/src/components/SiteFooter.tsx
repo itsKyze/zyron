@@ -17,7 +17,7 @@ export default function SiteFooter() {
             rel="noopener noreferrer"
             className="text-[var(--accent-link)] transition-colors hover:text-[var(--accent-link-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
           >
-            @itsKyze
+            @kyzedevs
           </a>
         </span>
         <div className="flex items-center gap-4 sm:gap-6">

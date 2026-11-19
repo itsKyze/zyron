@@ -27,7 +27,7 @@ export const GITHUB_REPO_URL = "https://github.com/itsKyze/zyron";
 export const GITHUB_RELEASES_URL = `${GITHUB_REPO_URL}/releases`;
 export const GITHUB_SPONSORS_URL = "https://github.com/sponsors/itsKyze";
 export const X_PROFILE_URL = "https://x.com/kyzedevs";
-export const YOUTUBE_URL = "https://youtube.com/@itsKyze";
+export const YOUTUBE_URL = "https://youtube.com/@itsKyzeDev";
 
 /**
  * Search/share title — brand first, then the high-intent provider keywords.
