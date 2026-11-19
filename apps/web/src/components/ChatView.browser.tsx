@@ -126,6 +126,7 @@ import {
   updateWorkspaceSession,
 } from "../lib/hosts/workspaceSessions";
 import { REMOTE_CONNECTIONS_ANNOUNCEMENT_STORAGE_KEY } from "./hosts/RemoteConnectionsAnnouncement";
+import { IOS_BETA_ANNOUNCEMENT_STORAGE_KEY } from "./hosts/IosBetaAnnouncement";
 import { WorkspacePanels } from "./hosts/WorkspacePanels";
 
 vi.mock("../lib/hosts/executionContext", { spy: true });
@@ -4490,6 +4491,7 @@ describe("ChatView transcript geometry (full app)", () => {
       REMOTE_CONNECTIONS_ANNOUNCEMENT_STORAGE_KEY,
       JSON.stringify({ acknowledged: true }),
     );
+    localStorage.setItem(IOS_BETA_ANNOUNCEMENT_STORAGE_KEY, JSON.stringify({ acknowledged: true }));
     const destinationSpaceId = SpaceId.makeUnsafe("remote-destination");
     const hostId = "remote-project-owner";
     const projectId = ProjectId.makeUnsafe("remote-created-project");
