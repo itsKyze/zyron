@@ -297,7 +297,13 @@ const COMPOSER_SLASH_COMMAND_DEFINITIONS: Record<
   wallpaper: {
     command: "wallpaper",
     label: "/wallpaper",
-    description: "Switch animated ASCII wallpaper behind chat (koiPond, honu, clawd, off, etc.)",
+    description: "Switch animated ASCII wallpaper behind chat",
+    source: "app",
+  },
+  theme: {
+    command: "theme",
+    label: "/theme",
+    description: "Open live animated ASCII wallpapers picker",
     source: "app",
   },
 };

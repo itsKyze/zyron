@@ -60,11 +60,18 @@ export interface AsciiWallpaperDefinition {
 
 export const ASCII_WALLPAPERS: ReadonlyArray<AsciiWallpaperDefinition> = [
   {
-    key: "koiPond",
-    name: "Koi Pond",
+    key: "clawd",
+    name: "Claude Code",
     tone: "dark",
-    accent: "#ff7a59",
-    description: "Koi circling a jade pond under lily pads and drifting petals",
+    accent: "#d97757",
+    description: "A spark of ASCII cells turning slowly in a warm glow, code glyphs rising",
+  },
+  {
+    key: "clouds",
+    name: "Cloud Drift",
+    tone: "light",
+    accent: "#2f7fd6",
+    description: "ASCII clouds drifting over a blue sky, a paper plane gliding through",
   },
   {
     key: "honu",
@@ -75,11 +82,11 @@ export const ASCII_WALLPAPERS: ReadonlyArray<AsciiWallpaperDefinition> = [
       "A turquoise lagoon from above, sea turtles, a manta and fish swimming in ASCII cells",
   },
   {
-    key: "clawd",
-    name: "Claude Code",
+    key: "koiPond",
+    name: "Koi Pond",
     tone: "dark",
-    accent: "#d97757",
-    description: "A spark of ASCII cells turning slowly in a warm glow, code glyphs rising",
+    accent: "#ff7a59",
+    description: "Koi circling a jade pond under lily pads and drifting petals",
   },
   {
     key: "jellyfish",
@@ -108,12 +115,5 @@ export const ASCII_WALLPAPERS: ReadonlyArray<AsciiWallpaperDefinition> = [
     tone: "dark",
     accent: "#fff3d2",
     description: "A crescent moon, thin clouds sliding past, stars and a shooting star",
-  },
-  {
-    key: "clouds",
-    name: "Cloud Drift",
-    tone: "light",
-    accent: "#2f7fd6",
-    description: "ASCII clouds drifting over a blue sky, a paper plane gliding through",
   },
 ];

@@ -12,9 +12,13 @@ export interface AsciiWallpaperState {
   wallpaper: AsciiWallpaperKey;
   glassBlur: number;
   glassTintOpacity: number;
+  isPickerOpen: boolean;
   setWallpaper: (wallpaper: AsciiWallpaperKey) => void;
   setGlassBlur: (blur: number) => void;
   setGlassTintOpacity: (opacity: number) => void;
+  openPicker: () => void;
+  closePicker: () => void;
+  togglePicker: () => void;
 }
 
 function readStoredWallpaper(): AsciiWallpaperKey {
@@ -61,6 +65,7 @@ export const useAsciiWallpaperStore = create<AsciiWallpaperState>((set) => ({
   wallpaper: initialWallpaper,
   glassBlur: 22,
   glassTintOpacity: 0.55,
+  isPickerOpen: false,
   setWallpaper: (wallpaper) =>
     set((state) => {
       const next = { ...state, wallpaper };
@@ -80,4 +85,7 @@ export const useAsciiWallpaperStore = create<AsciiWallpaperState>((set) => ({
       persistWallpaperState(next);
       return next;
     }),
+  openPicker: () => set({ isPickerOpen: true }),
+  closePicker: () => set({ isPickerOpen: false }),
+  togglePicker: () => set((state) => ({ isPickerOpen: !state.isPickerOpen })),
 }));

@@ -3599,6 +3599,30 @@ diffs-container {
 .pull-request-prose {
   line-height: 1.7;
 }
+
+/* Live animated ASCII wallpaper translucency: softens the rail and chat card
+   so the animated ASCII scene spans behind the entire window. */
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) {
+  --app-rail-shell-background: transparent;
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-rail-panel {
+  background: color-mix(in srgb, var(--app-rail-panel-background) 72%, transparent);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"])
+  [data-sidebar-layout="rail"]
+  .chat-content-card::before {
+  opacity: 0.15;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-content-surface {
+  background: transparent;
+}
 .chat-markdown img[data-expandable-image] {
   cursor: zoom-in;
 }

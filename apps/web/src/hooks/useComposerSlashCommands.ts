@@ -1003,19 +1003,23 @@ export function useComposerSlashCommands(input: {
         openFeedbackDialog();
         return true;
       }
-      if (slashInvocation.command === "wallpaper") {
+      if (slashInvocation.command === "wallpaper" || slashInvocation.command === "theme") {
         editorActions.clearComposerSlashDraft();
         const arg = slashInvocation.args.trim().toLowerCase();
+        if (arg.length === 0) {
+          useAsciiWallpaperStore.getState().openPicker();
+          return true;
+        }
         const validKeys: AsciiWallpaperKey[] = [
           "off",
-          "koiPond",
-          "honu",
           "clawd",
+          "clouds",
+          "honu",
+          "koiPond",
           "jellyfish",
           "paperBoats",
           "fireflies",
           "moonlit",
-          "clouds",
         ];
         const store = useAsciiWallpaperStore.getState();
         const matched = validKeys.find((k) => k.toLowerCase() === arg);
@@ -1331,34 +1335,13 @@ export function useComposerSlashCommands(input: {
         return;
       }
 
-      if (item.command === "wallpaper") {
+      if (item.command === "wallpaper" || item.command === "theme") {
         const applied = clearSlashCommandFromComposer();
         if (!wasPromptReplacementApplied(applied)) {
           return;
         }
         editorActions.setComposerHighlightedItemId(null);
-        const validKeys: AsciiWallpaperKey[] = [
-          "off",
-          "koiPond",
-          "honu",
-          "clawd",
-          "jellyfish",
-          "paperBoats",
-          "fireflies",
-          "moonlit",
-          "clouds",
-        ];
-        const store = useAsciiWallpaperStore.getState();
-        const nextKey: AsciiWallpaperKey =
-          validKeys[(validKeys.indexOf(store.wallpaper) + 1) % validKeys.length] ?? "off";
-        store.setWallpaper(nextKey);
-        const nextItem = ASCII_WALLPAPERS.find((w) => w.key === nextKey);
-        toastManager.add({
-          type: "info",
-          title: "ASCII Wallpaper",
-          description:
-            nextKey === "off" ? "Wallpaper turned off." : `Active: ${nextItem?.name ?? nextKey}`,
-        });
+        useAsciiWallpaperStore.getState().openPicker();
         editorActions.scheduleComposerFocus();
         return;
       }

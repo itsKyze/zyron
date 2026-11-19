@@ -25,4 +25,5 @@ export const BUILT_IN_COMPOSER_SLASH_COMMANDS = [
   "refactor",
   "docs",
   "wallpaper",
+  "theme",
 ] as const;
