@@ -4631,6 +4631,7 @@ describe("ChatView transcript geometry (full app)", () => {
           "/remote?environment=remote-project-owner&path=%2Fremote-draft",
         ),
       );
+      await expect.element(page.getByRole("dialog")).not.toBeInTheDocument();
 
       // Closing the fresh remote draft must not hide an explicitly assigned empty project.
       updateWorkspaceSession(hostId, {

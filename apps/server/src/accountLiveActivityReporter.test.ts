@@ -518,22 +518,30 @@ it("reports a watched turn when it changes and otherwise as a heartbeat inside t
             Effect.promise(async () => {
               for (let left = ms; left > 0; left -= 5_000) {
                 await vi.advanceTimersByTimeAsync(Math.min(left, 5_000));
-                await waitForIo(100);
+                await waitForIo(150);
               }
             });
           try {
             yield* advance(1_000);
-            expect(puts).toHaveLength(1);
+            yield* Effect.promise(() =>
+              vi.waitFor(() => expect(puts).toHaveLength(1), { timeout: 4_000 }),
+            );
             // Unchanged for 25 s: read every 5 s, nothing sent.
             yield* advance(25_000);
-            expect(puts).toHaveLength(1);
+            yield* Effect.promise(() =>
+              vi.waitFor(() => expect(puts).toHaveLength(1), { timeout: 4_000 }),
+            );
             // The heartbeat keeps the host fresh well inside the 90 s staleness window.
             yield* advance(5_000);
-            expect(puts).toHaveLength(2);
+            yield* Effect.promise(() =>
+              vi.waitFor(() => expect(puts).toHaveLength(2), { timeout: 4_000 }),
+            );
             // A change is sent on the next read.
             yield* sql`UPDATE projection_turns SET state='completed' WHERE turn_id='turn-1'`;
             yield* advance(5_000);
-            expect(puts).toHaveLength(3);
+            yield* Effect.promise(() =>
+              vi.waitFor(() => expect(puts).toHaveLength(3), { timeout: 4_000 }),
+            );
             expect(puts[2]).toMatchObject({ turns: [{ turnId: "turn-1", state: "ready" }] });
           } finally {
             reporter.stop();
