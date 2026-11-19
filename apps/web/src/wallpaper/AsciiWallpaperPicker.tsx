@@ -63,10 +63,11 @@ export const AsciiWallpaperPicker = memo(function AsciiWallpaperPicker() {
               )}
             >
               {/* Thumbnail SVG container */}
-              <div
-                className="relative aspect-[16/9] w-full overflow-hidden bg-black/60 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover"
-                dangerouslySetInnerHTML={cardSvg ? { __html: cardSvg } : undefined}
-              >
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/60 flex items-center justify-center">
+                <div
+                  className="size-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover"
+                  dangerouslySetInnerHTML={cardSvg ? { __html: cardSvg } : undefined}
+                />
                 {isSelected && (
                   <div className="absolute top-1.5 right-1.5 flex size-5 items-center justify-center rounded-full bg-primary text-primary-foreground shadow">
                     <CheckIcon className="size-3" />

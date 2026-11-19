@@ -14,5 +14,22 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  api:
+    build:
+      context: ../..
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8788:8788"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgres://zyron:zyron@postgres:5432/zyron_accounts
+      PORT: "8788"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
 volumes:
   zyron-api-pg:
