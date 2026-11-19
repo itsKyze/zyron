@@ -6,7 +6,7 @@ import { create } from "zustand";
 import { type AsciiWallpaperKey } from "./asciiScenes";
 
 const STORAGE_KEY = "zyron:ascii-wallpaper";
-const DEFAULT_WALLPAPER: AsciiWallpaperKey = "koiPond";
+const DEFAULT_WALLPAPER: AsciiWallpaperKey = "off";
 
 export interface AsciiWallpaperState {
   wallpaper: AsciiWallpaperKey;

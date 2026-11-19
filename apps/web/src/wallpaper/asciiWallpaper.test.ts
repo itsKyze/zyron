@@ -9,13 +9,15 @@ import { ASCII_WALLPAPERS, SCENES, CARDS } from "./asciiScenes";
 describe("asciiWallpaper", () => {
   beforeEach(() => {
     useAsciiWallpaperStore.setState({
-      wallpaper: "koiPond",
+      wallpaper: "off",
       glassBlur: 22,
       glassTintOpacity: 0.55,
     });
   });
 
-  it("initializes with koiPond and updates wallpaper state", () => {
+  it("initializes with off and updates wallpaper state", () => {
+    expect(useAsciiWallpaperStore.getState().wallpaper).toBe("off");
+    useAsciiWallpaperStore.getState().setWallpaper("koiPond");
     expect(useAsciiWallpaperStore.getState().wallpaper).toBe("koiPond");
     useAsciiWallpaperStore.getState().setWallpaper("honu");
     expect(useAsciiWallpaperStore.getState().wallpaper).toBe("honu");
@@ -41,13 +43,13 @@ describe("asciiWallpaper", () => {
 
       const sceneSvg = (SCENES as Record<string, string>)[item.key];
       expect(sceneSvg).toBeDefined();
-      expect(sceneSvg.startsWith("<svg")).toBe(true);
-      expect(sceneSvg.endsWith("</svg>")).toBe(true);
+      expect(sceneSvg?.startsWith("<svg")).toBe(true);
+      expect(sceneSvg?.endsWith("</svg>")).toBe(true);
 
       const cardSvg = (CARDS as Record<string, string>)[item.key];
       expect(cardSvg).toBeDefined();
-      expect(cardSvg.startsWith("<svg")).toBe(true);
-      expect(cardSvg.endsWith("</svg>")).toBe(true);
+      expect(cardSvg?.startsWith("<svg")).toBe(true);
+      expect(cardSvg?.endsWith("</svg>")).toBe(true);
     }
   });
 });

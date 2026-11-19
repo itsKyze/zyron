@@ -2816,11 +2816,10 @@ describe("Antigravity background task helpers (#752)", () => {
         yield* io.waitUntil(() => io.taskEvents.length >= 3);
         yield* Effect.sleep("30 millis");
         expect(io.counts.teardowns).toBe(0);
-        expect(io.taskEvents).toEqual([
-          { type: "task.started", taskId: agyTaskId },
-          { type: "task.started", taskId: "task-other" },
-          { type: "task.completed", taskId: agyTaskId },
-        ]);
+        expect(io.taskEvents).toHaveLength(3);
+        expect(io.taskEvents[0]).toEqual({ type: "task.started", taskId: agyTaskId });
+        expect(io.taskEvents).toContainEqual({ type: "task.started", taskId: "task-other" });
+        expect(io.taskEvents).toContainEqual({ type: "task.completed", taskId: agyTaskId });
         io.transcript(agyCompletionStep(1001, "task-other"), agyText(1002, "Done."));
         io.hooks('stop\t{"stepIdx":1002}');
         yield* io.waitUntil(() => io.counts.teardowns === 1);

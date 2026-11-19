@@ -249,7 +249,12 @@ describe("desktop update rail control", () => {
         />,
       );
       await expect
-        .element(page.getByRole("button", { name: "Preparing update 0.9.3", exact: true }))
+        .element(
+          page.getByRole("button", {
+            name: "Update 0.9.3 is available. Click to download now, or it will download automatically in the background.",
+            exact: true,
+          }),
+        )
         .toBeDisabled();
       await screen.rerender(
         <DesktopUpdateRailButton
