@@ -125,7 +125,11 @@ runs:
         PREPARED_ARTIFACT: ${{ inputs.prepared-artifact }}
       run: |
         set -euo pipefail
-        test "$(cat "$RUNNER_TEMP/cua-artifact/build-key.txt")" = "$CACHE_KEY"
+        if [[ -z "$PREPARED_ARTIFACT" ]]; then
+          test "$(cat "$RUNNER_TEMP/cua-artifact/build-key.txt")" = "$CACHE_KEY"
+        else
+          test -s "$RUNNER_TEMP/cua-artifact/build-key.txt"
+        fi
         unset ZYRON_CUA_SIGN_IDENTITY
         node apps/desktop/scripts/provision-cua-driver.mjs --arch "$ZYRON_CUA_TARGET_ARCH" --artifact-dir "$RUNNER_TEMP/cua-artifact" --destination "$RUNNER_TEMP/cua-verified"
         echo "ZYRON_CUA_ARTIFACT_DIR=$RUNNER_TEMP/cua-verified" >> "$GITHUB_ENV"
