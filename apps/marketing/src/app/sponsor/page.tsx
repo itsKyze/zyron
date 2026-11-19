@@ -187,7 +187,7 @@ export default function SponsorPage() {
               or one-time — it goes under Top donors. For logo placement at $149 and above, send me
               the asset and the link you want it to point at{" "}
               <a
-                href="https://x.com/itsKyze"
+                href="https://x.com/kyzedevs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[var(--accent-link)] transition-colors hover:text-[var(--accent-link-hover)]"

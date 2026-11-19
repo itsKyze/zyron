@@ -243,7 +243,7 @@ export default function PrivacyPage() {
           <p className="text-[12px] text-[var(--text-tertiary)]">
             Last updated {LAST_UPDATED}. Questions?{" "}
             <a
-              href="https://x.com/itsKyze"
+              href="https://x.com/kyzedevs"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[var(--accent-link)] transition-colors hover:text-[var(--accent-link-hover)]"

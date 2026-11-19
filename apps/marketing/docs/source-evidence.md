@@ -121,7 +121,7 @@ Live GitHub URLs `https://github.com/itsKyze/zyron*` verified HTTP 200 on 2026-0
 ## Site metadata (src/lib/seo.ts)
 
 **Claims:** `https://ai.zyron.site` (canonical site URL), `https://ai.zyron.site`
-(author site), `https://x.com/itsKyze` (X profile), `https://youtube.com/@itsKyze`
+(author site), `https://x.com/kyzedevs` (X profile), `https://youtube.com/@itsKyze`
 (YouTube channel), `https://schema.org` (schema vocabulary), `https://opensource.org/licenses/MIT`
 (MIT license).
 

@@ -12,7 +12,7 @@ export default function SiteFooter() {
         <span>
           Made by{" "}
           <a
-            href="https://x.com/itsKyze"
+            href="https://x.com/kyzedevs"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[var(--accent-link)] transition-colors hover:text-[var(--accent-link-hover)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
