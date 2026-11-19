@@ -220,7 +220,7 @@ function Poster({
           <ZyronMark edge={30} color={INK} />
           <span>Zyron</span>
         </div>
-        <span style={{ color: MUTED }}>ai.zyron.site/@{profile.handle}</span>
+        <span style={{ color: MUTED }}>profile.zyron.site/@{profile.handle}</span>
       </div>
     </div>
   );
@@ -378,7 +378,7 @@ function Receipt({ profile, data }: { profile: PublicProfile; data: ShareCardDat
             ))}
           </div>
           <span style={{ fontSize: 18, color: "#7a7a75" }}>LAST 30 DAYS, ONE BAR PER DAY</span>
-          <span style={{ fontSize: 20 }}>ai.zyron.site/@{profile.handle}</span>
+          <span style={{ fontSize: 20 }}>profile.zyron.site/@{profile.handle}</span>
         </div>
       </div>
     </div>

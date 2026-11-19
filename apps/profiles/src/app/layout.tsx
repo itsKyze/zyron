@@ -4,7 +4,7 @@ import "./globals.css";
 
 export function generateMetadata(): Metadata {
   return {
-    metadataBase: new URL(process.env.PROFILES_PUBLIC_ORIGIN ?? "https://ai.zyron.site"),
+    metadataBase: new URL(process.env.PROFILES_PUBLIC_ORIGIN ?? "https://profile.zyron.site"),
     title: "Zyron",
     description: "Public Zyron profiles",
     icons: {
