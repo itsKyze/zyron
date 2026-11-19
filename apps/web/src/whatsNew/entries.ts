@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.5",
+    date: "Nov 19",
+    features: [
+      {
+        id: "smart-auto-update",
+        title: "Smart background updates",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Update manually on demand, or let Zyron quietly prepare and download updates in the background after a grace period.",
+      },
+    ],
+  },
+  {
     version: "1.6.4",
     date: "Nov 19",
     features: [

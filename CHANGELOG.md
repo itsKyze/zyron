@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.5 — 2026-11-19
+
+**Smart auto-download fallback with manual override grace period and reliable background packaging.**
+
+### Added
+
+- Smart Update Pipeline: Immediate manual download control when an update is available, paired with an automatic background download fallback after a 60-second grace period.
+- Non-disruptive installation: Downloaded updates wait for user confirmation ("Restart to apply") without interrupting active agent tasks.
+
 ## 1.6.4 — 2026-11-19
 
 **UI language switcher with Arabic and RTL support, active developer slash commands in composer, and top-header desktop update pill.**

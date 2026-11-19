@@ -165,7 +165,8 @@ export function getDesktopUpdateButtonTooltip(
     return `Could not install update ${state.downloadedVersion ?? state.availableVersion}. Click to retry.`;
   }
   if (state.status === "available") {
-    return `Preparing update ${state.availableVersion ?? ""}`.trim();
+    const version = state.availableVersion ? ` ${state.availableVersion}` : "";
+    return `Update${version} is available. Click to download now, or it will download automatically in the background.`;
   }
   if (state.status === "downloading") {
     const progress =

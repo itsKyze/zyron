@@ -3056,6 +3056,7 @@ function startBundleSwapWatcher(): void {
 }
 
 function clearUpdatePollTimer(): void {
+  clearAutoDownloadFallbackTimer();
   if (updateStartupTimer) {
     clearTimeout(updateStartupTimer);
     updateStartupTimer = null;
@@ -3277,6 +3278,19 @@ function clearUpdateBackgroundBlurTimer(): void {
   if (updateBackgroundBlurTimer) {
     clearTimeout(updateBackgroundBlurTimer);
     updateBackgroundBlurTimer = null;
+  }
+}
+
+// Grace period before automatically downloading an available update.
+// Gives the user an opportunity to trigger download manually, falling back
+// to automatic background download if unattended.
+const AUTO_DOWNLOAD_FALLBACK_DELAY_MS = 60_000;
+let autoDownloadFallbackTimer: ReturnType<typeof setTimeout> | null = null;
+
+function clearAutoDownloadFallbackTimer(): void {
+  if (autoDownloadFallbackTimer) {
+    clearTimeout(autoDownloadFallbackTimer);
+    autoDownloadFallbackTimer = null;
   }
 }
 
@@ -3527,6 +3541,7 @@ async function downloadAvailableUpdate(): Promise<{
     console.info(`[desktop-updater] Ignoring stale available update: ${rejected}.`);
     return { accepted: false, completed: false };
   }
+  clearAutoDownloadFallbackTimer();
   updateDownloadInFlight = true;
   downloadedUpdateArtifact = null;
   downloadedUpdateIdentityTask = null;
@@ -4037,11 +4052,22 @@ function configureAutoUpdater(): void {
     downloadedUpdateArtifact = null;
     lastLoggedDownloadMilestone = -1;
     console.info(`[desktop-updater] Update available: ${info.version}`);
-    prepareAvailableUpdateInBackground(`available ${info.version}`);
+    clearAutoDownloadFallbackTimer();
+    autoDownloadFallbackTimer = setTimeout(() => {
+      autoDownloadFallbackTimer = null;
+      if (updateState.status === "available" && !updateDownloadInFlight) {
+        console.info(
+          `[desktop-updater] Auto-downloading available update after grace period: ${info.version}`,
+        );
+        prepareAvailableUpdateInBackground(`grace period fallback ${info.version}`);
+      }
+    }, AUTO_DOWNLOAD_FALLBACK_DELAY_MS);
+    autoDownloadFallbackTimer.unref();
   });
   autoUpdater.on("update-not-available", () => {
     if (isQuitting || isUpdaterInstallPreparing || updateDownloadInFlight) return;
     clearUpdateCheckTimeoutTimer();
+    clearAutoDownloadFallbackTimer();
     const nextState = reduceDesktopUpdateStateOnNoUpdate(updateState, new Date().toISOString());
     if (nextState.downloadedVersion === null) {
       downloadedUpdateArtifact = null;
@@ -4053,6 +4079,7 @@ function configureAutoUpdater(): void {
   });
   autoUpdater.on("error", (error) => {
     clearUpdateCheckTimeoutTimer();
+    clearAutoDownloadFallbackTimer();
     const message = formatErrorMessage(error);
     const errorContext = resolveUpdaterErrorContext();
     if (
