@@ -49,9 +49,13 @@ const DEFAULT_COWORKERS: CoworkerPreset[] = [
   },
 ];
 
+const OPENBOT_BASE_URL = "http://127.0.0.1:3001";
+const OPENBOT_INSTALL_TOKEN = "1b51c90286b2846212078c0f544eb35697b82fc092cf628312b8a6f9f1d9de4a";
+const OPENBOT_AUTH_URL = `${OPENBOT_BASE_URL}/api/install/enter?token=${OPENBOT_INSTALL_TOKEN}&to=/`;
+
 export default function OpenBotView() {
-  const [openBotAppUrl] = useState("http://127.0.0.1:3001");
-  const [openBotServerUrl, setOpenBotServerUrl] = useState("http://127.0.0.1:3001");
+  const [openBotAppUrl] = useState(OPENBOT_AUTH_URL);
+  const [openBotServerUrl, setOpenBotServerUrl] = useState(OPENBOT_BASE_URL);
   const [isConnected, setIsConnected] = useState(false);
   const [viewMode, setViewMode] = useState<"app" | "catalog">("app");
   const [activeBot, setActiveBot] = useState<string>("browser-agent");

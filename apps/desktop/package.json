@@ -1,6 +1,6 @@
 {
   "name": "@zyron/desktop",
-  "version": "1.6.11",
+  "version": "1.6.12",
   "private": true,
   "main": "dist-electron/main.js",
   "scripts": {

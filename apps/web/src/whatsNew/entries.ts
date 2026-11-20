@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.12",
+    date: "Nov 20",
+    features: [
+      {
+        id: "openbot-install-token-auth",
+        title: "OpenBot session authentication bypass",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Automatically authenticated the live OpenBot workspace with its container install token, eliminating app refusal barriers.",
+      },
+    ],
+  },
+  {
     version: "1.6.11",
     date: "Nov 20",
     features: [

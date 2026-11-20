@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.12 — 2026-11-20
+
+**Pass installation authentication token to OpenBot live app URL to establish install session.**
+
+### Fixed
+
+- OpenBot Session Authentication: Route OpenBot live app URL through `/api/install/enter?token=...` so the embedded workspace receives its authorized install cookie, resolving the "Open OpenBot from its app" refusal screen.
+
 ## 1.6.11 — 2026-11-20
 
 **Permit local OpenBot subframe navigation in desktop subframe navigation guard.**
