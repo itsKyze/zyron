@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.11",
+    date: "Nov 20",
+    features: [
+      {
+        id: "openbot-desktop-subframe-guard-permit",
+        title: "Desktop subframe navigation for OpenBot",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Permitted local OpenBot container origins through the desktop subframe navigation guard so the live app renders inside Zyron.",
+      },
+    ],
+  },
+  {
     version: "1.6.10",
     date: "Nov 20",
     features: [

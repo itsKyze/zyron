@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.11 — 2026-11-20
+
+**Permit local OpenBot subframe navigation in desktop subframe navigation guard.**
+
+### Fixed
+
+- Desktop Subframe Navigation Guard: Allow `127.0.0.1:3001` and `localhost:3001` subframe navigations so Electron main process does not cancel the OpenBot live app iframe.
+
 ## 1.6.10 — 2026-11-20
 
 **Enable allow-same-origin sandbox for OpenBot live app embed to permit localStorage and state hydration.**

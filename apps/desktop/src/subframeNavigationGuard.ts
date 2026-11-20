@@ -14,7 +14,18 @@ import type { WebContents } from "electron";
  * The in-app browser uses `<webview>` guests, which are separate WebContents.
  */
 export function isAllowedAppSubframeNavigation(url: string): boolean {
-  return url === "about:srcdoc" || url === "about:blank";
+  if (url === "about:srcdoc" || url === "about:blank") return true;
+  try {
+    const parsed = new URL(url);
+    // Allow local OpenBot workspace iframe
+    if (
+      (parsed.hostname === "127.0.0.1" || parsed.hostname === "localhost") &&
+      (parsed.port === "3001" || parsed.port === "3025")
+    ) {
+      return true;
+    }
+  } catch {}
+  return false;
 }
 
 export function attachAppSubframeNavigationGuard(
