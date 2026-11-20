@@ -105,7 +105,7 @@ export default function OpenBotView() {
               title="OpenBot Application"
               className="w-full h-full border-none"
               allow="clipboard-read; clipboard-write; microphone; camera"
-              sandbox="allow-scripts allow-forms allow-popups allow-modals"
+              sandbox="allow-scripts allow-forms allow-popups allow-modals allow-same-origin"
             />
           </div>
         ) : (
