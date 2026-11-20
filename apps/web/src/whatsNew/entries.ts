@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.8",
+    date: "Nov 20",
+    features: [
+      {
+        id: "openbot-coworkers-workspace",
+        title: "OpenBot autonomous AI coworkers workspace",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Dedicated OpenBot App Rail category with live embedded workspace, coworker presets, and multi-agent coordination.",
+      },
+    ],
+  },
+  {
     version: "1.6.7",
     date: "Nov 19",
     features: [

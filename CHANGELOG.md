@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.6.8 — 2026-11-20
+
+**OpenBot autonomous AI coworkers workspace integration, multi-agent Docker tooling, and live app embed.**
+
+### Added
+
+- OpenBot App Rail & Workspace: Dedicated OpenBot category in the App Rail providing direct access to the OpenBot workspace.
+- Multi-Agent Orchestration & Hub: Integrated LangGraph engine, Playwright sandboxed browser tools, and AI coworker presets catalog.
+- Dual View Experience: Seamless toggle between the Live App (embedded self-hosted instance) and the Coworkers & Hub dashboard with external browser launch shortcut.
+
 ## 1.6.7 — 2026-11-19
 
 **Full-window animated ASCII wallpapers behind chat, floating /theme picker overlay, and complete release stabilization.**
