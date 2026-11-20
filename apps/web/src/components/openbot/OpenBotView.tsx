@@ -6,7 +6,7 @@ import { useState } from "react";
 import { RouteInsetSurface } from "../RouteInsetSurface";
 import { RouteSurface, RouteSurfaceHeader } from "../RouteSurface";
 import { Button } from "~/components/ui/button";
-import { BotIcon, ExternalLinkIcon, RefreshCwIcon, PlayIcon, CheckIcon } from "~/lib/icons";
+import { BotIcon, ExternalLinkIcon, PlayIcon, CheckIcon } from "~/lib/icons";
 import { openExternalLink } from "~/lib/linkChips";
 import { cn } from "~/lib/utils";
 
@@ -50,8 +50,8 @@ const DEFAULT_COWORKERS: CoworkerPreset[] = [
 ];
 
 export default function OpenBotView() {
-  const [openBotAppUrl, setOpenBotAppUrl] = useState("http://localhost:3025");
-  const [openBotServerUrl, setOpenBotServerUrl] = useState("http://localhost:3001");
+  const [openBotAppUrl, setOpenBotAppUrl] = useState("http://127.0.0.1:3001");
+  const [openBotServerUrl, setOpenBotServerUrl] = useState("http://127.0.0.1:3001");
   const [isConnected, setIsConnected] = useState(false);
   const [viewMode, setViewMode] = useState<"app" | "catalog">("app");
   const [activeBot, setActiveBot] = useState<string>("browser-agent");
@@ -103,9 +103,9 @@ export default function OpenBotView() {
             <iframe
               src={openBotAppUrl}
               title="OpenBot Application"
-              className="w-full h-full border-none"
-              allow="clipboard-read; clipboard-write; microphone; camera"
-              sandbox="allow-scripts allow-forms allow-popups allow-modals allow-same-origin"
+              className="w-full h-full border-none bg-background"
+              allow="clipboard-read; clipboard-write; microphone; camera; autoplay; encrypted-media; fullscreen"
+              sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads"
             />
           </div>
         ) : (

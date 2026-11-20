@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.9 — 2026-11-20
+
+**Direct OpenBot live app integration, Google Gemini tool-call stream compatibility, and external browser link alignment.**
+
+### Fixed
+
+- OpenBot Live App Embed: Point embedded workspace surface and external browser launcher directly to port 3001, removing restrictive sandbox constraints so the live UI loads immediately.
+- Gemini Tool-Call Streaming: Integrated compatibility proxy resolving missing delta tool call index errors for seamless function calling.
+
 ## 1.6.8 — 2026-11-20
 
 **OpenBot autonomous AI coworkers workspace integration, multi-agent Docker tooling, and live app embed.**

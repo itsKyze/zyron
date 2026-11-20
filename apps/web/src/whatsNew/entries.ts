@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.9",
+    date: "Nov 20",
+    features: [
+      {
+        id: "openbot-live-app-direct-embed",
+        title: "Direct OpenBot Live App workspace embed",
+        badge: "Improved",
+        badgeTone: "new",
+        description:
+          "Seamless live app embedding pointing directly to the self-hosted engine with unrestricted webview integration.",
+      },
+    ],
+  },
+  {
     version: "1.6.8",
     date: "Nov 20",
     features: [
