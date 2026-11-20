@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.10",
+    date: "Nov 20",
+    features: [
+      {
+        id: "openbot-live-app-storage-fix",
+        title: "OpenBot Live App sandbox and state hydration",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Enabled origin storage permission in the embedded webview, allowing React and local database state to mount instantly.",
+      },
+    ],
+  },
+  {
     version: "1.6.9",
     date: "Nov 20",
     features: [

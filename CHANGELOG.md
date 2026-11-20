@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.10 — 2026-11-20
+
+**Enable allow-same-origin sandbox for OpenBot live app embed to permit localStorage and state hydration.**
+
+### Fixed
+
+- OpenBot Embedded Live App: Add `allow-same-origin` to iframe sandbox attribute so local storage, session state, and theme initialization run without privacy blocks.
+
 ## 1.6.9 — 2026-11-20
 
 **Direct OpenBot live app integration, Google Gemini tool-call stream compatibility, and external browser link alignment.**

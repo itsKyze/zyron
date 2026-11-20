@@ -50,7 +50,7 @@ const DEFAULT_COWORKERS: CoworkerPreset[] = [
 ];
 
 export default function OpenBotView() {
-  const [openBotAppUrl, setOpenBotAppUrl] = useState("http://127.0.0.1:3001");
+  const [openBotAppUrl] = useState("http://127.0.0.1:3001");
   const [openBotServerUrl, setOpenBotServerUrl] = useState("http://127.0.0.1:3001");
   const [isConnected, setIsConnected] = useState(false);
   const [viewMode, setViewMode] = useState<"app" | "catalog">("app");
@@ -105,7 +105,9 @@ export default function OpenBotView() {
               title="OpenBot Application"
               className="w-full h-full border-none bg-background"
               allow="clipboard-read; clipboard-write; microphone; camera; autoplay; encrypted-media; fullscreen"
-              sandbox="allow-scripts allow-forms allow-popups allow-modals allow-downloads"
+              // The OpenBot app needs local storage, cookies, and scripts to initialize React and local database state.
+              // eslint-disable-next-line react/iframe-missing-sandbox
+              sandbox="allow-same-origin allow-scripts allow-forms allow-popups allow-modals allow-downloads"
             />
           </div>
         ) : (
