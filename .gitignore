@@ -57,3 +57,4 @@ __screenshots__/
 
 # Local Cloudflare deployment bundles and source maps.
 .wrangler/
+apps/openbot/
