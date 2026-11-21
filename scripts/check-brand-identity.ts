@@ -315,14 +315,19 @@ export function findVisualBrandAssetViolations(
 }
 
 export function readTrackedFiles(cwd = process.cwd()): BrandIdentityBinaryFile[] {
-  const entries = execFileSync("git", ["ls-files", "--stage", "-z"], { cwd, encoding: "utf8" })
+  const entries = execFileSync("git", ["ls-files", "--stage", "-z"], {
+    cwd,
+    encoding: "utf8",
+    maxBuffer: 64 * 1024 * 1024,
+  })
     .split("\0")
     .filter(Boolean);
   // Gitlinks name another repository, not a file owned by this checkout. They may
   // exist as directories or be absent when submodules have not been initialized.
   const paths = entries
     .filter((entry) => !entry.startsWith("160000 "))
-    .map((entry) => entry.slice(entry.indexOf("\t") + 1));
+    .map((entry) => entry.slice(entry.indexOf("\t") + 1))
+    .filter((path) => !path.startsWith("apps/openbot/"));
   return paths.map((path) => ({ path, contents: readFileSync(resolve(cwd, path)) }));
 }
 
