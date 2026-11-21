@@ -57,7 +57,7 @@ export function DesktopUpdatePill() {
             className={cn(
               "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-2.5 py-1 text-ui-xs font-medium leading-none transition-all duration-150 select-none",
               toneClass,
-              disabled && "cursor-not-allowed opacity-75",
+              disabled ? "cursor-not-allowed opacity-75" : "cursor-pointer",
             )}
           >
             <IconComponent

@@ -45,7 +45,7 @@ describe("desktop update button state", () => {
     expect(getDesktopUpdateButtonTooltip(baseState)).toBe("Check for updates");
   });
 
-  it("shows a download action when an update is available", () => {
+  it("shows an actionable download action when an update is available", () => {
     const state: DesktopUpdateState = {
       ...baseState,
       status: "available",
@@ -53,7 +53,7 @@ describe("desktop update button state", () => {
     };
     expect(shouldShowDesktopUpdateButton(state)).toBe(true);
     expect(resolveDesktopUpdateButtonAction(state)).toBe("download");
-    expect(isDesktopUpdateButtonDisabled(state)).toBe(true);
+    expect(isDesktopUpdateButtonDisabled(state)).toBe(false);
   });
 
   it("keeps retry action available after a download error", () => {

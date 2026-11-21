@@ -71,8 +71,7 @@ export function isDesktopUpdateButtonDisabled(state: DesktopUpdateState | null):
   return (
     (state?.status === "error" && state.errorContext === "install" && !state.canRetry) ||
     state?.status === "downloading" ||
-    state?.status === "checking" ||
-    (state?.status === "available" && state.errorContext !== "download")
+    state?.status === "checking"
   );
 }
 

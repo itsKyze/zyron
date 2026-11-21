@@ -3057,6 +3057,7 @@ function startBundleSwapWatcher(): void {
 
 function clearUpdatePollTimer(): void {
   clearAutoDownloadFallbackTimer();
+  clearAutoInstallUnattendedTimer();
   if (updateStartupTimer) {
     clearTimeout(updateStartupTimer);
     updateStartupTimer = null;
@@ -3252,6 +3253,7 @@ function processInstallMarkerOnStartup(): void {
 // electron-updater can leave a same-version ZIP in `pending` after a restart or
 // a failed install attempt. Clearing it prevents stale "ready" states.
 async function clearPendingUpdateCache(reason: string): Promise<void> {
+  clearAutoInstallUnattendedTimer();
   const pendingDir = getPendingUpdateCacheDir();
   if (!pendingDir || updateDownloadInFlight) {
     return;
@@ -3291,6 +3293,18 @@ function clearAutoDownloadFallbackTimer(): void {
   if (autoDownloadFallbackTimer) {
     clearTimeout(autoDownloadFallbackTimer);
     autoDownloadFallbackTimer = null;
+  }
+}
+
+// Unattended installation delay after an update has finished downloading:
+// If unattended or the user has not clicked to restart, automatically install after 1 hour.
+const AUTO_INSTALL_UNATTENDED_DELAY_MS = 60 * 60 * 1000;
+let autoInstallUnattendedTimer: ReturnType<typeof setTimeout> | null = null;
+
+function clearAutoInstallUnattendedTimer(): void {
+  if (autoInstallUnattendedTimer) {
+    clearTimeout(autoInstallUnattendedTimer);
+    autoInstallUnattendedTimer = null;
   }
 }
 
@@ -3738,7 +3752,7 @@ async function stopBackendForUpdateInstall(
   updateInstallPreparation.requireActive(attempt);
 }
 
-type UpdateInstallSource = "desktop" | "backend";
+type UpdateInstallSource = "desktop" | "backend" | "unattended";
 
 async function runDownloadedUpdateInstall(
   preparationAttempt: UpdateInstallPreparationAttempt,
@@ -3856,6 +3870,7 @@ async function installDownloadedUpdate(source: UpdateInstallSource = "desktop"):
   accepted: boolean;
   completed: boolean;
 }> {
+  clearAutoInstallUnattendedTimer();
   const blockedReason = getUpdaterInstallBlockedReason();
   if (blockedReason !== null) {
     setUpdateState({ message: blockedReason, errorContext: "install", canRetry: false });
@@ -3934,6 +3949,17 @@ async function recordDownloadedUpdateIdentity(info: UpdateDownloadedEvent): Prom
     console.info(
       `[desktop-updater] Update downloaded and fingerprinted: ${info.version} (${identity.size} bytes, sha512=${identity.sha512.slice(0, 16)}…).`,
     );
+    clearAutoInstallUnattendedTimer();
+    autoInstallUnattendedTimer = setTimeout(() => {
+      autoInstallUnattendedTimer = null;
+      if (updateState.status === "downloaded" && !isQuitting && !isUpdaterInstallPreparing) {
+        console.info(
+          `[desktop-updater] Automatically installing downloaded update after 1 hour unattended: ${info.version}`,
+        );
+        void installDownloadedUpdate("unattended");
+      }
+    }, AUTO_INSTALL_UNATTENDED_DELAY_MS);
+    autoInstallUnattendedTimer.unref();
   } catch (error) {
     if (!ownsDownload()) return;
     downloadedUpdateArtifact = null;
