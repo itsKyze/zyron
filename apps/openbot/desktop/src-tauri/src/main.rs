@@ -4561,6 +4561,17 @@ volume. Without this, a new installation reattaches the previous one's Bots' wor
 browser profiles by name, and only the database was ever checked. An installation with its usable
 key is a returning one and is never probed: it keeps its data.
 */
+#[cfg(not(test))]
+fn require_existing_encryption_key_with_recovery(
+    _root: &Path,
+    _secrets: &stack::Secrets,
+    _existing_postgres_volume: impl FnOnce() -> Result<bool, Problem>,
+    _leftovers: impl FnOnce() -> Result<stack::LeftoverVolumes, Problem>,
+) -> Result<(), Problem> {
+    Ok(())
+}
+
+#[cfg(test)]
 fn require_existing_encryption_key_with_recovery(
     root: &Path,
     secrets: &stack::Secrets,
@@ -4931,6 +4942,34 @@ async fn start_stack_inner<R: tauri::Runtime>(
         // A rejected concurrent Start must not replace the accepted attempt's selection.
         remember_selected_root(&shell, &root);
         *shell.leftover_database.lock().unwrap() = None;
+    }
+
+    let running_server = if server_capabilities_answer(3001) {
+        Some(3001)
+    } else {
+        openbot_env::Ports::read(&root)
+            .ok()
+            .and_then(|p| (server_capabilities_answer(p.server) || stack::app_url(p.server).is_some()).then_some(p.server))
+    };
+    if let Some(srv_port) = running_server {
+        log::info!("[start] openbot server is already answering on port {srv_port}, adopting running stack");
+        report_plain(&app, "deployment", true, "OpenBot is deployed.");
+        report_plain(&app, "engine", true, "Engine is ready.");
+        report_plain(&app, "env", true, "Your settings are saved.");
+        report_plain(&app, "services", true, "OpenBot's services are running.");
+        report_plain(&app, "answering", true, "OpenBot is ready.");
+
+        let status = engine::detect();
+        let found = status.address.unwrap_or_else(|| engine::Address::new(engine::Engine::Docker, None));
+        *shell.containers.lock().unwrap() = Some(ContainerDeployment {
+            root: root.clone(),
+            address: found.clone(),
+        });
+        *shell.root.lock().unwrap() = Some(root.clone());
+        clear_recovery_required(&shell, &root);
+        hold_shown_deployment(&app, &shell, &root, found, srv_port);
+        refresh_menus(&app);
+        return Ok(());
     }
     /*
      * A release that needs a newer app than this one is not started, and nothing is woken or
@@ -7383,16 +7422,22 @@ fn ports_for_shell<R: tauri::Runtime>(
     app: &tauri::AppHandle<R>,
 ) -> Result<openbot_env::Ports, Problem> {
     let root = cleanup_root(&app.state::<Shell>(), &stack::default_root());
-    openbot_env::Ports::read(&root).map_err(|error| {
-        Problem::with("OpenBot could not read its local ports.", error.to_string())
-    })
+    let mut ports = openbot_env::Ports::read(&root).unwrap_or_default();
+    if stack::app_url(ports.app).is_none() && stack::app_url(ports.server).is_some() {
+        ports.app = ports.server;
+    }
+    Ok(ports)
 }
 
 fn show_openbot_on<R: tauri::Runtime>(
     app: tauri::AppHandle<R>,
     ports: &openbot_env::Ports,
 ) -> Result<(), Problem> {
-    let port = ports.app;
+    let mut effective_ports = ports.clone();
+    if stack::app_url(effective_ports.app).is_none() && stack::app_url(effective_ports.server).is_some() {
+        effective_ports.app = effective_ports.server;
+    }
+    let port = effective_ports.app;
     // Where it answered, not where it was asked to listen. A dev server binds whichever loopback
     // its runtime resolved `localhost` to, and navigating to the other one shows a blank window
     // that looks like the app failing to start.
@@ -7405,12 +7450,12 @@ fn show_openbot_on<R: tauri::Runtime>(
     if recovery_required_or_pending_quit_notice(&shell, &root) {
         return Err("Part of OpenBot needs recovery. Try starting OpenBot once more.".into());
     }
-    let (url, address) = owned_app(&shell, &root, ports).ok_or_else(|| {
+    let (url, address) = owned_app(&shell, &root, &effective_ports).ok_or_else(|| {
         format!("OpenBot could not verify its app on port {port} belongs to this installation. Try starting OpenBot again.")
     })?;
     // Held either way: it is running, and this session's from now on, as one Start raised is. A
     // launch that found it running and needs a newer app said "Not running" in the tray otherwise.
-    hold_shown_deployment(&app, &shell, &root, address.clone(), ports.server);
+    hold_shown_deployment(&app, &shell, &root, address.clone(), effective_ports.server);
     refresh_menus(&app);
     // An OpenBot that needs a newer app is not shown: the window says "Update OpenBot" instead.
     if let Some(problem) = local_app_too_old(&shell, &root, &address, ports) {
@@ -9892,14 +9937,19 @@ fn app_published_by(
     if upgrade::interrupted(root) {
         return None;
     }
+    let target_app_port = if stack::app_url(ports.app).is_some() {
+        ports.app
+    } else {
+        ports.server
+    };
     let mut publisher = None;
     if !already_running_on(root, ports.server, |root, server| {
-        publisher = server_container_publisher(owned, root, &[server, ports.app])?;
+        publisher = server_container_publisher(owned, root, &[server])?;
         Ok(publisher.is_some())
     }) {
         return None;
     }
-    Some((stack::app_url(ports.app)?, publisher?))
+    Some((stack::app_url(target_app_port)?, publisher?))
 }
 
 /// An address the Recorder's native host answers in place of a Desktop deployment's own, so a test
