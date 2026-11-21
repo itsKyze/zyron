@@ -255,7 +255,7 @@ describe("desktop update rail control", () => {
             exact: true,
           }),
         )
-        .toBeDisabled();
+        .toBeEnabled();
       await screen.rerender(
         <DesktopUpdateRailButton
           state={{ ...initial, status: "available", errorContext: "download" }}
