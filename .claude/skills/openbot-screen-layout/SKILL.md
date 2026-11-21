@@ -62,18 +62,18 @@ scanned and prose width would wrap every row. It is not a licence for anything e
 Spacing comes from the frame, not from the screen. These are the gaps every screen gets by using the
 components above; a screen that sets its own is drifting.
 
-| Between | Gap | Where it lives |
-|---------|-----|----------------|
-| Page edge (top / sides / bottom) | 48 / 16 / 64px | `PageShell` column (`pt-12` or `pt-8` under the bar, `px-4`, `pb-16`) |
-| Title → description | 8px | `PageShell` header |
-| Title block → first content | 32px | `PageShell`: `[&>header+*]:mt-8` |
-| Title → tabs, tabs → content | 24px, then 32px | `PageShell`: `[&>header+nav]`, `[&>header+nav+*]` |
-| Section → section | 48px | `PageSection` (`mt-12`) |
-| Section heading → description | 4px | `PageSection` |
-| Heading block → section content | 16px | `PageRows` / `PageEmpty` (`mt-4`) |
-| Controls stacked inside a section | 12px | the screen, with `gap-3` |
-| A row in `PageRows` | 65px with a description, never under 56px | `Item` (`px-4 py-3.5 gap-3`), `PageRows` (`min-h-14`) |
-| Divider between rows | inset 16px from both edges | `PageRows`, on every horizontal `Separator` inside it |
+| Between                           | Gap                                       | Where it lives                                                        |
+| --------------------------------- | ----------------------------------------- | --------------------------------------------------------------------- |
+| Page edge (top / sides / bottom)  | 48 / 16 / 64px                            | `PageShell` column (`pt-12` or `pt-8` under the bar, `px-4`, `pb-16`) |
+| Title → description               | 8px                                       | `PageShell` header                                                    |
+| Title block → first content       | 32px                                      | `PageShell`: `[&>header+*]:mt-8`                                      |
+| Title → tabs, tabs → content      | 24px, then 32px                           | `PageShell`: `[&>header+nav]`, `[&>header+nav+*]`                     |
+| Section → section                 | 48px                                      | `PageSection` (`mt-12`)                                               |
+| Section heading → description     | 4px                                       | `PageSection`                                                         |
+| Heading block → section content   | 16px                                      | `PageRows` / `PageEmpty` (`mt-4`)                                     |
+| Controls stacked inside a section | 12px                                      | the screen, with `gap-3`                                              |
+| A row in `PageRows`               | 65px with a description, never under 56px | `Item` (`px-4 py-3.5 gap-3`), `PageRows` (`min-h-14`)                 |
+| Divider between rows              | inset 16px from both edges                | `PageRows`, on every horizontal `Separator` inside it                 |
 
 The 32px under the title is deliberately tighter than the 48px between sections: the title belongs
 to the page it introduces. Those `PageShell` selectors outrank the first child's own `mt-*`, so a
@@ -219,22 +219,22 @@ is actually on screen. The root was once 15px, and every constant taken from the
 
 ## Red Flags
 
-| Signal | What it means | Do instead |
-|--------|---------------|------------|
-| A hand-written `rounded-lg border border-border bg-card` div wrapping rows | `PageRows` re-implemented, and it will drift from the other seven screens | Use `PageRows` |
-| Rows separated by `gap-*` instead of `<Separator />` | A stack of cards rather than one card of rows | `<Separator />` between rows, none after the last |
-| `width="wide"` on anything that is not a table | Prose width is the default for a reason; wide was for the audit log | Leave `width` alone |
-| A `max-w-*`, `p-*` or text size invented for one screen | A fifth container width, which is what this layout exists to stop | Reach for the existing component |
-| Children on an element passed to `Item`'s `render` | They replace the row's own children; the row draws empty | Pass a childless element |
-| `bg-card` on a row inside a dialog | `--card` equals `--popover`; the row is invisible | `variant="muted"` |
-| `Item variant="outline"` and `variant="muted"` on one screen | Reads as two kinds of list and invites a distinction that is not there | One variant per screen |
-| A pixel constant matching a Tailwind rem token (672, 768, 1024) | Breaks the day a width or the root changes | Measure the element |
-| An `mt-*` on a screen's first block, or a gap between blocks not in the Rhythm table | A second spacing scale, which is what made every screen feel slightly off | Let `PageShell` and `PageSection` space it |
-| A one-section page whose section has a `title` | The heading repeats the page title | Drop the section title; description on `PageShell` |
-| A `Switch` on a row that needs two or more values | Half the change happens in place and half in a dialog | A summary, a chevron, and a dialog |
-| A chevron on a row that opens nothing | Announces a destination that does not exist | Value in `ItemActions`, no chevron |
-| A set of chips or toggles crammed into `ItemActions` | It competes with the label for width and wraps badly | `ItemFooter`, which is `basis-full` |
-| A back link in `PageShell`'s `action` | `action` is the page's primary verb, on the title's baseline | `backButton={{ label, linkProps }}` |
+| Signal                                                                               | What it means                                                             | Do instead                                         |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- | -------------------------------------------------- |
+| A hand-written `rounded-lg border border-border bg-card` div wrapping rows           | `PageRows` re-implemented, and it will drift from the other seven screens | Use `PageRows`                                     |
+| Rows separated by `gap-*` instead of `<Separator />`                                 | A stack of cards rather than one card of rows                             | `<Separator />` between rows, none after the last  |
+| `width="wide"` on anything that is not a table                                       | Prose width is the default for a reason; wide was for the audit log       | Leave `width` alone                                |
+| A `max-w-*`, `p-*` or text size invented for one screen                              | A fifth container width, which is what this layout exists to stop         | Reach for the existing component                   |
+| Children on an element passed to `Item`'s `render`                                   | They replace the row's own children; the row draws empty                  | Pass a childless element                           |
+| `bg-card` on a row inside a dialog                                                   | `--card` equals `--popover`; the row is invisible                         | `variant="muted"`                                  |
+| `Item variant="outline"` and `variant="muted"` on one screen                         | Reads as two kinds of list and invites a distinction that is not there    | One variant per screen                             |
+| A pixel constant matching a Tailwind rem token (672, 768, 1024)                      | Breaks the day a width or the root changes                                | Measure the element                                |
+| An `mt-*` on a screen's first block, or a gap between blocks not in the Rhythm table | A second spacing scale, which is what made every screen feel slightly off | Let `PageShell` and `PageSection` space it         |
+| A one-section page whose section has a `title`                                       | The heading repeats the page title                                        | Drop the section title; description on `PageShell` |
+| A `Switch` on a row that needs two or more values                                    | Half the change happens in place and half in a dialog                     | A summary, a chevron, and a dialog                 |
+| A chevron on a row that opens nothing                                                | Announces a destination that does not exist                               | Value in `ItemActions`, no chevron                 |
+| A set of chips or toggles crammed into `ItemActions`                                 | It competes with the label for width and wraps badly                      | `ItemFooter`, which is `basis-full`                |
+| A back link in `PageShell`'s `action`                                                | `action` is the page's primary verb, on the title's baseline              | `backButton={{ label, linkProps }}`                |
 
 ## Error Handling
 

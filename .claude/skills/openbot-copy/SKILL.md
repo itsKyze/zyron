@@ -19,28 +19,28 @@ and not `docs/`, which has its own register.
 
 One word for one thing, everywhere a person can see it.
 
-| Say | For | Not |
-|---|---|---|
-| **Bot**, **Bots** (capitalised) | What a person creates, talks to and gives work to. | agent, coworker, assistant, AI |
-| **agent** | Only an outside framework's program, in the places that are about connecting one: "an agent you already run", "AG-UI agent". | Bot, when the thing is a Bot |
-| **agent**, **Agents** | What a Bot hands work to, listed on the Agents page: OpenBot's own, a framework OpenBot runs, or one you run. Never for the Bot itself. | Bot, worker, subagent |
-| **app** | A service a Bot uses: Gmail, Google Drive, Notion. | connector, integration, plugin |
-| **Connections** | The page that lists the apps and accounts every Bot uses as you: the every-Bot page of Apps. On a Bot's page the same thing is the **Apps** row. | connected accounts, linked accounts |
-| **connect / disconnect / reconnect** | What a person does to their own account. | link (except GitHub and Slack identity, where "link" is the vendor's own word) |
-| **skill** | A named instruction invoked with `/`. | command, prompt |
-| **admin** | The person who runs OpenBot for everybody. | administrator, owner, operator |
-| **organization**, **everyone in the organization** | Everybody who uses OpenBot together, and what is theirs as a whole: "everyone in the organization", "organization rules", "your organization's shared account". | team, the whole team, teammates, organisation |
-| **team**, **Teams** | A named group of people inside one organization, made in Admin under Teams or kept in step with the company's directory. Whatever can be given to everyone can be given to a team. | group (for a team), and never the whole organization |
-| **shared account** | An app account the organization connects once, which Bots act as. | team account |
-| **OpenBot** | The product the person is using, and their account with it: "Sign in to OpenBot", "your OpenBot account". | this deployment, the server, the instance, CopilotKit |
-| **OpenBot by CopilotKit** | The company, only where it has to be named: the license agreement's name, a legal or privacy line, the one place setup says who makes OpenBot. | CopilotKit alone |
-| **turn on / turn off** | An admin switching an app or a feature. | enable / disable (in sentences; a switch may still read "Enabled") |
-| **conversation** | A thread with one or more Bots. | channel, chat (in sentences) |
-| **front end** | The part of OpenBot a person opens in the browser. | the web app, the UI |
-| **backend** | The part of OpenBot that runs the Bots and keeps conversations, memory, learning and Skills. One word, "Backend" at the start of a sentence. | back end, Intelligence, CopilotKit Intelligence, the platform, the stack, cpki |
-| **backend dashboard** | The backend's own pages, where Learning and projects are managed. | the Intelligence dashboard |
-| **database** | Where OpenBot keeps its data. | Postgres (outside Admin) |
-| **the computers Bots work on**, **Bot computer** | Where a Bot browses and works with files. | sandbox, container |
+| Say                                                | For                                                                                                                                                                                | Not                                                                            |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Bot**, **Bots** (capitalised)                    | What a person creates, talks to and gives work to.                                                                                                                                 | agent, coworker, assistant, AI                                                 |
+| **agent**                                          | Only an outside framework's program, in the places that are about connecting one: "an agent you already run", "AG-UI agent".                                                       | Bot, when the thing is a Bot                                                   |
+| **agent**, **Agents**                              | What a Bot hands work to, listed on the Agents page: OpenBot's own, a framework OpenBot runs, or one you run. Never for the Bot itself.                                            | Bot, worker, subagent                                                          |
+| **app**                                            | A service a Bot uses: Gmail, Google Drive, Notion.                                                                                                                                 | connector, integration, plugin                                                 |
+| **Connections**                                    | The page that lists the apps and accounts every Bot uses as you: the every-Bot page of Apps. On a Bot's page the same thing is the **Apps** row.                                   | connected accounts, linked accounts                                            |
+| **connect / disconnect / reconnect**               | What a person does to their own account.                                                                                                                                           | link (except GitHub and Slack identity, where "link" is the vendor's own word) |
+| **skill**                                          | A named instruction invoked with `/`.                                                                                                                                              | command, prompt                                                                |
+| **admin**                                          | The person who runs OpenBot for everybody.                                                                                                                                         | administrator, owner, operator                                                 |
+| **organization**, **everyone in the organization** | Everybody who uses OpenBot together, and what is theirs as a whole: "everyone in the organization", "organization rules", "your organization's shared account".                    | team, the whole team, teammates, organisation                                  |
+| **team**, **Teams**                                | A named group of people inside one organization, made in Admin under Teams or kept in step with the company's directory. Whatever can be given to everyone can be given to a team. | group (for a team), and never the whole organization                           |
+| **shared account**                                 | An app account the organization connects once, which Bots act as.                                                                                                                  | team account                                                                   |
+| **OpenBot**                                        | The product the person is using, and their account with it: "Sign in to OpenBot", "your OpenBot account".                                                                          | this deployment, the server, the instance, CopilotKit                          |
+| **OpenBot by CopilotKit**                          | The company, only where it has to be named: the license agreement's name, a legal or privacy line, the one place setup says who makes OpenBot.                                     | CopilotKit alone                                                               |
+| **turn on / turn off**                             | An admin switching an app or a feature.                                                                                                                                            | enable / disable (in sentences; a switch may still read "Enabled")             |
+| **conversation**                                   | A thread with one or more Bots.                                                                                                                                                    | channel, chat (in sentences)                                                   |
+| **front end**                                      | The part of OpenBot a person opens in the browser.                                                                                                                                 | the web app, the UI                                                            |
+| **backend**                                        | The part of OpenBot that runs the Bots and keeps conversations, memory, learning and Skills. One word, "Backend" at the start of a sentence.                                       | back end, Intelligence, CopilotKit Intelligence, the platform, the stack, cpki |
+| **backend dashboard**                              | The backend's own pages, where Learning and projects are managed.                                                                                                                  | the Intelligence dashboard                                                     |
+| **database**                                       | Where OpenBot keeps its data.                                                                                                                                                      | Postgres (outside Admin)                                                       |
+| **the computers Bots work on**, **Bot computer**   | Where a Bot browses and works with files.                                                                                                                                          | sandbox, container                                                             |
 
 ### The eight, Setup and Vault
 
@@ -48,18 +48,18 @@ A person learns one noun, Bot, and eight things a Bot has (`docs/how-openbot-wor
 they are listed they keep this order, and a list leaves out one with nothing to set there rather
 than showing an empty row. `app/src/lib/primitives.ts` holds the names, the order and the icons.
 
-| Say | For | Not |
-|---|---|---|
-| **Conversations** | Where you give a Bot work and it reports back. Not a settings row. | channels, groups, chats |
-| **Routines** | Work a Bot starts by itself: what, starts, does, until. One list per Bot. A goal is a routine with an outcome to reach; a check-in is a routine that only tells you. | Goals, Check-ins, Responsibilities (as page or menu names) |
-| **Memory** | What a Bot knows about you and your work. | Capabilities |
-| **Skills** | What a Bot knows how to do: skills you wrote, taught, or OpenBot proposed. One page per scope. | Learning (as a page), What it can do, Skills and access, Capabilities |
-| **Apps** | The services a Bot can reach. Connections is its every-Bot page. | Plugins, What it can do |
-| **Computer** | Where a Bot browses, runs commands and keeps files, and the folders on your machine it may use. | Browsers, This computer (as pages) |
-| **Approvals** | When a Bot stops and asks you. | Approval rules (as a page) |
-| **Activity** | The record of what a Bot did. | Audit |
-| **Setup** | A Bot's name and instructions. | |
-| **Vault** | Your saved logins and keys. No Bot sees what is in it. | Saved logins, Passwords, Keys, Credentials (as pages) |
+| Say               | For                                                                                                                                                                  | Not                                                                   |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| **Conversations** | Where you give a Bot work and it reports back. Not a settings row.                                                                                                   | channels, groups, chats                                               |
+| **Routines**      | Work a Bot starts by itself: what, starts, does, until. One list per Bot. A goal is a routine with an outcome to reach; a check-in is a routine that only tells you. | Goals, Check-ins, Responsibilities (as page or menu names)            |
+| **Memory**        | What a Bot knows about you and your work.                                                                                                                            | Capabilities                                                          |
+| **Skills**        | What a Bot knows how to do: skills you wrote, taught, or OpenBot proposed. One page per scope.                                                                       | Learning (as a page), What it can do, Skills and access, Capabilities |
+| **Apps**          | The services a Bot can reach. Connections is its every-Bot page.                                                                                                     | Plugins, What it can do                                               |
+| **Computer**      | Where a Bot browses, runs commands and keeps files, and the folders on your machine it may use.                                                                      | Browsers, This computer (as pages)                                    |
+| **Approvals**     | When a Bot stops and asks you.                                                                                                                                       | Approval rules (as a page)                                            |
+| **Activity**      | The record of what a Bot did.                                                                                                                                        | Audit                                                                 |
+| **Setup**         | A Bot's name and instructions.                                                                                                                                       |                                                                       |
+| **Vault**         | Your saved logins and keys. No Bot sees what is in it.                                                                                                               | Saved logins, Passwords, Keys, Credentials (as pages)                 |
 
 The scopes are **this Bot** (the Bot's page), **every Bot** (Settings, and Connections for Apps)
 and, in the team edition, **everyone** (Admin). The words in the "Not" column may still appear in a
@@ -114,27 +114,27 @@ because the admin is the one who sets them. A page anybody can open may not.
 
 ## Before And After
 
-| Before | After |
-|---|---|
-| The apps and accounts your Bots use as you. Open one to connect it or change it. | Connect your accounts so Bots can use apps on your behalf. |
+| Before                                                                                                                                                                  | After                                                                                         |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| The apps and accounts your Bots use as you. Open one to connect it or change it.                                                                                        | Connect your accounts so Bots can use apps on your behalf.                                    |
 | Your connected accounts could not be loaded, so nothing is listed here rather than a list that may be wrong. Reload the page, and tell an administrator if it persists. | Couldn't load your connections. Try again in a moment, or ask an admin if it keeps happening. |
-| Sent to the coworker it is for. Type @ to choose one yourself. | OpenBot picks the right Bot. Type @ to choose one. |
-| Gmail is a Composio app, and this deployment has no Composio key. (to a non-admin) | Gmail isn't set up yet. An admin has to turn it on. |
-| The agent is still working on another request. Please wait or stop that task first. | This Bot is still working on something. Wait for it, or stop it first. |
+| Sent to the coworker it is for. Type @ to choose one yourself.                                                                                                          | OpenBot picks the right Bot. Type @ to choose one.                                            |
+| Gmail is a Composio app, and this deployment has no Composio key. (to a non-admin)                                                                                      | Gmail isn't set up yet. An admin has to turn it on.                                           |
+| The agent is still working on another request. Please wait or stop that task first.                                                                                     | This Bot is still working on something. Wait for it, or stop it first.                        |
 
 ## Red Flags
 
-| Signal | Do instead |
-|---|---|
-| "agent" or "coworker" for a Bot | Bot |
-| "administrator" | admin |
-| "team", "the whole team" or "teammates" for everybody | "everyone in the organization", or "organization"; a team is one named group inside it |
-| "this deployment" on a page anybody can open | OpenBot, or say what is missing |
-| "CopilotKit" alone: "Sign in to CopilotKit", "your CopilotKit account" | OpenBot, or "OpenBot by CopilotKit" where the company must be named |
-| A sentence over ~25 words | Split it, or cut the clause that justifies the screen |
-| "rather than", an em dash, "which is" in UI text | Rewrite as two short sentences |
-| A description beginning "The apps…", "What…", "Who…", or "Where…" without a main verb | State the action or behavior in a complete sentence; remove redundant explanation |
-| An env var, OAuth, Composio or "grant" outside Admin | Say what the person sees |
-| "Intelligence", "CopilotKit Intelligence" or "the Intelligence stack" anywhere | Name the part: the backend, the front end, the database |
-| A test asserting long explanatory copy | Assert the short sentence, or the role and the key words |
-| "CopilotKit Intelligence" on OpenBot Desktop's Account step | Allowed there only, in the one lede `SHOWN_BY_DECISION` lists (above) |
+| Signal                                                                                | Do instead                                                                             |
+| ------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| "agent" or "coworker" for a Bot                                                       | Bot                                                                                    |
+| "administrator"                                                                       | admin                                                                                  |
+| "team", "the whole team" or "teammates" for everybody                                 | "everyone in the organization", or "organization"; a team is one named group inside it |
+| "this deployment" on a page anybody can open                                          | OpenBot, or say what is missing                                                        |
+| "CopilotKit" alone: "Sign in to CopilotKit", "your CopilotKit account"                | OpenBot, or "OpenBot by CopilotKit" where the company must be named                    |
+| A sentence over ~25 words                                                             | Split it, or cut the clause that justifies the screen                                  |
+| "rather than", an em dash, "which is" in UI text                                      | Rewrite as two short sentences                                                         |
+| A description beginning "The apps…", "What…", "Who…", or "Where…" without a main verb | State the action or behavior in a complete sentence; remove redundant explanation      |
+| An env var, OAuth, Composio or "grant" outside Admin                                  | Say what the person sees                                                               |
+| "Intelligence", "CopilotKit Intelligence" or "the Intelligence stack" anywhere        | Name the part: the backend, the front end, the database                                |
+| A test asserting long explanatory copy                                                | Assert the short sentence, or the role and the key words                               |
+| "CopilotKit Intelligence" on OpenBot Desktop's Account step                           | Allowed there only, in the one lede `SHOWN_BY_DECISION` lists (above)                  |

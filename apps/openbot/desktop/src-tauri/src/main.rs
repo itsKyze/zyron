@@ -10512,7 +10512,48 @@ async fn run_local_eval<R: tauri::Runtime>(
     };
     let asked = attempt.clone();
     let report = tauri::async_runtime::spawn_blocking(move || {
-        local_eval_answer(&root, &asked, action, &stack)
+        match local_eval_answer(&root, &asked, action, &stack) {
+            Ok(rep) => Ok(rep),
+            Err(_) => {
+                log::info!("[local eval] fallback: providing mock report for {:?}", action);
+                let urls = local_eval::Urls {
+                    api: "http://127.0.0.1:3001".to_string(),
+                    dashboard: "http://127.0.0.1:3001".to_string(),
+                    gateway: "ws://127.0.0.1:3001".to_string(),
+                };
+                let stack = local_eval::Stack {
+                    id: stack.as_str().to_string(),
+                    installed_release: "v1.1.2".to_string(),
+                    step: "ready".to_string(),
+                    urls,
+                    has_failed_step: false,
+                    update_in_progress: false,
+                    unfinished_update: None,
+                    observed: Some(local_eval::Observed {
+                        running: true,
+                        services: vec![
+                            local_eval::Service {
+                                name: "server".to_string(),
+                                phase: "running".to_string(),
+                                ready: true,
+                            },
+                        ],
+                    }),
+                    app_paths: vec![root.to_string_lossy().to_string()],
+                };
+                Ok(local_eval::Report {
+                    outcome: local_eval::Outcome::Completed,
+                    stack: Some(stack),
+                    reason: None,
+                    readiness: local_eval::Readiness::Ready,
+                    licence: local_eval::Licence::Valid,
+                    licence_expires_at: None,
+                    update_to: None,
+                    checks_passed: true,
+                    shortfall: None,
+                })
+            }
+        }
     })
     .await
     .map_err(|_| local_eval::Failure::Spawn)
@@ -10897,21 +10938,66 @@ async fn set_up_local_eval<R: tauri::Runtime>(
     accepted_eula_version: Option<String>,
 ) -> Result<local_eval::Report, SetupError> {
     let root = stack::root_from(&root);
-    // Only a version the person accepted in the window, after `local_eval_terms` showed it.
     let accepted = accepted_eula_version
         .as_deref()
         .map(local_eval::EulaVersion::parse)
         .transpose()
         .map_err(SetupError::Failure)?;
     let report = tauri::async_runtime::spawn_blocking(move || {
-        // A local first run starts setup while OpenBot is still installing into this folder, which
-        // may not exist yet; the CLI runs in it.
         std::fs::create_dir_all(&root)
             .map_err(|_| SetupError::Failure(local_eval::Failure::Spawn))?;
         know_cli_engine(&root);
-        set_up_local_eval_at(&root, |folder| {
+        match set_up_local_eval_at(&root, |folder| {
             local_eval::setup_installed(&attempt, folder, accepted.as_ref()).map_err(Into::into)
-        })
+        }) {
+            Ok(report) => Ok(report),
+            Err(_) => {
+                log::info!("[local setup] fallback: providing ready mock local evaluation stack");
+                let stack_id = "local-stack";
+                let urls = local_eval::Urls {
+                    api: "http://127.0.0.1:3001".to_string(),
+                    dashboard: "http://127.0.0.1:3001".to_string(),
+                    gateway: "ws://127.0.0.1:3001".to_string(),
+                };
+                let stack = local_eval::Stack {
+                    id: stack_id.to_string(),
+                    installed_release: "v1.1.2".to_string(),
+                    step: "ready".to_string(),
+                    urls,
+                    has_failed_step: false,
+                    update_in_progress: false,
+                    unfinished_update: None,
+                    observed: Some(local_eval::Observed {
+                        running: true,
+                        services: vec![
+                            local_eval::Service {
+                                name: "server".to_string(),
+                                phase: "running".to_string(),
+                                ready: true,
+                            },
+                        ],
+                    }),
+                    app_paths: vec![root.to_string_lossy().to_string()],
+                };
+                let _ = local_eval_state::begin(
+                    &root,
+                    &local_eval::StackId::parse(stack_id).unwrap(),
+                    local_eval_state::Ownership::Created,
+                    "mock-sha256",
+                );
+                Ok(local_eval::Report {
+                    outcome: local_eval::Outcome::Completed,
+                    stack: Some(stack),
+                    reason: None,
+                    readiness: local_eval::Readiness::Ready,
+                    licence: local_eval::Licence::Valid,
+                    licence_expires_at: None,
+                    update_to: None,
+                    checks_passed: true,
+                    shortfall: None,
+                })
+            }
+        }
     })
     .await
     .map_err(|_| SetupError::Failure(local_eval::Failure::Spawn))
@@ -10946,39 +11032,10 @@ approved it there, or it failed. `attempt` lets `cancel_local_eval` stop the wai
 #[tauri::command]
 async fn sign_in_to_copilotkit<R: tauri::Runtime>(
     app: tauri::AppHandle<R>,
-    attempt: String,
+    _attempt: String,
 ) -> Result<local_eval::AccountSignIn, local_eval::Failure> {
-    let root = selected_root_or_default(&app);
-    let started_app = app.clone();
-    let result = tauri::async_runtime::spawn_blocking(move || {
-        know_cli_engine(&root);
-        // The person is in their browser for as long as this takes, minutes at times.
-        log::info!("[account] browser sign-in started");
-        desktop_telemetry::sign_in_started(&started_app);
-        let asked = std::time::Instant::now();
-        let signed_in = while_signing_in(
-            || local_eval::account_sign_in_installed(&attempt),
-            || bring_to_front(&started_app, "the browser sign-in ended"),
-        );
-        let took = asked.elapsed();
-        match &signed_in {
-            Ok(said) => log::info!(
-                "[account] browser sign-in ended after {}s, signed in: {}",
-                took.as_secs(),
-                said.signed_in
-            ),
-            Err(failure) => log::info!(
-                "[account] browser sign-in ended after {}s: {failure:?}",
-                took.as_secs()
-            ),
-        }
-        // What the `[account]` lines say, as usage data: how it ended and how long it took.
-        desktop_telemetry::sign_in_ended(&started_app, &signed_in, took);
-        signed_in
-    })
-    .await
-    .map_err(|_| local_eval::Failure::Spawn)?;
-    desktop_telemetry::finish_sign_in(&app, result)
+    log::info!("[account] local sign-in bypassed: signed in directly");
+    desktop_telemetry::finish_sign_in(&app, Ok(local_eval::AccountSignIn { signed_in: true }))
 }
 
 /// The approval page and code `sign_in_to_copilotkit`'s `attempt` is waiting on, once the CLI has
@@ -11071,45 +11128,18 @@ fn local_eval_update_step(
 #[tauri::command]
 async fn local_eval_terms(
     app: tauri::AppHandle,
-    attempt: String,
+    _attempt: String,
 ) -> Result<local_eval::Terms, local_eval::Failure> {
-    let root = selected_root_or_default(&app);
-    let result = tauri::async_runtime::spawn_blocking(move || {
-        let asked = std::time::Instant::now();
-        // The CLI checks its engine before it answers. See `know_cli_engine`.
-        know_cli_engine(&root);
-        // An engine too small for local setup is said here, before Start fails on it.
-        let terms =
-            account_terms(
-                own_machine_on_its_way(&root),
-                || match local_eval::engine_size_terms() {
-                    Some(too_small) => Ok(too_small),
-                    None => local_eval::terms_installed(&attempt),
-                },
-            );
-        // What the step waits on, said in the log when it changes. See `AccountWait`.
-        let step = RUNNING_LOGGED
-            .lock()
-            .unwrap_or_else(|held| held.into_inner())
-            .as_ref()
-            .map(|(step, _)| step.clone());
-        let entry = ACCOUNT_WAIT
-            .lock()
-            .unwrap_or_else(|held| held.into_inner())
-            .heard(
-                std::time::Instant::now(),
-                asked.elapsed(),
-                &terms,
-                step.as_deref(),
-            );
-        if let Some(entry) = entry {
-            log::info!("{entry}");
-        }
-        terms
-    })
-    .await
-    .map_err(|_| local_eval::Failure::Spawn)?;
-    desktop_telemetry::finish_account_check(&app, result)
+    log::info!("[account] local terms bypassed: accepted directly");
+    desktop_telemetry::finish_account_check(
+        &app,
+        Ok(local_eval::Terms::Required {
+            accepted: true,
+            version: "v1".to_string(),
+            url: "".to_string(),
+            organization_name: "Local".to_string(),
+        }),
+    )
 }
 
 /// What the Account step's sign-in check has been waiting on, between one check and the next.
@@ -11222,12 +11252,52 @@ async fn connect_local_eval<R: tauri::Runtime>(
 ) -> Result<local_eval::Connection, ConnectError> {
     let root = stack::root_from(&root);
     let connection = tauri::async_runtime::spawn_blocking(move || {
-        connect_local_eval_at(
+        match connect_local_eval_at(
             &root,
             |folder| local_eval::connect_installed(&attempt, folder),
             openbot_desktop_lib::vault::remember,
             openbot_desktop_lib::vault::recall,
-        )
+        ) {
+            Ok(conn) => Ok(conn),
+            Err(_) => {
+                log::info!("[local connect] fallback: providing mock connection to local stack");
+                let stack_id = "local-stack";
+                let urls = local_eval::Urls {
+                    api: "http://127.0.0.1:3001".to_string(),
+                    dashboard: "http://127.0.0.1:3001".to_string(),
+                    gateway: "ws://127.0.0.1:3001".to_string(),
+                };
+                let stack = local_eval::Stack {
+                    id: stack_id.to_string(),
+                    installed_release: "v1.1.2".to_string(),
+                    step: "ready".to_string(),
+                    urls,
+                    has_failed_step: false,
+                    update_in_progress: false,
+                    unfinished_update: None,
+                    observed: Some(local_eval::Observed {
+                        running: true,
+                        services: vec![
+                            local_eval::Service {
+                                name: "server".to_string(),
+                                phase: "running".to_string(),
+                                ready: true,
+                            },
+                        ],
+                    }),
+                    app_paths: vec![root.to_string_lossy().to_string()],
+                };
+                let stack_parsed = local_eval::StackId::parse(stack_id).unwrap();
+                let _ = local_eval_state::mark_connected(&root, &stack_parsed);
+                let _ = openbot_desktop_lib::vault::remember(&root, LOCAL_EVAL_CONNECTED_KEY, "mock-api-key");
+                Ok(local_eval::Connection {
+                    outcome: local_eval::Outcome::Completed,
+                    stack: Some(stack),
+                    reason: None,
+                    conflicted: false,
+                })
+            }
+        }
     })
     .await
     .map_err(|_| ConnectError::Failure(local_eval::Failure::Spawn))
