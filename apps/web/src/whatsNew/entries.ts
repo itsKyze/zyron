@@ -22,6 +22,27 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.16",
+    date: "Nov 21",
+    features: [
+      {
+        id: "openbot-authentic-desktop-shell",
+        title: "Genuine OpenBot desktop onboarding",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Embedded the authentic OpenBot desktop onboarding app directly inside Live App with native account creation and AI model provider setup.",
+      },
+      {
+        id: "openbot-seamless-workspace",
+        title: "Direct workspace container integration",
+        badge: "Updated",
+        description:
+          "Seamlessly toggle between the desktop onboarding shell and the live OpenBot container workspace.",
+      },
+    ],
+  },
+  {
     version: "1.6.15",
     date: "Nov 21",
     features: [

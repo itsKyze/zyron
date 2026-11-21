@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.16 — 2026-11-21
+
+**Genuine OpenBot desktop onboarding shell and live container workspace integration.**
+
+### Added
+
+- Genuine OpenBot Desktop Shell: Embed the authentic `/apps/openbot/desktop` onboarding app directly inside Live App with native account creation and model provider credentials.
+
+### Removed
+
+- Mock Setup Wizard: Removed synthetic setup wizard and keys steps in favor of the authentic OpenBot desktop shell.
+
 ## 1.6.15 — 2026-11-21
 
 **Actionable desktop update button and 1-hour unattended auto-install.**
