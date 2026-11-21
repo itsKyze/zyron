@@ -97,7 +97,7 @@ describe("outbound requests that cannot connect", () => {
     try {
       for (const name of ["outboundHttpPolicy", "outboundHttp"]) {
         const source = await readFile(new URL(`./${name}.ts`, import.meta.url), "utf8");
-        const transformed = stripTypeScriptTypes(source, { mode: "transform" }).replace(
+        const transformed = stripTypeScriptTypes(source, { mode: "strip" }).replace(
           '"./outboundHttpPolicy"',
           '"./outboundHttpPolicy.mjs"',
         );

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { LuCheck, LuArrowRight, LuSparkles, LuSmartphone, LuShieldCheck } from "react-icons/lu";
+import { LuCheck, LuArrowRight, LuSparkles } from "react-icons/lu";
 
 interface Tier {
   name: string;

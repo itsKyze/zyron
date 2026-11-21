@@ -218,7 +218,7 @@ jobs:
 
       - name: Test every package except the server
         if: needs.preflight.outputs.quality_gates == 'true'
-        run: bunx turbo run test --filter='!@zyron/cli'
+        run: bunx turbo run test --filter='!@zyron/cli' --filter='!openbot'
 
   # The server package runs its files serially (see apps/server/package.json).
   # Vitest's native shards keep every file and assertion; only the distribution

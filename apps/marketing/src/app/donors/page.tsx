@@ -3,7 +3,7 @@
 // Layer: App Router page (static)
 
 import Link from "next/link";
-import { LuArrowUpRight, LuHeart, LuSparkles } from "react-icons/lu";
+import { LuArrowUpRight, LuHeart } from "react-icons/lu";
 import Navbar from "@/components/Navbar";
 import { SectionEyebrow } from "@/components/SectionEyebrow";
 import SiteFooter from "@/components/SiteFooter";

@@ -142,7 +142,11 @@ describe("prepareProcess", () => {
       });
       expect(JSON.parse(stdout)).toEqual({
         pid: child.pid,
-        priority: reniceFails ? os.getPriority() : Math.max(5, os.getPriority()),
+        priority: reniceFails
+          ? os.getPriority()
+          : backend === "wsl"
+            ? 5
+            : Math.max(5, os.getPriority()),
         args: ["a b", "quote'\"$", "--flag"],
       });
       if (reniceFails)

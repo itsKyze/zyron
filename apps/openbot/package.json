@@ -35,6 +35,7 @@
     "@biomejs/biome": "2.5.10",
     "@copilotkit/aimock": "1.48.0",
     "@copilotkit/runtime": "1.88.0",
+    "@happy-dom/global-registrator": "^20.11.2",
     "@noble/curves": "2.4.0",
     "@redocly/cli": "2.72.1",
     "@tailwindcss/vite": "^4.3.5",

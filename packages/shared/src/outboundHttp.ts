@@ -169,11 +169,13 @@ interface AdmissionWaiter {
 class AdmissionGate {
   private active = 0;
   private readonly waiters: AdmissionWaiter[] = [];
+  private readonly limit: number;
+  private readonly maxQueued: number;
 
-  constructor(
-    private readonly limit: number,
-    private readonly maxQueued: number,
-  ) {}
+  constructor(limit: number, maxQueued: number) {
+    this.limit = limit;
+    this.maxQueued = maxQueued;
+  }
 
   async acquire(signal?: AbortSignal): Promise<() => void> {
     if (signal?.aborted) {
