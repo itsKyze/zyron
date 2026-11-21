@@ -186,7 +186,9 @@ export function resolveActiveRailShortcutKey(input: {
  * their page layout.
  */
 export function railItemShowsPanel(id: RailItemId): boolean {
-  return id !== "kanban" && id !== "tasks" && id !== "pullRequests" && id !== "inbox";
+  return (
+    id !== "kanban" && id !== "tasks" && id !== "pullRequests" && id !== "inbox" && id !== "openbot"
+  );
 }
 
 function matchesRoute(pathname: string, route: string): boolean {

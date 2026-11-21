@@ -22,6 +22,18 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.13",
+    date: "Nov 21",
+    features: [
+      {
+        id: "openbot-immersive-layout",
+        title: "Immersive OpenBot workspace layout",
+        description:
+          "Enjoy an expansive, distraction-free full-width workspace with seamless back navigation.",
+      },
+    ],
+  },
+  {
     version: "1.6.12",
     date: "Nov 20",
     features: [

@@ -3,10 +3,11 @@
 // Layer: Web route view component
 
 import { useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 import { RouteInsetSurface } from "../RouteInsetSurface";
 import { RouteSurface, RouteSurfaceHeader } from "../RouteSurface";
 import { Button } from "~/components/ui/button";
-import { BotIcon, ExternalLinkIcon, PlayIcon, CheckIcon } from "~/lib/icons";
+import { BotIcon, ChevronLeftIcon, ExternalLinkIcon, PlayIcon, CheckIcon } from "~/lib/icons";
 import { openExternalLink } from "~/lib/linkChips";
 import { cn } from "~/lib/utils";
 
@@ -54,6 +55,7 @@ const OPENBOT_INSTALL_TOKEN = "1b51c90286b2846212078c0f544eb35697b82fc092cf62831
 const OPENBOT_AUTH_URL = `${OPENBOT_BASE_URL}/api/install/enter?token=${OPENBOT_INSTALL_TOKEN}&to=/`;
 
 export default function OpenBotView() {
+  const navigate = useNavigate();
   const [openBotAppUrl] = useState(OPENBOT_AUTH_URL);
   const [openBotServerUrl, setOpenBotServerUrl] = useState(OPENBOT_BASE_URL);
   const [isConnected, setIsConnected] = useState(false);
@@ -65,7 +67,19 @@ export default function OpenBotView() {
       <RouteSurface>
         <RouteSurfaceHeader>
           <div className="flex min-w-0 flex-1 items-center gap-2">
-            <span className="text-ui font-medium text-foreground">OpenBot Workspace</span>
+            <Button
+              type="button"
+              variant="ghost"
+              size="sm"
+              onClick={() => void navigate({ to: "/" })}
+              className="h-8 gap-1 px-2 text-ui-sm text-muted-foreground hover:text-foreground shrink-0"
+              title="Return to chats"
+            >
+              <ChevronLeftIcon className="size-4" />
+              <span>Back</span>
+            </Button>
+            <div className="h-4 w-px bg-border/60 shrink-0" />
+            <span className="text-ui font-medium text-foreground truncate">OpenBot Workspace</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex items-center rounded-lg border border-border/70 bg-muted/30 p-0.5">

@@ -149,6 +149,7 @@ describe("railItemShowsPanel", () => {
     expect(railItemShowsPanel("tasks")).toBe(false);
     expect(railItemShowsPanel("pullRequests")).toBe(false);
     expect(railItemShowsPanel("inbox")).toBe(false);
+    expect(railItemShowsPanel("openbot")).toBe(false);
     for (const id of ["home", "spaces", "automations", "studio", "settings"] as const) {
       expect(railItemShowsPanel(id)).toBe(true);
     }

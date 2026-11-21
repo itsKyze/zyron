@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.13 — 2026-11-21
+
+**Full-width immersive layout and return navigation for OpenBot Workspace.**
+
+### Added
+
+- OpenBot Fullscreen Layout: Automatically hide thread sidebars and lists when OpenBot Workspace is open for an uninterrupted full-width experience, with an integrated Back button to return to conversations.
+
 ## 1.6.12 — 2026-11-20
 
 **Pass installation authentication token to OpenBot live app URL to establish install session.**
