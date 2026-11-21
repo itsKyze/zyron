@@ -192,36 +192,30 @@ async function sendEmail(feedback: ParsedFeedback): Promise<string> {
     <pre>${escapeHtml(lines.join("\n"))}</pre>
   `;
 
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), SEND_TIMEOUT_MS);
-  try {
-    const response = await fetch(RESEND_API_URL, {
-      method: "POST",
-      headers: {
-        authorization: `Bearer ${apiKey}`,
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        from: process.env.ZYRON_FEEDBACK_FROM_EMAIL?.trim() || DEFAULT_FROM_EMAIL,
-        to: [toEmail],
-        subject: `[Zyron Feedback] ${categoryLabel} · v${String(feedback.diagnostics.appVersion)}`,
-        text,
-        html,
-      }),
-      signal: controller.signal,
-    });
-    const payload = (await response.json().catch(() => null)) as {
-      id?: unknown;
-      message?: unknown;
-    } | null;
-    if (!response.ok || typeof payload?.id !== "string") {
-      const reason = typeof payload?.message === "string" ? payload.message : "Unknown error";
-      throw new Error(`Resend rejected feedback delivery: ${reason}`);
-    }
-    return payload.id;
-  } finally {
-    clearTimeout(timeout);
+  const response = await fetch(RESEND_API_URL, {
+    method: "POST",
+    headers: {
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      from: process.env.ZYRON_FEEDBACK_FROM_EMAIL?.trim() || DEFAULT_FROM_EMAIL,
+      to: [toEmail],
+      subject: `[Zyron Feedback] ${categoryLabel} · v${String(feedback.diagnostics.appVersion)}`,
+      text,
+      html,
+    }),
+    signal: AbortSignal.timeout(SEND_TIMEOUT_MS),
+  });
+  const payload = (await response.json().catch(() => null)) as {
+    id?: unknown;
+    message?: unknown;
+  } | null;
+  if (!response.ok || typeof payload?.id !== "string") {
+    const reason = typeof payload?.message === "string" ? payload.message : "Unknown error";
+    throw new Error(`Resend rejected feedback delivery: ${reason}`);
   }
+  return payload.id;
 }
 
 export function OPTIONS(request: Request): Response {

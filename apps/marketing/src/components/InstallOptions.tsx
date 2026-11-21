@@ -156,14 +156,14 @@ function PlatformCard({
   return (
     <div
       style={{ animationDelay: `${index * 90}ms` }}
-      className={`animate-rise-in relative flex flex-col items-center rounded-2xl border bg-[var(--block-elevated)] px-5 pb-5 pt-7 text-center transition-[transform,border-color,box-shadow] duration-200 hover:-translate-y-0.5 ${
+      className={`animate-rise-in relative flex flex-col items-center rounded-2xl border bg-[var(--block-elevated)] px-5 pb-5 pt-7 text-center shadow-[0_1px_3px_rgba(0,0,0,0.03),0_6px_18px_rgba(0,0,0,0.02)] transition-all duration-200 ease-[cubic-bezier(0.2,0,0,1)] hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,0.06),0_12px_28px_rgba(0,0,0,0.03)] ${
         recommended
           ? "border-[var(--accent-link)]/40 ring-1 ring-[var(--accent-link)]/30"
           : "border-[var(--divide)]"
       }`}
     >
       {recommended ? (
-        <span className="absolute -top-2.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[var(--accent-link)]/30 bg-[var(--page-bg)] px-2.5 py-0.5 text-[10.5px] font-medium text-[var(--accent-link)]">
+        <span className="absolute -top-2.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1 whitespace-nowrap rounded-full border border-[var(--accent-link)]/30 bg-[var(--page-bg)] px-2.5 py-0.5 text-[10.5px] font-medium text-[var(--accent-link)] shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
           <LuCheck className="size-3" aria-hidden="true" />
           For your device
         </span>
@@ -183,7 +183,7 @@ function PlatformCard({
         {children ? <div className="mb-3 flex justify-center">{children}</div> : null}
         <a
           href={href}
-          className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--btn-primary-bg)] px-4 py-2.5 text-[13px] font-medium text-[var(--btn-primary-fg)] transition-opacity hover:opacity-90"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[var(--btn-primary-bg)] px-4 py-2.5 text-[13px] font-medium text-[var(--btn-primary-fg)] shadow-[0_1px_2px_rgba(0,0,0,0.08),0_4px_12px_rgba(0,0,0,0.04),inset_0_1px_0.5px_rgba(255,255,255,0.2)] transition-all duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:brightness-110 active:scale-[0.98] active:translate-y-[0.5px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
         >
           Download
           <LuArrowDownToLine className="size-4" aria-hidden="true" />

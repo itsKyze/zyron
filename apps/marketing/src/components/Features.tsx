@@ -122,11 +122,11 @@ export default function Features() {
             {activeHarnesses.map(({ name, tagline, Icon, accent, status }) => (
               <div
                 key={name}
-                className="border-b border-[var(--divide)] p-6 transition-colors hover:bg-[var(--mock-row)] sm:p-7 sm:[&:nth-child(odd):not(:last-child)]:border-r sm:[&:nth-child(odd):not(:last-child)]:border-[var(--divide)]"
+                className="group/item border-b border-[var(--divide)] p-6 transition-colors duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-[var(--mock-row)] sm:p-7 sm:[&:nth-child(odd):not(:last-child)]:border-r sm:[&:nth-child(odd):not(:last-child)]:border-[var(--divide)]"
               >
                 <div className="flex items-center justify-between gap-3">
                   <div className="flex min-w-0 items-center gap-3">
-                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--block-elevated)]">
+                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--block-elevated)] shadow-[0_1px_2px_rgba(0,0,0,0.03),inset_0_1px_0.5px_rgba(255,255,255,0.2)] transition-transform duration-150 ease-[cubic-bezier(0.2,0,0,1)] group-hover/item:scale-105">
                       <Icon className={`size-[18px] ${accent}`} aria-hidden="true" />
                     </span>
                     <span className="truncate text-[15px] font-medium text-[var(--text-primary)]">

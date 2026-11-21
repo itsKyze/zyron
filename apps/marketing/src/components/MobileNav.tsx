@@ -31,7 +31,7 @@ export default function MobileNav() {
       <ThemeToggle />
       <Link
         href="/install"
-        className="rounded-full border border-[var(--divide)] px-3 py-1.5 text-[12px] font-medium text-[var(--text-primary)] transition-colors hover:bg-[var(--mock-row)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+        className="rounded-full border border-[var(--divide)] px-3 py-1.5 text-[12px] font-medium text-[var(--text-primary)] shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-150 ease-[cubic-bezier(0.2,0,0,1)] hover:bg-[var(--mock-row)] active:scale-[0.97] active:translate-y-[0.5px] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
       >
         Download
       </Link>
@@ -78,7 +78,7 @@ export default function MobileNav() {
       <div
         id={menuId}
         inert={!open}
-        className={`absolute right-0 top-11 z-50 w-[min(17rem,calc(100vw-2rem))] origin-top-right rounded-2xl border border-[var(--divide)] bg-[var(--card)] p-2 shadow-[0_18px_50px_-24px_rgba(0,0,0,0.45)] transition-[opacity,transform,visibility] duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+        className={`absolute right-0 top-11 z-50 w-[min(17rem,calc(100vw-2rem))] origin-top-right rounded-2xl border border-[var(--divide)] bg-[var(--card)]/95 p-2 backdrop-blur-md shadow-[0_12px_36px_-12px_rgba(0,0,0,0.25),0_1px_2px_rgba(0,0,0,0.06)] transition-[opacity,transform,visibility] duration-200 ease-[cubic-bezier(0.2,0,0,1)] motion-reduce:transition-none ${
           open
             ? "visible translate-y-0 scale-100 opacity-100"
             : "invisible -translate-y-1 scale-95 opacity-0"
