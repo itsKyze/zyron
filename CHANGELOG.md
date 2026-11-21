@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.15 — 2026-11-21
+
+**Actionable desktop update button and 1-hour unattended auto-install.**
+
+### Fixed
+
+- Desktop Update Button: Restored immediate manual click action when updates are available, removing blocked disabled cursor state.
+
+### Added
+
+- Unattended Auto-Update: Automatically apply downloaded updates and restart cleanly after 1 hour if not manually triggered.
+
 ## 1.6.14 — 2026-11-21
 
 **Integrated OpenBot desktop onboarding journey into live app view and resolved container startup blockers.**

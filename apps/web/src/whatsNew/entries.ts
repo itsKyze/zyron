@@ -22,6 +22,27 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.15",
+    date: "Nov 21",
+    features: [
+      {
+        id: "desktop-update-button-click",
+        title: "Actionable desktop update notification",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Click the desktop update button immediately to download and restart without blocked cursor states.",
+      },
+      {
+        id: "desktop-unattended-update",
+        title: "Unattended background auto-install",
+        badge: "New",
+        description:
+          "Downloaded updates automatically install and restart after 1 hour if left unclicked.",
+      },
+    ],
+  },
+  {
     version: "1.6.14",
     date: "Nov 21",
     features: [
