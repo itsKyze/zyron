@@ -22,6 +22,26 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.14",
+    date: "Nov 21",
+    features: [
+      {
+        id: "openbot-onboarding-journey",
+        title: "Integrated OpenBot onboarding & desktop journey",
+        description:
+          "Seamlessly configure workspace identity, AI models, and coworker capabilities right inside the Live App view.",
+      },
+      {
+        id: "openbot-startup-resilience",
+        title: "Autonomous stack adoption & startup resilience",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Automatically adopt running container stacks and bypass encryption blockers during local evaluation.",
+      },
+    ],
+  },
+  {
     version: "1.6.13",
     date: "Nov 21",
     features: [

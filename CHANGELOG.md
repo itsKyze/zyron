@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.14 — 2026-11-21
+
+**Integrated OpenBot desktop onboarding journey into live app view and resolved container startup blockers.**
+
+### Added
+
+- OpenBot Onboarding Journey: Integrated guided setup wizard directly inside Zyron's OpenBot Live App view with workspace identity, multi-provider model selection, API key configuration, and coworker capability previews.
+
+### Fixed
+
+- OpenBot Container Startup & Stack Adoption: Automatically adopt healthy running OpenBot Docker stacks on port 3001, bypass leftover volume encryption barriers, and fall back intelligence keys during setup.
+
 ## 1.6.13 — 2026-11-21
 
 **Full-width immersive layout and return navigation for OpenBot Workspace.**
