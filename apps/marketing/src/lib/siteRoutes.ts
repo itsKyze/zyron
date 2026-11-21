@@ -59,6 +59,20 @@ const staticRoutes = [
     images: [absoluteUrl(SITE_IMAGES.og)],
   },
   {
+    path: "/remote",
+    lastModified: latestReleaseUpdate,
+    changeFrequency: "daily",
+    priority: 0.9,
+    images: [absoluteUrl(SITE_IMAGES.og)],
+  },
+  {
+    path: "/pricing",
+    lastModified: latestReleaseUpdate,
+    changeFrequency: "weekly",
+    priority: 0.85,
+    images: [absoluteUrl(SITE_IMAGES.og)],
+  },
+  {
     path: "/changelog",
     lastModified: latestReleaseUpdate,
     changeFrequency: "daily",
@@ -74,6 +88,13 @@ const staticRoutes = [
   },
   {
     path: "/sponsors",
+    lastModified: SPONSOR_LAST_UPDATED,
+    changeFrequency: "monthly",
+    priority: 0.4,
+    images: [absoluteUrl(SITE_IMAGES.og)],
+  },
+  {
+    path: "/donors",
     lastModified: SPONSOR_LAST_UPDATED,
     changeFrequency: "monthly",
     priority: 0.4,

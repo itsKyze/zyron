@@ -31,20 +31,18 @@ export default async function Navbar() {
           Middle nav: mobile prioritizes Docs + Changelog alongside the primary
           actions. X and Install are revealed at sm+.
         */}
-          <div className="hidden min-w-0 flex-1 items-center justify-center gap-3 text-[13px] text-[var(--text-tertiary)] sm:flex sm:gap-6">
-            <a
-              href="https://x.com/tryZyron"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden shrink-0 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)] sm:inline"
-            >
-              X
-            </a>
+          <div className="hidden min-w-0 flex-1 items-center justify-center gap-3 text-[13px] text-[var(--text-tertiary)] sm:flex sm:gap-5 md:gap-6">
             <Link
               href="/install"
               className="hidden shrink-0 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)] sm:inline"
             >
               Install
+            </Link>
+            <Link
+              href="/remote"
+              className="shrink-0 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+            >
+              Remote
             </Link>
             <Link
               href="/docs"
@@ -57,6 +55,12 @@ export default async function Navbar() {
               className="shrink-0 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
             >
               Changelog
+            </Link>
+            <Link
+              href="/pricing"
+              className="shrink-0 transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+            >
+              Pricing
             </Link>
             <Link
               href="/sponsor"

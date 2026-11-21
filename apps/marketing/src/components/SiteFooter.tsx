@@ -20,7 +20,19 @@ export default function SiteFooter() {
             @kyzedevs
           </a>
         </span>
-        <div className="flex items-center gap-4 sm:gap-6">
+        <div className="flex flex-wrap items-center gap-4 sm:gap-6">
+          <Link
+            href="/remote"
+            className="transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+          >
+            Remote
+          </Link>
+          <Link
+            href="/pricing"
+            className="transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+          >
+            Pricing
+          </Link>
           <Link
             href="/docs"
             className="transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
@@ -32,6 +44,12 @@ export default function SiteFooter() {
             className="transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
           >
             Changelog
+          </Link>
+          <Link
+            href="/donors"
+            className="transition-colors hover:text-[var(--text-primary)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent-link)]"
+          >
+            Donors
           </Link>
           <Link href="/sponsor" className="transition-colors hover:text-[var(--text-primary)]">
             Sponsor

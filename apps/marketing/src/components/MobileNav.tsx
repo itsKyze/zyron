@@ -7,8 +7,12 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/install", label: "Install" },
+  { href: "/remote", label: "Remote (iOS)" },
   { href: "/docs", label: "Docs" },
   { href: "/changelog", label: "Changelog" },
+  { href: "/pricing", label: "Pricing" },
+  { href: "/donors", label: "Donors" },
+  { href: "/sponsor", label: "Sponsor" },
 ] as const;
 
 export default function MobileNav() {
