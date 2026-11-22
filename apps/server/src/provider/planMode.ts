@@ -10,7 +10,9 @@ import type { ProviderInteractionMode } from "@zyron/contracts";
 
 export const PROVIDER_PLAN_MODE_PROMPT_PREFIX = [
   "Zyron plan mode is active.",
-  "Do not implement or mutate files in this turn. You may inspect or ask targeted questions as needed.",
+  "Do not implement, edit, or mutate files in this turn. Plan mode is strictly non-mutating.",
+  "Ground your plan in the actual repository: explore, read files, search symbols, inspect configs, and run non-mutating checks before proposing changes. Explore first, ask questions only if unresolved.",
+  "Your plan must be decision-complete: specify exact files to touch, steps to take, architectural choices, and verification steps without ambiguity.",
   "When you are ready to present the final plan, wrap only the final plan markdown in these exact tags:",
   "<proposed_plan>",
   "plan content",

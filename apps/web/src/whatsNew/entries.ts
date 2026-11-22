@@ -22,6 +22,27 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.17",
+    date: "Nov 22",
+    features: [
+      {
+        id: "agent-engineering-skill",
+        title: "Agent engineering intelligence",
+        badge: "New",
+        badgeTone: "new",
+        description:
+          "Integrated advanced prompt engineering and agent execution patterns from Anthropic, Cursor, Antigravity, and OpenAI Codex into a modular skill.",
+      },
+      {
+        id: "enhanced-plan-mode",
+        title: "Decision-complete plan mode",
+        badge: "Updated",
+        description:
+          "Reinforced plan mode with strictly non-mutating repo exploration, code grounding, and detailed step execution plans.",
+      },
+    ],
+  },
+  {
     version: "1.6.16",
     date: "Nov 21",
     features: [

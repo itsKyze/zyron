@@ -609,6 +609,9 @@ function ChatRouteLayout() {
   const isEditorView = useLocation({
     select: (location) => (location.search as { view?: unknown }).view === "editor",
   });
+  const isOpenBot = useLocation({
+    select: (location) => location.pathname.startsWith("/openbot"),
+  });
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const isMobile = useIsMobile();
   // Kanban, Pull requests, and Automations take the full width; the panel
@@ -677,6 +680,19 @@ function ChatRouteLayout() {
         <ChatRouteGlobalShortcuts />
         <div className="relative flex h-svh min-h-0 min-w-0 flex-1">
           <Outlet />
+        </div>
+      </ChatShell>
+    );
+  }
+
+  if (isOpenBot) {
+    return (
+      <ChatShell open={false}>
+        <ThreadRetentionMaintenanceToast />
+        <ChatRouteGlobalShortcuts />
+        <div className="relative flex h-svh min-h-0 min-w-0 flex-1">
+          <Outlet />
+          <WorkspacePanels />
         </div>
       </ChatShell>
     );

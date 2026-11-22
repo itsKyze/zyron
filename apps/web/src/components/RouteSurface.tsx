@@ -38,6 +38,7 @@ export function RouteSurface({ children }: { children: ReactNode }) {
 export function RouteSurfaceHeader({
   divider = true,
   windowControlsGutter = true,
+  navigationControls = true,
   className,
   rowClassName,
   children,
@@ -46,6 +47,7 @@ export function RouteSurfaceHeader({
   divider?: boolean;
   /** Off for a left column whose right neighbor already clears the window controls. */
   windowControlsGutter?: boolean;
+  navigationControls?: boolean;
   className?: string | undefined;
   rowClassName?: string | undefined;
   children?: ReactNode;
@@ -70,7 +72,9 @@ export function RouteSurfaceHeader({
           rowClassName,
         )}
       >
-        <SidebarHeaderNavigationControls collapsedGapClassName="-me-2 sm:-me-3" />
+        {navigationControls ? (
+          <SidebarHeaderNavigationControls collapsedGapClassName="-me-2 sm:-me-3" />
+        ) : null}
         {children}
       </div>
     </header>

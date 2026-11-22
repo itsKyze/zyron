@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.6.17 — 2026-11-22
+
+**Agent engineering architecture distillation and enhanced non-mutating plan mode.**
+
+### Added
+
+- Agent Engineering Skill: Added comprehensive `zyron-agent-engineering` skill distilling best-in-class prompt and workflow patterns from Anthropic (Claude Code), Cursor, Google Antigravity, and OpenAI Codex.
+- Decision-Complete Plan Mode: Enhanced plan mode guidance to enforce strictly non-mutating exploration, codebase grounding prior to clarification, and decision-complete step specifications.
+
+### Improved
+
+- OpenBot Live Workspace: Refined layout framing, header navigation controls, and container integration stability.
+
 ## 1.6.16 — 2026-11-21
 
 **Genuine OpenBot desktop onboarding shell and live container workspace integration.**
