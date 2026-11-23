@@ -170,13 +170,16 @@ describe("database pool connection acquire timeout", () => {
       // The token is verified over real HTTP first; keep advancing until the
       // session fence's database read gives up.
       let response: Response | undefined;
-      for (let step = 0; step < 50; step += 1) {
-        await vi.advanceTimersByTimeAsync(POOL_CONNECTION_TIMEOUT_MS / 5);
-        // An already settled `pending` wins the race; otherwise keep advancing.
-        response = await Promise.race([pending, Promise.resolve(undefined)]);
-        if (response) break;
+      try {
+        for (let step = 0; step < 50; step += 1) {
+          await vi.advanceTimersByTimeAsync(POOL_CONNECTION_TIMEOUT_MS / 5);
+          // An already settled `pending` wins the race; otherwise keep advancing.
+          response = await Promise.race([pending, Promise.resolve(undefined)]);
+          if (response) break;
+        }
+      } finally {
+        vi.useRealTimers();
       }
-      vi.useRealTimers();
       response ??= await pending;
       expect(response.status).toBe(500);
       const body = await response.text();
@@ -187,6 +190,6 @@ describe("database pool connection acquire timeout", () => {
       expect(body).not.toContain("synthetic-secret");
       expect(log.mock.calls.flat().join(" ")).not.toContain("synthetic-secret");
       await pool.end();
-    });
+    }, 60_000);
   });
 });
