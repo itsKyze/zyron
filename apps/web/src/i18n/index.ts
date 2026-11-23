@@ -1,0 +1,80 @@
+import { useMemo } from "react";
+import { createInstance, type i18n as I18n } from "i18next";
+import { initReactI18next, useTranslation as useReactTranslation } from "react-i18next";
+
+import { uiLocalizationResources } from "@zyron/shared/uiLocalizationResources";
+import { UI_LOCALES, isUiMessageKey } from "@zyron/shared/uiLocale";
+
+const INITIAL_LANGUAGE =
+  (typeof window !== "undefined" && window.localStorage?.getItem("zyron:ui-language")) || "en";
+
+// The interface supports English and Arabic localization catalogs.
+export const i18n: I18n = createInstance();
+void i18n.use(initReactI18next).init({
+  lng: INITIAL_LANGUAGE,
+  fallbackLng: "en",
+  supportedLngs: Object.keys(uiLocalizationResources),
+  resources: uiLocalizationResources,
+  ns: Object.keys(uiLocalizationResources.en),
+  defaultNS: "common",
+  initAsync: false,
+  keySeparator: false,
+  nsSeparator: ":",
+  interpolation: { escapeValue: false },
+  react: { useSuspense: false, transSupportBasicHtmlNodes: false },
+});
+
+if (typeof document !== "undefined" && document.documentElement && INITIAL_LANGUAGE) {
+  document.documentElement.dir = isRtl(INITIAL_LANGUAGE) ? "rtl" : "ltr";
+  document.documentElement.lang = INITIAL_LANGUAGE;
+}
+
+export function t(message: string, values?: Record<string, unknown>): string {
+  if (!isUiMessageKey(message, uiLocalizationResources.en)) return message;
+  return i18n.t(message, { ...values, returnObjects: false });
+}
+
+// A factory call ties identity to the subscription value without closing over its old
+// state. An unused useCallback dependency is removed by React Compiler.
+function createTranslationSnapshot(_subscription: unknown): { t: typeof t; formatLocale: string } {
+  return {
+    t: (message, values) => t(message, values),
+    formatLocale: getFormatLocale(),
+  };
+}
+
+export function useTranslation(): { t: typeof t; locale: string; formatLocale: string } {
+  const { t: reactiveTranslator, i18n: instance } = useReactTranslation(undefined, { i18n });
+  const snapshot = useMemo(
+    () => createTranslationSnapshot(reactiveTranslator),
+    [reactiveTranslator],
+  );
+  return { ...snapshot, locale: instance.language };
+}
+
+export function isRtl(locale: string): boolean {
+  return locale.startsWith("ar");
+}
+
+export function setUiLanguage(lang: string): void {
+  void i18n.changeLanguage(lang);
+  if (typeof window !== "undefined") {
+    try {
+      window.localStorage?.setItem("zyron:ui-language", lang);
+    } catch {
+      // ignore storage errors
+    }
+  }
+  if (typeof document !== "undefined" && document.documentElement) {
+    document.documentElement.dir = isRtl(lang) ? "rtl" : "ltr";
+    document.documentElement.lang = lang;
+  }
+}
+
+// Resolved once, like the formatters that used an unspecified `Intl` locale before.
+const SYSTEM_FORMAT_LOCALE = new Intl.DateTimeFormat().resolvedOptions().locale;
+
+/** Dates and numbers follow the system locale, as an unspecified `Intl` locale does. */
+export function getFormatLocale(): string {
+  return SYSTEM_FORMAT_LOCALE;
+}

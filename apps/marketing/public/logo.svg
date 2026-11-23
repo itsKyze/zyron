@@ -1,0 +1,14 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+<style>
+  .zyron-logo-fill { fill: #111318; }
+  @media (prefers-color-scheme: dark) {
+    .zyron-logo-fill { fill: #f0f2f5; }
+  }
+</style>
+<!-- Top Wing -->
+<path class="zyron-logo-fill" d="M255 364 L363 256 H675 C730 256 769 285 769 325 V364 H255 Z"/>
+<!-- Middle Diagonal Bar -->
+<path class="zyron-logo-fill" d="M551 394 H737 L477 624 H291 L551 394 Z"/>
+<!-- Bottom Wing -->
+<path class="zyron-logo-fill" d="M254 659 H768 L673 754 H348 C290 754 254 725 254 685 V659 Z"/>
+</svg>

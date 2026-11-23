@@ -1,0 +1,17 @@
+# Zyron documentation
+
+The full product documentation lives at [ai.zyron.site/docs](https://ai.zyron.site/docs). This
+folder keeps a small set of focused guides that stay in sync with the repository:
+
+- [Quickstart](./quickstart.md) — from installation to your first reviewed change in about five minutes.
+- [Core concepts](./core-concepts.md) — projects, tasks, environments, provider sessions, and Git ownership.
+- [Hubs](./hubs.md) — a coordinator that runs parallel threads with shared instructions, memory, and a Library.
+- [Providers](./providers.md) — what Zyron manages and what stays provider-owned.
+- [External MCP integrations](./external-mcp.md) — pair another local app with a scoped Zyron task surface.
+- [Connectors](./mcp-connectors.md) — sign in to remote MCP servers (Supabase, Linear, ...) for agents in Zyron.
+- [Release process](./release.md) — release and signing setup checklist.
+- [Remote access setup](./remote-setup.md) — open Zyron from another device over LAN or Tailscale.
+- [Beta channel](../BETA.md) — the packaged Zyron Beta flavor, its isolated update feed, and how beta releases are cut.
+- [Canary workflow](./canary.md) — install, update, operate, and roll back an isolated Canary build.
+
+Other material lives in [docs/archive](./archive/) for historical reference.
