@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.19 — 2026-11-24
+
+**Pinned app navigation rail and profile avatar footer visibility across all viewports and wallpaper backdrops.**
+
+### Fixed
+
+- App Rail Layout & Viewport Bounding: Enforced full bounded height and vertical scroll isolation on the left navigation rail, ensuring the user profile avatar and help controls remain permanently pinned and visible in the bottom-left corner across short window heights, live animated ASCII wallpapers, and pending desktop update banners.
+
 ## 1.6.18 — 2026-11-23
 
 **Live animated ASCII wallpapers behind chat with frosted glass, dynamic accent picker, and `/wallpaper` command.**

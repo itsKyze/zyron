@@ -1,6 +1,6 @@
 {
   "name": "@zyron/contracts",
-  "version": "1.6.18",
+  "version": "1.6.19",
   "private": true,
   "files": [
     "dist"

@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.19",
+    date: "Nov 24",
+    features: [
+      {
+        id: "pinned-app-rail-avatar",
+        title: "Permanent Profile Avatar Visibility",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "App navigation rail now enforces strict vertical viewport bounds, keeping your profile avatar and settings pinned in the bottom-left corner across all window sizes and wallpaper themes.",
+      },
+    ],
+  },
+  {
     version: "1.6.18",
     date: "Nov 23",
     features: [
