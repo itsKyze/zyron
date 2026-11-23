@@ -34,17 +34,17 @@ export const AsciiWallpaperPicker = memo(function AsciiWallpaperPicker() {
           type="button"
           onClick={() => setWallpaper("off")}
           className={cn(
-            "group relative flex flex-col items-center justify-center rounded-lg border p-3 text-center transition-all",
-            "hover:border-foreground/40 hover:bg-muted/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary",
+            "group relative flex flex-col items-center justify-center rounded-lg border-2 p-3 text-center transition-all",
+            "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0 hover:border-foreground/40 hover:bg-muted/30",
             wallpaper === "off"
-              ? "border-primary bg-primary/10 shadow-sm"
+              ? "border-foreground bg-foreground/10 shadow-sm ring-1 ring-foreground/20"
               : "border-border/60 bg-background/50",
           )}
           style={{ minHeight: "110px" }}
         >
           <div className="flex size-9 items-center justify-center rounded-full border border-dashed border-border/80 text-muted-foreground group-hover:border-foreground/50">
             {wallpaper === "off" ? (
-              <CheckIcon className="size-4 text-primary" />
+              <CheckIcon className="size-4 text-foreground" />
             ) : (
               <span className="text-ui-xs font-mono">Ø</span>
             )}
@@ -64,15 +64,15 @@ export const AsciiWallpaperPicker = memo(function AsciiWallpaperPicker() {
               type="button"
               onClick={() => setWallpaper(item.key)}
               className={cn(
-                "group relative flex flex-col overflow-hidden rounded-lg border text-start transition-all",
-                "hover:border-foreground/40 hover:shadow-md focus-visible:outline-none focus-visible:ring-2",
+                "group relative flex flex-col overflow-hidden rounded-lg border-2 text-start transition-all",
+                "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0 hover:border-foreground/40 hover:shadow-md",
                 isSelected ? "shadow-sm" : "border-border/60 bg-card/60",
               )}
               style={
                 isSelected
                   ? {
                       borderColor: item.accent,
-                      boxShadow: `0 0 0 1px ${item.accent}80, 0 2px 8px ${item.accent}25`,
+                      boxShadow: `0 0 0 2px ${item.accent}, 0 0 16px ${item.accent}50, 0 2px 10px ${item.accent}30`,
                     }
                   : undefined
               }
@@ -104,7 +104,12 @@ export const AsciiWallpaperPicker = memo(function AsciiWallpaperPicker() {
               {/* Title & description */}
               <div className="flex flex-col p-2.5">
                 <div className="flex items-center justify-between gap-1">
-                  <span className="text-ui font-medium leading-snug truncate">{item.name}</span>
+                  <span
+                    className="text-ui font-medium leading-snug truncate transition-colors"
+                    style={{ color: isSelected ? item.accent : undefined }}
+                  >
+                    {item.name}
+                  </span>
                   <span
                     className="size-2 shrink-0 rounded-full"
                     style={{ backgroundColor: item.accent }}

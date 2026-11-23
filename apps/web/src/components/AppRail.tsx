@@ -251,7 +251,7 @@ export function AppRail({
     <nav
       aria-label={t("common:primary")}
       onContextMenu={onContextMenu}
-      className="flex h-full min-h-0 w-(--app-rail-width) shrink-0 flex-col items-center gap-1.5 pt-2.5 pb-2.5 font-system-ui"
+      className="flex h-full max-h-full min-h-0 w-(--app-rail-width) shrink-0 flex-col items-center justify-between gap-1.5 pt-2.5 pb-2.5 font-system-ui overflow-hidden"
     >
       <div className="flex min-h-0 w-full flex-1 flex-col items-center gap-1.5 overflow-y-auto [scrollbar-width:none]">
         {fixedItems.map((item) => (
@@ -285,7 +285,7 @@ export function AppRail({
         ) : null}
         {moreSlot}
       </div>
-      <div className="flex shrink-0 flex-col items-center gap-1.5">
+      <div className="flex shrink-0 flex-col items-center gap-1.5 mt-auto">
         {bottomSlot}
         {bottomItems.map((item) => (
           <AppRailButton key={item.id} item={item} />

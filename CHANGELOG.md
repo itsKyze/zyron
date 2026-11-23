@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.20 — 2026-11-24
+
+**Dynamic wallpaper accent borders and zero-overflow rail layout.**
+
+### Fixed
+
+- Dynamic Theme Card Borders: Theme cards in `/wallpaper` and Settings now render custom borders and ambient glowing halos matching each wallpaper's accent palette (e.g. Claude Code terracotta `#da7756`, Moonlit gold, Fireflies lime) instead of default blue focus rings.
+- Navigation Rail Overflow: Added strict `max-h-full overflow-hidden` and `mt-auto` anchoring to ensure the profile avatar and bottom controls stay permanently visible across all viewport dimensions.
+
 ## 1.6.19 — 2026-11-24
 
 **Pinned app navigation rail and profile avatar footer visibility across all viewports and wallpaper backdrops.**

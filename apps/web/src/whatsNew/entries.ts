@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.20",
+    date: "Nov 24",
+    features: [
+      {
+        id: "dynamic-wallpaper-accent-borders",
+        title: "Dynamic Wallpaper Theme Borders",
+        badge: "Improved",
+        badgeTone: "new",
+        description:
+          "Theme cards in /wallpaper and Settings now adopt each scene's custom accent color and radiant glow when selected, eliminating generic blue focus outlines.",
+      },
+    ],
+  },
+  {
     version: "1.6.19",
     date: "Nov 24",
     features: [

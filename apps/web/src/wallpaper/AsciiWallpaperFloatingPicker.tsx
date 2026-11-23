@@ -118,16 +118,24 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
           }}
           className={cn(
             "group relative flex shrink-0 w-24 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left",
+            "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
             wallpaper === "off"
-              ? "bg-accent/80 text-foreground ring-1 ring-border"
+              ? "bg-accent/80 text-foreground"
               : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
           )}
+          style={
+            wallpaper === "off"
+              ? {
+                  boxShadow: `0 0 0 2px var(--color-foreground, #ffffff), 0 0 14px rgba(255,255,255,0.25)`,
+                }
+              : undefined
+          }
         >
           <div
             className={cn(
-              "relative aspect-[16/10] w-full rounded-lg overflow-hidden border flex items-center justify-center bg-black/40",
+              "relative aspect-[16/10] w-full rounded-lg overflow-hidden border-2 flex items-center justify-center bg-black/40",
               wallpaper === "off"
-                ? "border-foreground/50 ring-2 ring-foreground/20"
+                ? "border-foreground ring-1 ring-foreground/20"
                 : "border-border/50 group-hover:border-border",
             )}
           >
@@ -155,6 +163,7 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
               }}
               className={cn(
                 "group relative flex shrink-0 w-28 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left",
+                "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
                 isSelected
                   ? "bg-accent/80 text-foreground"
                   : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
@@ -162,21 +171,22 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
               style={
                 isSelected
                   ? {
-                      boxShadow: `0 0 0 1px ${item.accent}40`,
+                      borderColor: item.accent,
+                      boxShadow: `0 0 0 2px ${item.accent}, 0 0 16px ${item.accent}55`,
                     }
                   : undefined
               }
             >
               <div
                 className={cn(
-                  "relative aspect-[16/10] w-full rounded-lg overflow-hidden border flex items-center justify-center bg-black/70 transition-all",
+                  "relative aspect-[16/10] w-full rounded-lg overflow-hidden border-2 flex items-center justify-center bg-black/70 transition-all",
                   isSelected ? "shadow-sm" : "border-border/50 group-hover:border-border",
                 )}
                 style={
                   isSelected
                     ? {
                         borderColor: item.accent,
-                        boxShadow: `0 0 0 2px ${item.accent}66, 0 2px 10px ${item.accent}30`,
+                        boxShadow: `0 0 0 1px ${item.accent}, 0 2px 10px ${item.accent}40`,
                       }
                     : undefined
                 }
@@ -197,7 +207,13 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
                   </div>
                 )}
               </div>
-              <span className="text-ui-xs font-medium text-center truncate w-full">
+              <span
+                className="text-ui-xs font-medium text-center truncate w-full transition-colors"
+                style={{
+                  color: isSelected ? item.accent : undefined,
+                  fontWeight: isSelected ? 600 : 500,
+                }}
+              >
                 {item.name}
               </span>
             </button>
