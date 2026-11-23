@@ -8071,7 +8071,7 @@ export default function Sidebar() {
           portaled into the shell instead. */}
       <div className={isMobile ? "flex min-h-0 flex-1" : "contents"}>
         {isMobile ? (
-          <div ref={setMobileRailElement} className="flex shrink-0">
+          <div ref={setMobileRailElement} className="flex h-full min-h-0 shrink-0">
             <AppRail {...appRailProps} />
           </div>
         ) : null}

@@ -714,11 +714,11 @@ function ChatRouteLayout() {
             // so the shell keeps no left column.
             sidebarElement
           ) : (
-            <div className="flex min-h-0 shrink-0 flex-col">
+            <div className="flex h-full min-h-0 shrink-0 flex-col">
               <AppShellTopStrip />
-              <div className="flex min-h-0 flex-1">
-                <div ref={setRailSlot} className="flex shrink-0" />
-                <div className="app-rail-panel relative flex shrink-0 overflow-hidden [contain:paint]">
+              <div className="flex h-full min-h-0 flex-1">
+                <div ref={setRailSlot} className="flex h-full min-h-0 shrink-0" />
+                <div className="app-rail-panel relative flex h-full min-h-0 shrink-0 overflow-hidden [contain:paint]">
                   {sidebarElement}
                 </div>
               </div>

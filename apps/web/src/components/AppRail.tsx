@@ -251,7 +251,7 @@ export function AppRail({
     <nav
       aria-label={t("common:primary")}
       onContextMenu={onContextMenu}
-      className="flex w-(--app-rail-width) shrink-0 flex-col items-center gap-1.5 pt-2.5 pb-2.5 font-system-ui"
+      className="flex h-full min-h-0 w-(--app-rail-width) shrink-0 flex-col items-center gap-1.5 pt-2.5 pb-2.5 font-system-ui"
     >
       <div className="flex min-h-0 w-full flex-1 flex-col items-center gap-1.5 overflow-y-auto [scrollbar-width:none]">
         {fixedItems.map((item) => (
