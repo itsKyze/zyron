@@ -67,28 +67,6 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         details:
           "Prevents premature file modifications during discovery while guaranteeing that generated plan specifications address edge cases and architectural constraints before execution.",
       },
-      {
-        id: "openbot-refinements",
-        title: "OpenBot live workspace refinements",
-        description:
-          "Refined layout framing, header navigation controls, and container integration stability for autonomous AI coworkers.",
-        details:
-          "Polished workspace aesthetics, seamless header transitions, and reliable Docker container stack monitoring on port 3001.",
-      },
-    ],
-  },
-  {
-    version: "1.6.16",
-    date: "Nov 21",
-    features: [
-      {
-        id: "genuine-openbot-shell",
-        title: "Genuine OpenBot desktop onboarding shell",
-        description:
-          "Embeds the authentic desktop onboarding app directly inside Live App with native account creation and model provider credentials.",
-        details:
-          "Replaces synthetic setup wizards with the full authentic OpenBot desktop shell, allowing direct configuration of model providers and workspace credentials.",
-      },
     ],
   },
   {
@@ -102,54 +80,6 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
           "Restores immediate manual click action when updates are available, paired with 1-hour unattended auto-install.",
         details:
           "Removes blocked disabled cursor states on update notifications. Downloaded updates can be applied immediately or will automatically install after 1 hour if left unattended.",
-      },
-    ],
-  },
-  {
-    version: "1.6.14",
-    date: "Nov 21",
-    features: [
-      {
-        id: "openbot-journey-stack",
-        title: "OpenBot guided onboarding journey & container stack adoption",
-        description:
-          "Integrated guided setup wizard directly inside Zyron's OpenBot Live App view with workspace identity and multi-provider selection.",
-        details:
-          "Automatically adopts healthy running OpenBot Docker stacks on port 3001, bypasses leftover volume encryption barriers, and manages intelligence keys during setup.",
-      },
-    ],
-  },
-  {
-    version: "1.6.13",
-    date: "Nov 21",
-    features: [
-      {
-        id: "openbot-fullscreen",
-        title: "Full-width immersive layout for OpenBot workspace",
-        description:
-          "Automatically hides thread sidebars and lists when OpenBot Workspace is active, featuring an integrated return navigation control.",
-        details:
-          "Provides a distraction-free, full-width canvas for managing autonomous AI coworkers and reviewing multi-agent orchestration graphs.",
-      },
-    ],
-  },
-  {
-    version: "1.6.8",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-coworkers",
-        title: "OpenBot autonomous AI coworkers workspace",
-        description:
-          "Dedicated OpenBot App Rail category providing direct access to autonomous AI coworkers with LangGraph engine and Playwright tools.",
-        details:
-          "Offers a dual-view experience with seamless toggle between the embedded Live App and Coworkers & Hub dashboard with external browser launch shortcut.",
-      },
-      {
-        id: "gemini-streaming",
-        title: "Google Gemini tool-call stream compatibility",
-        description:
-          "Integrated compatibility proxy resolving missing delta tool call index errors for seamless function calling.",
       },
     ],
   },

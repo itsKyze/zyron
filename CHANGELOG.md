@@ -62,22 +62,6 @@
 - Agent Engineering Skill: Added comprehensive `zyron-agent-engineering` skill distilling best-in-class prompt and workflow patterns from Anthropic (Claude Code), Cursor, Google Antigravity, and OpenAI Codex.
 - Decision-Complete Plan Mode: Enhanced plan mode guidance to enforce strictly non-mutating exploration, codebase grounding prior to clarification, and decision-complete step specifications.
 
-### Improved
-
-- OpenBot Live Workspace: Refined layout framing, header navigation controls, and container integration stability.
-
-## 1.6.16 — 2026-11-21
-
-**Genuine OpenBot desktop onboarding shell and live container workspace integration.**
-
-### Added
-
-- Genuine OpenBot Desktop Shell: Embed the authentic `/apps/openbot/desktop` onboarding app directly inside Live App with native account creation and model provider credentials.
-
-### Removed
-
-- Mock Setup Wizard: Removed synthetic setup wizard and keys steps in favor of the authentic OpenBot desktop shell.
-
 ## 1.6.15 — 2026-11-21
 
 **Actionable desktop update button and 1-hour unattended auto-install.**
@@ -89,69 +73,6 @@
 ### Added
 
 - Unattended Auto-Update: Automatically apply downloaded updates and restart cleanly after 1 hour if not manually triggered.
-
-## 1.6.14 — 2026-11-21
-
-**Integrated OpenBot desktop onboarding journey into live app view and resolved container startup blockers.**
-
-### Added
-
-- OpenBot Onboarding Journey: Integrated guided setup wizard directly inside Zyron's OpenBot Live App view with workspace identity, multi-provider model selection, API key configuration, and coworker capability previews.
-
-### Fixed
-
-- OpenBot Container Startup & Stack Adoption: Automatically adopt healthy running OpenBot Docker stacks on port 3001, bypass leftover volume encryption barriers, and fall back intelligence keys during setup.
-
-## 1.6.13 — 2026-11-21
-
-**Full-width immersive layout and return navigation for OpenBot Workspace.**
-
-### Added
-
-- OpenBot Fullscreen Layout: Automatically hide thread sidebars and lists when OpenBot Workspace is open for an uninterrupted full-width experience, with an integrated Back button to return to conversations.
-
-## 1.6.12 — 2026-11-20
-
-**Pass installation authentication token to OpenBot live app URL to establish install session.**
-
-### Fixed
-
-- OpenBot Session Authentication: Route OpenBot live app URL through `/api/install/enter?token=...` so the embedded workspace receives its authorized install cookie, resolving the "Open OpenBot from its app" refusal screen.
-
-## 1.6.11 — 2026-11-20
-
-**Permit local OpenBot subframe navigation in desktop subframe navigation guard.**
-
-### Fixed
-
-- Desktop Subframe Navigation Guard: Allow `127.0.0.1:3001` and `localhost:3001` subframe navigations so Electron main process does not cancel the OpenBot live app iframe.
-
-## 1.6.10 — 2026-11-20
-
-**Enable allow-same-origin sandbox for OpenBot live app embed to permit localStorage and state hydration.**
-
-### Fixed
-
-- OpenBot Embedded Live App: Add `allow-same-origin` to iframe sandbox attribute so local storage, session state, and theme initialization run without privacy blocks.
-
-## 1.6.9 — 2026-11-20
-
-**Direct OpenBot live app integration, Google Gemini tool-call stream compatibility, and external browser link alignment.**
-
-### Fixed
-
-- OpenBot Live App Embed: Point embedded workspace surface and external browser launcher directly to port 3001, removing restrictive sandbox constraints so the live UI loads immediately.
-- Gemini Tool-Call Streaming: Integrated compatibility proxy resolving missing delta tool call index errors for seamless function calling.
-
-## 1.6.8 — 2026-11-20
-
-**OpenBot autonomous AI coworkers workspace integration, multi-agent Docker tooling, and live app embed.**
-
-### Added
-
-- OpenBot App Rail & Workspace: Dedicated OpenBot category in the App Rail providing direct access to the OpenBot workspace.
-- Multi-Agent Orchestration & Hub: Integrated LangGraph engine, Playwright sandboxed browser tools, and AI coworker presets catalog.
-- Dual View Experience: Seamless toggle between the Live App (embedded self-hosted instance) and the Coworkers & Hub dashboard with external browser launch shortcut.
 
 ## 1.6.7 — 2026-11-19
 

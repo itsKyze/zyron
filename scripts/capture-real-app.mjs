@@ -218,10 +218,10 @@ async function seedAppState(page, avatarUrl = itsKyzeAvatarDataUrl) {
             spaceId: null,
           },
           {
-            id: "proj-openbot",
+            id: "proj-mobile",
             kind: "project",
-            title: "openbot-workspace",
-            workspaceRoot: "/home/kyzedev/openbot",
+            title: "mobile-app",
+            workspaceRoot: "/home/kyzedev/mobile-app",
             defaultModelSelection: { provider: "antigravity", model: "gemini-2.5-flash" },
             createdAt: now,
             updatedAt: now,
@@ -323,7 +323,7 @@ async function seedAppState(page, avatarUrl = itsKyzeAvatarDataUrl) {
           },
           {
             id: "thread-browser",
-            projectId: "proj-openbot",
+            projectId: "proj-mobile",
             title: "E2E Browser Automation & Verification",
             modelSelection: { provider: "antigravity", model: "gemini-2.5-flash" },
             runtimeMode: "full-access",
@@ -636,7 +636,7 @@ async function seedAppState(page, avatarUrl = itsKyzeAvatarDataUrl) {
       // Thread 4: Browser Thread
       useStore.getState().syncServerThreadDetail({
         id: "thread-browser",
-        projectId: "proj-openbot",
+        projectId: "proj-mobile",
         title: "E2E Browser Automation & Verification",
         modelSelection: { provider: "antigravity", model: "gemini-2.5-flash" },
         runtimeMode: "full-access",
@@ -1105,10 +1105,10 @@ async function captureAll() {
             spaceId: null,
           },
           {
-            id: "proj-openbot",
+            id: "proj-mobile",
             kind: "project",
-            title: "openbot-workspace",
-            workspaceRoot: "/home/kyzedev/openbot",
+            title: "mobile-app",
+            workspaceRoot: "/home/kyzedev/mobile-app",
             defaultModelSelection: { provider: "antigravity", model: "gemini-2.5-flash" },
             createdAt: now,
             updatedAt: now,
