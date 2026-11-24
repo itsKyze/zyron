@@ -188,6 +188,7 @@ export function useHorizontalWheelScroll(stripRef: RefObject<HTMLElement | null>
 export const CHAT_HEADER_TOGGLE_CLASS_NAME = cn(
   CHAT_SURFACE_CHIP_CLASS_NAME,
   "data-pressed:text-[var(--color-text-foreground)]",
+  "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/20 focus-visible:ring-offset-0",
 );
 
 /** Flat dock tab chip — shares the header diff toggle chrome, but adds one extra

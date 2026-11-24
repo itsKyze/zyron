@@ -3608,6 +3608,34 @@ html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) {
   --ascii-glass-tint: 0.35;
 }
 
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"])
+  [data-sidebar-layout="rail"]
+  nav[aria-label] {
+  background: color-mix(
+    in srgb,
+    var(--app-rail-panel-background, var(--color-background-surface))
+      calc(var(--ascii-glass-tint, 0.4) * 100%),
+    transparent
+  );
+  backdrop-filter: blur(var(--ascii-glass-blur, 16px));
+  -webkit-backdrop-filter: blur(var(--ascii-glass-blur, 16px));
+  border-inline-end: 1px solid var(--app-rail-inset-border, rgba(255, 255, 255, 0.08));
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"])
+  [data-sidebar-layout="rail"]
+  nav[aria-label]
+  .sidebar-icon-button {
+  color: var(--color-foreground);
+}
+
+html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"])
+  [data-sidebar-layout="rail"]
+  nav[aria-label]
+  .sidebar-icon-button:not([aria-current="page"]):not(:hover) {
+  opacity: 0.75;
+}
+
 html[data-ascii-wallpaper]:not([data-ascii-wallpaper="off"]) .app-rail-panel {
   background: color-mix(
     in srgb,

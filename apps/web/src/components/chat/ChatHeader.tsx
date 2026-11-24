@@ -548,7 +548,10 @@ export function ChatHeader({
   const togglesRightDock = onToggleRightDock !== undefined;
   const hasActionControls =
     !minimalChrome && (!hideHandoffControls || activeProjectScripts !== undefined);
-  const rightPanelToggleControl = showDiffToggle ? (
+  // When the multi-pane right dock is open, its own dock header hosts the collapse control;
+  // hiding the header's duplicate avoids showing two identical toggle icons side-by-side.
+  const showRightPanelControl = showDiffToggle && (!togglesRightDock || !rightDockOpen);
+  const rightPanelToggleControl = showRightPanelControl ? (
     <Tooltip>
       <TooltipTrigger
         render={

@@ -26,7 +26,7 @@ export function ProfileAvatar({
   return (
     <div
       className={cn(
-        "flex items-center justify-center overflow-hidden rounded-full text-white",
+        "flex items-center justify-center overflow-hidden rounded-full text-white bg-foreground/10 ring-1 ring-border/60 dark:ring-white/20 shadow-xs",
         className,
       )}
       style={image ? undefined : { backgroundColor: color }}

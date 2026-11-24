@@ -11,8 +11,12 @@ import {
   DialogDescription,
   DialogPanel,
   DialogFooter,
+  dialogFieldLabelClassName,
 } from "~/components/ui/dialog";
 import { Input } from "~/components/ui/input";
+import { SelectItem } from "~/components/ui/select";
+import { GlobeIcon, TerminalIcon } from "~/lib/icons";
+import { SettingsSelectControl } from "./SettingControls";
 import { ensureNativeApi } from "~/nativeApi";
 
 export function McpLocalConnectorDialog(props: {
@@ -105,31 +109,70 @@ export function McpLocalConnectorDialog(props: {
           </DialogDescription>
         </DialogHeader>
         <DialogPanel>
-          <form id={formId} className="space-y-3 text-ui" onSubmit={(event) => void submit(event)}>
-            <label className="block">
-              Transport
+          <form
+            id={formId}
+            className="space-y-3.5 text-ui"
+            onSubmit={(event) => void submit(event)}
+          >
+            <div className="space-y-1.5">
+              <span className={dialogFieldLabelClassName}>Transport</span>
+              <SettingsSelectControl
+                value={mode}
+                onValueChange={(next) => setMode(next as "url" | "stdio")}
+                ariaLabel="Transport"
+                triggerClassName="w-full"
+                valueContent={
+                  <span className="flex items-center gap-2">
+                    {mode === "url" ? (
+                      <GlobeIcon className="size-4 shrink-0 text-muted-foreground" />
+                    ) : (
+                      <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
+                    )}
+                    <span>{mode === "url" ? "Local HTTP URL" : "Command (stdio)"}</span>
+                  </span>
+                }
+              >
+                <SelectItem hideIndicator value="url">
+                  <span className="flex items-center gap-2">
+                    <GlobeIcon className="size-4 shrink-0 text-muted-foreground" />
+                    <span>Local HTTP URL</span>
+                  </span>
+                </SelectItem>
+                <SelectItem hideIndicator value="stdio">
+                  <span className="flex items-center gap-2">
+                    <TerminalIcon className="size-4 shrink-0 text-muted-foreground" />
+                    <span>Command (stdio)</span>
+                  </span>
+                </SelectItem>
+              </SettingsSelectControl>
+              {/* Accessible hidden select kept in sync for form automation and tests */}
               <select
                 aria-label="Local server transport"
                 value={mode}
-                className="ml-2 rounded border bg-background p-1 text-ui"
+                className="sr-only"
+                tabIndex={-1}
+                aria-hidden="true"
                 onChange={(event) => setMode(event.target.value as "url" | "stdio")}
               >
                 <option value="url">Local HTTP URL</option>
                 <option value="stdio">Command (stdio)</option>
               </select>
-            </label>
+            </div>
             {mode === "url" ? (
-              <Input
-                aria-label="Local MCP URL"
-                placeholder="http://127.0.0.1:29979/mcp"
-                value={url}
-                onChange={(event) => setUrl(event.target.value)}
-                required
-              />
+              <label className="block space-y-1.5">
+                <span className={dialogFieldLabelClassName}>Server URL</span>
+                <Input
+                  aria-label="Local MCP URL"
+                  placeholder="http://127.0.0.1:29979/mcp"
+                  value={url}
+                  onChange={(event) => setUrl(event.target.value)}
+                  required
+                />
+              </label>
             ) : (
               <>
-                <label className="block">
-                  Name
+                <label className="block space-y-1.5">
+                  <span className={dialogFieldLabelClassName}>Name</span>
                   <Input
                     value={name}
                     onChange={(event) => setName(event.target.value)}
@@ -137,8 +180,8 @@ export function McpLocalConnectorDialog(props: {
                     maxLength={60}
                   />
                 </label>
-                <label className="block">
-                  Command
+                <label className="block space-y-1.5">
+                  <span className={dialogFieldLabelClassName}>Command</span>
                   <Input
                     value={command}
                     placeholder="~/.paper/bin/paper"
@@ -146,8 +189,8 @@ export function McpLocalConnectorDialog(props: {
                     required
                   />
                 </label>
-                <label className="block">
-                  Arguments (JSON array)
+                <label className="block space-y-1.5">
+                  <span className={dialogFieldLabelClassName}>Arguments (JSON array)</span>
                   <Input
                     value={args}
                     placeholder={'["mcp"]'}
@@ -155,16 +198,18 @@ export function McpLocalConnectorDialog(props: {
                     required
                   />
                 </label>
-                <label className="block">
-                  Working directory
+                <label className="block space-y-1.5">
+                  <span className={dialogFieldLabelClassName}>Working directory</span>
                   <Input
                     value={cwd}
                     placeholder="Home directory"
                     onChange={(event) => setCwd(event.target.value)}
                   />
                 </label>
-                <label className="block">
-                  Environment (JSON object, values hidden)
+                <label className="block space-y-1.5">
+                  <span className={dialogFieldLabelClassName}>
+                    Environment (JSON object, values hidden)
+                  </span>
                   <Input
                     type="password"
                     autoComplete="off"

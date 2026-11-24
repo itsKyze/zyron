@@ -522,10 +522,17 @@ export function CreateProjectDialog(props: {
 
           {source === "local" ? (
             <>
-              <InputGroup className={PROJECT_DIALOG_FIELD_CONTROL_CLASS_NAME}>
-                <InputGroupAddon className="w-10 self-stretch border-e border-foreground/12 ps-0">
+              <InputGroup
+                className={cn(
+                  PROJECT_DIALOG_FIELD_CONTROL_CLASS_NAME,
+                  "h-10 transition-all",
+                  "has-[input:focus-visible]:border-foreground/40 has-[input:focus-visible]:ring-1 has-[input:focus-visible]:ring-foreground/20",
+                )}
+              >
+                <InputGroupAddon className="ps-2.5 pe-1.5 self-center has-[>button]:ms-0">
                   <FolderIcon className="size-4 text-muted-foreground/70" aria-hidden="true" />
                 </InputGroupAddon>
+                <div className="my-auto h-4 w-px shrink-0 bg-foreground/15" aria-hidden="true" />
                 <InputGroupInput
                   id={nameInputId}
                   value={name}
@@ -533,6 +540,7 @@ export function CreateProjectDialog(props: {
                   placeholder="Project name"
                   maxLength={120}
                   disabled={submitting}
+                  className="ps-2.5 pe-3 text-ui"
                   onChange={(event) => {
                     setName(event.target.value);
                     setNameEdited(true);

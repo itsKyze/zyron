@@ -169,10 +169,13 @@ function SignedOutFooter() {
         <SidebarIconButton
           render={<MenuTrigger />}
           icon={UserIcon}
-          iconClassName="size-5"
           label="Sign in"
           className={appRailButtonClassName(false)}
-        />
+        >
+          <div className="flex size-7 items-center justify-center rounded-full bg-foreground/10 text-foreground ring-1 ring-border/60 dark:ring-white/20 shadow-xs">
+            <UserIcon className="size-4" />
+          </div>
+        </SidebarIconButton>
       </RemoteConnectionsCoachmark>
       <ComposerPickerMenuPopup side="right" align="end" className="w-64 min-w-64">
         <MenuGroup>

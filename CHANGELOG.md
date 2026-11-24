@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.22 — 2026-11-24
+
+**Enhanced Live ASCII Wallpaper frosted glass rail protection, avatar visibility, and UI polish.**
+
+### Fixed
+
+- Live ASCII Wallpaper Rail Protection: Added frosted glass backdrop blur, subtle glass tint, and right border to the app rail when animated ASCII wallpapers are active, preserving high-contrast text and icon visibility for Help and user profile controls.
+- Profile Avatar Visibility: Equipped `ProfileAvatar` and the signed-out footer with a luminous perimeter ring (`ring-1 dark:ring-white/20`) and background fallback, preventing dark avatars or transparent images from disappearing into deep black wallpaper scenes.
+- MCP Local Connector: Upgraded the transport selector in `McpLocalConnectorDialog` to Zyron's custom `SettingsSelectControl`, replacing raw native browser dropdowns with polished accessible menus.
+- Project Name Input: Refined the project name inputs in `CreateProjectDialog` and `EditProjectDialog` with floating vertical dividers, squircle app icons, and subtle monochrome focus rings.
+- Chat Header Controls: Eliminated duplicate sidebar toggle buttons when the right dock is open, and replaced harsh blue focus rings with subtle theme rings.
+
 ## 1.6.21 — 2026-11-24
 
 **Refined rail flex-1 viewport geometry and floating wallpaper theme borders.**

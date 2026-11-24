@@ -10,6 +10,7 @@ import { isElectron } from "~/env";
 import { useAdditionalProjectFolders } from "~/hooks/useAdditionalProjectFolders";
 import type { ProjectAppearance } from "~/lib/projectAppearance";
 import { readNativeApi } from "~/nativeApi";
+import { cn } from "~/lib/utils";
 import { PROJECT_DIALOG_FIELD_CONTROL_CLASS_NAME } from "./CreateGitHubProjectFields";
 import { ProjectAppearancePicker } from "./ProjectAppearancePicker";
 import { ProjectFolderAddRow, ProjectFolderList } from "./ProjectFolderList";
@@ -22,6 +23,7 @@ import {
   DialogPanel,
   DialogPopup,
   DialogTitle,
+  dialogFieldLabelClassName,
 } from "./ui/dialog";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "./ui/input-group";
 import { Popover, PopoverPopup, PopoverTrigger } from "./ui/popover";
@@ -172,19 +174,29 @@ function EditProjectForm({
               event.preventDefault();
               void save();
             }}
+            className="space-y-1.5"
           >
-            {/* Same field as Add project's folder path: the glyph sits in a leading cell,
-                here as the button that opens the picker. */}
-            <InputGroup className={PROJECT_DIALOG_FIELD_CONTROL_CLASS_NAME}>
-              {/* Rounded and clipped like the field: the button's hover / open fill would otherwise
-                square off past the field's corners. */}
-              <InputGroupAddon className="w-10 self-stretch overflow-hidden rounded-s-[inherit] border-e border-foreground/12 ps-0 has-[>button]:ms-0">
+            <label
+              htmlFor={nameInputId}
+              className={cn("block", dialogFieldLabelClassName, "text-ui text-foreground")}
+            >
+              {t("workspace:projectName")}
+            </label>
+            <InputGroup
+              className={cn(
+                PROJECT_DIALOG_FIELD_CONTROL_CLASS_NAME,
+                "h-10 transition-all",
+                "has-[input:focus-visible]:border-foreground/40 has-[input:focus-visible]:ring-1 has-[input:focus-visible]:ring-foreground/20",
+              )}
+            >
+              <InputGroupAddon className="ps-2 pe-1.5 self-center has-[>button]:ms-0">
                 <PopoverTrigger
                   render={
                     <button
                       type="button"
                       aria-label={t("workspace:scripts_chooseIcon")}
-                      className="flex size-full cursor-pointer items-center justify-center rounded-s-[inherit] text-muted-foreground outline-hidden transition-colors hover:bg-foreground/5 focus-visible:bg-foreground/6 data-popup-open:bg-foreground/6"
+                      title={t("workspace:scripts_chooseIcon")}
+                      className="flex size-7 cursor-pointer items-center justify-center rounded-md text-muted-foreground transition-all hover:bg-foreground/8 hover:text-foreground active:scale-95 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-foreground/30 data-popup-open:bg-foreground/10 data-popup-open:text-foreground"
                     />
                   }
                 >
@@ -193,11 +205,13 @@ function EditProjectForm({
                   </span>
                 </PopoverTrigger>
               </InputGroupAddon>
+              <div className="my-auto h-4 w-px shrink-0 bg-foreground/15" aria-hidden="true" />
               <InputGroupInput
                 id={nameInputId}
                 aria-label={t("workspace:projectName")}
                 value={name}
                 placeholder={folderName}
+                className="ps-2.5 pe-3 text-ui"
                 onChange={(event) => setName(event.target.value)}
               />
             </InputGroup>
