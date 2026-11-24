@@ -22,6 +22,20 @@ import type { WhatsNewEntry } from "./logic";
 
 export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
   {
+    version: "1.6.21",
+    date: "Nov 24",
+    features: [
+      {
+        id: "rail-viewport-and-wallpaper-accent",
+        title: "Navigation Rail Geometry & Wallpaper Accents",
+        badge: "Fixed",
+        badgeTone: "new",
+        description:
+          "Refined rail viewport layout math ensuring the profile avatar stays 100% visible at all times, with matching theme accent borders across the /wallpaper floating picker.",
+      },
+    ],
+  },
+  {
     version: "1.6.20",
     date: "Nov 24",
     features: [

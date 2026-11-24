@@ -117,28 +117,23 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
             setWallpaper("off");
           }}
           className={cn(
-            "group relative flex shrink-0 w-24 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left",
+            "group relative flex shrink-0 w-24 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left border-2",
             "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
             wallpaper === "off"
-              ? "bg-accent/80 text-foreground"
-              : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
+              ? "bg-accent/80 text-foreground shadow-sm"
+              : "border-border/60 bg-card/60 text-muted-foreground hover:border-foreground/40 hover:text-foreground",
           )}
           style={
             wallpaper === "off"
               ? {
-                  boxShadow: `0 0 0 2px var(--color-foreground, #ffffff), 0 0 14px rgba(255,255,255,0.25)`,
+                  borderColor: "var(--color-foreground, #ffffff)",
+                  boxShadow:
+                    "0 0 0 2px var(--color-foreground, #ffffff), 0 0 14px rgba(255,255,255,0.25)",
                 }
               : undefined
           }
         >
-          <div
-            className={cn(
-              "relative aspect-[16/10] w-full rounded-lg overflow-hidden border-2 flex items-center justify-center bg-black/40",
-              wallpaper === "off"
-                ? "border-foreground ring-1 ring-foreground/20"
-                : "border-border/50 group-hover:border-border",
-            )}
-          >
+          <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden flex items-center justify-center bg-black/40">
             <span className="text-ui-xs font-mono opacity-60">Off</span>
             {wallpaper === "off" && (
               <div className="absolute top-1 right-1 flex size-3.5 items-center justify-center rounded-full bg-foreground text-background shadow">
@@ -162,35 +157,22 @@ export const AsciiWallpaperFloatingPicker = memo(function AsciiWallpaperFloating
                 setWallpaper(item.key);
               }}
               className={cn(
-                "group relative flex shrink-0 w-28 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left",
+                "group relative flex shrink-0 w-28 flex-col items-center gap-1.5 rounded-xl p-1.5 transition-all text-left border-2",
                 "outline-none focus:outline-none focus-visible:outline-none ring-0 focus:ring-0 focus-visible:ring-0",
                 isSelected
-                  ? "bg-accent/80 text-foreground"
-                  : "text-muted-foreground hover:bg-accent/40 hover:text-foreground",
+                  ? "bg-accent/80 text-foreground shadow-sm"
+                  : "border-border/60 bg-card/60 text-muted-foreground hover:border-foreground/40 hover:text-foreground",
               )}
               style={
                 isSelected
                   ? {
                       borderColor: item.accent,
-                      boxShadow: `0 0 0 2px ${item.accent}, 0 0 16px ${item.accent}55`,
+                      boxShadow: `0 0 0 2px ${item.accent}, 0 0 16px ${item.accent}60, 0 2px 10px ${item.accent}30`,
                     }
                   : undefined
               }
             >
-              <div
-                className={cn(
-                  "relative aspect-[16/10] w-full rounded-lg overflow-hidden border-2 flex items-center justify-center bg-black/70 transition-all",
-                  isSelected ? "shadow-sm" : "border-border/50 group-hover:border-border",
-                )}
-                style={
-                  isSelected
-                    ? {
-                        borderColor: item.accent,
-                        boxShadow: `0 0 0 1px ${item.accent}, 0 2px 10px ${item.accent}40`,
-                      }
-                    : undefined
-                }
-              >
+              <div className="relative aspect-[16/10] w-full rounded-lg overflow-hidden flex items-center justify-center bg-black/70 transition-all">
                 <div
                   className="size-full flex items-center justify-center [&>svg]:w-full [&>svg]:h-full [&>svg]:object-cover"
                   dangerouslySetInnerHTML={cardSvg ? { __html: cardSvg } : undefined}

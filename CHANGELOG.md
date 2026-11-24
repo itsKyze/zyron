@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.21 — 2026-11-24
+
+**Refined rail flex-1 viewport geometry and floating wallpaper theme borders.**
+
+### Fixed
+
+- App Rail Geometry: Fixed an `h-full` flex child stretch in the chat layout container, ensuring the navigation rail precisely matches the available viewport height minus the window title strip and locking the profile avatar and footer controls inside view at all times.
+- Floating Wallpaper Cards: Aligned `/wallpaper` floating cards with Settings styling, applying theme accent border colors (`borderColor: item.accent`), ambient glowing halos, and suppressing default Chromium blue outline rings.
+
 ## 1.6.20 — 2026-11-24
 
 **Dynamic wallpaper accent borders and zero-overflow rail layout.**

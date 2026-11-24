@@ -716,7 +716,7 @@ function ChatRouteLayout() {
           ) : (
             <div className="flex h-full min-h-0 shrink-0 flex-col">
               <AppShellTopStrip />
-              <div className="flex h-full min-h-0 flex-1">
+              <div className="flex min-h-0 flex-1">
                 <div ref={setRailSlot} className="flex h-full min-h-0 shrink-0" />
                 <div className="app-rail-panel relative flex h-full min-h-0 shrink-0 overflow-hidden [contain:paint]">
                   {sidebarElement}
