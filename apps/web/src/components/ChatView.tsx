@@ -324,6 +324,7 @@ import { ThreadWorktreeHandoffDialog } from "./ThreadWorktreeHandoffDialog";
 
 import { ChatComposerFooter } from "./chat/ChatComposerFooter";
 import { ChatHeader } from "./chat/ChatHeader";
+import { EmptyLandingQuickActions } from "./chat/EmptyLandingQuickActions";
 import { OpenThreadTabStrip } from "./chat/OpenThreadTabStrip";
 import { ChatSurfaceHeader } from "./chat/ChatSurfaceHeader";
 import { useAsyncUserInputResponse } from "./chat/useAsyncUserInputResponse";
@@ -3168,6 +3169,16 @@ export default function ChatView({
         return;
       }
 
+      promptRef.current = nextPrompt;
+      setPrompt(nextPrompt);
+      setComposerCursor(collapseExpandedComposerCursor(nextPrompt, nextPrompt.length));
+      setComposerTrigger(detectComposerTrigger(nextPrompt, nextPrompt.length));
+      scheduleComposerFocus();
+    },
+    [promptRef, setComposerCursor, setComposerTrigger, scheduleComposerFocus, setPrompt],
+  );
+  const handleSelectQuickStarterPrompt = useCallback(
+    (nextPrompt: string) => {
       promptRef.current = nextPrompt;
       setPrompt(nextPrompt);
       setComposerCursor(collapseExpandedComposerCursor(nextPrompt, nextPrompt.length));
@@ -7186,6 +7197,7 @@ export default function ChatView({
                         />
                       )}
                     </h2>
+                    <EmptyLandingQuickActions onSelectPrompt={handleSelectQuickStarterPrompt} />
                   </div>
                 </div>
                 {/* Positioned so it paints above the ASCII background. */}
