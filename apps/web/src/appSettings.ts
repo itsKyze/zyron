@@ -223,7 +223,7 @@ export type FollowUpBehavior = typeof FollowUpBehavior.Type;
 // Sound the chat message trail moves with (desktop on macOS).
 export const MessageTrailAudioSource = Schema.Literals(["off", "system", "microphone", "both"]);
 export type MessageTrailAudioSource = typeof MessageTrailAudioSource.Type;
-export const DEFAULT_FOLLOW_UP_BEHAVIOR: FollowUpBehavior = "queue";
+export const DEFAULT_FOLLOW_UP_BEHAVIOR: FollowUpBehavior = "steer";
 /** Which account windows each app-rail usage ring draws: both, or only one of them. */
 export const RailUsageWindow = Schema.Literals(["both", "fiveHour", "weekly"]);
 export type RailUsageWindow = typeof RailUsageWindow.Type;

@@ -326,8 +326,7 @@ export function readTrackedFiles(cwd = process.cwd()): BrandIdentityBinaryFile[]
   // exist as directories or be absent when submodules have not been initialized.
   const paths = entries
     .filter((entry) => !entry.startsWith("160000 "))
-    .map((entry) => entry.slice(entry.indexOf("\t") + 1))
-    .filter((path) => !path.startsWith("apps/openbot/"));
+    .map((entry) => entry.slice(entry.indexOf("\t") + 1));
   return paths.map((path) => ({ path, contents: readFileSync(resolve(cwd, path)) }));
 }
 

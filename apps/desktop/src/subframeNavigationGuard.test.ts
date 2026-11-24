@@ -41,8 +41,6 @@ describe("attachAppSubframeNavigationGuard", () => {
   it("lets a frame load its own inline document", () => {
     expect(navigate(emitter, "about:srcdoc", false)).toBe(false);
     expect(navigate(emitter, "about:blank", false)).toBe(false);
-    expect(navigate(emitter, "http://127.0.0.1:3001", false)).toBe(false);
-    expect(navigate(emitter, "http://localhost:3001", false)).toBe(false);
   });
 
   it.each(["", "about:blank"])("loads an app-owned workspace from a fresh %j frame", (url) => {

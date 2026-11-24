@@ -106,27 +106,6 @@ export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
     ],
   },
   {
-    version: "1.6.16",
-    date: "Nov 21",
-    features: [
-      {
-        id: "openbot-authentic-desktop-shell",
-        title: "Genuine OpenBot desktop onboarding",
-        badge: "New",
-        badgeTone: "new",
-        description:
-          "Embedded the authentic OpenBot desktop onboarding app directly inside Live App with native account creation and AI model provider setup.",
-      },
-      {
-        id: "openbot-seamless-workspace",
-        title: "Direct workspace container integration",
-        badge: "Updated",
-        description:
-          "Seamlessly toggle between the desktop onboarding shell and the live OpenBot container workspace.",
-      },
-    ],
-  },
-  {
     version: "1.6.15",
     date: "Nov 21",
     features: [
@@ -144,108 +123,6 @@ export const WHATS_NEW_ENTRIES: readonly WhatsNewEntry[] = [
         badge: "New",
         description:
           "Downloaded updates automatically install and restart after 1 hour if left unclicked.",
-      },
-    ],
-  },
-  {
-    version: "1.6.14",
-    date: "Nov 21",
-    features: [
-      {
-        id: "openbot-onboarding-journey",
-        title: "Integrated OpenBot onboarding & desktop journey",
-        description:
-          "Seamlessly configure workspace identity, AI models, and coworker capabilities right inside the Live App view.",
-      },
-      {
-        id: "openbot-startup-resilience",
-        title: "Autonomous stack adoption & startup resilience",
-        badge: "Fixed",
-        badgeTone: "new",
-        description:
-          "Automatically adopt running container stacks and bypass encryption blockers during local evaluation.",
-      },
-    ],
-  },
-  {
-    version: "1.6.13",
-    date: "Nov 21",
-    features: [
-      {
-        id: "openbot-immersive-layout",
-        title: "Immersive OpenBot workspace layout",
-        description:
-          "Enjoy an expansive, distraction-free full-width workspace with seamless back navigation.",
-      },
-    ],
-  },
-  {
-    version: "1.6.12",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-install-token-auth",
-        title: "OpenBot session authentication bypass",
-        badge: "Fixed",
-        badgeTone: "new",
-        description:
-          "Automatically authenticated the live OpenBot workspace with its container install token, eliminating app refusal barriers.",
-      },
-    ],
-  },
-  {
-    version: "1.6.11",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-desktop-subframe-guard-permit",
-        title: "Desktop subframe navigation for OpenBot",
-        badge: "Fixed",
-        badgeTone: "new",
-        description:
-          "Permitted local OpenBot container origins through the desktop subframe navigation guard so the live app renders inside Zyron.",
-      },
-    ],
-  },
-  {
-    version: "1.6.10",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-live-app-storage-fix",
-        title: "OpenBot Live App sandbox and state hydration",
-        badge: "Fixed",
-        badgeTone: "new",
-        description:
-          "Enabled origin storage permission in the embedded webview, allowing React and local database state to mount instantly.",
-      },
-    ],
-  },
-  {
-    version: "1.6.9",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-live-app-direct-embed",
-        title: "Direct OpenBot Live App workspace embed",
-        badge: "Improved",
-        badgeTone: "new",
-        description:
-          "Seamless live app embedding pointing directly to the self-hosted engine with unrestricted webview integration.",
-      },
-    ],
-  },
-  {
-    version: "1.6.8",
-    date: "Nov 20",
-    features: [
-      {
-        id: "openbot-coworkers-workspace",
-        title: "OpenBot autonomous AI coworkers workspace",
-        badge: "New",
-        badgeTone: "new",
-        description:
-          "Dedicated OpenBot App Rail category with live embedded workspace, coworker presets, and multi-agent coordination.",
       },
     ],
   },

@@ -6,7 +6,7 @@ This project is open source, so take extra care with the code and configuration 
 ## Workspace map
 
 - `apps/server` is `@zyron/cli`: the HTTP/WebSocket server, CLI, and provider runtime. `apps/web` is the React client, `apps/desktop` is the Electron shell, and `apps/api` is the cloud account API.
-- `apps/analytics`, `apps/profiles`, `apps/marketing`, `apps/e2e`, and `apps/openbot` are separate deployables; use filtered Turbo commands instead of assuming their scripts run from the root.
+- `apps/analytics`, `apps/profiles`, `apps/marketing`, and `apps/e2e` are separate deployables; use filtered Turbo commands instead of assuming their scripts run from the root.
 - `packages/contracts` holds cross-process schemas, `packages/shared` holds shared runtime utilities, and `packages/profile-ui` holds shared profile UI.
 - `scripts/dev-runner.ts` owns `bun run dev*`, including port selection and the isolated `ZYRON_HOME` instance. `bun run electron:dev` uses `./.zyron/electron-dev`.
 

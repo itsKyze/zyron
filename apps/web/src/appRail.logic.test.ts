@@ -31,7 +31,6 @@ describe("rail item order", () => {
       "tasks",
       "pullRequests",
       "studio",
-      "openbot",
     ]);
   });
 
@@ -45,7 +44,6 @@ describe("rail item order", () => {
       "pullRequests",
       "automations",
       "studio",
-      "openbot",
     ]);
     expect(normalizeRailItemOrder(["home", "spaces", "inbox"]).slice(0, 3)).toEqual([
       "home",
@@ -68,7 +66,7 @@ describe("rail item order", () => {
         studioAvailable: false,
         inboxAvailable: false,
       }),
-    ).toEqual(["home", "kanban", "tasks", "pullRequests", "automations", "openbot"]);
+    ).toEqual(["home", "kanban", "tasks", "pullRequests", "automations"]);
     expect(
       buildRailItemOrder({
         order,
@@ -89,7 +87,6 @@ describe("rail item order", () => {
       "tasks",
       "pullRequests",
       "automations",
-      "openbot",
     ]);
     expect(isRailItemAvailable("inbox", { studioAvailable: false, inboxAvailable: true })).toBe(
       true,
@@ -149,7 +146,6 @@ describe("railItemShowsPanel", () => {
     expect(railItemShowsPanel("tasks")).toBe(false);
     expect(railItemShowsPanel("pullRequests")).toBe(false);
     expect(railItemShowsPanel("inbox")).toBe(false);
-    expect(railItemShowsPanel("openbot")).toBe(false);
     for (const id of ["home", "spaces", "automations", "studio", "settings"] as const) {
       expect(railItemShowsPanel(id)).toBe(true);
     }

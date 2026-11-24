@@ -1,4 +1,0 @@
-model:
-  provider: openai
-  credential_secret_ref: openai-api-key
-  default_model: gemini-2.5-flash
