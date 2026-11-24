@@ -3,7 +3,7 @@
 // Layer: Environment panel section
 // Depends on: server local-server React Query helpers and the shared Environment row skin.
 
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 
 import type { ServerLocalServerProcess } from "@zyron/contracts";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -12,6 +12,7 @@ import { localServerPrimaryLabel } from "@zyron/shared/localServers";
 import { LocalServerIdentity } from "../../LocalServerIdentity";
 import { ComposerPickerMenuPopup } from "../ComposerPickerMenuPopup";
 import { Menu, MenuItem, MenuTrigger } from "../../ui/menu";
+import { LocalServerDetailsDialog } from "./LocalServerDetailsDialog";
 import { GlobeIcon, RefreshCwIcon, StopFilledIcon } from "~/lib/icons";
 import {
   serverLocalServersQueryOptions,
@@ -66,10 +67,12 @@ function LocalServersRefreshButton({
 function LocalServerRow({
   server,
   stopping,
+  onInspect,
   onStop,
 }: {
   server: ServerLocalServerProcess;
   stopping: boolean;
+  onInspect: (server: ServerLocalServerProcess) => void;
   onStop: (server: ServerLocalServerProcess) => void;
 }) {
   const stoppable = server.isStoppable && !stopping;
@@ -79,14 +82,20 @@ function LocalServerRow({
     : (server.stopDisabledReason ?? server.args ?? server.displayName);
 
   return (
-    <div className="grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-2 rounded-[0.5rem] py-0.5 pl-2 pr-2.5">
-      {/* Running indicator: a soft-haloed dot so an active server reads at a glance. */}
-      <span className="relative flex size-2 shrink-0 items-center justify-center" aria-hidden>
-        <span className="absolute size-2 rounded-full bg-success/25" />
-        <span className="relative size-1 rounded-full bg-success" />
-      </span>
+    <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-1 rounded-[0.5rem] pr-1.5">
+      <MenuItem
+        onClick={() => onInspect(server)}
+        className="grid min-w-0 cursor-pointer grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-[0.5rem] py-1 pl-2 pr-1 text-left transition-colors hover:bg-[var(--color-background-button-secondary-hover)] data-highlighted:bg-[var(--color-background-button-secondary-hover)]"
+        title={`Inspect ${primaryLabel}`}
+      >
+        {/* Running indicator: a soft-haloed dot so an active server reads at a glance. */}
+        <span className="relative flex size-2 shrink-0 items-center justify-center" aria-hidden>
+          <span className="absolute size-2 rounded-full bg-success/25" />
+          <span className="relative size-1 rounded-full bg-success" />
+        </span>
 
-      <LocalServerIdentity server={server} tone="menu" />
+        <LocalServerIdentity server={server} tone="menu" />
+      </MenuItem>
 
       <MenuItem
         closeOnClick={false}
@@ -138,6 +147,11 @@ export function EnvironmentLocalServersSection({ enabled }: { enabled: boolean }
   const serverCount = servers.length;
   const isBusy = localServersQuery.isFetching || stopLocalServerMutation.isPending;
   const activeStoppingPid = stopLocalServerMutation.variables?.pid ?? null;
+  const [inspectedServerId, setInspectedServerId] = useState<string | null>(null);
+  const inspectedServer =
+    inspectedServerId === null
+      ? null
+      : (servers.find((entry) => entry.id === inspectedServerId) ?? null);
 
   const trailing = (
     <>
@@ -156,66 +170,88 @@ export function EnvironmentLocalServersSection({ enabled }: { enabled: boolean }
   );
 
   return (
-    <Menu>
-      <MenuTrigger render={<button type="button" className={ENVIRONMENT_ROW_CLASS_NAME} />}>
-        <EnvironmentRowBody
-          icon={<GlobeIcon className={ENVIRONMENT_ROW_ICON_CLASS_NAME} aria-hidden />}
-          label={t("chat:localServers_label")}
-          trailing={trailing}
-        />
-      </MenuTrigger>
-      <ComposerPickerMenuPopup align="start" side="bottom" className="w-72 min-w-72">
-        <div className="flex items-center justify-between gap-2 pb-0.5 pl-2 pr-3 pt-px">
-          <span className="truncate text-ui-xs font-normal text-muted-foreground/50">
-            {localServersQuery.isLoading
-              ? t("chat:scanningPorts")
-              : describeServerCount(serverCount)}
-          </span>
-          <LocalServersRefreshButton
-            refreshing={localServersQuery.isFetching}
-            onRefresh={() => void localServersQuery.refetch()}
+    <>
+      <Menu>
+        <MenuTrigger render={<button type="button" className={ENVIRONMENT_ROW_CLASS_NAME} />}>
+          <EnvironmentRowBody
+            icon={<GlobeIcon className={ENVIRONMENT_ROW_ICON_CLASS_NAME} aria-hidden />}
+            label={t("chat:localServers_label")}
+            trailing={trailing}
           />
-        </div>
-
-        {localServersQuery.isLoading ? (
-          <LocalServersPlaceholder
-            icon={<RefreshCwIcon className="size-4 animate-spin" />}
-            title={t("chat:localServers_scanningLocalPorts")}
-          />
-        ) : localServersQuery.isError ? (
-          <LocalServersPlaceholder
-            icon={<GlobeIcon className="size-4" />}
-            title={t("chat:couldnTScanLocalPorts")}
-            subtitle={
-              localServersQuery.error instanceof Error
-                ? localServersQuery.error.message
-                : "The scan failed. Try refreshing."
-            }
-          />
-        ) : serverCount === 0 ? (
-          <LocalServersPlaceholder
-            icon={<GlobeIcon className="size-4" />}
-            title={t("chat:noServersRunning")}
-            subtitle="Local dev servers will appear here."
-          />
-        ) : (
-          <div className="flex flex-col gap-0.5">
-            {servers.map((server) => (
-              <LocalServerRow
-                key={server.id}
-                server={server}
-                stopping={activeStoppingPid === server.pid && stopLocalServerMutation.isPending}
-                onStop={(selectedServer) =>
-                  stopLocalServerMutation.mutate({
-                    pid: selectedServer.pid,
-                    port: selectedServer.ports[0] ?? 1,
-                  })
-                }
-              />
-            ))}
+        </MenuTrigger>
+        <ComposerPickerMenuPopup align="start" side="bottom" className="w-72 min-w-72">
+          <div className="flex items-center justify-between gap-2 pb-0.5 pl-2 pr-3 pt-px">
+            <span className="truncate text-ui-xs font-normal text-muted-foreground/50">
+              {localServersQuery.isLoading
+                ? t("chat:scanningPorts")
+                : describeServerCount(serverCount)}
+            </span>
+            <LocalServersRefreshButton
+              refreshing={localServersQuery.isFetching}
+              onRefresh={() => void localServersQuery.refetch()}
+            />
           </div>
-        )}
-      </ComposerPickerMenuPopup>
-    </Menu>
+
+          {localServersQuery.isLoading ? (
+            <LocalServersPlaceholder
+              icon={<RefreshCwIcon className="size-4 animate-spin" />}
+              title={t("chat:localServers_scanningLocalPorts")}
+            />
+          ) : localServersQuery.isError ? (
+            <LocalServersPlaceholder
+              icon={<GlobeIcon className="size-4" />}
+              title={t("chat:couldnTScanLocalPorts")}
+              subtitle={
+                localServersQuery.error instanceof Error
+                  ? localServersQuery.error.message
+                  : "The scan failed. Try refreshing."
+              }
+            />
+          ) : serverCount === 0 ? (
+            <LocalServersPlaceholder
+              icon={<GlobeIcon className="size-4" />}
+              title={t("chat:noServersRunning")}
+              subtitle="Local dev servers will appear here."
+            />
+          ) : (
+            <div className="flex flex-col gap-0.5">
+              {servers.map((server) => (
+                <LocalServerRow
+                  key={server.id}
+                  server={server}
+                  stopping={activeStoppingPid === server.pid && stopLocalServerMutation.isPending}
+                  onInspect={(selectedServer) => setInspectedServerId(selectedServer.id)}
+                  onStop={(selectedServer) =>
+                    stopLocalServerMutation.mutate({
+                      pid: selectedServer.pid,
+                      port: selectedServer.ports[0] ?? 1,
+                    })
+                  }
+                />
+              ))}
+            </div>
+          )}
+        </ComposerPickerMenuPopup>
+      </Menu>
+
+      <LocalServerDetailsDialog
+        server={inspectedServer}
+        open={inspectedServer !== null}
+        stopping={
+          inspectedServer !== null &&
+          activeStoppingPid === inspectedServer.pid &&
+          stopLocalServerMutation.isPending
+        }
+        onOpenChange={(open) => {
+          if (!open) setInspectedServerId(null);
+        }}
+        onStop={(selectedServer) =>
+          stopLocalServerMutation.mutate({
+            pid: selectedServer.pid,
+            port: selectedServer.ports[0] ?? 1,
+          })
+        }
+      />
+    </>
   );
 }

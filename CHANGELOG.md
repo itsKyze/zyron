@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.6.23 — 2026-11-24
+
+**Quick starter prompt chips, Local Server Inspector dialog, default follow-up steering, and workspace cleanup.**
+
+### Added
+
+- Local Server Inspector: Click any running server in `Environment → Local Servers` to open a details dialog with **Open in Browser**, **Copy URL**, **Copy Info**, process metadata (`PID`, `Directory`, `Command`), and quick **Stop Server**.
+- Empty Chat Quick Actions: Added 4 starter prompt chips (`Explain codebase`, `Review changes`, `Find & fix bugs`, `Write tests`) below the empty-landing heading to populate and focus the composer in one click.
+
+### Changed
+
+- Default Follow-Up Behavior: Changed `DEFAULT_FOLLOW_UP_BEHAVIOR` to `steer` so follow-up messages sent while an agent is working steer the live turn directly.
+- Workspace Cleanup: Removed the deprecated OpenBot embed, routes, Docker stack references, and changelog entries.
+
 ## 1.6.22 — 2026-11-24
 
 **Enhanced Live ASCII Wallpaper frosted glass rail protection, avatar visibility, and UI polish.**
