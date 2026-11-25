@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.6.24 — 2026-11-25
+
+**Refined Environment Local Servers inspector, process diagnostics, and system stability.**
+
+### Improved
+
+- Local Servers Environment: Refined `Environment → Local Servers` inspector with genuine system process detection, direct browser launch, process termination controls, and accurate network diagnostics.
+- Background Tasks & Process Management: Streamlined task output state and cleaned up synthetic log views in favor of authentic live process telemetry.
+
 ## 1.6.23 — 2026-11-24
 
 **Quick starter prompt chips, Local Server Inspector dialog, default follow-up steering, and workspace cleanup.**
