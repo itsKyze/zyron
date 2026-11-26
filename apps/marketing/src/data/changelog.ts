@@ -26,6 +26,78 @@ export interface ChangelogEntry {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "1.6.25",
+    date: "Nov 26",
+    features: [
+      {
+        id: "opencode-provider-icon-dark-mode",
+        title: "OpenCode provider icon & Account API deployment",
+        description:
+          "Fixed OpenCode provider icon visibility in dark mode in the composer model picker, and deployed the Account API to api.zyron.site.",
+      },
+    ],
+  },
+  {
+    version: "1.6.24",
+    date: "Nov 25",
+    features: [
+      {
+        id: "local-servers-diagnostics",
+        title: "Environment Local Servers & process diagnostics",
+        description:
+          "Refined Environment → Local Servers inspector with system process detection, direct browser launch, process termination controls, and network diagnostics.",
+      },
+    ],
+  },
+  {
+    version: "1.6.23",
+    date: "Nov 24",
+    features: [
+      {
+        id: "local-server-inspector-and-chips",
+        title: "Local Server Inspector & quick starter prompt chips",
+        description:
+          "Added Local Server Inspector dialog with Open in Browser, Copy URL, and Stop Server, plus 4 starter prompt chips on the empty chat landing.",
+      },
+    ],
+  },
+  {
+    version: "1.6.22",
+    date: "Nov 24",
+    features: [
+      {
+        id: "wallpaper-rail-and-avatar-polish",
+        title: "Frosted glass rail protection & avatar visibility",
+        description:
+          "Added frosted glass backdrop blur to the app rail over live ASCII wallpapers, luminous perimeter rings on ProfileAvatar, and custom SettingsSelectControl in MCP connector.",
+      },
+    ],
+  },
+  {
+    version: "1.6.21",
+    date: "Nov 24",
+    features: [
+      {
+        id: "rail-viewport-and-theme-borders",
+        title: "Rail viewport geometry & floating wallpaper borders",
+        description:
+          "Fixed app rail flex-1 viewport math and added dynamic theme accent card borders for floating wallpapers.",
+      },
+    ],
+  },
+  {
+    version: "1.6.19",
+    date: "Nov 23",
+    features: [
+      {
+        id: "pinned-rail-profile-avatar",
+        title: "Pinned app rail height for profile visibility",
+        description:
+          "Pinned app rail height to the viewport so the profile avatar and account controls remain permanently visible.",
+      },
+    ],
+  },
+  {
     version: "1.6.18",
     date: "Nov 23",
     features: [
