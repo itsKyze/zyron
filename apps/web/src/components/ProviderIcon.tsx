@@ -41,23 +41,14 @@ const OpenCodeProviderIcon = ({
   const OpenCodeGlyph = PROVIDER_GLYPHS.opencode;
 
   return (
-    <>
-      <OpenCodeGlyph
-        {...svgProps}
-        aria-hidden={ariaHidden}
-        aria-label={ariaLabel}
-        role={role}
-        className={cn(className, "dark:hidden")}
-        style={style}
-      />
-      <CentralIcon
-        name="opencode"
-        label={centralIconLabel}
-        title={title}
-        className={cn(className, "hidden dark:inline-block dark:text-foreground/90")}
-        style={style}
-      />
-    </>
+    <OpenCodeGlyph
+      {...svgProps}
+      aria-hidden={ariaHidden}
+      aria-label={ariaLabel}
+      role={role}
+      className={cn(className, "dark:text-foreground/90")}
+      style={style}
+    />
   );
 };
 
