@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "zyron-account-api-trial",
-  "account_id": "56e5b3e566be2fc8ade9b7d0eadf5e35",
+  "name": "zyron-account-api",
+  "account_id": "7b7c41f687f442cfed7f4b93d54d8e2c",
   "main": "cloudflare/worker.ts",
   "compatibility_date": "2026-09-28",
   "compatibility_flags": ["nodejs_compat"],
