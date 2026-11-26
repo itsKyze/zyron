@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.6.25 — 2026-11-26
+
+**Fixed OpenCode provider icon visibility in dark mode, deployed Account API, and aligned release packages.**
+
+### Fixed
+
+- Provider Icon Visibility: Updated `OpenCodeProviderIcon` in `ProviderIcon.tsx` to render `OpenCodeGlyph` directly in dark mode instead of swapping to a `CentralIcon` asset, preventing the provider tab icon from disappearing in the composer model picker.
+
+### Changed
+
+- Account API Deployment: Configured `@zyron/api` for hosted deployment (`api.zyron.site` on Render with Supabase PostgreSQL Session pooler and WorkOS AuthKit) and updated `apps/api/wrangler.jsonc` account configuration.
+- Release Alignment: Aligned workspace package versions (`apps/server`, `apps/desktop`, `apps/web`, `packages/contracts`) to `1.6.25`.
+
 ## 1.6.24 — 2026-11-25
 
 **Refined Environment Local Servers inspector, process diagnostics, and system stability.**
