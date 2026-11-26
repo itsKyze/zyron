@@ -35,6 +35,7 @@ import {
 } from "~/components/settings/SettingsPanelPrimitives";
 import { ThemeModePicker } from "~/components/settings/ThemeModePicker";
 import { AsciiWallpaperPicker } from "~/wallpaper/AsciiWallpaperPicker";
+import { DashboardBackgroundSettings } from "~/components/settings/DashboardBackgroundSettings";
 import {
   Autocomplete,
   AutocompleteEmpty,
@@ -256,6 +257,10 @@ export function AppearanceSettingsView(binding: AppSettingsBinding) {
 
       <SettingsSectionShell title="Live ASCII Wallpaper">
         <AsciiWallpaperPicker />
+      </SettingsSectionShell>
+
+      <SettingsSectionShell title="Background">
+        <DashboardBackgroundSettings />
       </SettingsSectionShell>
 
       {isElectron ? (
